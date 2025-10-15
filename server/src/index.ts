@@ -18,6 +18,7 @@ import testRoutes from './routes/test';
 import practiceRoutes from './routes/simplePractice';
 import enhancedPracticeRoutes from './routes/enhancedPractice';
 import dynamicExamRoutes from './routes/dynamicExam';
+import jobsRoutes from './routes/jobs';
 import adminRoutes from './routes/admin';
 
 // Load environment variables
@@ -42,6 +43,7 @@ app.use('/api/test', testRoutes);
 app.use('/api/practice', practiceRoutes);
 app.use('/api/practice/enhanced', enhancedPracticeRoutes);
 app.use('/api/exam/dynamic', dynamicExamRoutes);
+app.use('/api/jobs', jobsRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Health check endpoint
@@ -53,24 +55,70 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Serve static files from client build (both dev and prod)
-const clientPath = path.resolve(process.cwd(), 'dist/public');
-console.log('📦 Serving static files from:', clientPath);
-
-// Serve static files
-app.use(express.static(clientPath));
-
-// Handle client-side routing (SPA) - only for non-API routes
-app.get('*', (req, res) => {
-  // Skip API routes
-  if (req.path.startsWith('/api/')) {
-    return res.status(404).json({
-      success: false,
-      message: 'API endpoint not found',
+// Development vs Production setup
+if (isDevelopment) {
+  // Development: Use Vite middleware for hot reloading
+  import('vite').then(async ({ createServer }) => {
+    const vite = await createServer({
+      server: { middlewareMode: true },
+      appType: 'custom',
+      root: path.resolve(process.cwd(), 'client'),
     });
-  }
-  res.sendFile(path.join(clientPath, 'index.html'));
-});
+    
+    app.use(vite.middlewares);
+    
+    // Handle client-side routing in development
+    app.get('*', async (req, res) => {
+      // Skip API routes
+      if (req.path.startsWith('/api/')) {
+        return res.status(404).json({
+          success: false,
+          message: 'API endpoint not found',
+        });
+      }
+      
+      try {
+        const html = await vite.transformIndexHtml(req.url, `
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="UTF-8" />
+              <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+              <title>enMantra</title>
+            </head>
+            <body>
+              <div id="root"></div>
+              <script type="module" src="/src/main.tsx"></script>
+            </body>
+          </html>
+        `);
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+      } catch (e) {
+        vite.ssrFixStacktrace(e);
+        res.status(500).end(e.message);
+      }
+    });
+  });
+} else {
+  // Production: Serve static files from build
+  const clientPath = path.resolve(process.cwd(), 'dist/public');
+  console.log('📦 Serving static files from:', clientPath);
+  
+  app.use(express.static(clientPath));
+  
+  // Handle client-side routing (SPA) - only for non-API routes
+  app.get('*', (req, res) => {
+    // Skip API routes
+    if (req.path.startsWith('/api/')) {
+      return res.status(404).json({
+        success: false,
+        message: 'API endpoint not found',
+      });
+    }
+    res.sendFile(path.join(clientPath, 'index.html'));
+  });
+}
 
 // Error handler
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -82,7 +130,7 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Siklo Monorepo Server running on port ${PORT}`);
+  console.log(`🚀 enMantra Monorepo Server running on port ${PORT}`);
   console.log(`📊 Health check: http://localhost:${PORT}/health`);
   console.log(`🔐 Auth endpoints: http://localhost:${PORT}/api/auth`);
   console.log(`👤 User endpoints: http://localhost:${PORT}/api/user`);
@@ -99,7 +147,7 @@ app.listen(PORT, () => {
   if (isDevelopment) {
     console.log(`\n🔧 DEVELOPMENT MODE:`);
     console.log(`   Frontend & Backend running together on: http://localhost:${PORT}`);
-    console.log(`   Build frontend first: npm run build:client`);
-    console.log(`   Then start backend: npm run dev`);
+    console.log(`   Hot reloading enabled - no need to rebuild!`);
+    console.log(`   Just run: npm run dev`);
   }
 });

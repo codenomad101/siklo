@@ -465,6 +465,7 @@ export const practiceCategories = pgTable('practice_categories', {
 export const practiceQuestions = pgTable('practice_questions', {
   questionId: uuid('question_id').primaryKey().defaultRandom(),
   categoryId: uuid('category_id').references(() => practiceCategories.categoryId, { onDelete: 'cascade' }).notNull(),
+  jobId: uuid('job_id').references(() => jobs.jobId, { onDelete: 'set null' }),
   
   // Question content
   questionText: text('question_text').notNull(),
@@ -492,6 +493,33 @@ export const practiceQuestions = pgTable('practice_questions', {
   // Admin tracking
   createdBy: uuid('created_by').references(() => users.userId),
   updatedBy: uuid('updated_by').references(() => users.userId),
+  
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// Jobs table (for different exam types like MPSC, Grade-B, etc.)
+export const jobs = pgTable('jobs', {
+  jobId: uuid('job_id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 100 }).notNull().unique(),
+  displayName: varchar('display_name', { length: 150 }).notNull(),
+  description: text('description'),
+  shortCode: varchar('short_code', { length: 20 }).notNull().unique(),
+  
+  // Job settings
+  totalMarks: integer('total_marks').default(100),
+  durationMinutes: integer('duration_minutes').default(120),
+  totalQuestions: integer('total_questions').default(100),
+  
+  // Job requirements
+  minQualification: varchar('min_qualification', { length: 100 }),
+  ageLimit: integer('age_limit'),
+  experienceRequired: varchar('experience_required', { length: 200 }),
+  
+  // Status and metadata
+  status: categoryStatusEnum('status').default('active'),
+  isActive: boolean('is_active').default(true),
+  sortOrder: integer('sort_order').default(0),
   
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
@@ -528,5 +556,7 @@ export type PracticeCategory = typeof practiceCategories.$inferSelect;
 export type NewPracticeCategory = typeof practiceCategories.$inferInsert;
 export type PracticeQuestion = typeof practiceQuestions.$inferSelect;
 export type NewPracticeQuestion = typeof practiceQuestions.$inferInsert;
+export type Job = typeof jobs.$inferSelect;
+export type NewJob = typeof jobs.$inferInsert;
 export type JsonImportLog = typeof jsonImportLogs.$inferSelect;
 export type NewJsonImportLog = typeof jsonImportLogs.$inferInsert;

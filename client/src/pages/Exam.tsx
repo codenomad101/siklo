@@ -353,18 +353,22 @@ const ExamPage: React.FC = () => {
             style={{ width: '100%' }}
           >
             <Space direction="vertical" style={{ width: '100%' }}>
-              {currentQuestion?.options.map((option) => (
-                <Radio key={option.id} value={option.text} style={{ 
-                  display: 'block',
-                  padding: '12px',
-                  border: '1px solid #d9d9d9',
-                  borderRadius: '6px',
-                  marginBottom: '8px',
-                  fontSize: '16px'
-                }}>
-                  {option.text}
-                </Radio>
-              ))}
+              {currentQuestion?.options.map((option) => {
+                const optionText = typeof option === 'string' ? option : (option?.text || option);
+                const optionId = typeof option === 'string' ? option : (option?.id || option);
+                return (
+                  <Radio key={optionId} value={optionText} style={{ 
+                    display: 'block',
+                    padding: '12px',
+                    border: '1px solid #d9d9d9',
+                    borderRadius: '6px',
+                    marginBottom: '8px',
+                    fontSize: '16px'
+                  }}>
+                    {optionText}
+                  </Radio>
+                );
+              })}
             </Space>
           </Radio.Group>
         </Card>

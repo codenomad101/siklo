@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
   Card, 
@@ -22,6 +22,7 @@ import {
 } from '@ant-design/icons';
 import { AppLayout } from '../components/AppLayout';
 import { dataService, Question } from '../services/dataService';
+import { practiceAPI } from '../services/api';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -56,7 +57,55 @@ const PracticeTestPage: React.FC = () => {
 
   const currentQuestion = session?.questions[currentQuestionIndex];
   const totalQuestions = session?.totalQuestions || 20;
+  
+  // Debug: Log current question structure
+  useEffect(() => {
+    if (currentQuestion) {
+      console.log('Current question:', currentQuestion);
+      console.log('Question options:', currentQuestion.options);
+      console.log('Options type:', typeof currentQuestion.options);
+      console.log('Is array:', Array.isArray(currentQuestion.options));
+      if (currentQuestion.options && currentQuestion.options.length > 0) {
+        console.log('First option:', currentQuestion.options[0]);
+        console.log('First option type:', typeof currentQuestion.options[0]);
+      }
+    }
+  }, [currentQuestion]);
+  
   const timePerQuestion = 45; // 45 seconds per question (15 minutes / 20 questions)
+
+  const handleTestComplete = useCallback(async () => {
+    if (testCompleted) return; // Prevent multiple calls
+    
+    if (currentQuestion && selectedAnswer && session) {
+      const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+      const timeSpent = timePerQuestion - (timeLeft % timePerQuestion);
+      
+      const result: TestResult = {
+        question: currentQuestion,
+        selectedAnswer,
+        isCorrect,
+        timeSpent
+      };
+      setTestResults(prev => [...prev, result]);
+
+      try {
+        // Update the final answer in the backend
+        await dataService.updatePracticeAnswer(
+          session.sessionId,
+          currentQuestion.questionId,
+          selectedAnswer,
+          timeSpent
+        );
+
+        // Complete the practice session
+        await dataService.completePracticeSession(session.sessionId);
+      } catch (error) {
+        console.error('Error completing practice session:', error);
+      }
+    }
+    setTestCompleted(true);
+  }, [currentQuestion, selectedAnswer, session, timeLeft, timePerQuestion, testCompleted]);
 
   useEffect(() => {
     const initializeSession = async () => {
@@ -68,8 +117,8 @@ const PracticeTestPage: React.FC = () => {
 
       try {
         // Create a new practice session via backend
-        const sessionData = await dataService.createPracticeSession(categoryId, 15);
-        setSession(sessionData);
+        const sessionData = await practiceAPI.createSession(categoryId, 15);
+        setSession(sessionData.data);
       } catch (err) {
         setError('Failed to create practice session');
         console.error('Error creating practice session:', err);
@@ -85,15 +134,23 @@ const PracticeTestPage: React.FC = () => {
     if (timeLeft <= 0 && !testCompleted) {
       handleTestComplete();
     }
-  }, [timeLeft, testCompleted]);
+  }, [timeLeft, testCompleted, handleTestComplete]);
 
   useEffect(() => {
+    if (testCompleted) return; // Don't run timer if test is completed
+    
     const timer = setInterval(() => {
-      setTimeLeft(prev => prev - 1);
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          handleTestComplete();
+          return 0;
+        }
+        return prev - 1;
+      });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [testCompleted, handleTestComplete]);
 
   const handleAnswerSelect = (answer: string) => {
     setSelectedAnswer(answer);
@@ -132,37 +189,6 @@ const PracticeTestPage: React.FC = () => {
     } else {
       handleTestComplete();
     }
-  };
-
-  const handleTestComplete = async () => {
-    if (currentQuestion && selectedAnswer && session) {
-      const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
-      const timeSpent = timePerQuestion - (timeLeft % timePerQuestion);
-      
-      const result: TestResult = {
-        question: currentQuestion,
-        selectedAnswer,
-        isCorrect,
-        timeSpent
-      };
-      setTestResults(prev => [...prev, result]);
-
-      try {
-        // Update the final answer in the backend
-        await dataService.updatePracticeAnswer(
-          session.sessionId,
-          currentQuestion.questionId,
-          selectedAnswer,
-          timeSpent
-        );
-
-        // Complete the practice session
-        await dataService.completePracticeSession(session.sessionId);
-      } catch (error) {
-        console.error('Error completing practice session:', error);
-      }
-    }
-    setTestCompleted(true);
   };
 
   const formatTime = (seconds: number) => {
@@ -351,13 +377,14 @@ const PracticeTestPage: React.FC = () => {
             percent={Math.round(((currentQuestionIndex + 1) / totalQuestions) * 100)} 
             strokeColor="#FF7846"
             showInfo={false}
+            size="default"
           />
         </div>
 
         {/* Question Card */}
         <Card style={{ marginBottom: '24px' }}>
           <Title level={3} style={{ marginBottom: '24px' }}>
-            {currentQuestion?.questionText}
+            {currentQuestion?.questionText || 'Question not available'}
           </Title>
           
           <Radio.Group 
@@ -366,18 +393,62 @@ const PracticeTestPage: React.FC = () => {
             style={{ width: '100%' }}
           >
             <Space direction="vertical" style={{ width: '100%' }}>
-              {currentQuestion?.options.map((option) => (
-                <Radio key={option.id} value={option.text} style={{ 
-                  display: 'block',
-                  padding: '12px',
-                  border: '1px solid #d9d9d9',
-                  borderRadius: '6px',
-                  marginBottom: '8px',
-                  fontSize: '16px'
-                }}>
-                  {option.text}
-                </Radio>
-              ))}
+              {currentQuestion?.options && Array.isArray(currentQuestion.options) && currentQuestion.options.length > 0 ? currentQuestion.options.map((option, index) => {
+                // Handle both string and object formats - ensure we always render strings
+                let optionText: string;
+                let optionValue: string;
+                
+                // Debug: Log the option structure
+                console.log(`Option ${index}:`, option);
+                
+                try {
+                  if (typeof option === 'string') {
+                    optionText = option;
+                    optionValue = option;
+                } else if (option && typeof option === 'object') {
+                  // Extract text from object, with multiple fallbacks
+                  // Handle case where option.text is also an object
+                  let textValue = option.text;
+                  if (textValue && typeof textValue === 'object') {
+                    textValue = textValue.text || textValue.label || textValue.value || JSON.stringify(textValue);
+                  }
+                  
+                  optionText = textValue || option.id || option.label || option.value || JSON.stringify(option);
+                  optionValue = textValue || option.id || option.label || option.value || JSON.stringify(option);
+                } else {
+                    optionText = String(option || '');
+                    optionValue = String(option || '');
+                  }
+                  
+                  // Final safety check - ensure we have valid strings
+                  if (typeof optionText !== 'string' || typeof optionValue !== 'string') {
+                    console.warn('Invalid option data:', option);
+                    optionText = 'Invalid option';
+                    optionValue = 'invalid';
+                  }
+                } catch (error) {
+                  console.error('Error processing option:', option, error);
+                  optionText = 'Error loading option';
+                  optionValue = 'error';
+                }
+                
+                return (
+                  <Radio key={index} value={optionValue} style={{ 
+                    display: 'block',
+                    padding: '12px',
+                    border: '1px solid #d9d9d9',
+                    borderRadius: '6px',
+                    marginBottom: '8px',
+                    fontSize: '16px'
+                  }}>
+                    {optionText}
+                  </Radio>
+                );
+              }) : (
+                <div style={{ textAlign: 'center', padding: '20px', color: '#999' }}>
+                  No options available for this question
+                </div>
+              )}
             </Space>
           </Radio.Group>
         </Card>

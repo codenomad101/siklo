@@ -64,7 +64,7 @@ export const authAPI = {
 
   getProfile: async () => {
     const response = await apiClient.get('/auth/profile');
-    return response.data;
+    return response.data.data;
   },
 
   refreshToken: async () => {
@@ -78,7 +78,7 @@ export const practiceAPI = {
   // Get practice categories
   getCategories: async () => {
     const response = await apiClient.get('/practice/categories');
-    return response.data;
+    return response.data.data || [];
   },
 
   // Create a new practice session
@@ -115,13 +115,13 @@ export const practiceAPI = {
   // Get user's practice history
   getHistory: async () => {
     const response = await apiClient.get('/practice/history');
-    return response.data;
+    return response.data.data || [];
   },
 
   // Get user's practice statistics
   getStats: async () => {
     const response = await apiClient.get('/practice/stats');
-    return response.data;
+    return response.data.data || {};
   },
 };
 
@@ -149,12 +149,12 @@ export const examAPI = {
 
   getExamHistory: async () => {
     const response = await apiClient.get('/exam/dynamic/history');
-    return response.data;
+    return response.data.data || [];
   },
 
   getExamStats: async () => {
     const response = await apiClient.get('/exam/dynamic/stats');
-    return response.data;
+    return response.data.data || {};
   },
 };
 
@@ -248,6 +248,44 @@ export const adminAPI = {
 
   updateUser: async (userId: string, userData: any) => {
     const response = await apiClient.put(`/admin/users/${userId}`, userData);
+    return response.data;
+  },
+};
+
+// Jobs API
+export const jobsAPI = {
+  getJobs: async (params?: { status?: string; isActive?: boolean }) => {
+    const response = await apiClient.get('/jobs', { params });
+    return response.data.data || [];
+  },
+
+  getJobById: async (jobId: string) => {
+    const response = await apiClient.get(`/jobs/${jobId}`);
+    return response.data.data;
+  },
+
+  getJobByShortCode: async (shortCode: string) => {
+    const response = await apiClient.get(`/jobs/short-code/${shortCode}`);
+    return response.data.data;
+  },
+
+  getJobsWithStats: async () => {
+    const response = await apiClient.get('/jobs/stats');
+    return response.data.data || [];
+  },
+
+  createJob: async (jobData: any) => {
+    const response = await apiClient.post('/jobs', jobData);
+    return response.data;
+  },
+
+  updateJob: async (jobId: string, jobData: any) => {
+    const response = await apiClient.put(`/jobs/${jobId}`, jobData);
+    return response.data;
+  },
+
+  deleteJob: async (jobId: string) => {
+    const response = await apiClient.delete(`/jobs/${jobId}`);
     return response.data;
   },
 };

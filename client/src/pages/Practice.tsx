@@ -15,7 +15,7 @@ import {
 } from 'antd';
 import { ReadOutlined, FormOutlined, QuestionCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { AppLayout } from '../components/AppLayout';
-import { useCategories } from '../hooks/useQuestions';
+import { useCategories } from '../hooks/useCategories';
 import { useCreateDynamicExam } from '../hooks/useExams';
 
 const { Title, Text } = Typography;
@@ -58,6 +58,26 @@ const PracticePage: React.FC = () => {
   };
 
   const handleCreateExam = async () => {
+    // Validate that we have question distribution
+    if (examConfig.questionDistribution.length === 0) {
+      // If no distribution, create one from available categories
+      const distribution = (categories || []).slice(0, 4).map((cat, index) => ({
+        category: cat.id,
+        count: index < 2 ? 5 : 3,
+        marksPerQuestion: 2
+      }));
+      
+      if (distribution.length === 0) {
+        console.error('No categories available for exam creation');
+        return;
+      }
+      
+      setExamConfig(prev => ({
+        ...prev,
+        questionDistribution: distribution
+      }));
+    }
+
     const examData = {
       examName: examConfig.examName,
       totalMarks: examConfig.totalMarks,
@@ -247,8 +267,8 @@ const PracticePage: React.FC = () => {
                     </div>
                   </div>
                 ) : (
-                  examConfig.questionDistribution.map((dist, index) => {
-                    const category = categories.find(cat => cat.id === dist.category);
+                  (examConfig.questionDistribution || []).map((dist, index) => {
+                    const category = (categories || []).find(cat => cat.id === dist.category);
                     if (!category) return null;
                     
                     return (

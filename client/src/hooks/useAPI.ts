@@ -6,3 +6,5 @@ export * from './useQuestions';
 export * from './useUser';
 export * from './useProgress';
 export * from './useAdmin';
+export * from './useCategories';
+export * from './useJobs';

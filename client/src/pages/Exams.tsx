@@ -34,7 +34,7 @@ import {
   BarChartOutlined
 } from '@ant-design/icons';
 import { AppLayout } from '../components/AppLayout';
-import { useCategories } from '../hooks/useQuestions';
+import { useCategories } from '../hooks/useCategories';
 import { useExamHistory } from '../hooks/useExams';
 
 const { Title, Text, Paragraph } = Typography;

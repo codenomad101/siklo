@@ -1,20 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { dataService } from '../services/dataService';
+import { practiceAPI } from '../services/api';
 import { message } from 'antd';
-
-// Get Categories Hook
-export const useCategories = () => {
-  return useQuery({
-    queryKey: ['categories'],
-    queryFn: dataService.getCategories,
-    retry: 2,
-    staleTime: 10 * 60 * 1000, // 10 minutes
-    onError: (error: any) => {
-      console.error('Error fetching categories:', error);
-      message.error('Failed to load categories');
-    },
-  });
-};
 
 // Get Category by ID Hook
 export const useCategory = (categoryId: string) => {
@@ -39,11 +26,11 @@ export const useCreateDataServicePracticeSession = () => {
 
   return useMutation({
     mutationFn: ({ categoryId, timeLimitMinutes }: { categoryId: string; timeLimitMinutes: number }) =>
-      dataService.createPracticeSession(categoryId, timeLimitMinutes),
+      practiceAPI.createSession(categoryId, timeLimitMinutes),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['practiceHistory'] });
       message.success('Practice session created successfully!');
-      return data;
+      return data.data;
     },
     onError: (error: any) => {
       message.error(error.message || 'Failed to create practice session');
@@ -131,7 +118,7 @@ export const useDataServicePracticeStats = () => {
 export const useSampleQuestions = (categoryId: string) => {
   return useQuery({
     queryKey: ['sampleQuestions', categoryId],
-    queryFn: () => dataService.createPracticeSession(categoryId, 15),
+    queryFn: () => practiceAPI.createSession(categoryId, 15),
     enabled: !!categoryId,
     retry: 1,
     staleTime: 5 * 60 * 1000, // 5 minutes

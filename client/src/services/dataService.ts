@@ -110,15 +110,17 @@ class DataService {
       const backendCategories = await practiceAPI.getCategories();
       
       // Map backend categories to our frontend format
-      const categoriesWithCounts = categoryMapping.map((category) => {
-        const backendCategory = backendCategories.data?.find((bc: any) => bc.id === category.id);
-        return {
-          ...category,
-          questionCount: backendCategory?.questionCount || 0
-        };
-      });
+      const categories = backendCategories.map((bc: any) => ({
+        id: bc.categoryId || bc.id,
+        name: bc.name,
+        description: bc.description || '',
+        questionCount: bc.questionCount || 0,
+        color: bc.color || '#1890ff',
+        language: bc.language === 'mr' ? 'Marathi' : 'English',
+        fileName: this.getFileNameForCategory(bc.slug)
+      }));
 
-      return categoriesWithCounts;
+      return categories;
     } catch (error) {
       console.error('Error loading categories from backend:', error);
       // Fallback to frontend data with estimated counts
@@ -129,9 +131,29 @@ class DataService {
     }
   }
 
+  getFileNameForCategory(slug: string): string {
+    const fileNameMap: { [key: string]: string } = {
+      'economy': 'economyEnglish.json',
+      'gk': 'GKEnglish.json',
+      'history': 'historyEnglish.json',
+      'geography': 'geographyEnglish.json',
+      'english': 'englishGrammer.json',
+      'aptitude': 'AptitudeEnglish.json',
+      'agriculture': 'agricultureEnglish.json',
+      'marathi': 'grammerMarathi.json'
+    };
+    return fileNameMap[slug] || 'unknown.json';
+  }
+
   // Get a specific category by ID
-  getCategoryById(categoryId: string): CategoryData | undefined {
-    return categoryMapping.find(cat => cat.id === categoryId);
+  async getCategoryById(categoryId: string): Promise<CategoryData | undefined> {
+    try {
+      const categories = await this.getCategories();
+      return categories.find(cat => cat.id === categoryId);
+    } catch (error) {
+      console.error('Error fetching category by ID:', error);
+      return categoryMapping.find(cat => cat.id === categoryId);
+    }
   }
 
   // Create a practice session via backend
@@ -182,10 +204,10 @@ class DataService {
   async getUserPracticeHistory() {
     try {
       const response = await practiceAPI.getHistory();
-      return response.data;
+      return response || [];
     } catch (error) {
       console.error('Error getting practice history:', error);
-      throw error;
+      return [];
     }
   }
 
@@ -193,10 +215,10 @@ class DataService {
   async getUserPracticeStats() {
     try {
       const response = await practiceAPI.getStats();
-      return response.data;
+      return response || {};
     } catch (error) {
       console.error('Error getting practice stats:', error);
-      throw error;
+      return {};
     }
   }
 

@@ -1,5 +1,5 @@
 import { db } from '../db';
-import { dynamicExamSessions, NewDynamicExamSession, DynamicExamSession } from '../db/schema';
+import { dynamicExamSessions, NewDynamicExamSession, DynamicExamSession, practiceCategories } from '../db/schema';
 import { eq, and, desc } from 'drizzle-orm';
 
 export class DynamicExamService {
@@ -244,34 +244,57 @@ export class DynamicExamService {
         let questionsData: any[] = [];
         
         try {
-          // Load questions based on category
-          switch (dist.category) {
+          // First, try to get category from database by UUID
+          let categorySlug = dist.category;
+          let categoryName = dist.category;
+          
+          try {
+            const [category] = await db
+              .select()
+              .from(practiceCategories)
+              .where(eq(practiceCategories.categoryId, dist.category))
+              .limit(1);
+            
+            if (category) {
+              categorySlug = category.slug;
+              categoryName = category.name;
+              console.log(`Found category: ${categoryName} (${categorySlug}) for UUID: ${dist.category}`);
+            } else {
+              console.log(`Category not found in database for UUID: ${dist.category}, trying as slug`);
+            }
+          } catch (dbError) {
+            console.log(`Database lookup failed for ${dist.category}, trying as slug:`, dbError.message);
+          }
+          
+          // Load questions based on category slug
+          console.log(`Loading questions for category: "${categorySlug}"`);
+          switch (categorySlug) {
             case 'economy':
-              questionsData = require('../../data/English/economyEnglish.json');
+              questionsData = require('../../../data/English/economyEnglish.json');
               break;
             case 'gk':
-              questionsData = require('../../data/English/GKEnglish.json');
+              questionsData = require('../../../data/English/GKEnglish.json');
               break;
             case 'history':
-              questionsData = require('../../data/English/historyEnglish.json');
+              questionsData = require('../../../data/English/historyEnglish.json');
               break;
             case 'geography':
-              questionsData = require('../../data/English/geographyEnglish.json');
+              questionsData = require('../../../data/English/geographyEnglish.json');
               break;
             case 'english':
-              questionsData = require('../../data/English/englishGrammer.json');
+              questionsData = require('../../../data/English/englishGrammer.json');
               break;
             case 'aptitude':
-              questionsData = require('../../data/English/AptitudeEnglish.json');
+              questionsData = require('../../../data/English/AptitudeEnglish.json');
               break;
             case 'agriculture':
-              questionsData = require('../../data/English/agricultureEnglish.json');
+              questionsData = require('../../../data/English/agricultureEnglish.json');
               break;
             case 'marathi':
-              questionsData = require('../../data/Marathi/grammerMarathi.json');
+              questionsData = require('../../../data/Marathi/grammerMarathi.json');
               break;
             default:
-              console.log(`Unknown category: ${dist.category}, skipping`);
+              console.log(`Unknown category: "${categorySlug}" (UUID: ${dist.category}), skipping`);
               continue;
           }
 
@@ -290,18 +313,35 @@ export class DynamicExamService {
 
           // Transform to our format
           const formattedQuestions = selectedQuestions.map((q: any, index: number) => ({
-            questionId: `${dist.category}_${Date.now()}_${index + 1}`,
+            questionId: `${categorySlug}_${Date.now()}_${index + 1}`,
             questionText: q.Question || q.question || '',
-            options: q.Options ? q.Options.map((opt: any, optIndex: number) => ({
-              id: optIndex + 1,
-              text: typeof opt === 'string' ? opt : opt.text || opt.id || ''
-            })) : [],
+            options: q.Options ? q.Options.map((opt: any, optIndex: number) => {
+              // Handle different option formats
+              if (typeof opt === 'string') {
+                return {
+                  id: optIndex + 1,
+                  text: opt
+                };
+              } else if (opt && typeof opt === 'object') {
+                return {
+                  id: opt.id || optIndex + 1,
+                  text: opt.text || opt.label || opt.value || String(opt)
+                };
+              } else {
+                return {
+                  id: optIndex + 1,
+                  text: String(opt || '')
+                };
+              }
+            }) : [],
             correctAnswer: q.CorrectAnswer || q.correctAnswer || q.Answer || '',
             userAnswer: '',
             isCorrect: false,
             timeSpentSeconds: 0,
             marksObtained: 0,
-            category: dist.category,
+            category: categorySlug,
+            categoryName: categoryName,
+            categoryId: dist.category, // Keep original UUID
             marksPerQuestion: dist.marksPerQuestion,
             explanation: q.Explanation || q.explanation || ''
           }));

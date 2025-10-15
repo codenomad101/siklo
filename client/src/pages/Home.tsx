@@ -25,7 +25,8 @@ import {
 } from '@ant-design/icons';
 import { useAuth } from '../contexts/AuthContext';
 import { AppLayout } from '../components/AppLayout';
-import { useCategories, useDataServicePracticeHistory, useDataServicePracticeStats, useSampleQuestions } from '../hooks/useQuestions';
+import { useCategories } from '../hooks/useCategories';
+import { useDataServicePracticeHistory, useDataServicePracticeStats, useSampleQuestions } from '../hooks/useQuestions';
 
 const { Title, Text } = Typography;
 
@@ -57,12 +58,22 @@ export default function Home() {
     { label: 'Current Streak', value: '0 days', color: '#8b5cf6' },
   ];
 
-  const recentSessions = (practiceHistory || []).slice(0, 3).map(session => ({
-    subject: session.category || 'Unknown',
-    score: Math.round(session.accuracy || 0),
-    time: `${session.durationMinutes || 0} min`,
-    date: session.completedAt ? new Date(session.completedAt).toLocaleDateString() : 'Unknown'
-  }));
+  const recentSessions = (practiceHistory || [])
+    .sort((a, b) => {
+      // Sort by completedAt date (most recent first)
+      const dateA = a.completedAt ? new Date(a.completedAt).getTime() : 0;
+      const dateB = b.completedAt ? new Date(b.completedAt).getTime() : 0;
+      return dateB - dateA;
+    })
+    .slice(0, 3)
+    .map((session, index) => ({
+      rank: index + 1,
+      subject: session.category || 'Unknown',
+      score: Math.round(session.accuracy || 0),
+      time: `${session.durationMinutes || 0} min`,
+      date: session.completedAt ? new Date(session.completedAt).toLocaleDateString() : 'Unknown',
+      sessionId: session.sessionId
+    }));
 
   const progressData = [
     { subject: 'Economy', progress: 75, color: '#3b82f6' },
@@ -242,7 +253,7 @@ export default function Home() {
         </div>
 
         {/* Recent Questions Section */}
-        {recentQuestions.length > 0 && (
+        {recentQuestions.length > 0 && recentQuestions.every(q => q && typeof q === 'object') && (
           <div style={{ marginBottom: '48px' }}>
             <Title level={2} style={{ 
               margin: '0 0 24px 0',
@@ -271,7 +282,7 @@ export default function Home() {
                       }
                       title={
                         <Text strong style={{ fontSize: '16px' }}>
-                          {question.questionText}
+                          {question.questionText || 'Question not available'}
                         </Text>
                       }
                       description={
@@ -279,21 +290,21 @@ export default function Home() {
                           <Space wrap>
                             {question.options?.map((option: any, optIndex: number) => (
                               <Tag key={optIndex} color="blue">
-                                {option.text}
+                                {typeof option === 'string' ? option : (option?.text || option)}
                               </Tag>
                             ))}
                           </Space>
                           <Space>
                             <Text type="secondary">Correct Answer: </Text>
                             <Text strong style={{ color: '#52c41a' }}>
-                              {question.correctAnswer}
+                              {question.correctAnswer || 'Not available'}
                             </Text>
                           </Space>
                           <Space>
                             <Text type="secondary">Category: </Text>
-                            <Tag color="orange">{question.category}</Tag>
+                            <Tag color="orange">{question.category || 'Unknown'}</Tag>
                             <Text type="secondary">Difficulty: </Text>
-                            <Tag color="purple">{question.difficulty}</Tag>
+                            <Tag color="purple">{question.difficulty || 'Unknown'}</Tag>
                           </Space>
                         </Space>
                       }
@@ -319,30 +330,49 @@ export default function Home() {
             </Title>
             <Space direction="vertical" style={{ width: '100%' }} size="middle">
               {recentSessions.map((session, index) => (
-                <div key={index} style={{
+                <div key={session.sessionId || index} style={{
                   padding: '20px',
                   borderRadius: '12px',
                   background: '#ffffff',
-                  border: '1px solid #e5e7eb'
+                  border: '1px solid #e5e7eb',
+                  position: 'relative'
                 }}>
                   <Row justify="space-between" align="middle">
                     <Col>
-                      <Text style={{ 
-                        fontSize: '15px',
-                        fontWeight: '700',
-                        color: '#1f2937',
-                        display: 'block',
-                        marginBottom: '4px'
-                      }}>
-                        {session.subject}
-                      </Text>
-                      <Text style={{ 
-                        fontSize: '13px',
-                        color: '#6b7280',
-                        fontWeight: '500'
-                      }}>
-                        {session.time} • {session.date}
-                      </Text>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <div style={{
+                          width: '24px',
+                          height: '24px',
+                          borderRadius: '50%',
+                          background: session.rank === 1 ? '#fbbf24' : session.rank === 2 ? '#9ca3af' : '#6b7280',
+                          color: 'white',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '12px',
+                          fontWeight: 'bold'
+                        }}>
+                          {session.rank}
+                        </div>
+                        <div>
+                          <Text style={{ 
+                            fontSize: '15px',
+                            fontWeight: '700',
+                            color: '#1f2937',
+                            display: 'block',
+                            marginBottom: '4px'
+                          }}>
+                            {session.subject}
+                          </Text>
+                          <Text style={{ 
+                            fontSize: '13px',
+                            color: '#6b7280',
+                            fontWeight: '500'
+                          }}>
+                            {session.time} • {session.date}
+                          </Text>
+                        </div>
+                      </div>
                     </Col>
                     <Col>
                       <Tag 

@@ -10,7 +10,9 @@ export class PracticeService {
       try {
         const categories = await db
           .select({
-            id: practiceCategories.slug,
+            id: practiceCategories.categoryId,
+            categoryId: practiceCategories.categoryId,
+            slug: practiceCategories.slug,
             name: practiceCategories.name,
             description: practiceCategories.description,
             questionCount: practiceCategories.totalQuestions,
@@ -56,8 +58,8 @@ export class PracticeService {
       try {
         let questionCount = 0;
         const filePath = category.language === 'Marathi' 
-          ? `../../data/Marathi/${category.fileName}`
-          : `../../data/English/${category.fileName}`;
+          ? `../../../data/Marathi/${category.fileName}`
+          : `../../../data/English/${category.fileName}`;
         
         const questionsData = require(filePath);
         if (Array.isArray(questionsData)) {
@@ -142,28 +144,28 @@ export class PracticeService {
       // Load questions based on category
       switch (categorySlug) {
         case 'economy':
-          questionsData = require('../../data/English/economyEnglish.json');
+          questionsData = require('../../../data/English/economyEnglish.json');
           break;
         case 'gk':
-          questionsData = require('../../data/English/GKEnglish.json');
+          questionsData = require('../../../data/English/GKEnglish.json');
           break;
         case 'history':
-          questionsData = require('../../data/English/historyEnglish.json');
+          questionsData = require('../../../data/English/historyEnglish.json');
           break;
         case 'geography':
-          questionsData = require('../../data/English/geographyEnglish.json');
+          questionsData = require('../../../data/English/geographyEnglish.json');
           break;
         case 'english':
-          questionsData = require('../../data/English/englishGrammer.json');
+          questionsData = require('../../../data/English/englishGrammer.json');
           break;
         case 'aptitude':
-          questionsData = require('../../data/English/AptitudeEnglish.json');
+          questionsData = require('../../../data/English/AptitudeEnglish.json');
           break;
         case 'agriculture':
-          questionsData = require('../../data/English/agricultureEnglish.json');
+          questionsData = require('../../../data/English/agricultureEnglish.json');
           break;
         case 'marathi':
-          questionsData = require('../../data/Marathi/grammerMarathi.json');
+          questionsData = require('../../../data/Marathi/grammerMarathi.json');
           break;
         default:
           throw new Error('Category not found');
@@ -178,20 +180,43 @@ export class PracticeService {
       const selectedQuestions = shuffled.slice(0, count);
 
       // Transform to our format
-      return selectedQuestions.map((q: any, index: number) => ({
-        questionId: `${categorySlug}_${index + 1}`,
-        questionText: q.Question || q.question || '',
-        options: q.Options ? q.Options.map((opt: any, optIndex: number) => ({
-          id: optIndex + 1,
-          text: typeof opt === 'string' ? opt : opt.text || opt.id || ''
-        })) : [],
-        correctAnswer: q.CorrectAnswer || q.correctAnswer || '',
-        explanation: q.Explanation || q.explanation || '',
-        category: categorySlug,
-        marks: 1,
-        questionType: 'mcq',
-        difficulty: 'medium'
-      }));
+      return selectedQuestions.map((q: any, index: number) => {
+        console.log(`Processing question ${index + 1}:`, {
+          questionText: q.Question,
+          options: q.Options,
+          correctAnswer: q.CorrectAnswer
+        });
+        
+        return {
+          questionId: `${categorySlug}_${index + 1}`,
+          questionText: q.Question || q.question || '',
+          options: q.Options ? q.Options.map((opt: any, optIndex: number) => {
+            // Handle different option formats
+            if (typeof opt === 'string') {
+              return {
+                id: optIndex + 1,
+                text: opt
+              };
+            } else if (opt && typeof opt === 'object') {
+              return {
+                id: opt.id || optIndex + 1,
+                text: opt.text || opt.label || opt.value || String(opt)
+              };
+            } else {
+              return {
+                id: optIndex + 1,
+                text: String(opt || '')
+              };
+            }
+          }) : [],
+          correctAnswer: q.CorrectAnswer || q.correctAnswer || '',
+          explanation: q.Explanation || q.explanation || '',
+          category: categorySlug,
+          marks: 1,
+          questionType: 'mcq',
+          difficulty: 'medium'
+        };
+      });
 
     } catch (error) {
       console.error('Error loading questions from JSON:', error);
@@ -200,27 +225,39 @@ export class PracticeService {
   }
 
   // Create a new practice session
-  async createPracticeSession(userId: string, categorySlug: string, timeLimitMinutes: number = 15) {
+  async createPracticeSession(userId: string, categoryIdentifier: string, timeLimitMinutes: number = 15) {
     try {
-      // Get category details
-      const [category] = await db
+      // Get category details - try by ID first, then by slug
+      let [category] = await db
         .select()
         .from(practiceCategories)
         .where(and(
-          eq(practiceCategories.slug, categorySlug),
+          eq(practiceCategories.categoryId, categoryIdentifier),
           eq(practiceCategories.status, 'active')
         ))
         .limit(1);
+
+      // If not found by ID, try by slug
+      if (!category) {
+        [category] = await db
+          .select()
+          .from(practiceCategories)
+          .where(and(
+            eq(practiceCategories.slug, categoryIdentifier),
+            eq(practiceCategories.status, 'active')
+          ))
+          .limit(1);
+      }
 
       if (!category) {
         throw new Error('Category not found');
       }
 
-      const questions = await this.getRandomQuestions(categorySlug, category.questionsPerSession);
+      const questions = await this.getRandomQuestions(category.slug, category.questionsPerSession);
       
       const newSession: NewPracticeSession = {
         userId,
-        category: categorySlug as any,
+        category: category.slug as any,
         totalQuestions: questions.length,
         timeLimitMinutes: timeLimitMinutes,
         status: 'in_progress',

@@ -394,15 +394,19 @@ const AdminPage: React.FC = () => {
       title: 'Job',
       dataIndex: 'job',
       key: 'job',
-      render: (job: string[]) => (
-        <Space wrap>
-          {job.map((j, index) => (
-            <Tag key={index} color="blue">
-              {j}
-            </Tag>
-          ))}
-        </Space>
-      ),
+      render: (job: any) => {
+        // Handle both array and string formats
+        const jobArray = Array.isArray(job) ? job : (typeof job === 'string' ? job.split(',').map(j => j.trim()) : []);
+        return (
+          <Space wrap>
+            {jobArray.map((j, index) => (
+              <Tag key={index} color="blue">
+                {j}
+              </Tag>
+            ))}
+          </Space>
+        );
+      },
     },
     {
       title: 'Status',
