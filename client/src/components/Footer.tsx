@@ -67,11 +67,11 @@ export const Footer: React.FC = () => {
   ];
 
   const socialLinks = [
-    { icon: <FacebookOutlined />, url: 'https://facebook.com/siklo' },
-    { icon: <TwitterOutlined />, url: 'https://twitter.com/siklo' },
-    { icon: <InstagramOutlined />, url: 'https://instagram.com/siklo' },
-    { icon: <LinkedinOutlined />, url: 'https://linkedin.com/company/siklo' },
-    { icon: <YoutubeOutlined />, url: 'https://youtube.com/siklo' },
+    { icon: <FacebookOutlined />, url: 'https://facebook.com/mantramanthan' },
+    { icon: <TwitterOutlined />, url: 'https://twitter.com/mantramanthan' },
+    { icon: <InstagramOutlined />, url: 'https://instagram.com/mantramanthan' },
+    { icon: <LinkedinOutlined />, url: 'https://linkedin.com/company/mantramanthan' },
+    { icon: <YoutubeOutlined />, url: 'https://youtube.com/mantramanthan' },
   ];
 
   return (
@@ -88,8 +88,17 @@ export const Footer: React.FC = () => {
             <div style={{ marginBottom: '16px' }}>
               <Space>
                 <img src="/vite.svg" alt="Siklo Logo" style={{ height: '24px' }} />
-                <Title level={4} style={{ color: 'white', margin: 0 }}>
-                  Siklo
+                <Title level={4} style={{ color: 'white', margin: 0, fontWeight: 'bold' }}>
+                  <span style={{ 
+                    fontStyle: 'italic',
+                    color: 'black',
+                    fontFamily: 'Montserrat, sans-serif'
+                  }}>en</span>
+                  <span style={{ 
+                    fontWeight: 'bold',
+                    color: '#FF7846',
+                    fontFamily: 'Montserrat, sans-serif'
+                  }}>Mantra</span>
                 </Title>
               </Space>
             </div>
@@ -166,15 +175,15 @@ export const Footer: React.FC = () => {
         <Row gutter={[32, 16]} style={{ marginTop: '32px' }}>
           <Col xs={24} md={8}>
             <Space>
-              <MailOutlined style={{ color: '#1890ff' }} />
+              <MailOutlined style={{ color: '#FF7846' }} />
               <Text style={{ color: 'rgba(255,255,255,0.7)' }}>
-                support@siklo.com
+                support@mantramanthan.com
               </Text>
             </Space>
           </Col>
           <Col xs={24} md={8}>
             <Space>
-              <PhoneOutlined style={{ color: '#1890ff' }} />
+              <PhoneOutlined style={{ color: '#FF7846' }} />
               <Text style={{ color: 'rgba(255,255,255,0.7)' }}>
                 +91 9876543210
               </Text>
@@ -182,7 +191,7 @@ export const Footer: React.FC = () => {
           </Col>
           <Col xs={24} md={8}>
             <Space>
-              <EnvironmentOutlined style={{ color: '#1890ff' }} />
+              <EnvironmentOutlined style={{ color: '#FF7846' }} />
               <Text style={{ color: 'rgba(255,255,255,0.7)' }}>
                 Mumbai, India
               </Text>
@@ -196,7 +205,15 @@ export const Footer: React.FC = () => {
         <Row justify="space-between" align="middle">
           <Col>
             <Text style={{ color: 'rgba(255,255,255,0.7)' }}>
-              © {currentYear} Siklo. All rights reserved. Made with ❤️ for students.
+              © {currentYear} <span style={{ 
+                fontStyle: 'italic',
+                color: 'black',
+                fontFamily: 'Montserrat, sans-serif'
+              }}>en</span><span style={{ 
+                fontWeight: 'bold',
+                color: '#FF7846',
+                fontFamily: 'Montserrat, sans-serif'
+              }}>Mantra</span>. All rights reserved. Made with ❤️ for students.
             </Text>
           </Col>
           <Col>

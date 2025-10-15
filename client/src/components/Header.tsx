@@ -17,7 +17,8 @@ import {
   LogoutOutlined, 
   MenuOutlined,
   BellOutlined,
-  SettingOutlined
+  SettingOutlined,
+  CrownOutlined
 } from '@ant-design/icons';
 import { useAuth } from '../contexts/AuthContext';
 import { useState } from 'react';
@@ -75,6 +76,23 @@ export const Header: React.FC<HeaderProps> = ({ showAuth = true }) => {
       >
         <Link to="/settings">Settings</Link>
       </Menu.Item>
+      
+      {/* Admin Panel - Only show for admin users */}
+      {user?.role === 'admin' && (
+        <>
+          <Menu.Divider className="menu-divider" />
+          <Menu.Item 
+            key="admin" 
+            className="dropdown-menu-item admin-item"
+          >
+            <Link to="/admin">
+              <CrownOutlined style={{ marginRight: '8px', color: '#f59e0b' }} />
+              Admin Panel
+            </Link>
+          </Menu.Item>
+        </>
+      )}
+      
       <Menu.Divider className="menu-divider" />
       <Menu.Item 
         key="logout" 
@@ -163,7 +181,7 @@ export const Header: React.FC<HeaderProps> = ({ showAuth = true }) => {
     <ConfigProvider
       theme={{
         token: {
-          colorPrimary: '#6366f1',
+          colorPrimary: '#FF7846',
           borderRadius: 8,
         },
       }}
@@ -177,7 +195,18 @@ export const Header: React.FC<HeaderProps> = ({ showAuth = true }) => {
               className="logo-link"
             >
               <div className="logo-container">
-                <Text className="logo-text">Siklo</Text>
+                <Text className="logo-text" style={{ fontWeight: 'bold' }}>
+                  <span style={{ 
+                    fontStyle: 'italic',
+                    color: 'black',
+                    fontFamily: 'Montserrat, sans-serif'
+                  }}>en</span>
+                  <span style={{ 
+                    fontWeight: 'bold',
+                    color: '#FF7846',
+                    fontFamily: 'Montserrat, sans-serif'
+                  }}>Mantra</span>
+                </Text>
               </div>
             </Link>
             
@@ -269,8 +298,17 @@ export const Header: React.FC<HeaderProps> = ({ showAuth = true }) => {
         {/* Mobile Drawer */}
         <Drawer
           title={
-            <div className="drawer-title">
-              Siklo
+            <div className="drawer-title" style={{ fontWeight: 'bold' }}>
+              <span style={{ 
+                fontStyle: 'italic',
+                color: 'black',
+                fontFamily: 'Montserrat, sans-serif'
+              }}>en</span>
+              <span style={{ 
+                fontWeight: 'bold',
+                color: '#FF7846',
+                fontFamily: 'Montserrat, sans-serif'
+              }}>Mantra</span>
             </div>
           }
           placement="right"

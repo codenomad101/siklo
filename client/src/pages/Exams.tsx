@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   Card, 
   Row, 
@@ -34,45 +34,24 @@ import {
   BarChartOutlined
 } from '@ant-design/icons';
 import { AppLayout } from '../components/AppLayout';
+import { useCategories } from '../hooks/useQuestions';
+import { useExamHistory } from '../hooks/useExams';
 
 const { Title, Text, Paragraph } = Typography;
 
 export default function Exams() {
-  const examHistory = [
-    {
-      id: '1',
-      name: 'Quick Test',
-      date: '2024-10-14',
-      marks: 35,
-      totalMarks: 40,
-      percentage: 87.5,
-      duration: 18,
-      status: 'completed',
-      category: 'Mixed'
-    },
-    {
-      id: '2',
-      name: 'Practice Exam',
-      date: '2024-10-13',
-      marks: 28,
-      totalMarks: 40,
-      percentage: 70,
-      duration: 20,
-      status: 'completed',
-      category: 'Economy'
-    },
-    {
-      id: '3',
-      name: 'History Test',
-      date: '2024-10-12',
-      marks: 32,
-      totalMarks: 40,
-      percentage: 80,
-      duration: 22,
-      status: 'completed',
-      category: 'History'
-    }
-  ];
+  const navigate = useNavigate();
+  
+  // Use custom hooks
+  const { data: categories = [] } = useCategories();
+  const { data: examHistoryData = [], isLoading: historyLoading } = useExamHistory();
+  
+  const examHistory = examHistoryData || [];
+
+  const handleCreateExam = async () => {
+    // Navigate to practice page with exam mode
+    navigate('/practice?mode=exam');
+  };
 
   const columns = [
     {
@@ -86,7 +65,7 @@ export default function Exams() {
               width: '40px', 
               height: '40px', 
               borderRadius: '8px',
-              background: 'linear-gradient(135deg, #1890ff, #722ed1)',
+              background: 'linear-gradient(135deg, #FF7846, #722ed1)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -166,7 +145,7 @@ export default function Exams() {
 
   return (
     <AppLayout>
-      <div style={{ padding: '24px' }}>
+      <div style={{ padding: '32px 24px', maxWidth: '1600px', margin: '0 auto', width: '100%' }}>
         {/* Quick Actions */}
         <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
           <Col xs={24} sm={8}>
@@ -175,7 +154,7 @@ export default function Exams() {
               style={{ borderRadius: '12px', textAlign: 'center' }}
               bodyStyle={{ padding: '24px' }}
             >
-              <div style={{ fontSize: '48px', color: '#1890ff', marginBottom: '16px' }}>
+              <div style={{ fontSize: '48px', color: '#FF7846', marginBottom: '16px' }}>
                 <PlusOutlined />
               </div>
               <Title level={4} style={{ margin: '0 0 8px 0' }}>
@@ -184,8 +163,13 @@ export default function Exams() {
               <Paragraph style={{ color: '#666', margin: '0 0 16px 0' }}>
                 Start a custom dynamic exam
               </Paragraph>
-              <Button type="primary" size="large" block>
-                <Link to="/practice" style={{ color: 'inherit' }}>Create Exam</Link>
+              <Button 
+                type="primary" 
+                size="large" 
+                block
+                onClick={handleCreateExam}
+              >
+                Create Exam
               </Button>
             </Card>
           </Col>
@@ -237,7 +221,7 @@ export default function Exams() {
                 title="Total Exams"
                 value={examHistory.length}
                 prefix={<FileTextOutlined />}
-                valueStyle={{ color: '#1890ff' }}
+                valueStyle={{ color: '#FF7846' }}
               />
             </Card>
           </Col>
@@ -314,7 +298,7 @@ export default function Exams() {
             <Card title="Subject Performance" style={{ borderRadius: '12px' }}>
               <List
                 dataSource={[
-                  { subject: 'Economy', score: 85, color: '#1890ff' },
+                  { subject: 'Economy', score: 85, color: '#FF7846' },
                   { subject: 'History', score: 80, color: '#fa8c16' },
                   { subject: 'Geography', score: 75, color: '#722ed1' },
                   { subject: 'General Knowledge', score: 70, color: '#52c41a' },

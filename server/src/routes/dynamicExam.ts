@@ -19,6 +19,12 @@ router.use(authenticateToken);
 // Create a new dynamic exam session
 router.post('/create', createExamSession);
 
+// Get user's exam history (must be before /:sessionId routes)
+router.get('/history', getUserExamHistory);
+
+// Get user's exam statistics (must be before /:sessionId routes)
+router.get('/stats', getUserExamStats);
+
 // Start an exam session
 router.post('/:sessionId/start', startExamSession);
 
@@ -33,11 +39,5 @@ router.post('/:sessionId/complete', completeExamSession);
 
 // Get exam session details
 router.get('/:sessionId', getExamSession);
-
-// Get user's exam history
-router.get('/history', getUserExamHistory);
-
-// Get user's exam statistics
-router.get('/stats', getUserExamStats);
 
 export default router;

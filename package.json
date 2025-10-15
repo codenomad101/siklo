@@ -1,7 +1,7 @@
 {
-  "name": "siklo-web",
+  "name": "mantramanthan-web",
   "version": "1.0.0",
-  "description": "Siklo Web Application - Monorepo",
+  "description": "enMantra Web Application - Monorepo",
   "type": "module",
   "scripts": {
     "dev": "npm run build:client && NODE_ENV=development nodemon --watch server --ext ts,tsx,js,json --exec \"tsx --require dotenv/config server/src/index.ts\"",

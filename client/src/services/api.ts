@@ -75,23 +75,52 @@ export const authAPI = {
 
 // Practice API functions
 export const practiceAPI = {
-  createSession: async (category: string) => {
-    const response = await apiClient.post('/practice/enhanced/create', { category });
+  // Get practice categories
+  getCategories: async () => {
+    const response = await apiClient.get('/practice/categories');
     return response.data;
   },
 
-  completeSession: async (sessionId: string, sessionData: any) => {
-    const response = await apiClient.post(`/practice/enhanced/complete/${sessionId}`, sessionData);
+  // Create a new practice session
+  createSession: async (category: string, timeLimitMinutes: number = 15) => {
+    const response = await apiClient.post('/practice/sessions', { 
+      category, 
+      timeLimitMinutes 
+    });
     return response.data;
   },
 
-  getHistory: async (userId: string) => {
-    const response = await apiClient.get(`/practice/enhanced/history/${userId}`);
+  // Get practice session by ID
+  getSession: async (sessionId: string) => {
+    const response = await apiClient.get(`/practice/sessions/${sessionId}`);
     return response.data;
   },
 
-  getStats: async (userId: string) => {
-    const response = await apiClient.get(`/practice/enhanced/stats/${userId}`);
+  // Update practice session with answer
+  updateAnswer: async (sessionId: string, questionId: string, userAnswer: string, timeSpentSeconds: number) => {
+    const response = await apiClient.patch(`/practice/sessions/${sessionId}/answer`, {
+      questionId,
+      userAnswer,
+      timeSpentSeconds
+    });
+    return response.data;
+  },
+
+  // Complete practice session
+  completeSession: async (sessionId: string) => {
+    const response = await apiClient.patch(`/practice/sessions/${sessionId}/complete`);
+    return response.data;
+  },
+
+  // Get user's practice history
+  getHistory: async () => {
+    const response = await apiClient.get('/practice/history');
+    return response.data;
+  },
+
+  // Get user's practice statistics
+  getStats: async () => {
+    const response = await apiClient.get('/practice/stats');
     return response.data;
   },
 };
@@ -148,6 +177,77 @@ export const userAPI = {
 
   getProgress: async () => {
     const response = await apiClient.get('/progress/user');
+    return response.data;
+  },
+};
+
+// Admin API functions
+export const adminAPI = {
+  // Dashboard
+  getDashboardStats: async () => {
+    const response = await apiClient.get('/admin/dashboard/stats');
+    return response.data;
+  },
+
+  // Category Management
+  createCategory: async (categoryData: any) => {
+    const response = await apiClient.post('/admin/categories', categoryData);
+    return response.data;
+  },
+
+  getCategories: async (params?: any) => {
+    const response = await apiClient.get('/admin/categories', { params });
+    return response.data;
+  },
+
+  updateCategory: async (categoryId: string, categoryData: any) => {
+    const response = await apiClient.put(`/admin/categories/${categoryId}`, categoryData);
+    return response.data;
+  },
+
+  deleteCategory: async (categoryId: string) => {
+    const response = await apiClient.delete(`/admin/categories/${categoryId}`);
+    return response.data;
+  },
+
+  // Question Management
+  getQuestions: async (params?: any) => {
+    const response = await apiClient.get('/admin/questions', { params });
+    return response.data;
+  },
+
+  deleteQuestion: async (questionId: string) => {
+    const response = await apiClient.delete(`/admin/questions/${questionId}`);
+    return response.data;
+  },
+
+  // JSON Import
+  importQuestions: async (categoryId: string, file: File) => {
+    const formData = new FormData();
+    formData.append('jsonFile', file);
+    formData.append('categoryId', categoryId);
+    
+    const response = await apiClient.post('/admin/import/questions', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+
+  getImportLogs: async (params?: any) => {
+    const response = await apiClient.get('/admin/import/logs', { params });
+    return response.data;
+  },
+
+  // User Management
+  getUsers: async (params?: any) => {
+    const response = await apiClient.get('/admin/users', { params });
+    return response.data;
+  },
+
+  updateUser: async (userId: string, userData: any) => {
+    const response = await apiClient.put(`/admin/users/${userId}`, userData);
     return response.data;
   },
 };

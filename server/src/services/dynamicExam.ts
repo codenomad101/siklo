@@ -143,6 +143,12 @@ export class DynamicExamService {
   // Get exam session by ID
   async getExamSession(sessionId: string, userId: string) {
     try {
+      // Validate UUID format
+      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+      if (!uuidRegex.test(sessionId)) {
+        throw new Error(`Invalid session ID format: ${sessionId}`);
+      }
+
       const [session] = await db
         .select()
         .from(dynamicExamSessions)
@@ -155,6 +161,9 @@ export class DynamicExamService {
       return session;
     } catch (error) {
       console.error('Error fetching exam session:', error);
+      if (error.message.includes('Invalid session ID format')) {
+        throw error;
+      }
       throw new Error('Failed to fetch exam session');
     }
   }
@@ -227,74 +236,95 @@ export class DynamicExamService {
     marksPerQuestion: number;
   }>) {
     try {
+      console.log('Generating questions for distribution:', questionDistribution);
       const allQuestions: any[] = [];
       
       for (const dist of questionDistribution) {
+        console.log(`Processing category: ${dist.category}, count: ${dist.count}`);
         let questionsData: any[] = [];
         
-        // Load questions based on category
-        switch (dist.category) {
-          case 'economy':
-            questionsData = require('../../data/English/economyEnglish.json');
-            break;
-          case 'gk':
-            questionsData = require('../../data/English/GKEnglish.json');
-            break;
-          case 'history':
-            questionsData = require('../../data/English/historyEnglish.json');
-            break;
-          case 'geography':
-            questionsData = require('../../data/English/geographyEnglish.json');
-            break;
-          case 'english':
-            questionsData = require('../../data/English/englishGrammer.json');
-            break;
-          case 'aptitude':
-            questionsData = require('../../data/English/AptitudeEnglish.json');
-            break;
-          case 'agriculture':
-            questionsData = require('../../data/English/agricultureEnglish.json');
-            break;
-          case 'marathi':
-            questionsData = require('../../data/Marathi/grammerMarathi.json');
-            break;
-          default:
+        try {
+          // Load questions based on category
+          switch (dist.category) {
+            case 'economy':
+              questionsData = require('../../data/English/economyEnglish.json');
+              break;
+            case 'gk':
+              questionsData = require('../../data/English/GKEnglish.json');
+              break;
+            case 'history':
+              questionsData = require('../../data/English/historyEnglish.json');
+              break;
+            case 'geography':
+              questionsData = require('../../data/English/geographyEnglish.json');
+              break;
+            case 'english':
+              questionsData = require('../../data/English/englishGrammer.json');
+              break;
+            case 'aptitude':
+              questionsData = require('../../data/English/AptitudeEnglish.json');
+              break;
+            case 'agriculture':
+              questionsData = require('../../data/English/agricultureEnglish.json');
+              break;
+            case 'marathi':
+              questionsData = require('../../data/Marathi/grammerMarathi.json');
+              break;
+            default:
+              console.log(`Unknown category: ${dist.category}, skipping`);
+              continue;
+          }
+
+          console.log(`Loaded ${questionsData?.length || 0} questions for category ${dist.category}`);
+
+          if (!Array.isArray(questionsData) || questionsData.length === 0) {
+            console.log(`No questions found for category ${dist.category}`);
             continue;
+          }
+
+          // Shuffle and select required number of questions
+          const shuffled = questionsData.sort(() => Math.random() - 0.5);
+          const selectedQuestions = shuffled.slice(0, Math.min(dist.count, questionsData.length));
+
+          console.log(`Selected ${selectedQuestions.length} questions for category ${dist.category}`);
+
+          // Transform to our format
+          const formattedQuestions = selectedQuestions.map((q: any, index: number) => ({
+            questionId: `${dist.category}_${Date.now()}_${index + 1}`,
+            questionText: q.Question || q.question || '',
+            options: q.Options ? q.Options.map((opt: any, optIndex: number) => ({
+              id: optIndex + 1,
+              text: typeof opt === 'string' ? opt : opt.text || opt.id || ''
+            })) : [],
+            correctAnswer: q.CorrectAnswer || q.correctAnswer || q.Answer || '',
+            userAnswer: '',
+            isCorrect: false,
+            timeSpentSeconds: 0,
+            marksObtained: 0,
+            category: dist.category,
+            marksPerQuestion: dist.marksPerQuestion,
+            explanation: q.Explanation || q.explanation || ''
+          }));
+
+          allQuestions.push(...formattedQuestions);
+          console.log(`Added ${formattedQuestions.length} formatted questions for category ${dist.category}`);
+        } catch (categoryError) {
+          console.error(`Error processing category ${dist.category}:`, categoryError);
+          // Continue with other categories
         }
+      }
 
-        if (!Array.isArray(questionsData)) {
-          continue;
-        }
-
-        // Shuffle and select required number of questions
-        const shuffled = questionsData.sort(() => Math.random() - 0.5);
-        const selectedQuestions = shuffled.slice(0, dist.count);
-
-        // Transform to our format
-        const formattedQuestions = selectedQuestions.map((q: any, index: number) => ({
-          questionId: `${dist.category}_${index + 1}`,
-          questionText: q.Question || q.question || '',
-          options: q.Options ? q.Options.map((opt: any, optIndex: number) => ({
-            id: optIndex + 1,
-            text: typeof opt === 'string' ? opt : opt.text || opt.id || ''
-          })) : [],
-          correctAnswer: q.CorrectAnswer || q.correctAnswer || '',
-          userAnswer: '',
-          isCorrect: false,
-          timeSpentSeconds: 0,
-          marksObtained: 0,
-          category: dist.category,
-          marksPerQuestion: dist.marksPerQuestion
-        }));
-
-        allQuestions.push(...formattedQuestions);
+      console.log(`Total questions generated: ${allQuestions.length}`);
+      
+      if (allQuestions.length === 0) {
+        throw new Error('No questions could be generated from the provided categories');
       }
 
       // Shuffle all questions together
       return allQuestions.sort(() => Math.random() - 0.5);
     } catch (error) {
       console.error('Error generating questions:', error);
-      throw new Error('Failed to generate questions');
+      throw new Error(`Failed to generate questions: ${error.message}`);
     }
   }
 }

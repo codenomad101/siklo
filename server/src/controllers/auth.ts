@@ -96,6 +96,26 @@ export const verifyToken = async (req: Request, res: Response) => {
   }
 };
 
+export const getProfile = async (req: Request, res: Response) => {
+  try {
+    const userId = (req as any).user.userId;
+    const user = await authService.getUserById(userId);
+    
+    res.json({
+      success: true,
+      message: 'Profile retrieved successfully',
+      data: user,
+    });
+  } catch (error: any) {
+    console.error('Get profile error:', error);
+    
+    res.status(500).json({
+      success: false,
+      message: 'Failed to retrieve profile',
+    });
+  }
+};
+
 export const updateProfile = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).user.userId;

@@ -72,8 +72,16 @@ export default function RegisterPage() {
               bodyStyle={{ padding: '48px' }}
             >
               <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-                <Title level={2} style={{ margin: '0 0 8px 0', color: '#1890ff' }}>
-                  Join Siklo
+                <Title level={2} style={{ margin: '0 0 8px 0', color: '#FF7846' }}>
+                  Join <span style={{ 
+                    fontStyle: 'italic',
+                    color: 'black',
+                    fontFamily: 'Montserrat, sans-serif'
+                  }}>en</span><span style={{ 
+                    fontWeight: 'bold',
+                    color: '#FF7846',
+                    fontFamily: 'Montserrat, sans-serif'
+                  }}>Mantra</span>
                 </Title>
                 <Paragraph style={{ color: '#666', margin: 0 }}>
                   Create your account to get started

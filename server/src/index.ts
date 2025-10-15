@@ -18,6 +18,7 @@ import testRoutes from './routes/test';
 import practiceRoutes from './routes/simplePractice';
 import enhancedPracticeRoutes from './routes/enhancedPractice';
 import dynamicExamRoutes from './routes/dynamicExam';
+import adminRoutes from './routes/admin';
 
 // Load environment variables
 config();
@@ -41,6 +42,7 @@ app.use('/api/test', testRoutes);
 app.use('/api/practice', practiceRoutes);
 app.use('/api/practice/enhanced', enhancedPracticeRoutes);
 app.use('/api/exam/dynamic', dynamicExamRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -90,6 +92,7 @@ app.listen(PORT, () => {
   console.log(`🎯 Practice endpoints: http://localhost:${PORT}/api/practice`);
   console.log(`🎯 Enhanced Practice endpoints: http://localhost:${PORT}/api/practice/enhanced`);
   console.log(`📝 Dynamic Exam endpoints: http://localhost:${PORT}/api/exam/dynamic`);
+  console.log(`👑 Admin endpoints: http://localhost:${PORT}/api/admin`);
   console.log(`🌐 Web app: http://localhost:${PORT}`);
   console.log(`📱 Mobile app uses same backend API`);
   

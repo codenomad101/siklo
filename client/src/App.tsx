@@ -9,8 +9,11 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Home from './pages/Home';
 import Practice from './pages/Practice';
+import PracticeTest from './pages/PracticeTest';
 import Exams from './pages/Exams';
+import Exam from './pages/Exam';
 import Profile from './pages/Profile';
+import Admin from './pages/Admin';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -28,7 +31,7 @@ function App() {
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: '#1890ff',
+            colorPrimary: '#FF7846',
             borderRadius: 8,
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
           },
@@ -58,6 +61,14 @@ function App() {
                   } 
                 />
                 <Route 
+                  path="/practice-test/:categoryId" 
+                  element={
+                    <ProtectedRoute>
+                      <PracticeTest />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
                   path="/exams" 
                   element={
                     <ProtectedRoute>
@@ -66,14 +77,30 @@ function App() {
                   } 
                 />
                 <Route 
-                  path="/profile" 
+                  path="/exam/:sessionId" 
                   element={
                     <ProtectedRoute>
-                      <Profile />
+                      <Exam />
                     </ProtectedRoute>
                   } 
                 />
-                <Route path="*" element={<Navigate to="/" replace />} />
+                    <Route 
+                      path="/profile" 
+                      element={
+                        <ProtectedRoute>
+                          <Profile />
+                        </ProtectedRoute>
+                      } 
+                    />
+                    <Route 
+                      path="/admin" 
+                      element={
+                        <ProtectedRoute requireAdmin={true}>
+                          <Admin />
+                        </ProtectedRoute>
+                      } 
+                    />
+                    <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </div>
           </Router>

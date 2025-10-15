@@ -23,6 +23,8 @@ export const practiceCategoryEnum = pgEnum('practice_category', ['economy', 'gk'
 export const practiceStatusEnum = pgEnum('practice_status', ['in_progress', 'completed', 'abandoned']);
 export const examStatusEnum = pgEnum('exam_status', ['not_started', 'in_progress', 'completed', 'abandoned']);
 export const userRoleEnum = pgEnum('user_role', ['admin', 'student', 'moderator']);
+export const categoryStatusEnum = pgEnum('category_status', ['active', 'inactive', 'draft']);
+export const questionStatusEnum = pgEnum('question_status', ['active', 'inactive', 'draft']);
 
 // Users table
 export const users = pgTable('users', {
@@ -431,3 +433,100 @@ export const dynamicExamSessions = pgTable('dynamic_exam_sessions', {
 
 export type DynamicExamSession = typeof dynamicExamSessions.$inferSelect;
 export type NewDynamicExamSession = typeof dynamicExamSessions.$inferInsert;
+
+// Practice Categories table
+export const practiceCategories = pgTable('practice_categories', {
+  categoryId: uuid('category_id').primaryKey().defaultRandom(),
+  name: varchar('name', { length: 100 }).notNull(),
+  description: text('description'),
+  slug: varchar('slug', { length: 50 }).notNull().unique(),
+  color: varchar('color', { length: 7 }).default('#1890ff'),
+  language: varchar('language', { length: 10 }).default('en'),
+  icon: varchar('icon', { length: 50 }),
+  
+  // Category settings
+  totalQuestions: integer('total_questions').default(0),
+  timeLimitMinutes: integer('time_limit_minutes').default(15),
+  questionsPerSession: integer('questions_per_session').default(20),
+  
+  // Status and metadata
+  status: categoryStatusEnum('status').default('active'),
+  sortOrder: integer('sort_order').default(0),
+  
+  // Admin tracking
+  createdBy: uuid('created_by').references(() => users.userId),
+  updatedBy: uuid('updated_by').references(() => users.userId),
+  
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// Practice Questions table
+export const practiceQuestions = pgTable('practice_questions', {
+  questionId: uuid('question_id').primaryKey().defaultRandom(),
+  categoryId: uuid('category_id').references(() => practiceCategories.categoryId, { onDelete: 'cascade' }).notNull(),
+  
+  // Question content
+  questionText: text('question_text').notNull(),
+  options: json('options').$type<Array<{ id: number; text: string }>>().notNull(),
+  correctAnswer: varchar('correct_answer', { length: 500 }).notNull(),
+  explanation: text('explanation'),
+  
+  // Question metadata
+  difficulty: difficultyLevelEnum('difficulty').default('medium'),
+  marks: integer('marks').default(1),
+  questionType: questionTypeEnum('question_type').default('mcq'),
+  
+  // Job associations
+  job: json('job').$type<Array<string>>().default([]), // Array of job names like ['MPSC', 'Grade-B', 'Grade-C']
+  
+  // Additional fields from JSON
+  originalCategory: varchar('original_category', { length: 100 }),
+  source: varchar('source', { length: 100 }).default('json_import'),
+  
+  // Status and tracking
+  status: questionStatusEnum('status').default('active'),
+  usageCount: integer('usage_count').default(0),
+  correctCount: integer('correct_count').default(0),
+  
+  // Admin tracking
+  createdBy: uuid('created_by').references(() => users.userId),
+  updatedBy: uuid('updated_by').references(() => users.userId),
+  
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// JSON Import Logs table (for tracking JSON file imports)
+export const jsonImportLogs = pgTable('json_import_logs', {
+  importId: uuid('import_id').primaryKey().defaultRandom(),
+  categoryId: uuid('category_id').references(() => practiceCategories.categoryId),
+  
+  fileName: varchar('file_name', { length: 255 }).notNull(),
+  filePath: text('file_path').notNull(),
+  fileSize: integer('file_size'),
+  
+  // Import statistics
+  totalQuestions: integer('total_questions').default(0),
+  importedQuestions: integer('imported_questions').default(0),
+  skippedQuestions: integer('skipped_questions').default(0),
+  errorCount: integer('error_count').default(0),
+  
+  // Import status
+  status: varchar('status', { length: 20 }).default('pending'), // pending, completed, failed
+  errorMessage: text('error_message'),
+  
+  // Admin tracking
+  importedBy: uuid('imported_by').references(() => users.userId).notNull(),
+  
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  completedAt: timestamp('completed_at'),
+});
+
+// Type exports for new tables
+export type PracticeCategory = typeof practiceCategories.$inferSelect;
+export type NewPracticeCategory = typeof practiceCategories.$inferInsert;
+export type PracticeQuestion = typeof practiceQuestions.$inferSelect;
+export type NewPracticeQuestion = typeof practiceQuestions.$inferInsert;
+export type JsonImportLog = typeof jsonImportLogs.$inferSelect;
+export type NewJsonImportLog = typeof jsonImportLogs.$inferInsert;

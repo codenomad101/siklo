@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Row, 
@@ -7,43 +7,62 @@ import {
   Typography, 
   Space,
   Progress,
-  Tag
+  Tag,
+  Spin,
+  Card,
+  List,
+  Avatar,
+  Statistic
 } from 'antd';
 import {
   ArrowRightOutlined,
-  FireOutlined
+  FireOutlined,
+  BookOutlined,
+  ClockCircleOutlined,
+  TrophyOutlined,
+  QuestionCircleOutlined,
+  CheckCircleOutlined
 } from '@ant-design/icons';
 import { useAuth } from '../contexts/AuthContext';
 import { AppLayout } from '../components/AppLayout';
+import { useCategories, useDataServicePracticeHistory, useDataServicePracticeStats, useSampleQuestions } from '../hooks/useQuestions';
 
 const { Title, Text } = Typography;
 
 export default function Home() {
   const { user } = useAuth();
   
-  const categories = [
-    { id: 'economy', name: 'Economy', color: '#3b82f6', questions: 200 },
-    { id: 'gk', name: 'General Knowledge', color: '#10b981', questions: 300 },
-    { id: 'history', name: 'History', color: '#f59e0b', questions: 250 },
-    { id: 'geography', name: 'Geography', color: '#8b5cf6', questions: 180 },
-    { id: 'english', name: 'English', color: '#ec4899', questions: 220 },
-    { id: 'aptitude', name: 'Aptitude', color: '#06b6d4', questions: 280 },
-    { id: 'agriculture', name: 'Agriculture', color: '#84cc16', questions: 150 },
-    { id: 'marathi', name: 'Marathi', color: '#f97316', questions: 120 },
+  // Use custom hooks for data fetching
+  const { data: categories = [], isLoading: categoriesLoading } = useCategories();
+  const { data: practiceHistory = [], isLoading: historyLoading } = useDataServicePracticeHistory();
+  const { data: userStats = null, isLoading: statsLoading } = useDataServicePracticeStats();
+  
+  // Get sample questions from first category
+  const firstCategory = categories[0];
+  const { data: sampleSession, isLoading: sampleLoading } = useSampleQuestions(firstCategory?.id || '');
+  
+  const recentQuestions = sampleSession?.questions?.slice(0, 5) || [];
+  
+  const loading = categoriesLoading || historyLoading || statsLoading;
+
+  const stats = userStats ? [
+    { label: 'Questions Solved', value: userStats.totalQuestions || '0', color: '#3b82f6' },
+    { label: 'Accuracy', value: `${userStats.averageAccuracy || 0}%`, color: '#10b981' },
+    { label: 'Time Spent', value: `${userStats.totalTimeMinutes || 0}min`, color: '#f59e0b' },
+    { label: 'Current Streak', value: `${userStats.currentStreak || 0} days`, color: '#8b5cf6' },
+  ] : [
+    { label: 'Questions Solved', value: '0', color: '#3b82f6' },
+    { label: 'Accuracy', value: '0%', color: '#10b981' },
+    { label: 'Time Spent', value: '0min', color: '#f59e0b' },
+    { label: 'Current Streak', value: '0 days', color: '#8b5cf6' },
   ];
 
-  const stats = [
-    { label: 'Questions Solved', value: '1,128', color: '#3b82f6' },
-    { label: 'Accuracy', value: '87.5%', color: '#10b981' },
-    { label: 'Time Spent', value: '45hrs', color: '#f59e0b' },
-    { label: 'Current Streak', value: '12 days', color: '#8b5cf6' },
-  ];
-
-  const recentSessions = [
-    { subject: 'Economy', score: 85, time: '15 min', date: 'Today' },
-    { subject: 'General Knowledge', score: 92, time: '12 min', date: 'Yesterday' },
-    { subject: 'History', score: 78, time: '18 min', date: '2 days ago' },
-  ];
+  const recentSessions = (practiceHistory || []).slice(0, 3).map(session => ({
+    subject: session.category || 'Unknown',
+    score: Math.round(session.accuracy || 0),
+    time: `${session.durationMinutes || 0} min`,
+    date: session.completedAt ? new Date(session.completedAt).toLocaleDateString() : 'Unknown'
+  }));
 
   const progressData = [
     { subject: 'Economy', progress: 75, color: '#3b82f6' },
@@ -154,55 +173,137 @@ export default function Home() {
           }}>
             Practice Categories
           </Title>
-          <Row gutter={[16, 16]}>
-            {categories.map((category) => (
-              <Col xs={24} sm={12} md={8} lg={6} key={category.id}>
-                <Link to="/practice">
-                  <div style={{
-                    padding: '24px',
-                    borderRadius: '12px',
-                    background: '#ffffff',
-                    border: '2px solid #f3f4f6',
-                    transition: 'all 0.2s ease',
-                    cursor: 'pointer',
-                    height: '100%'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = category.color;
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = '#f3f4f6';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}>
-                    <div style={{ 
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '10px',
-                      background: category.color,
-                      marginBottom: '16px'
-                    }} />
-                    <Title level={4} style={{ 
-                      margin: '0 0 4px 0',
-                      fontSize: '16px',
-                      fontWeight: '700',
-                      color: '#1f2937'
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '48px' }}>
+              <Spin size="large" />
+              <div style={{ marginTop: '16px', color: '#6b7280' }}>
+                Loading categories...
+              </div>
+            </div>
+          ) : (
+            <Row gutter={[16, 16]}>
+              {categories.map((category) => (
+                <Col xs={24} sm={12} md={8} lg={6} key={category.id}>
+                  <Link to="/practice">
+                    <div style={{
+                      padding: '24px',
+                      borderRadius: '12px',
+                      background: '#ffffff',
+                      border: '2px solid #f3f4f6',
+                      transition: 'all 0.2s ease',
+                      cursor: 'pointer',
+                      height: '100%'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = category.color;
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = '#f3f4f6';
+                      e.currentTarget.style.transform = 'translateY(0)';
                     }}>
-                      {category.name}
-                    </Title>
-                    <Text style={{ 
-                      fontSize: '13px',
-                      color: '#6b7280',
-                      fontWeight: '500'
-                    }}>
-                      {category.questions} questions
-                    </Text>
-                  </div>
-                </Link>
-              </Col>
-            ))}
-          </Row>
+                      <div style={{ 
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '10px',
+                        background: category.color,
+                        marginBottom: '16px'
+                      }} />
+                      <Title level={4} style={{ 
+                        margin: '0 0 4px 0',
+                        fontSize: '16px',
+                        fontWeight: '700',
+                        color: '#1f2937'
+                      }}>
+                        {category.name}
+                      </Title>
+                      <Text style={{ 
+                        fontSize: '13px',
+                        color: '#6b7280',
+                        fontWeight: '500',
+                        display: 'block',
+                        marginBottom: '4px'
+                      }}>
+                        {category.questionCount} questions
+                      </Text>
+                      <Text style={{ 
+                        fontSize: '12px',
+                        color: '#9ca3af',
+                        fontWeight: '400'
+                      }}>
+                        {category.description}
+                      </Text>
+                    </div>
+                  </Link>
+                </Col>
+              ))}
+            </Row>
+          )}
         </div>
+
+        {/* Recent Questions Section */}
+        {recentQuestions.length > 0 && (
+          <div style={{ marginBottom: '48px' }}>
+            <Title level={2} style={{ 
+              margin: '0 0 24px 0',
+              fontSize: '24px',
+              fontWeight: '800',
+              color: '#1f2937'
+            }}>
+              Recent Questions
+            </Title>
+            <Card style={{ borderRadius: '12px' }}>
+              <List
+                dataSource={recentQuestions}
+                renderItem={(question, index) => (
+                  <List.Item>
+                    <List.Item.Meta
+                      avatar={
+                        <Avatar 
+                          style={{ 
+                            backgroundColor: '#FF7846',
+                            color: 'white',
+                            fontWeight: 'bold'
+                          }}
+                        >
+                          {index + 1}
+                        </Avatar>
+                      }
+                      title={
+                        <Text strong style={{ fontSize: '16px' }}>
+                          {question.questionText}
+                        </Text>
+                      }
+                      description={
+                        <Space direction="vertical" size="small" style={{ width: '100%' }}>
+                          <Space wrap>
+                            {question.options?.map((option: any, optIndex: number) => (
+                              <Tag key={optIndex} color="blue">
+                                {option.text}
+                              </Tag>
+                            ))}
+                          </Space>
+                          <Space>
+                            <Text type="secondary">Correct Answer: </Text>
+                            <Text strong style={{ color: '#52c41a' }}>
+                              {question.correctAnswer}
+                            </Text>
+                          </Space>
+                          <Space>
+                            <Text type="secondary">Category: </Text>
+                            <Tag color="orange">{question.category}</Tag>
+                            <Text type="secondary">Difficulty: </Text>
+                            <Tag color="purple">{question.difficulty}</Tag>
+                          </Space>
+                        </Space>
+                      }
+                    />
+                  </List.Item>
+                )}
+              />
+            </Card>
+          </div>
+        )}
 
         {/* Recent Activity & Progress */}
         <Row gutter={[24, 24]}>

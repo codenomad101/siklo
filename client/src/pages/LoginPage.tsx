@@ -65,8 +65,16 @@ export default function LoginPage() {
               bodyStyle={{ padding: '48px' }}
             >
               <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-                <Title level={2} style={{ margin: '0 0 8px 0', color: '#1890ff' }}>
-                  Welcome to Siklo!
+                <Title level={2} style={{ margin: '0 0 8px 0', color: '#FF7846' }}>
+                  Welcome to <span style={{ 
+                    fontStyle: 'italic',
+                    color: 'black',
+                    fontFamily: 'Montserrat, sans-serif'
+                  }}>en</span><span style={{ 
+                    fontWeight: 'bold',
+                    color: '#FF7846',
+                    fontFamily: 'Montserrat, sans-serif'
+                  }}>Mantra</span>!
                 </Title>
                 <Paragraph style={{ color: '#666', margin: 0 }}>
                   Sign in to continue your learning journey
@@ -152,9 +160,9 @@ export default function LoginPage() {
               }}>
                 <Text type="secondary" style={{ fontSize: '12px' }}>
                   <strong>Test Credentials:</strong><br />
-                  Admin: admin@siklo.com / admin123<br />
-                  Student: student1@siklo.com / student123<br />
-                  Moderator: moderator@siklo.com / moderator123
+                  Admin: admin@mantramanthan.com / admin123<br />
+                  Student: student1@mantramanthan.com / student123<br />
+                  Moderator: moderator@mantramanthan.com / moderator123
                 </Text>
               </div>
             </Card>

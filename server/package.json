@@ -18,5 +18,9 @@
     "padhlo"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/multer": "^2.0.0",
+    "multer": "^2.0.2"
+  }
 }

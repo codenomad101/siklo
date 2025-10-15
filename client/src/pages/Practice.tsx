@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { 
   Card, 
   Button, 
@@ -10,39 +10,90 @@ import {
   Input, 
   Select, 
   InputNumber, 
-  Space
+  Space,
+  Spin
 } from 'antd';
 import { ReadOutlined, FormOutlined, QuestionCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { AppLayout } from '../components/AppLayout';
+import { useCategories } from '../hooks/useQuestions';
+import { useCreateDynamicExam } from '../hooks/useExams';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
 
-interface Category {
-  id: string;
-  name: string;
-  description: string;
-  questionCount: number;
-}
-
-const categories: Category[] = [
-  { id: 'economy', name: 'Economy', description: 'Economic concepts and current affairs', questionCount: 200 },
-  { id: 'gk', name: 'General Knowledge', description: 'General awareness and current events', questionCount: 300 },
-  { id: 'history', name: 'History', description: 'Indian and world history', questionCount: 250 },
-  { id: 'geography', name: 'Geography', description: 'Physical and human geography', questionCount: 180 },
-  { id: 'english', name: 'English', description: 'Grammar and language skills', questionCount: 220 },
-  { id: 'aptitude', name: 'Aptitude', description: 'Quantitative and logical reasoning', questionCount: 280 },
-  { id: 'agriculture', name: 'Agriculture', description: 'Agricultural science and practices', questionCount: 150 },
-  { id: 'marathi', name: 'Marathi', description: 'Marathi language and literature', questionCount: 120 },
-];
-
 const PracticePage: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [selectedMode, setSelectedMode] = useState<'practice' | 'exam'>('practice');
+  const [examConfig, setExamConfig] = useState({
+    examName: 'Quick Test',
+    duration: 20,
+    totalMarks: 40,
+    negativeMarking: 'yes',
+    questionDistribution: [] as Array<{ category: string; count: number; marksPerQuestion: number }>
+  });
+  const navigate = useNavigate();
+
+  // Use custom hooks
+  const { data: categories = [], isLoading: loading } = useCategories();
+  const createExamMutation = useCreateDynamicExam();
+
+  useEffect(() => {
+    // Initialize question distribution for exam mode
+    if (searchParams.get('mode') === 'exam') {
+      setSelectedMode('exam');
+      const distribution = (categories || []).slice(0, 4).map((cat, index) => ({
+        category: cat.id,
+        count: index < 2 ? 5 : 3,
+        marksPerQuestion: 2
+      }));
+      setExamConfig(prev => ({
+        ...prev,
+        questionDistribution: distribution
+      }));
+    }
+  }, [searchParams, categories]);
+
+  const handleStartPractice = (categoryId: string) => {
+    navigate(`/practice-test/${categoryId}`);
+  };
+
+  const handleCreateExam = async () => {
+    const examData = {
+      examName: examConfig.examName,
+      totalMarks: examConfig.totalMarks,
+      durationMinutes: examConfig.duration,
+      questionDistribution: examConfig.questionDistribution,
+      negativeMarking: examConfig.negativeMarking === 'yes',
+      negativeMarksRatio: 0.25
+    };
+
+    try {
+      const response = await createExamMutation.mutateAsync(examData);
+      
+      if (response.success) {
+        // Navigate to the exam
+        navigate(`/exam/${response.data.sessionId}`);
+      } else {
+        console.error('Failed to create exam:', response.message);
+      }
+    } catch (error) {
+      console.error('Error creating exam:', error);
+    }
+  };
+
+  const updateQuestionDistribution = (categoryId: string, field: 'count' | 'marksPerQuestion', value: number) => {
+    setExamConfig(prev => ({
+      ...prev,
+      questionDistribution: prev.questionDistribution.map(dist => 
+        dist.category === categoryId ? { ...dist, [field]: value } : dist
+      )
+    }));
+  };
 
   return (
     <AppLayout>
-      <div style={{ padding: '24px' }}>
-        <div style={{ marginBottom: '24px', display: 'flex', justifyContent: 'center' }}>
+      <div style={{ padding: '32px 24px', maxWidth: '1600px', margin: '0 auto', width: '100%' }}>
+        <div style={{ marginBottom: '32px', display: 'flex', justifyContent: 'center' }}>
           <Segmented
             options={[
               { label: 'Practice Sessions', value: 'practice', icon: <ReadOutlined /> },
@@ -56,37 +107,98 @@ const PracticePage: React.FC = () => {
 
         {selectedMode === 'practice' ? (
           <>
-            <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-              <Title level={3}>Practice Sessions</Title>
-              <Text type="secondary">Choose a category to start practicing with 20 random questions and a 15-minute timer.</Text>
+            <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+              <Title level={2} style={{ 
+                margin: '0 0 8px 0',
+                fontSize: '28px',
+                fontWeight: '800',
+                color: '#1f2937'
+              }}>
+                Practice Sessions
+              </Title>
+              <Text style={{ 
+                fontSize: '16px', 
+                color: '#6b7280',
+                fontWeight: '500'
+              }}>
+                Choose a category to start practicing with 20 random questions and a 15-minute timer.
+              </Text>
             </div>
 
-            <Row gutter={[16, 16]} justify="center">
-              {categories.map((category) => (
-                <Col key={category.id} xs={24} sm={12} md={8} lg={6}>
-                  <Card
-                    hoverable
-                    title={category.name}
-                    extra={<Text type="secondary">{category.questionCount} questions</Text>}
-                    actions={[
-                      <Button type="primary" icon={<ReadOutlined />}>Start Practice</Button>
-                    ]}
-                  >
-                    <Card.Meta
-                      description={
-                        <Space direction="vertical">
-                          <Text>{category.description}</Text>
-                          <Space>
-                            <ClockCircleOutlined />
-                            <Text>15 min</Text>
-                          </Space>
-                        </Space>
-                      }
-                    />
-                  </Card>
-                </Col>
-              ))}
-            </Row>
+            {loading ? (
+              <div style={{ textAlign: 'center', padding: '48px' }}>
+                <Spin size="large" />
+                <div style={{ marginTop: '16px', color: '#6b7280' }}>
+                  Loading categories...
+                </div>
+              </div>
+            ) : (
+              <Row gutter={[16, 16]} justify="center">
+                {(categories || []).map((category) => (
+                  <Col key={category.id} xs={24} sm={12} md={8} lg={6}>
+                    <Card
+                      hoverable
+                      style={{
+                        borderRadius: '12px',
+                        border: '2px solid #f3f4f6',
+                        transition: 'all 0.2s ease',
+                        height: '100%'
+                      }}
+                      bodyStyle={{ padding: '24px' }}
+                    >
+                      <div style={{ 
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '10px',
+                        background: category.color,
+                        marginBottom: '16px'
+                      }} />
+                      
+                      <Title level={4} style={{ 
+                        margin: '0 0 8px 0',
+                        fontSize: '18px',
+                        fontWeight: '700',
+                        color: '#1f2937'
+                      }}>
+                        {category.name}
+                      </Title>
+                      
+                      <Text style={{ 
+                        fontSize: '14px',
+                        color: '#6b7280',
+                        fontWeight: '500',
+                        display: 'block',
+                        marginBottom: '8px'
+                      }}>
+                        {category.description}
+                      </Text>
+                      
+                      <Space style={{ marginBottom: '16px' }}>
+                        <ClockCircleOutlined style={{ color: '#6b7280' }} />
+                        <Text style={{ fontSize: '13px', color: '#6b7280' }}>15 min</Text>
+                        <QuestionCircleOutlined style={{ color: '#6b7280' }} />
+                        <Text style={{ fontSize: '13px', color: '#6b7280' }}>20 questions</Text>
+                      </Space>
+                      
+                      <Button 
+                        type="primary" 
+                        icon={<ReadOutlined />}
+                        onClick={() => handleStartPractice(category.id)}
+                        style={{
+                          width: '100%',
+                          height: '40px',
+                          fontSize: '14px',
+                          fontWeight: '600',
+                          borderRadius: '8px'
+                        }}
+                      >
+                        Start Practice
+                      </Button>
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            )}
           </>
         ) : (
           <>
@@ -97,42 +209,86 @@ const PracticePage: React.FC = () => {
 
             <Card style={{ maxWidth: 800, margin: '0 auto' }}>
               <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-                <Input addonBefore="Exam Name" defaultValue="Quick Test" />
-                <InputNumber addonBefore="Duration (minutes)" defaultValue={20} min={1} style={{ width: '100%' }} />
-                <InputNumber addonBefore="Total Marks" defaultValue={40} min={1} style={{ width: '100%' }} />
-                <Select addonBefore="Negative Marking" defaultValue="yes" style={{ width: '100%' }}>
+                <Input 
+                  addonBefore="Exam Name" 
+                  value={examConfig.examName}
+                  onChange={(e) => setExamConfig(prev => ({ ...prev, examName: e.target.value }))}
+                />
+                <InputNumber 
+                  addonBefore="Duration (minutes)" 
+                  value={examConfig.duration}
+                  onChange={(value) => setExamConfig(prev => ({ ...prev, duration: value || 20 }))}
+                  min={1} 
+                  style={{ width: '100%' }} 
+                />
+                <InputNumber 
+                  addonBefore="Total Marks" 
+                  value={examConfig.totalMarks}
+                  onChange={(value) => setExamConfig(prev => ({ ...prev, totalMarks: value || 40 }))}
+                  min={1} 
+                  style={{ width: '100%' }} 
+                />
+                <Select 
+                  addonBefore="Negative Marking" 
+                  value={examConfig.negativeMarking}
+                  onChange={(value) => setExamConfig(prev => ({ ...prev, negativeMarking: value }))}
+                  style={{ width: '100%' }}
+                >
                   <Option value="yes">Yes (-25%)</Option>
                   <Option value="no">No</Option>
                 </Select>
 
                 <Title level={4} style={{ marginTop: '24px', marginBottom: '16px' }}>Question Distribution</Title>
-                {categories.map((category, index) => (
-                  <Row key={category.id} align="middle" gutter={16}>
-                    <Col span={8}>
-                      <Text strong>{category.name}</Text>
-                      <Text type="secondary" style={{ marginLeft: '8px' }}>({category.questionCount} available)</Text>
-                    </Col>
-                    <Col span={8}>
-                      <InputNumber
-                        min={0}
-                        max={10}
-                        defaultValue={index < 4 ? 3 : 2}
-                        addonAfter="questions"
-                        style={{ width: '100%' }}
-                      />
-                    </Col>
-                    <Col span={8}>
-                      <InputNumber
-                        min={1}
-                        defaultValue={2}
-                        addonAfter="marks each"
-                        style={{ width: '100%' }}
-                      />
-                    </Col>
-                  </Row>
-                ))}
-                <Button type="primary" size="large" style={{ width: '100%', marginTop: '24px' }} icon={<FormOutlined />}>
-                  Start Exam
+                {loading ? (
+                  <div style={{ textAlign: 'center', padding: '24px' }}>
+                    <Spin />
+                    <div style={{ marginTop: '8px', color: '#6b7280' }}>
+                      Loading categories...
+                    </div>
+                  </div>
+                ) : (
+                  examConfig.questionDistribution.map((dist, index) => {
+                    const category = categories.find(cat => cat.id === dist.category);
+                    if (!category) return null;
+                    
+                    return (
+                      <Row key={dist.category} align="middle" gutter={16}>
+                        <Col span={8}>
+                          <Text strong>{category.name}</Text>
+                          <Text type="secondary" style={{ marginLeft: '8px' }}>({category.questionCount} available)</Text>
+                        </Col>
+                        <Col span={8}>
+                          <InputNumber
+                            min={0}
+                            max={Math.min(10, category.questionCount)}
+                            value={dist.count}
+                            onChange={(value) => updateQuestionDistribution(dist.category, 'count', value || 0)}
+                            addonAfter="questions"
+                            style={{ width: '100%' }}
+                          />
+                        </Col>
+                        <Col span={8}>
+                          <InputNumber
+                            min={1}
+                            value={dist.marksPerQuestion}
+                            onChange={(value) => updateQuestionDistribution(dist.category, 'marksPerQuestion', value || 1)}
+                            addonAfter="marks each"
+                            style={{ width: '100%' }}
+                          />
+                        </Col>
+                      </Row>
+                    );
+                  })
+                )}
+                <Button 
+                  type="primary" 
+                  size="large" 
+                  style={{ width: '100%', marginTop: '24px' }} 
+                  icon={<FormOutlined />}
+                  loading={createExamMutation.isPending}
+                  onClick={handleCreateExam}
+                >
+                  {createExamMutation.isPending ? 'Creating Exam...' : 'Start Exam'}
                 </Button>
               </Space>
             </Card>

@@ -1,87 +1,132 @@
 import { db } from '../db';
-import { practiceSessions, NewPracticeSession, PracticeSession } from '../db/schema';
-import { eq, and, desc, count } from 'drizzle-orm';
-import fs from 'fs';
-import path from 'path';
+import { practiceSessions, practiceCategories, practiceQuestions, NewPracticeSession, PracticeSession } from '../db/schema';
+import { eq, and, desc, count, sql } from 'drizzle-orm';
 
 export class PracticeService {
-  // Get available practice categories
+  // Get available practice categories from database or JSON files
   async getPracticeCategories() {
-    return [
-      { id: 'economy', name: 'Economy', description: 'Economic concepts and current affairs' },
-      { id: 'gk', name: 'General Knowledge', description: 'General knowledge and current affairs' },
-      { id: 'history', name: 'History', description: 'Historical events and facts' },
-      { id: 'geography', name: 'Geography', description: 'Geographical concepts and facts' },
-      { id: 'english', name: 'English', description: 'English grammar and vocabulary' },
-      { id: 'aptitude', name: 'Aptitude', description: 'Quantitative and logical reasoning' },
-      { id: 'agriculture', name: 'Agriculture', description: 'Agricultural concepts and practices' },
-      { id: 'marathi', name: 'Marathi', description: 'Marathi grammar and language' },
-    ];
+    try {
+      // Try to get categories from database first
+      try {
+        const categories = await db
+          .select({
+            id: practiceCategories.slug,
+            name: practiceCategories.name,
+            description: practiceCategories.description,
+            questionCount: practiceCategories.totalQuestions,
+            color: practiceCategories.color,
+            language: practiceCategories.language,
+            timeLimitMinutes: practiceCategories.timeLimitMinutes,
+            questionsPerSession: practiceCategories.questionsPerSession
+          })
+          .from(practiceCategories)
+          .where(eq(practiceCategories.status, 'active'))
+          .orderBy(practiceCategories.sortOrder, practiceCategories.name);
+
+        if (categories.length > 0) {
+          return categories;
+        }
+      } catch (dbError) {
+        console.log('Database categories not available, using JSON file counts');
+      }
+
+      // Fallback to hardcoded categories with JSON file counts
+      return this.getCategoriesFromJsonFiles();
+
+    } catch (error) {
+      console.error('Error fetching practice categories:', error);
+      throw new Error('Failed to fetch practice categories');
+    }
   }
 
-  // Get random questions from JSON files
-  async getRandomQuestions(category: string, count: number = 20) {
+  // Get categories with question counts from JSON files
+  private getCategoriesFromJsonFiles() {
+    const categoryMapping = [
+      { id: 'economy', name: 'Economy', description: 'Economic concepts and current affairs', color: '#3b82f6', language: 'English', fileName: 'economyEnglish.json' },
+      { id: 'gk', name: 'General Knowledge', description: 'General awareness and current events', color: '#10b981', language: 'English', fileName: 'GKEnglish.json' },
+      { id: 'history', name: 'History', description: 'Indian and world history', color: '#f59e0b', language: 'English', fileName: 'historyEnglish.json' },
+      { id: 'geography', name: 'Geography', description: 'Physical and human geography', color: '#8b5cf6', language: 'English', fileName: 'geographyEnglish.json' },
+      { id: 'english', name: 'English', description: 'Grammar and language skills', color: '#ec4899', language: 'English', fileName: 'englishGrammer.json' },
+      { id: 'aptitude', name: 'Aptitude', description: 'Quantitative and logical reasoning', color: '#06b6d4', language: 'English', fileName: 'AptitudeEnglish.json' },
+      { id: 'agriculture', name: 'Agriculture', description: 'Agricultural science and practices', color: '#84cc16', language: 'English', fileName: 'agricultureEnglish.json' },
+      { id: 'marathi', name: 'Marathi', description: 'Marathi language and literature', color: '#f97316', language: 'Marathi', fileName: 'grammerMarathi.json' }
+    ];
+
+    return categoryMapping.map(category => {
+      try {
+        let questionCount = 0;
+        const filePath = category.language === 'Marathi' 
+          ? `../../data/Marathi/${category.fileName}`
+          : `../../data/English/${category.fileName}`;
+        
+        const questionsData = require(filePath);
+        if (Array.isArray(questionsData)) {
+          questionCount = questionsData.length;
+        }
+        
+        return {
+          ...category,
+          questionCount,
+          timeLimitMinutes: 15,
+          questionsPerSession: 20
+        };
+      } catch (error) {
+        console.error(`Error loading question count for ${category.name}:`, error);
+        return {
+          ...category,
+          questionCount: 0,
+          timeLimitMinutes: 15,
+          questionsPerSession: 20
+        };
+      }
+    });
+  }
+
+  // Get random questions from database or JSON files
+  async getRandomQuestions(categorySlug: string, count: number = 20) {
     try {
-      const dataPath = path.join(__dirname, '../../Padhlo/data');
-      let fileName = '';
-      
-      switch (category) {
-        case 'economy':
-          fileName = 'English/economyEnglish.json';
-          break;
-        case 'gk':
-          fileName = 'English/GKEnglish.json';
-          break;
-        case 'history':
-          fileName = 'English/historyEnglish.json';
-          break;
-        case 'geography':
-          fileName = 'English/geographyEnglish.json';
-          break;
-        case 'english':
-          fileName = 'English/englishGrammer.json';
-          break;
-        case 'aptitude':
-          fileName = 'English/AptitudeEnglish.json';
-          break;
-        case 'agriculture':
-          fileName = 'English/agricultureEnglish.json';
-          break;
-        case 'marathi':
-          fileName = 'Marathi/grammerMarathi.json';
-          break;
-        default:
-          throw new Error('Invalid category');
+      // First try to get questions from database
+      try {
+        const [category] = await db
+          .select()
+          .from(practiceCategories)
+          .where(and(
+            eq(practiceCategories.slug, categorySlug),
+            eq(practiceCategories.status, 'active')
+          ))
+          .limit(1);
+
+        if (category) {
+          const questions = await db
+            .select()
+            .from(practiceQuestions)
+            .where(and(
+              eq(practiceQuestions.categoryId, category.categoryId),
+              eq(practiceQuestions.status, 'active')
+            ))
+            .orderBy(sql`RANDOM()`)
+            .limit(Math.min(count, category.totalQuestions));
+
+          if (questions.length > 0) {
+            return questions.map((q) => ({
+              questionId: q.questionId,
+              questionText: q.questionText,
+              options: q.options,
+              correctAnswer: q.correctAnswer,
+              explanation: q.explanation || '',
+              category: categorySlug,
+              marks: q.marks,
+              questionType: q.questionType,
+              difficulty: q.difficulty
+            }));
+          }
+        }
+      } catch (dbError) {
+        console.log('Database questions not available, falling back to JSON files');
       }
 
-      const filePath = path.join(dataPath, fileName);
-      
-      if (!fs.existsSync(filePath)) {
-        throw new Error(`Questions file not found for category: ${category}`);
-      }
-
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      const questions = JSON.parse(fileContent);
-
-      if (!Array.isArray(questions)) {
-        throw new Error('Invalid questions format');
-      }
-
-      // Shuffle and select random questions
-      const shuffled = questions.sort(() => 0.5 - Math.random());
-      const selectedQuestions = shuffled.slice(0, Math.min(count, questions.length));
-
-      // Transform questions to match our format
-      return selectedQuestions.map((q: any, index: number) => ({
-        questionId: `q_${category}_${index}_${Date.now()}`,
-        questionText: q.Question || q.questionText,
-        options: q.Options || q.options || [],
-        correctAnswer: q.CorrectAnswer || q.correctAnswer,
-        explanation: q.Explanation || q.explanation,
-        category: q.category || category,
-        marks: 1,
-        questionType: 'mcq'
-      }));
+      // Fallback to JSON files
+      return this.getQuestionsFromJsonFiles(categorySlug, count);
 
     } catch (error) {
       console.error('Error loading questions:', error);
@@ -89,16 +134,95 @@ export class PracticeService {
     }
   }
 
-  // Create a new practice session
-  async createPracticeSession(userId: string, category: string, timeLimitMinutes: number = 15) {
+  // Load questions from JSON files as fallback
+  private getQuestionsFromJsonFiles(categorySlug: string, count: number = 20) {
     try {
-      const questions = await this.getRandomQuestions(category, 20);
+      let questionsData: any[] = [];
+      
+      // Load questions based on category
+      switch (categorySlug) {
+        case 'economy':
+          questionsData = require('../../data/English/economyEnglish.json');
+          break;
+        case 'gk':
+          questionsData = require('../../data/English/GKEnglish.json');
+          break;
+        case 'history':
+          questionsData = require('../../data/English/historyEnglish.json');
+          break;
+        case 'geography':
+          questionsData = require('../../data/English/geographyEnglish.json');
+          break;
+        case 'english':
+          questionsData = require('../../data/English/englishGrammer.json');
+          break;
+        case 'aptitude':
+          questionsData = require('../../data/English/AptitudeEnglish.json');
+          break;
+        case 'agriculture':
+          questionsData = require('../../data/English/agricultureEnglish.json');
+          break;
+        case 'marathi':
+          questionsData = require('../../data/Marathi/grammerMarathi.json');
+          break;
+        default:
+          throw new Error('Category not found');
+      }
+
+      if (!Array.isArray(questionsData)) {
+        throw new Error('Invalid JSON format');
+      }
+
+      // Shuffle and select required number of questions
+      const shuffled = questionsData.sort(() => Math.random() - 0.5);
+      const selectedQuestions = shuffled.slice(0, count);
+
+      // Transform to our format
+      return selectedQuestions.map((q: any, index: number) => ({
+        questionId: `${categorySlug}_${index + 1}`,
+        questionText: q.Question || q.question || '',
+        options: q.Options ? q.Options.map((opt: any, optIndex: number) => ({
+          id: optIndex + 1,
+          text: typeof opt === 'string' ? opt : opt.text || opt.id || ''
+        })) : [],
+        correctAnswer: q.CorrectAnswer || q.correctAnswer || '',
+        explanation: q.Explanation || q.explanation || '',
+        category: categorySlug,
+        marks: 1,
+        questionType: 'mcq',
+        difficulty: 'medium'
+      }));
+
+    } catch (error) {
+      console.error('Error loading questions from JSON:', error);
+      throw new Error('Failed to load questions from JSON files');
+    }
+  }
+
+  // Create a new practice session
+  async createPracticeSession(userId: string, categorySlug: string, timeLimitMinutes: number = 15) {
+    try {
+      // Get category details
+      const [category] = await db
+        .select()
+        .from(practiceCategories)
+        .where(and(
+          eq(practiceCategories.slug, categorySlug),
+          eq(practiceCategories.status, 'active')
+        ))
+        .limit(1);
+
+      if (!category) {
+        throw new Error('Category not found');
+      }
+
+      const questions = await this.getRandomQuestions(categorySlug, category.questionsPerSession);
       
       const newSession: NewPracticeSession = {
         userId,
-        category: category as any,
+        category: categorySlug as any,
         totalQuestions: questions.length,
-        timeLimitMinutes,
+        timeLimitMinutes: timeLimitMinutes,
         status: 'in_progress',
         questionsData: questions.map(q => ({
           questionId: q.questionId,
@@ -166,9 +290,12 @@ export class PracticeService {
         throw new Error('Question not found in session');
       }
 
-      // Get the correct answer from the questions data
-      const questions = await this.getRandomQuestions(session.category, session.totalQuestions);
-      const question = questions.find((q: any) => q.questionId === questionId);
+      // Get the correct answer from the database
+      const [question] = await db
+        .select()
+        .from(practiceQuestions)
+        .where(eq(practiceQuestions.questionId, questionId))
+        .limit(1);
       
       if (!question) {
         throw new Error('Question data not found');
