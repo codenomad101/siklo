@@ -14,7 +14,10 @@ import {
   Progress,
   Statistic,
   Timeline,
-  List
+  List,
+  Modal,
+  Result,
+  Divider
 } from 'antd';
 import {
   BookOutlined,
@@ -31,11 +34,13 @@ import {
   CheckCircleOutlined,
   CloseCircleOutlined,
   FileTextOutlined,
-  BarChartOutlined
+  BarChartOutlined,
+  PlayCircleOutlined,
+  QuestionCircleOutlined
 } from '@ant-design/icons';
 import { AppLayout } from '../components/AppLayout';
 import { useCategories } from '../hooks/useCategories';
-import { useExamHistory } from '../hooks/useExams';
+import { useExamHistory, useResumeExam } from '../hooks/useExams';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -45,12 +50,39 @@ export default function Exams() {
   // Use custom hooks
   const { data: categories = [] } = useCategories();
   const { data: examHistoryData = [], isLoading: historyLoading } = useExamHistory();
+  const resumeExamMutation = useResumeExam();
   
   const examHistory = examHistoryData || [];
+  const [showResultsModal, setShowResultsModal] = useState(false);
+  const [selectedExamResults, setSelectedExamResults] = useState<any>(null);
 
   const handleCreateExam = async () => {
     // Navigate to practice page with exam mode
     navigate('/practice?mode=exam');
+  };
+
+  const handleResumeExam = async (sessionId: string) => {
+    try {
+      const examData = await resumeExamMutation.mutateAsync(sessionId);
+      // Navigate to exam page with the session ID
+      navigate(`/exam/${sessionId}`);
+    } catch (error) {
+      console.error('Error resuming exam:', error);
+    }
+  };
+
+  const handleViewExam = (sessionId: string, status: string) => {
+    if (status === 'completed') {
+      // Find the exam data and show results modal
+      const exam = examHistory.find(e => e.sessionId === sessionId);
+      if (exam) {
+        setSelectedExamResults(exam);
+        setShowResultsModal(true);
+      }
+    } else {
+      // Resume the exam
+      handleResumeExam(sessionId);
+    }
   };
 
   const columns = [
@@ -125,21 +157,67 @@ export default function Exams() {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
-      render: (status) => (
-        <Tag color={status === 'completed' ? 'green' : 'blue'}>
-          {status === 'completed' ? <CheckCircleOutlined /> : <ClockCircleOutlined />}
-          {status}
-        </Tag>
-      ),
+      render: (status, record) => {
+        const completionPercentage = record.completionPercentage || 0;
+        const isCompleted = status === 'completed';
+        const isInProgress = status === 'in_progress';
+        
+        return (
+          <div>
+            <Tag color={isCompleted ? 'green' : isInProgress ? 'blue' : 'orange'}>
+              {isCompleted ? <CheckCircleOutlined /> : isInProgress ? <ClockCircleOutlined /> : <PlayCircleOutlined />}
+              {isCompleted ? 'Completed' : isInProgress ? 'In Progress' : 'Not Started'}
+            </Tag>
+            {!isCompleted && (
+              <div style={{ marginTop: '4px' }}>
+                <Progress 
+                  percent={completionPercentage} 
+                  size="small" 
+                  showInfo={false}
+                  strokeColor="#1890ff"
+                />
+                <Text type="secondary" style={{ fontSize: '11px' }}>
+                  {completionPercentage}% complete
+                </Text>
+              </div>
+            )}
+          </div>
+        );
+      },
     },
     {
       title: 'Action',
       key: 'action',
-      render: () => (
-        <Button type="link" icon={<EyeOutlined />}>
-          View Details
-        </Button>
-      ),
+      render: (_, record) => {
+        const isCompleted = record.status === 'completed';
+        const isResumable = record.status === 'in_progress' || record.status === 'not_started';
+        
+        return (
+          <Space>
+            {isResumable && (
+              <Button 
+                type="primary" 
+                size="small"
+                icon={<PlayCircleOutlined />}
+                onClick={() => handleResumeExam(record.sessionId)}
+                loading={resumeExamMutation.isPending}
+              >
+                {record.status === 'in_progress' ? 'Resume' : 'Start'}
+              </Button>
+            )}
+            {isCompleted && (
+              <Button 
+                type="link" 
+                size="small"
+                icon={<EyeOutlined />}
+                onClick={() => handleViewExam(record.sessionId, record.status)}
+              >
+                View Results
+              </Button>
+            )}
+          </Space>
+        );
+      },
     },
   ];
 
@@ -266,7 +344,7 @@ export default function Exams() {
             columns={columns} 
             dataSource={examHistory} 
             pagination={false}
-            rowKey="id"
+            rowKey="sessionId"
           />
         </Card>
 
@@ -328,6 +406,120 @@ export default function Exams() {
           </Col>
         </Row>
       </div>
+
+      {/* Exam Results Modal */}
+      <Modal
+        title="Exam Results"
+        open={showResultsModal}
+        onCancel={() => setShowResultsModal(false)}
+        footer={[
+          <Button key="close" type="primary" onClick={() => setShowResultsModal(false)}>
+            Close
+          </Button>
+        ]}
+        width={800}
+        centered
+      >
+        {selectedExamResults && (
+          <div>
+            <Result
+              status={selectedExamResults.percentage >= 60 ? "success" : "warning"}
+              title={`${selectedExamResults.examName || selectedExamResults.name} - Completed!`}
+              subTitle={`You scored ${selectedExamResults.percentage}% (${selectedExamResults.marksObtained}/${selectedExamResults.totalMarks} marks)`}
+            />
+            
+            <Divider />
+            
+            <Row gutter={[16, 16]}>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Questions Attempted"
+                    value={selectedExamResults.questionsAttempted || 0}
+                    suffix={`/ ${(selectedExamResults.questionsAttempted || 0) + (selectedExamResults.skippedQuestions || 0)}`}
+                    prefix={<QuestionCircleOutlined />}
+                    valueStyle={{ color: '#1890ff' }}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Correct Answers"
+                    value={selectedExamResults.correctAnswers || 0}
+                    prefix={<CheckCircleOutlined />}
+                    valueStyle={{ color: '#52c41a' }}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Incorrect Answers"
+                    value={selectedExamResults.incorrectAnswers || 0}
+                    prefix={<CloseCircleOutlined />}
+                    valueStyle={{ color: '#ff4d4f' }}
+                  />
+                </Card>
+              </Col>
+            </Row>
+
+            <Row gutter={[16, 16]} style={{ marginTop: '16px' }}>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Skipped Questions"
+                    value={selectedExamResults.skippedQuestions || 0}
+                    prefix={<ClockCircleOutlined />}
+                    valueStyle={{ color: '#faad14' }}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Time Spent"
+                    value={Math.floor((selectedExamResults.timeSpentSeconds || 0) / 60)}
+                    suffix={`min ${(selectedExamResults.timeSpentSeconds || 0) % 60}s`}
+                    prefix={<ClockCircleOutlined />}
+                    valueStyle={{ color: '#722ed1' }}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Total Duration"
+                    value={selectedExamResults.durationMinutes || selectedExamResults.duration || 0}
+                    suffix="min"
+                    prefix={<ClockCircleOutlined />}
+                    valueStyle={{ color: '#13c2c2' }}
+                  />
+                </Card>
+              </Col>
+            </Row>
+
+            <Divider />
+            
+            <div style={{ textAlign: 'center', marginTop: '24px' }}>
+              <Progress
+                type="circle"
+                percent={selectedExamResults.percentage || 0}
+                strokeColor={(selectedExamResults.percentage || 0) >= 80 ? '#52c41a' : (selectedExamResults.percentage || 0) >= 60 ? '#faad14' : '#ff4d4f'}
+                size={120}
+                format={(percent) => `${percent}%`}
+              />
+              <div style={{ marginTop: '16px' }}>
+                <Text strong style={{ fontSize: '18px' }}>
+                  {(selectedExamResults.percentage || 0) >= 80 ? 'Excellent!' : 
+                   (selectedExamResults.percentage || 0) >= 60 ? 'Good Job!' : 
+                   'Keep Practicing!'}
+                </Text>
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
     </AppLayout>
   );
 }

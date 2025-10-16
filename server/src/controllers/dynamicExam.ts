@@ -159,6 +159,8 @@ export const completeExamSession = async (req: Request, res: Response) => {
   try {
     const userId = (req as any).user.userId;
     const { sessionId } = req.params;
+    
+    console.log('Received exam completion data:', req.body);
     const validatedData = CompleteExamSessionSchema.parse(req.body);
 
     const session = await dynamicExamService.completeExamSession(sessionId, userId, validatedData);
@@ -200,6 +202,28 @@ export const getExamSession = async (req: Request, res: Response) => {
     res.status(500).json({
       success: false,
       message: error.message || 'Failed to fetch exam session'
+    });
+  }
+};
+
+// Resume an incomplete exam session
+export const resumeExamSession = async (req: Request, res: Response) => {
+  try {
+    const { sessionId } = req.params;
+    const userId = (req as any).user.userId;
+
+    const session = await dynamicExamService.resumeExamSession(sessionId, userId);
+
+    res.json({
+      success: true,
+      data: session,
+      message: 'Exam session resumed successfully'
+    });
+  } catch (error: any) {
+    console.error('Error resuming exam session:', error);
+    res.status(400).json({
+      success: false,
+      message: error.message || 'Failed to resume exam session'
     });
   }
 };

@@ -57,6 +57,10 @@ export const useCompleteExam = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['examHistory'] });
       queryClient.invalidateQueries({ queryKey: ['examStats'] });
+      queryClient.invalidateQueries({ queryKey: ['userStatistics'] });
+      queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
+      queryClient.invalidateQueries({ queryKey: ['userRank'] });
+      queryClient.invalidateQueries({ queryKey: ['availableSubjects'] });
       message.success('Exam completed successfully!');
     },
     onError: (error: any) => {
@@ -118,6 +122,23 @@ export const useExamConfiguration = () => {
     },
     onError: (error: any) => {
       message.error(error.response?.data?.message || 'Failed to save exam configuration');
+    },
+  });
+};
+
+// Resume Exam Hook
+export const useResumeExam = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: examAPI.resumeExam,
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ['examHistory'] });
+      message.success('Exam resumed successfully!');
+      return data;
+    },
+    onError: (error: any) => {
+      message.error(error.response?.data?.message || 'Failed to resume exam');
     },
   });
 };

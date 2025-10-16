@@ -12,7 +12,9 @@ import {
   Statistic,
   Divider,
   Alert,
-  Spin
+  Spin,
+  Modal,
+  Result
 } from 'antd';
 import { 
   ClockCircleOutlined, 
@@ -23,7 +25,9 @@ import {
   QuestionCircleOutlined
 } from '@ant-design/icons';
 import { AppLayout } from '../components/AppLayout';
-import { useExamQuestions, useCompleteExam } from '../hooks/useExams';
+import { useExamQuestions, useCompleteExam, useResumeExam } from '../hooks/useExams';
+import { useUserStatistics } from '../hooks/useStatistics';
+import { useQueryClient } from '@tanstack/react-query';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -54,27 +58,79 @@ interface ExamSession {
 const ExamPage: React.FC = () => {
   const { sessionId } = useParams<{ sessionId: string }>();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [timeLeft, setTimeLeft] = useState(0);
   const [examCompleted, setExamCompleted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [localSession, setLocalSession] = useState<ExamSession | null>(null);
+  const [sessionInitialized, setSessionInitialized] = useState(false);
+  const [examResults, setExamResults] = useState<any>(null);
+  const [showResultsModal, setShowResultsModal] = useState(false);
 
   // Use custom hooks
   const { data: sessionData, isLoading: loading, error: queryError } = useExamQuestions(sessionId || '');
+  const resumeExamMutation = useResumeExam();
   const completeExamMutation = useCompleteExam();
+  const { data: userStats } = useUserStatistics();
   
-  const session = sessionData?.data as ExamSession | null;
+  const session = localSession || (sessionData as ExamSession | null);
 
   const currentQuestion = session?.questions[currentQuestionIndex];
   const totalQuestions = session?.questions.length || 0;
 
+  // Initialize local session when data loads
   useEffect(() => {
-    if (session) {
-      setTimeLeft(session.durationMinutes * 60);
+    console.log('Session data changed:', { sessionData, localSession });
+    if (sessionData && !localSession) {
+      console.log('Setting local session:', sessionData);
+      setLocalSession(sessionData as ExamSession);
     }
-  }, [session]);
+  }, [sessionData]);
+
+  useEffect(() => {
+    if (session && !sessionInitialized) {
+      console.log('Initializing session:', session);
+      setSessionInitialized(true);
+      
+        // Check if this is a resumed exam
+        if (session.status === 'in_progress' && session.questions) {
+          // Load existing progress
+          const attemptedQuestions = 0; // We'll calculate this from questions
+          setCurrentQuestionIndex(attemptedQuestions);
+          
+          // Calculate remaining time
+          const timeSpent = 0; // We'll calculate this
+          const totalTime = session.durationMinutes * 60;
+          setTimeLeft(Math.max(0, totalTime - timeSpent));
+          
+          // Load existing answers into the questions array
+          const updatedQuestions = session.questions.map((q, index) => {
+            // Check if question has userAnswer property
+            const existingAnswer = (q as any).userAnswer;
+            return existingAnswer ? { ...q, userAnswer: existingAnswer } : q;
+          });
+          
+          setLocalSession(prev => prev ? { ...prev, questions: updatedQuestions } : null);
+          
+          // Load current question's answer
+          if (updatedQuestions[attemptedQuestions]?.userAnswer) {
+            setSelectedAnswer(updatedQuestions[attemptedQuestions].userAnswer);
+          }
+        } else {
+          // New exam
+          setTimeLeft(session.durationMinutes * 60);
+          setCurrentQuestionIndex(0);
+        }
+    }
+  }, [session, sessionInitialized]);
+
+  // Debug: Track currentQuestionIndex changes
+  useEffect(() => {
+    console.log('currentQuestionIndex changed to:', currentQuestionIndex);
+  }, [currentQuestionIndex]);
 
   useEffect(() => {
     if (timeLeft <= 0 && !examCompleted) {
@@ -94,8 +150,21 @@ const ExamPage: React.FC = () => {
     setSelectedAnswer(answer);
   };
 
-  const handleNextQuestion = async () => {
-    if (!currentQuestion || !selectedAnswer || !session) return;
+  const handleNextQuestion = async (e?: React.MouseEvent) => {
+    e?.preventDefault();
+    e?.stopPropagation();
+    
+    console.log('handleNextQuestion called', {
+      currentQuestion: !!currentQuestion,
+      selectedAnswer,
+      session: !!session,
+      currentQuestionIndex,
+      totalQuestions,
+      examCompleted,
+      sessionInitialized
+    });
+
+    if (!currentQuestion || !selectedAnswer || !session || examCompleted || !sessionInitialized) return;
 
     // Update the question with the selected answer
     const updatedQuestions = session.questions.map((q, index) => 
@@ -104,12 +173,19 @@ const ExamPage: React.FC = () => {
         : q
     );
 
-    setSession(prev => prev ? { ...prev, questions: updatedQuestions } : null);
+    console.log('Updated questions:', updatedQuestions);
+
+    setLocalSession(prev => prev ? { ...prev, questions: updatedQuestions } : null);
 
     if (currentQuestionIndex < totalQuestions - 1) {
-      setCurrentQuestionIndex(prev => prev + 1);
+      console.log('Moving to next question', { currentQuestionIndex, totalQuestions });
+      setCurrentQuestionIndex(prev => {
+        console.log('Setting question index from', prev, 'to', prev + 1);
+        return prev + 1;
+      });
       setSelectedAnswer('');
     } else {
+      console.log('Completing exam');
       handleExamComplete();
     }
   };
@@ -131,16 +207,43 @@ const ExamPage: React.FC = () => {
 
       const totalMarksObtained = updatedQuestions.reduce((sum, q) => sum + q.marksObtained, 0);
       const percentage = Math.round((totalMarksObtained / session.totalMarks) * 100);
+      
+      // Calculate statistics
+      const questionsAttempted = updatedQuestions.filter(q => q.userAnswer).length;
+      const correctAnswers = updatedQuestions.filter(q => q.isCorrect).length;
+      const incorrectAnswers = questionsAttempted - correctAnswers;
+      const skippedQuestions = updatedQuestions.length - questionsAttempted;
+      const timeSpentSeconds = session.durationMinutes * 60 - timeLeft;
 
       const examData = {
-        questions: updatedQuestions,
-        totalMarksObtained,
-        percentage,
-        timeSpent: session.durationMinutes * 60 - timeLeft
+        timeSpentSeconds,
+        questionsAttempted,
+        correctAnswers,
+        incorrectAnswers,
+        skippedQuestions,
+        marksObtained: totalMarksObtained,
+        percentage
       };
 
-      await completeExamMutation.mutateAsync({ sessionId, examData });
-      setExamCompleted(true);
+    console.log('Sending exam completion data:', examData);
+    const result = await completeExamMutation.mutateAsync({ sessionId, examData });
+    
+    // Invalidate statistics cache to update the dashboard
+    queryClient.invalidateQueries({ queryKey: ['userStatistics'] });
+    queryClient.invalidateQueries({ queryKey: ['examHistory'] });
+    queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
+    queryClient.invalidateQueries({ queryKey: ['userRank'] });
+    queryClient.invalidateQueries({ queryKey: ['availableSubjects'] });
+    
+    // Store the results and show modal
+    setExamResults({
+      ...examData,
+      examName: session.examName,
+      totalMarks: session.totalMarks,
+      durationMinutes: session.durationMinutes
+    });
+    setShowResultsModal(true);
+    setExamCompleted(true);
     } catch (error) {
       console.error('Error completing exam:', error);
     } finally {
@@ -314,6 +417,13 @@ const ExamPage: React.FC = () => {
               <Text type="secondary">
                 Question {currentQuestionIndex + 1} of {totalQuestions}
               </Text>
+              {userStats && (
+                <div style={{ marginTop: '8px', display: 'flex', gap: '16px', fontSize: '12px' }}>
+                  <Text type="secondary">Total Solved: {userStats.totalQuestionsAttempted || 0}</Text>
+                  <Text type="secondary">Accuracy: {Math.round(parseFloat(userStats.overallAccuracy || '0'))}%</Text>
+                  <Text type="secondary">Streak: {userStats.currentStreak || 0}</Text>
+                </div>
+              )}
             </Col>
             <Col>
               <div style={{ textAlign: 'right' }}>
@@ -353,11 +463,11 @@ const ExamPage: React.FC = () => {
             style={{ width: '100%' }}
           >
             <Space direction="vertical" style={{ width: '100%' }}>
-              {currentQuestion?.options.map((option) => {
+              {currentQuestion?.options.map((option, index) => {
                 const optionText = typeof option === 'string' ? option : (option?.text || option);
-                const optionId = typeof option === 'string' ? option : (option?.id || option);
+                const optionValue = typeof option === 'string' ? option : (option?.text || option);
                 return (
-                  <Radio key={optionId} value={optionText} style={{ 
+                  <Radio key={index} value={optionValue} style={{ 
                     display: 'block',
                     padding: '12px',
                     border: '1px solid #d9d9d9',
@@ -365,7 +475,7 @@ const ExamPage: React.FC = () => {
                     marginBottom: '8px',
                     fontSize: '16px'
                   }}>
-                    {optionText}
+                    {String(optionText)}
                   </Radio>
                 );
               })}
@@ -381,6 +491,7 @@ const ExamPage: React.FC = () => {
             onClick={handleNextQuestion}
             disabled={!selectedAnswer || submitting}
             loading={submitting}
+            htmlType="button"
             style={{ 
               padding: '0 32px',
               height: '48px',
@@ -392,6 +503,123 @@ const ExamPage: React.FC = () => {
           </Button>
         </div>
       </div>
+
+      {/* Exam Results Modal */}
+      <Modal
+        title="Exam Results"
+        open={showResultsModal}
+        onCancel={() => setShowResultsModal(false)}
+        footer={[
+          <Button key="back" onClick={() => navigate('/exams')}>
+            Back to Exams
+          </Button>,
+          <Button key="close" type="primary" onClick={() => setShowResultsModal(false)}>
+            Close
+          </Button>
+        ]}
+        width={800}
+        centered
+      >
+        {examResults && (
+          <div>
+            <Result
+              status={examResults.percentage >= 60 ? "success" : "warning"}
+              title={`${examResults.examName} - Completed!`}
+              subTitle={`You scored ${examResults.percentage}% (${examResults.marksObtained}/${examResults.totalMarks} marks)`}
+            />
+            
+            <Divider />
+            
+            <Row gutter={[16, 16]}>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Questions Attempted"
+                    value={examResults.questionsAttempted}
+                    suffix={`/ ${examResults.questionsAttempted + examResults.skippedQuestions}`}
+                    prefix={<QuestionCircleOutlined />}
+                    valueStyle={{ color: '#1890ff' }}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Correct Answers"
+                    value={examResults.correctAnswers}
+                    prefix={<CheckCircleOutlined />}
+                    valueStyle={{ color: '#52c41a' }}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Incorrect Answers"
+                    value={examResults.incorrectAnswers}
+                    prefix={<CloseCircleOutlined />}
+                    valueStyle={{ color: '#ff4d4f' }}
+                  />
+                </Card>
+              </Col>
+            </Row>
+
+            <Row gutter={[16, 16]} style={{ marginTop: '16px' }}>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Skipped Questions"
+                    value={examResults.skippedQuestions}
+                    prefix={<ClockCircleOutlined />}
+                    valueStyle={{ color: '#faad14' }}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Time Spent"
+                    value={Math.floor(examResults.timeSpentSeconds / 60)}
+                    suffix={`min ${examResults.timeSpentSeconds % 60}s`}
+                    prefix={<ClockCircleOutlined />}
+                    valueStyle={{ color: '#722ed1' }}
+                  />
+                </Card>
+              </Col>
+              <Col xs={24} sm={8}>
+                <Card>
+                  <Statistic
+                    title="Total Duration"
+                    value={examResults.durationMinutes}
+                    suffix="min"
+                    prefix={<ClockCircleOutlined />}
+                    valueStyle={{ color: '#13c2c2' }}
+                  />
+                </Card>
+              </Col>
+            </Row>
+
+            <Divider />
+            
+            <div style={{ textAlign: 'center', marginTop: '24px' }}>
+              <Progress
+                type="circle"
+                percent={examResults.percentage}
+                strokeColor={examResults.percentage >= 80 ? '#52c41a' : examResults.percentage >= 60 ? '#faad14' : '#ff4d4f'}
+                size={120}
+                format={(percent) => `${percent}%`}
+              />
+              <div style={{ marginTop: '16px' }}>
+                <Text strong style={{ fontSize: '18px' }}>
+                  {examResults.percentage >= 80 ? 'Excellent!' : 
+                   examResults.percentage >= 60 ? 'Good Job!' : 
+                   'Keep Practicing!'}
+                </Text>
+              </div>
+            </div>
+          </div>
+        )}
+      </Modal>
     </AppLayout>
   );
 };

@@ -24,16 +24,26 @@ export const createPracticeSession = async (req: Request, res: Response) => {
     const userId = (req as any).user.userId;
     const validatedData = CreatePracticeSessionSchema.parse(req.body);
     
-    const session = await backendPracticeService.createPracticeSession(
+    console.log('createPracticeSession called with:', {
+      userId,
+      validatedData
+    });
+    
+    const result = await backendPracticeService.createPracticeSession(
       userId,
       validatedData.category,
       validatedData.timeLimitMinutes
     );
     
+    console.log('createPracticeSession result:', result);
+    
     res.status(201).json({
       success: true,
       message: 'Practice session created successfully',
-      data: session,
+      data: {
+        ...result.session,
+        questions: result.questions
+      }, // Return session with questions included
     });
   } catch (error: any) {
     console.error('Create practice session error:', error);
@@ -71,6 +81,20 @@ export const updatePracticeAnswer = async (req: Request, res: Response) => {
     const userId = (req as any).user.userId;
     const { sessionId } = req.params;
     const validatedData = UpdateAnswerSchema.parse(req.body);
+    
+    console.log('updatePracticeAnswer called with:', {
+      userId,
+      sessionId,
+      sessionIdType: typeof sessionId,
+      sessionIdLength: sessionId ? sessionId.length : 'undefined',
+      validatedData,
+      reqParams: req.params,
+      reqUrl: req.url
+    });
+    
+    if (!sessionId || sessionId === 'undefined') {
+      throw new Error('Session ID is required and cannot be undefined');
+    }
     
     const result = await backendPracticeService.updatePracticeSessionAnswer(
       sessionId,

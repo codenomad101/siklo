@@ -1,6 +1,7 @@
 import { db } from '../db';
 import { dynamicExamSessions, NewDynamicExamSession, DynamicExamSession, practiceCategories } from '../db/schema';
 import { eq, and, desc } from 'drizzle-orm';
+import { StatisticsService } from './statistics';
 
 export class DynamicExamService {
   // Create a new dynamic exam session
@@ -91,6 +92,50 @@ export class DynamicExamService {
         ))
         .returning();
 
+      // Update user statistics
+      const statisticsService = new StatisticsService();
+      console.log('Updating exam statistics for user:', userId, {
+        questionsAttempted: completionData.questionsAttempted,
+        correctAnswers: completionData.correctAnswers,
+        incorrectAnswers: completionData.incorrectAnswers,
+        timeSpentMinutes: Math.floor(completionData.timeSpentSeconds / 60),
+      });
+      
+      // Update overall statistics
+      await statisticsService.updateExamStatistics(userId, {
+        questionsAttempted: completionData.questionsAttempted,
+        correctAnswers: completionData.correctAnswers,
+        incorrectAnswers: completionData.incorrectAnswers,
+        timeSpentMinutes: Math.floor(completionData.timeSpentSeconds / 60),
+      });
+      
+      // Update subject-specific statistics for each category in the exam
+      const categoryStats = new Map<string, { questionsAttempted: number; correctAnswers: number; incorrectAnswers: number; timeSpentMinutes: number }>();
+      
+      // Calculate statistics per category
+      questionsData.forEach(q => {
+        const categoryId = q.categoryId || q.category;
+        if (!categoryStats.has(categoryId)) {
+          categoryStats.set(categoryId, { questionsAttempted: 0, correctAnswers: 0, incorrectAnswers: 0, timeSpentMinutes: 0 });
+        }
+        const stats = categoryStats.get(categoryId)!;
+        stats.questionsAttempted++;
+        if (q.isCorrect) {
+          stats.correctAnswers++;
+        } else {
+          stats.incorrectAnswers++;
+        }
+        stats.timeSpentMinutes += Math.floor(q.timeSpentSeconds / 60);
+      });
+      
+      // Update statistics for each category
+      for (const [categoryId, stats] of categoryStats) {
+        console.log('Updating subject-specific exam statistics for category:', categoryId, stats);
+        await statisticsService.updateSubjectExamStatistics(userId, categoryId, stats);
+      }
+      
+      console.log('Exam statistics updated successfully');
+
       return session;
     } catch (error) {
       console.error('Error updating exam session questions:', error);
@@ -165,6 +210,56 @@ export class DynamicExamService {
         throw error;
       }
       throw new Error('Failed to fetch exam session');
+    }
+  }
+
+  // Resume an incomplete exam session
+  async resumeExamSession(sessionId: string, userId: string) {
+    try {
+      // Validate UUID format
+      const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+      if (!uuidRegex.test(sessionId)) {
+        throw new Error(`Invalid session ID format: ${sessionId}`);
+      }
+
+      const [session] = await db
+        .select()
+        .from(dynamicExamSessions)
+        .where(and(
+          eq(dynamicExamSessions.sessionId, sessionId),
+          eq(dynamicExamSessions.userId, userId)
+        ))
+        .limit(1);
+
+      if (!session) {
+        throw new Error('Exam session not found');
+      }
+
+      // Check if exam can be resumed
+      if (session.status === 'completed') {
+        throw new Error('Exam is already completed');
+      }
+
+      if (session.status === 'abandoned') {
+        throw new Error('Exam has been abandoned and cannot be resumed');
+      }
+
+      // Calculate completion percentage
+      const totalQuestions = session.questionsData?.length || 0;
+      const attemptedQuestions = session.questionsAttempted || 0;
+      const completionPercentage = totalQuestions > 0 ? Math.round((attemptedQuestions / totalQuestions) * 100) : 0;
+
+      return {
+        ...session,
+        completionPercentage,
+        canResume: session.status === 'in_progress' || session.status === 'not_started'
+      };
+    } catch (error) {
+      console.error('Error resuming exam session:', error);
+      if (error.message.includes('Invalid session ID format')) {
+        throw error;
+      }
+      throw new Error('Failed to resume exam session');
     }
   }
 

@@ -1,6 +1,7 @@
 import { db } from '../db';
 import { practiceSessions, practiceCategories, practiceQuestions, NewPracticeSession, PracticeSession } from '../db/schema';
 import { eq, and, desc, count, sql } from 'drizzle-orm';
+import { StatisticsService } from './statistics';
 
 export class PracticeService {
   // Get available practice categories from database or JSON files
@@ -271,6 +272,9 @@ export class PracticeService {
 
       const [session] = await db.insert(practiceSessions).values(newSession).returning();
       
+      console.log('Created practice session:', session);
+      console.log('Session ID:', session.sessionId);
+      
       return {
         session,
         questions
@@ -393,6 +397,49 @@ export class PracticeService {
           updatedAt: new Date()
         })
         .where(eq(practiceSessions.sessionId, sessionId));
+
+      // Update user statistics
+      const statisticsService = new StatisticsService();
+      console.log('Updating practice statistics for user:', userId, {
+        questionsAttempted: session.questionsAttempted || 0,
+        correctAnswers: session.correctAnswers || 0,
+        incorrectAnswers: session.incorrectAnswers || 0,
+        skippedQuestions: session.skippedQuestions || 0,
+        timeSpentMinutes: Math.floor((session.timeSpentSeconds || 0) / 60),
+      });
+      
+      // Update overall statistics
+      await statisticsService.updatePracticeStatistics(userId, {
+        questionsAttempted: session.questionsAttempted || 0,
+        correctAnswers: session.correctAnswers || 0,
+        incorrectAnswers: session.incorrectAnswers || 0,
+        skippedQuestions: session.skippedQuestions || 0,
+        timeSpentMinutes: Math.floor((session.timeSpentSeconds || 0) / 60),
+      });
+      
+      // Update subject-specific statistics
+      // First, get the category ID from the session
+      const [category] = await db
+        .select()
+        .from(practiceCategories)
+        .where(eq(practiceCategories.slug, session.category))
+        .limit(1);
+      
+      if (category) {
+        console.log('Updating subject-specific statistics for category:', category.name, category.categoryId);
+        await statisticsService.updateSubjectPracticeStatistics(userId, category.categoryId, {
+          questionsAttempted: session.questionsAttempted || 0,
+          correctAnswers: session.correctAnswers || 0,
+          incorrectAnswers: session.incorrectAnswers || 0,
+          skippedQuestions: session.skippedQuestions || 0,
+          timeSpentMinutes: Math.floor((session.timeSpentSeconds || 0) / 60),
+        });
+        console.log('Subject-specific statistics updated successfully');
+      } else {
+        console.log('Category not found for slug:', session.category);
+      }
+      
+      console.log('Practice statistics updated successfully');
 
       return session;
     } catch (error) {

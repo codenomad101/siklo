@@ -36,6 +36,8 @@ export const usePracticeSession = (sessionId: string) => {
 
 // Update Practice Answer Hook
 export const useUpdatePracticeAnswer = () => {
+  const queryClient = useQueryClient();
+  
   return useMutation({
     mutationFn: ({ sessionId, questionId, userAnswer, timeSpentSeconds }: {
       sessionId: string;
@@ -43,6 +45,12 @@ export const useUpdatePracticeAnswer = () => {
       userAnswer: string;
       timeSpentSeconds: number;
     }) => practiceAPI.updateAnswer(sessionId, questionId, userAnswer, timeSpentSeconds),
+    onSuccess: () => {
+      // Invalidate statistics cache to update real-time stats
+      queryClient.invalidateQueries({ queryKey: ['userStatistics'] });
+      queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
+      queryClient.invalidateQueries({ queryKey: ['userRank'] });
+    },
     onError: (error: any) => {
       console.error('Error updating practice answer:', error);
       message.error('Failed to save answer');
@@ -59,6 +67,10 @@ export const useCompletePracticeSession = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['practiceHistory'] });
       queryClient.invalidateQueries({ queryKey: ['practiceStats'] });
+      queryClient.invalidateQueries({ queryKey: ['userStatistics'] });
+      queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
+      queryClient.invalidateQueries({ queryKey: ['userRank'] });
+      queryClient.invalidateQueries({ queryKey: ['availableSubjects'] });
       message.success('Practice session completed successfully!');
     },
     onError: (error: any) => {

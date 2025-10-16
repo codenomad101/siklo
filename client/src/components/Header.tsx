@@ -122,15 +122,16 @@ export const Header: React.FC<HeaderProps> = ({ showAuth = true }) => {
       className: 'nav-menu-item'
     },
     {
+      key: '/leaderboard',
+      label: <Link to="/leaderboard">Leaderboard</Link>,
+      className: 'nav-menu-item'
+    },
+    {
       key: '/study-materials',
       label: <Link to="/study-materials">Study Materials</Link>,
       className: 'nav-menu-item'
     },
-    {
-      key: '/analytics',
-      label: <Link to="/analytics">Analytics</Link>,
-      className: 'nav-menu-item'
-    },
+   
     {
       key: '/help',
       label: <Link to="/help">Help</Link>,

@@ -23,6 +23,7 @@ import {
 import { AppLayout } from '../components/AppLayout';
 import { dataService, Question } from '../services/dataService';
 import { practiceAPI } from '../services/api';
+import { useQueryClient } from '@tanstack/react-query';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -45,6 +46,7 @@ interface PracticeSession {
 const PracticeTestPage: React.FC = () => {
   const { categoryId } = useParams<{ categoryId: string }>();
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   
   const [session, setSession] = useState<PracticeSession | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -58,19 +60,15 @@ const PracticeTestPage: React.FC = () => {
   const currentQuestion = session?.questions[currentQuestionIndex];
   const totalQuestions = session?.totalQuestions || 20;
   
-  // Debug: Log current question structure
+  // Debug: Log session changes
   useEffect(() => {
-    if (currentQuestion) {
-      console.log('Current question:', currentQuestion);
-      console.log('Question options:', currentQuestion.options);
-      console.log('Options type:', typeof currentQuestion.options);
-      console.log('Is array:', Array.isArray(currentQuestion.options));
-      if (currentQuestion.options && currentQuestion.options.length > 0) {
-        console.log('First option:', currentQuestion.options[0]);
-        console.log('First option type:', typeof currentQuestion.options[0]);
-      }
+    console.log('Session state changed:', session);
+    if (session) {
+      console.log('Session ID:', session.sessionId);
+      console.log('Session has questions:', !!session.questions);
+      console.log('Questions count:', session.questions?.length);
     }
-  }, [currentQuestion]);
+  }, [session]);
   
   const timePerQuestion = 45; // 45 seconds per question (15 minutes / 20 questions)
 
@@ -100,6 +98,13 @@ const PracticeTestPage: React.FC = () => {
 
         // Complete the practice session
         await dataService.completePracticeSession(session.sessionId);
+        
+        // Invalidate statistics cache to update the dashboard
+        queryClient.invalidateQueries({ queryKey: ['userStatistics'] });
+        queryClient.invalidateQueries({ queryKey: ['practiceHistory'] });
+        queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
+        queryClient.invalidateQueries({ queryKey: ['userRank'] });
+        queryClient.invalidateQueries({ queryKey: ['availableSubjects'] });
       } catch (error) {
         console.error('Error completing practice session:', error);
       }
@@ -118,6 +123,9 @@ const PracticeTestPage: React.FC = () => {
       try {
         // Create a new practice session via backend
         const sessionData = await practiceAPI.createSession(categoryId, 15);
+        console.log('Session data received:', sessionData);
+        console.log('Session data structure:', JSON.stringify(sessionData, null, 2));
+        console.log('Setting session with data:', sessionData.data);
         setSession(sessionData.data);
       } catch (err) {
         setError('Failed to create practice session');
@@ -157,7 +165,15 @@ const PracticeTestPage: React.FC = () => {
   };
 
   const handleNextQuestion = async () => {
-    if (!currentQuestion || !selectedAnswer || !session) return;
+    if (!currentQuestion || !selectedAnswer || !session) {
+      console.log('Missing required data:', {
+        currentQuestion: !!currentQuestion,
+        selectedAnswer: !!selectedAnswer,
+        session: !!session,
+        sessionId: session?.sessionId
+      });
+      return;
+    }
 
     const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
     const timeSpent = timePerQuestion - (timeLeft % timePerQuestion);
@@ -173,12 +189,19 @@ const PracticeTestPage: React.FC = () => {
 
     try {
       // Update the answer in the backend
+      console.log('Updating practice answer with sessionId:', session.sessionId);
+      console.log('Session object:', session);
       await dataService.updatePracticeAnswer(
         session.sessionId,
         currentQuestion.questionId,
         selectedAnswer,
         timeSpent
       );
+      
+      // Invalidate statistics cache to update real-time stats
+      queryClient.invalidateQueries({ queryKey: ['userStatistics'] });
+      queryClient.invalidateQueries({ queryKey: ['leaderboard'] });
+      queryClient.invalidateQueries({ queryKey: ['userRank'] });
     } catch (error) {
       console.error('Error updating practice answer:', error);
     }

@@ -156,6 +156,63 @@ export const examAPI = {
     const response = await apiClient.get('/exam/dynamic/stats');
     return response.data.data || {};
   },
+
+  resumeExam: async (sessionId: string) => {
+    const response = await apiClient.get(`/exam/dynamic/${sessionId}/resume`);
+    return response.data.data;
+  },
+};
+
+// Statistics API functions
+export const statisticsAPI = {
+  getUserStatistics: async () => {
+    const response = await apiClient.get('/statistics/user');
+    return response.data.data;
+  },
+
+  updatePracticeStatistics: async (data: {
+    questionsAttempted: number;
+    correctAnswers: number;
+    incorrectAnswers: number;
+    skippedQuestions: number;
+    timeSpentMinutes: number;
+  }) => {
+    const response = await apiClient.post('/statistics/practice', data);
+    return response.data;
+  },
+
+  updateExamStatistics: async (data: {
+    questionsAttempted: number;
+    correctAnswers: number;
+    incorrectAnswers: number;
+    timeSpentMinutes: number;
+  }) => {
+    const response = await apiClient.post('/statistics/exam', data);
+    return response.data;
+  },
+
+  getLeaderboard: async (period: 'daily' | 'weekly' | 'monthly' | 'alltime' = 'alltime', category: 'overall' | 'practice' | 'exam' | 'streak' | 'accuracy' = 'overall', subjectId?: string, limit: number = 50) => {
+    const params = new URLSearchParams({
+      period,
+      category,
+      limit: limit.toString()
+    });
+    if (subjectId) {
+      params.append('subjectId', subjectId);
+    }
+    const response = await apiClient.get(`/statistics/leaderboard?${params.toString()}`);
+    return response.data.data;
+  },
+
+  getUserRank: async (period: 'daily' | 'weekly' | 'monthly' | 'alltime' = 'alltime') => {
+    const response = await apiClient.get(`/statistics/rank?period=${period}`);
+    return response.data.data;
+  },
+
+  getAvailableSubjects: async () => {
+    const response = await apiClient.get('/statistics/subjects');
+    return response.data.data;
+  },
 };
 
 // User API functions

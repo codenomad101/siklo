@@ -20,6 +20,7 @@ import enhancedPracticeRoutes from './routes/enhancedPractice';
 import dynamicExamRoutes from './routes/dynamicExam';
 import jobsRoutes from './routes/jobs';
 import adminRoutes from './routes/admin';
+import statisticsRoutes from './routes/statistics';
 
 // Load environment variables
 config();
@@ -45,6 +46,7 @@ app.use('/api/practice/enhanced', enhancedPracticeRoutes);
 app.use('/api/exam/dynamic', dynamicExamRoutes);
 app.use('/api/jobs', jobsRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/statistics', statisticsRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {

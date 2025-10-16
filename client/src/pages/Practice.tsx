@@ -17,6 +17,7 @@ import { ReadOutlined, FormOutlined, QuestionCircleOutlined, ClockCircleOutlined
 import { AppLayout } from '../components/AppLayout';
 import { useCategories } from '../hooks/useCategories';
 import { useCreateDynamicExam } from '../hooks/useExams';
+import { useUserStatistics } from '../hooks/useStatistics';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -36,6 +37,7 @@ const PracticePage: React.FC = () => {
   // Use custom hooks
   const { data: categories = [], isLoading: loading } = useCategories();
   const createExamMutation = useCreateDynamicExam();
+  const { data: userStats } = useUserStatistics();
 
   useEffect(() => {
     // Initialize question distribution for exam mode
@@ -124,6 +126,52 @@ const PracticePage: React.FC = () => {
             size="large"
           />
         </div>
+
+        {/* User Statistics */}
+        {userStats && (
+          <Row gutter={[16, 16]} style={{ marginBottom: '32px' }}>
+            <Col xs={24} sm={6}>
+              <Card>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#1890ff', marginBottom: '4px' }}>
+                    {userStats.totalQuestionsAttempted || 0}
+                  </div>
+                  <Text type="secondary">Total Questions Solved</Text>
+                </div>
+              </Card>
+            </Col>
+            <Col xs={24} sm={6}>
+              <Card>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#52c41a', marginBottom: '4px' }}>
+                    {userStats.totalCorrectAnswers || 0}
+                  </div>
+                  <Text type="secondary">Correct Answers</Text>
+                </div>
+              </Card>
+            </Col>
+            <Col xs={24} sm={6}>
+              <Card>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#faad14', marginBottom: '4px' }}>
+                    {userStats.currentStreak || 0}
+                  </div>
+                  <Text type="secondary">Current Streak</Text>
+                </div>
+              </Card>
+            </Col>
+            <Col xs={24} sm={6}>
+              <Card>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#722ed1', marginBottom: '4px' }}>
+                    {Math.round(parseFloat(userStats.overallAccuracy || '0'))}%
+                  </div>
+                  <Text type="secondary">Overall Accuracy</Text>
+                </div>
+              </Card>
+            </Col>
+          </Row>
+        )}
 
         {selectedMode === 'practice' ? (
           <>

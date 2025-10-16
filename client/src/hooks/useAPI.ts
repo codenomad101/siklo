@@ -8,3 +8,4 @@ export * from './useProgress';
 export * from './useAdmin';
 export * from './useCategories';
 export * from './useJobs';
+export * from './useStatistics';

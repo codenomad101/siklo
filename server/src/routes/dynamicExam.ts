@@ -7,6 +7,7 @@ import {
   submitExamAnswers,
   completeExamSession,
   getExamSession,
+  resumeExamSession,
   getUserExamHistory,
   getUserExamStats
 } from '../controllers/dynamicExam';
@@ -36,6 +37,9 @@ router.post('/:sessionId/answers', submitExamAnswers);
 
 // Complete exam session
 router.post('/:sessionId/complete', completeExamSession);
+
+// Resume an incomplete exam session
+router.get('/:sessionId/resume', resumeExamSession);
 
 // Get exam session details
 router.get('/:sessionId', getExamSession);

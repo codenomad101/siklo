@@ -551,6 +551,134 @@ export const jsonImportLogs = pgTable('json_import_logs', {
   completedAt: timestamp('completed_at'),
 });
 
+// User Statistics table
+export const userStatistics = pgTable('user_statistics', {
+  userId: uuid('user_id').primaryKey().references(() => users.userId, { onDelete: 'cascade' }),
+  
+  // Practice Statistics
+  totalPracticeSessions: integer('total_practice_sessions').default(0).notNull(),
+  totalQuestionsAttempted: integer('total_questions_attempted').default(0).notNull(),
+  totalCorrectAnswers: integer('total_correct_answers').default(0).notNull(),
+  totalIncorrectAnswers: integer('total_incorrect_answers').default(0).notNull(),
+  totalSkippedQuestions: integer('total_skipped_questions').default(0).notNull(),
+  
+  // Exam Statistics
+  totalExamSessions: integer('total_exam_sessions').default(0).notNull(),
+  totalExamQuestionsAttempted: integer('total_exam_questions_attempted').default(0).notNull(),
+  totalExamCorrectAnswers: integer('total_exam_correct_answers').default(0).notNull(),
+  totalExamIncorrectAnswers: integer('total_exam_incorrect_answers').default(0).notNull(),
+  
+  // Streak Information
+  currentStreak: integer('current_streak').default(0).notNull(),
+  longestStreak: integer('longest_streak').default(0).notNull(),
+  lastActivityDate: date('last_activity_date'),
+  
+  // Time Statistics
+  totalTimeSpentMinutes: integer('total_time_spent_minutes').default(0).notNull(),
+  averageTimePerQuestion: decimal('average_time_per_question', { precision: 5, scale: 2 }).default('0'),
+  
+  // Accuracy Statistics
+  overallAccuracy: decimal('overall_accuracy', { precision: 5, scale: 2 }).default('0'),
+  practiceAccuracy: decimal('practice_accuracy', { precision: 5, scale: 2 }).default('0'),
+  examAccuracy: decimal('exam_accuracy', { precision: 5, scale: 2 }).default('0'),
+  
+  // Ranking Points (calculated field)
+  rankingPoints: integer('ranking_points').default(0).notNull(),
+  
+  // Timestamps
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// User Rankings table (for leaderboard)
+export const userRankings = pgTable('user_rankings', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.userId, { onDelete: 'cascade' }),
+  
+  // Ranking metrics
+  totalPoints: integer('total_points').notNull(),
+  practicePoints: integer('practice_points').notNull(),
+  examPoints: integer('exam_points').notNull(),
+  streakPoints: integer('streak_points').notNull(),
+  accuracyPoints: integer('accuracy_points').notNull(),
+  
+  // Rankings
+  overallRank: integer('overall_rank'),
+  practiceRank: integer('practice_rank'),
+  examRank: integer('exam_rank'),
+  streakRank: integer('streak_rank'),
+  accuracyRank: integer('accuracy_rank'),
+  
+  // Period (daily, weekly, monthly, all-time)
+  period: text('period').notNull(), // 'daily', 'weekly', 'monthly', 'alltime'
+  periodStart: timestamp('period_start').notNull(),
+  periodEnd: timestamp('period_end').notNull(),
+  
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+// Subject-specific user statistics
+export const subjectStatistics = pgTable('subject_statistics', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.userId, { onDelete: 'cascade' }),
+  categoryId: uuid('category_id').notNull().references(() => practiceCategories.categoryId, { onDelete: 'cascade' }),
+  
+  // Practice Statistics for this subject
+  totalPracticeSessions: integer('total_practice_sessions').default(0).notNull(),
+  totalQuestionsAttempted: integer('total_questions_attempted').default(0).notNull(),
+  totalCorrectAnswers: integer('total_correct_answers').default(0).notNull(),
+  totalIncorrectAnswers: integer('total_incorrect_answers').default(0).notNull(),
+  totalSkippedQuestions: integer('total_skipped_questions').default(0).notNull(),
+  
+  // Exam Statistics for this subject
+  totalExamSessions: integer('total_exam_sessions').default(0).notNull(),
+  totalExamQuestionsAttempted: integer('total_exam_questions_attempted').default(0).notNull(),
+  totalExamCorrectAnswers: integer('total_exam_correct_answers').default(0).notNull(),
+  totalExamIncorrectAnswers: integer('total_exam_incorrect_answers').default(0).notNull(),
+  
+  // Time Statistics
+  totalTimeSpentMinutes: integer('total_time_spent_minutes').default(0).notNull(),
+  averageTimePerQuestion: decimal('average_time_per_question', { precision: 5, scale: 2 }).default('0'),
+  
+  // Accuracy Statistics
+  overallAccuracy: decimal('overall_accuracy', { precision: 5, scale: 2 }).default('0'),
+  practiceAccuracy: decimal('practice_accuracy', { precision: 5, scale: 2 }).default('0'),
+  examAccuracy: decimal('exam_accuracy', { precision: 5, scale: 2 }).default('0'),
+  
+  // Ranking Points for this subject
+  rankingPoints: integer('ranking_points').default(0).notNull(),
+  
+  // Timestamps
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// Subject-specific rankings
+export const subjectRankings = pgTable('subject_rankings', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').notNull().references(() => users.userId, { onDelete: 'cascade' }),
+  categoryId: uuid('category_id').notNull().references(() => practiceCategories.categoryId, { onDelete: 'cascade' }),
+  
+  // Ranking metrics for this subject
+  totalPoints: integer('total_points').notNull(),
+  practicePoints: integer('practice_points').notNull(),
+  examPoints: integer('exam_points').notNull(),
+  accuracyPoints: integer('accuracy_points').notNull(),
+  
+  // Rankings for this subject
+  overallRank: integer('overall_rank'),
+  practiceRank: integer('practice_rank'),
+  examRank: integer('exam_rank'),
+  accuracyRank: integer('accuracy_rank'),
+  
+  // Period (daily, weekly, monthly, all-time)
+  period: text('period').notNull(), // 'daily', 'weekly', 'monthly', 'alltime'
+  periodStart: timestamp('period_start').notNull(),
+  periodEnd: timestamp('period_end').notNull(),
+  
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
 // Type exports for new tables
 export type PracticeCategory = typeof practiceCategories.$inferSelect;
 export type NewPracticeCategory = typeof practiceCategories.$inferInsert;
@@ -560,3 +688,11 @@ export type Job = typeof jobs.$inferSelect;
 export type NewJob = typeof jobs.$inferInsert;
 export type JsonImportLog = typeof jsonImportLogs.$inferSelect;
 export type NewJsonImportLog = typeof jsonImportLogs.$inferInsert;
+export type UserStatistics = typeof userStatistics.$inferSelect;
+export type NewUserStatistics = typeof userStatistics.$inferInsert;
+export type UserRanking = typeof userRankings.$inferSelect;
+export type NewUserRanking = typeof userRankings.$inferInsert;
+export type SubjectStatistics = typeof subjectStatistics.$inferSelect;
+export type NewSubjectStatistics = typeof subjectStatistics.$inferInsert;
+export type SubjectRanking = typeof subjectRankings.$inferSelect;
+export type NewSubjectRanking = typeof subjectRankings.$inferInsert;

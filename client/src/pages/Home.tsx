@@ -26,7 +26,8 @@ import {
 import { useAuth } from '../contexts/AuthContext';
 import { AppLayout } from '../components/AppLayout';
 import { useCategories } from '../hooks/useCategories';
-import { useDataServicePracticeHistory, useDataServicePracticeStats, useSampleQuestions } from '../hooks/useQuestions';
+import { useUserStatistics, useUserRank } from '../hooks/useStatistics';
+import { useDataServicePracticeHistory, useSampleQuestions } from '../hooks/useQuestions';
 
 const { Title, Text } = Typography;
 
@@ -36,21 +37,22 @@ export default function Home() {
   // Use custom hooks for data fetching
   const { data: categories = [], isLoading: categoriesLoading } = useCategories();
   const { data: practiceHistory = [], isLoading: historyLoading } = useDataServicePracticeHistory();
-  const { data: userStats = null, isLoading: statsLoading } = useDataServicePracticeStats();
+  const { data: userStats, isLoading: statsLoading } = useUserStatistics();
+  const { data: userRank } = useUserRank();
   
   // Get sample questions from first category
-  const firstCategory = categories[0];
+  const firstCategory = (categories as any[])[0];
   const { data: sampleSession, isLoading: sampleLoading } = useSampleQuestions(firstCategory?.id || '');
   
-  const recentQuestions = sampleSession?.questions?.slice(0, 5) || [];
+  const recentQuestions = (sampleSession as any)?.questions?.slice(0, 5) || [];
   
   const loading = categoriesLoading || historyLoading || statsLoading;
 
   const stats = userStats ? [
-    { label: 'Questions Solved', value: userStats.totalQuestions || '0', color: '#3b82f6' },
-    { label: 'Accuracy', value: `${userStats.averageAccuracy || 0}%`, color: '#10b981' },
-    { label: 'Time Spent', value: `${userStats.totalTimeMinutes || 0}min`, color: '#f59e0b' },
-    { label: 'Current Streak', value: `${userStats.currentStreak || 0} days`, color: '#8b5cf6' },
+    { label: 'Questions Solved', value: userStats.totalQuestionsAttempted || '0', color: '#3b82f6' },
+    { label: 'Accuracy', value: `${Math.round(parseFloat(userStats.overallAccuracy || '0'))}%`, color: '#10b981' },
+    { label: 'Time Spent', value: `${userStats.totalTimeSpentMinutes || '0'}min`, color: '#f59e0b' },
+    { label: 'Current Streak', value: `${userStats.currentStreak || '0'} days`, color: '#8b5cf6' },
   ] : [
     { label: 'Questions Solved', value: '0', color: '#3b82f6' },
     { label: 'Accuracy', value: '0%', color: '#10b981' },
@@ -58,15 +60,15 @@ export default function Home() {
     { label: 'Current Streak', value: '0 days', color: '#8b5cf6' },
   ];
 
-  const recentSessions = (practiceHistory || [])
-    .sort((a, b) => {
+  const recentSessions = ((practiceHistory as any[]) || [])
+    .sort((a: any, b: any) => {
       // Sort by completedAt date (most recent first)
       const dateA = a.completedAt ? new Date(a.completedAt).getTime() : 0;
       const dateB = b.completedAt ? new Date(b.completedAt).getTime() : 0;
       return dateB - dateA;
     })
     .slice(0, 3)
-    .map((session, index) => ({
+    .map((session: any, index: number) => ({
       rank: index + 1,
       subject: session.category || 'Unknown',
       score: Math.round(session.accuracy || 0),
@@ -94,6 +96,11 @@ export default function Home() {
             color: '#1f2937'
           }}>
             Welcome back, {user?.fullName?.split(' ')[0]}! 👋
+            {userRank && (
+              <Tag color="gold" style={{ marginLeft: '12px', fontSize: '12px' }}>
+                Rank #{userRank.overallRank || 'N/A'}
+              </Tag>
+            )}
           </Title>
           <Text style={{ 
             fontSize: '16px', 
@@ -193,7 +200,7 @@ export default function Home() {
             </div>
           ) : (
             <Row gutter={[16, 16]}>
-              {categories.map((category) => (
+              {(categories as any[]).map((category: any) => (
                 <Col xs={24} sm={12} md={8} lg={6} key={category.id}>
                   <Link to="/practice">
                     <div style={{
@@ -253,7 +260,7 @@ export default function Home() {
         </div>
 
         {/* Recent Questions Section */}
-        {recentQuestions.length > 0 && recentQuestions.every(q => q && typeof q === 'object') && (
+        {recentQuestions.length > 0 && recentQuestions.every((q: any) => q && typeof q === 'object') && (
           <div style={{ marginBottom: '48px' }}>
             <Title level={2} style={{ 
               margin: '0 0 24px 0',
@@ -266,7 +273,7 @@ export default function Home() {
             <Card style={{ borderRadius: '12px' }}>
               <List
                 dataSource={recentQuestions}
-                renderItem={(question, index) => (
+                renderItem={(question: any, index: number) => (
                   <List.Item>
                     <List.Item.Meta
                       avatar={
@@ -329,7 +336,7 @@ export default function Home() {
               Recent Sessions
             </Title>
             <Space direction="vertical" style={{ width: '100%' }} size="middle">
-              {recentSessions.map((session, index) => (
+              {recentSessions.map((session: any, index: number) => (
                 <div key={session.sessionId || index} style={{
                   padding: '20px',
                   borderRadius: '12px',

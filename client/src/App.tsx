@@ -14,6 +14,7 @@ import Exams from './pages/Exams';
 import Exam from './pages/Exam';
 import Profile from './pages/Profile';
 import Admin from './pages/Admin';
+import Leaderboard from './pages/Leaderboard';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -97,6 +98,14 @@ function App() {
                       element={
                         <ProtectedRoute requireAdmin={true}>
                           <Admin />
+                        </ProtectedRoute>
+                      } 
+                    />
+                    <Route 
+                      path="/leaderboard" 
+                      element={
+                        <ProtectedRoute>
+                          <Leaderboard />
                         </ProtectedRoute>
                       } 
                     />
