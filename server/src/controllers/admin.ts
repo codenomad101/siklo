@@ -332,13 +332,8 @@ export class AdminController {
         });
       }
 
-      if (!categoryId) {
-        console.log('No categoryId found');
-        return res.status(400).json({
-          success: false,
-          message: 'Category ID is required'
-        });
-      }
+      // Category ID is now optional - we can auto-create categories from JSON
+      console.log('Category ID provided:', categoryId || 'None - will auto-create from JSON');
 
       console.log('Processing file:', req.file.originalname, 'for category:', categoryId);
 
@@ -376,7 +371,7 @@ export class AdminController {
 
       // Create import log
       const importLog: NewJsonImportLog = {
-        categoryId,
+        categoryId: categoryId || null, // Allow null for auto-created categories
         fileName: req.file.originalname,
         filePath: filePath,
         fileSize: req.file.size,
@@ -386,6 +381,7 @@ export class AdminController {
       };
 
       const [log] = await db.insert(jsonImportLogs).values(importLog).returning();
+      const importLogId = log.importId; // Store log ID for error handling
 
       let importedCount = 0;
       let skippedCount = 0;
@@ -401,11 +397,84 @@ export class AdminController {
             continue;
           }
 
+          // Handle category mapping - if question has a category field, try to find or create it
+          let targetCategoryId = categoryId;
+          if (questionData.category) {
+            console.log(`Processing question with category: ${questionData.category}`);
+            
+            // Try to find existing category by name
+            const [existingCategory] = await db
+              .select()
+              .from(practiceCategories)
+              .where(eq(practiceCategories.name, questionData.category))
+              .limit(1);
+            
+            if (existingCategory) {
+              targetCategoryId = existingCategory.categoryId;
+              console.log(`Found existing category: ${existingCategory.name} (${targetCategoryId})`);
+            } else {
+              // Create new category if it doesn't exist
+              console.log(`Creating new category: ${questionData.category}`);
+              
+              // Generate unique slug
+              let baseSlug = questionData.category.toLowerCase().replace(/\s+/g, '-');
+              let slug = baseSlug;
+              let counter = 1;
+              
+              // Check if slug already exists and make it unique
+              while (true) {
+                const [existingSlug] = await db
+                  .select()
+                  .from(practiceCategories)
+                  .where(eq(practiceCategories.slug, slug))
+                  .limit(1);
+                
+                if (!existingSlug) {
+                  break; // Slug is unique
+                }
+                
+                slug = `${baseSlug}-${counter}`;
+                counter++;
+              }
+              
+              const newCategory: NewPracticeCategory = {
+                name: questionData.category,
+                slug: slug,
+                description: `Auto-created category for imported questions`,
+                color: '#FF7846',
+                language: 'en',
+                timeLimitMinutes: 15,
+                questionsPerSession: 20,
+                status: 'active',
+                createdBy: userId,
+                updatedBy: userId
+              };
+              
+              try {
+                const [createdCategory] = await db.insert(practiceCategories).values(newCategory).returning();
+                targetCategoryId = createdCategory.categoryId;
+                console.log(`Created new category: ${createdCategory.name} (${targetCategoryId}) with slug: ${slug}`);
+              } catch (error) {
+                console.error(`Error creating category ${questionData.category}:`, error);
+                // Fall back to using the provided categoryId or skip this question
+                if (categoryId) {
+                  targetCategoryId = categoryId;
+                  console.log(`Falling back to provided category: ${categoryId}`);
+                } else {
+                  console.log(`Skipping question due to category creation failure`);
+                  skippedCount++;
+                  continue;
+                }
+              }
+            }
+          }
+
           const newQuestion: NewPracticeQuestion = {
-            categoryId,
+            categoryId: targetCategoryId,
             questionText: questionData.Question,
             options: questionData.Options,
             correctAnswer: questionData.CorrectAnswer,
+            correctOption: questionData.correctOption || null, // Add the new field
             explanation: questionData.Explanation || '',
             difficulty: questionData.Difficulty || 'medium',
             job: questionData.Job || [],
@@ -415,8 +484,14 @@ export class AdminController {
             updatedBy: userId
           };
 
-          await db.insert(practiceQuestions).values(newQuestion);
-          importedCount++;
+          try {
+            await db.insert(practiceQuestions).values(newQuestion);
+            importedCount++;
+            console.log(`Successfully imported question: ${questionData.Question.substring(0, 50)}...`);
+          } catch (error) {
+            console.error(`Error inserting question:`, error);
+            errorCount++;
+          }
 
         } catch (error) {
           console.error('Error importing question:', error);
@@ -424,22 +499,27 @@ export class AdminController {
         }
       }
 
-      // Update category question count
-      const [category] = await db
-        .select()
-        .from(practiceCategories)
-        .where(eq(practiceCategories.categoryId, categoryId))
-        .limit(1);
+      // Update category question counts for all affected categories
+      // Note: Since we may have created new categories, we'll update counts for all categories
+      // This is a simplified approach - in production, you might want to track per-category counts
+      if (categoryId) {
+        const [category] = await db
+          .select()
+          .from(practiceCategories)
+          .where(eq(practiceCategories.categoryId, categoryId))
+          .limit(1);
 
-      if (category) {
-        await db
-          .update(practiceCategories)
-          .set({
-            totalQuestions: category.totalQuestions + importedCount,
-            updatedAt: new Date()
-          })
-          .where(eq(practiceCategories.categoryId, categoryId));
+        if (category) {
+          await db
+            .update(practiceCategories)
+            .set({
+              totalQuestions: (category.totalQuestions || 0) + importedCount,
+              updatedAt: new Date()
+            })
+            .where(eq(practiceCategories.categoryId, categoryId));
+        }
       }
+      // For auto-created categories, the counts are already correct since we just created them
 
       // Update import log
       await db
@@ -475,6 +555,23 @@ export class AdminController {
 
     } catch (error: any) {
       console.error('Import error:', error);
+      
+      // Try to update import log with error status
+      try {
+        if (importLogId) {
+          await db
+            .update(jsonImportLogs)
+            .set({
+              status: 'failed',
+              errorMessage: error.message || 'Unknown error',
+              completedAt: new Date()
+            })
+            .where(eq(jsonImportLogs.importId, importLogId));
+        }
+      } catch (logError) {
+        console.error('Error updating import log:', logError);
+      }
+      
       res.status(500).json({
         success: false,
         message: error.message || 'Failed to import questions'

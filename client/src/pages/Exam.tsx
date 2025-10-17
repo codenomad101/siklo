@@ -36,6 +36,7 @@ interface ExamQuestion {
   questionText: string;
   options: Array<{ id: number; text: string }>;
   correctAnswer: string;
+  correctOption: number | null;
   userAnswer: string;
   isCorrect: boolean;
   timeSpentSeconds: number;
@@ -197,7 +198,23 @@ const ExamPage: React.FC = () => {
     try {
       // Calculate results
       const updatedQuestions = session.questions.map(q => {
-        const isCorrect = q.userAnswer === q.correctAnswer;
+        // Parse user answer to get option ID and compare with correctOption
+        const selectedOptionId = parseInt(q.userAnswer);
+        const isCorrect = !isNaN(selectedOptionId) && q.correctOption !== null && selectedOptionId === q.correctOption;
+        
+        // Debug logging for exam answer comparison
+        console.log('Exam answer validation debug:', {
+          questionId: q.questionId,
+          userAnswer: `"${q.userAnswer}"`,
+          selectedOptionId,
+          correctAnswer: `"${q.correctAnswer}"`,
+          correctOption: q.correctOption,
+          userAnswerType: typeof q.userAnswer,
+          correctAnswerType: typeof q.correctAnswer,
+          areEqual: isCorrect,
+          validationMethod: 'optionId'
+        });
+        
         return {
           ...q,
           isCorrect,
@@ -362,7 +379,20 @@ const ExamPage: React.FC = () => {
                     color: question.isCorrect ? '#52c41a' : '#ff4d4f',
                     fontWeight: 'bold'
                   }}>
-                    {question.userAnswer || 'Not answered'}
+                    {(() => {
+                      // Convert selected answer ID back to option text for display
+                      if (question.userAnswer) {
+                        const selectedId = parseInt(question.userAnswer);
+                        if (!isNaN(selectedId) && question.options) {
+                          const selectedOption = question.options.find(opt => opt.id === selectedId);
+                          if (selectedOption) {
+                            return typeof selectedOption === 'object' ? selectedOption.text : String(selectedOption);
+                          }
+                        }
+                        return question.userAnswer;
+                      }
+                      return 'Not answered';
+                    })()}
                   </Text>
                   {question.userAnswer && (
                     question.isCorrect ? (
@@ -376,7 +406,16 @@ const ExamPage: React.FC = () => {
                 <div style={{ marginBottom: '16px' }}>
                   <Text strong>Correct Answer: </Text>
                   <Text style={{ color: '#52c41a', fontWeight: 'bold' }}>
-                    {question.correctAnswer}
+                    {(() => {
+                      // Convert correctOption ID to option text for display
+                      if (question.correctOption && question.options) {
+                        const correctOption = question.options.find(opt => opt.id === question.correctOption);
+                        if (correctOption) {
+                          return typeof correctOption === 'object' ? correctOption.text : String(correctOption);
+                        }
+                      }
+                      return question.correctAnswer;
+                    })()}
                   </Text>
                 </div>
 
@@ -465,7 +504,7 @@ const ExamPage: React.FC = () => {
             <Space direction="vertical" style={{ width: '100%' }}>
               {currentQuestion?.options.map((option, index) => {
                 const optionText = typeof option === 'string' ? option : (option?.text || option);
-                const optionValue = typeof option === 'string' ? option : (option?.text || option);
+                const optionValue = String(option?.id || (index + 1)); // Use option ID (1, 2, 3, 4)
                 return (
                   <Radio key={index} value={optionValue} style={{ 
                     display: 'block',

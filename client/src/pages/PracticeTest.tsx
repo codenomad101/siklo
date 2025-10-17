@@ -76,7 +76,9 @@ const PracticeTestPage: React.FC = () => {
     if (testCompleted) return; // Prevent multiple calls
     
     if (currentQuestion && selectedAnswer && session) {
-      const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+      // Parse selected answer to get option ID and compare with correctOption
+      const selectedOptionId = parseInt(selectedAnswer);
+      const isCorrect = !isNaN(selectedOptionId) && currentQuestion.correctOption !== null && selectedOptionId === currentQuestion.correctOption;
       const timeSpent = timePerQuestion - (timeLeft % timePerQuestion);
       
       const result: TestResult = {
@@ -126,6 +128,16 @@ const PracticeTestPage: React.FC = () => {
         console.log('Session data received:', sessionData);
         console.log('Session data structure:', JSON.stringify(sessionData, null, 2));
         console.log('Setting session with data:', sessionData.data);
+        
+        // Debug: Check if questions exist
+        if (sessionData.data && sessionData.data.questions) {
+          console.log('Questions found:', sessionData.data.questions.length);
+          console.log('First question:', sessionData.data.questions[0]);
+        } else {
+          console.error('No questions found in session data!');
+          console.log('Available keys:', Object.keys(sessionData.data || {}));
+        }
+        
         setSession(sessionData.data);
       } catch (err) {
         setError('Failed to create practice session');
@@ -165,6 +177,16 @@ const PracticeTestPage: React.FC = () => {
   };
 
   const handleNextQuestion = async () => {
+    console.log('handleNextQuestion called with:', {
+      currentQuestion: !!currentQuestion,
+      selectedAnswer: !!selectedAnswer,
+      session: !!session,
+      sessionId: session?.sessionId,
+      questionsLength: session?.questions?.length,
+      currentQuestionIndex,
+      totalQuestions
+    });
+    
     if (!currentQuestion || !selectedAnswer || !session) {
       console.log('Missing required data:', {
         currentQuestion: !!currentQuestion,
@@ -175,7 +197,24 @@ const PracticeTestPage: React.FC = () => {
       return;
     }
 
-    const isCorrect = selectedAnswer === currentQuestion.correctAnswer;
+    // Parse selected answer to get option ID and compare with correctOption
+    const selectedOptionId = parseInt(selectedAnswer);
+    const isCorrect = !isNaN(selectedOptionId) && currentQuestion.correctOption !== null && selectedOptionId === currentQuestion.correctOption;
+    
+    // Debug logging for practice answer comparison
+    console.log('Practice answer validation debug:', {
+      questionId: currentQuestion.questionId,
+      userAnswer: `"${selectedAnswer}"`,
+      selectedOptionId,
+      correctAnswer: `"${currentQuestion.correctAnswer}"`,
+      correctOption: currentQuestion.correctOption,
+      userAnswerType: typeof selectedAnswer,
+      correctAnswerType: typeof currentQuestion.correctAnswer,
+      areEqual: isCorrect,
+      validationMethod: 'optionId',
+      questionOptions: currentQuestion.options
+    });
+    
     const timeSpent = timePerQuestion - (timeLeft % timePerQuestion);
     
     const result: TestResult = {
@@ -309,11 +348,19 @@ const PracticeTestPage: React.FC = () => {
           {/* Question Results */}
           <div>
             <Title level={2} style={{ marginBottom: '24px' }}>Question Review</Title>
-            {testResults.map((result, index) => (
+            {(() => { console.log('Test results for rendering:', testResults); return null; })()}
+            {testResults.map((result, index) => {
+              console.log(`Rendering result ${index}:`, result);
+              // Safety check for question object
+              const question = result.question || {};
+              const questionText = typeof question.questionText === 'string' ? question.questionText : String(question.questionText || '');
+              const explanation = typeof question.explanation === 'string' ? question.explanation : String(question.explanation || '');
+              
+              return (
               <Card key={index} style={{ marginBottom: '16px' }}>
                 <div style={{ marginBottom: '16px' }}>
                   <Text strong style={{ fontSize: '16px' }}>
-                    Question {index + 1}: {result.question.questionText}
+                    Question {index + 1}: {questionText}
                   </Text>
                 </div>
                 
@@ -323,7 +370,31 @@ const PracticeTestPage: React.FC = () => {
                     color: result.isCorrect ? '#52c41a' : '#ff4d4f',
                     fontWeight: 'bold'
                   }}>
-                    {result.selectedAnswer}
+                    {(() => {
+                      // Debug logging for answer display
+                      console.log('Answer display debug:', {
+                        selectedAnswer: result.selectedAnswer,
+                        selectedAnswerType: typeof result.selectedAnswer,
+                        questionOptions: question.options,
+                        questionId: question.questionId
+                      });
+                      
+                      // Convert selected answer ID back to option text for display
+                      const selectedId = parseInt(result.selectedAnswer);
+                      if (!isNaN(selectedId) && question.options && Array.isArray(question.options)) {
+                        const selectedOption = question.options.find(opt => {
+                          if (typeof opt === 'object' && opt.id) {
+                            return opt.id === selectedId;
+                          }
+                          return false;
+                        });
+                        if (selectedOption && typeof selectedOption === 'object') {
+                          return String(selectedOption.text || '');
+                        }
+                      }
+                      // Fallback: if we can't find the option, show the raw answer
+                      return String(result.selectedAnswer || 'No answer selected');
+                    })()}
                   </Text>
                   {result.isCorrect ? (
                     <CheckCircleOutlined style={{ color: '#52c41a', marginLeft: '8px' }} />
@@ -335,7 +406,22 @@ const PracticeTestPage: React.FC = () => {
                 <div style={{ marginBottom: '16px' }}>
                   <Text strong>Correct Answer: </Text>
                   <Text style={{ color: '#52c41a', fontWeight: 'bold' }}>
-                    {result.question.correctAnswer}
+                    {(() => {
+                      // Convert correctOption ID to option text for display
+                      if (question.correctOption && question.options && Array.isArray(question.options)) {
+                        const correctOption = question.options.find(opt => {
+                          if (typeof opt === 'object' && opt.id) {
+                            return opt.id === question.correctOption;
+                          }
+                          return false;
+                        });
+                        if (correctOption && typeof correctOption === 'object') {
+                          return String(correctOption.text || '');
+                        }
+                      }
+                      // Fallback to original correctAnswer text
+                      return String(question.correctAnswer || 'Correct answer not available');
+                    })()}
                   </Text>
                 </div>
 
@@ -344,11 +430,12 @@ const PracticeTestPage: React.FC = () => {
                 <div>
                   <Text strong>Explanation:</Text>
                   <Paragraph style={{ marginTop: '8px', marginBottom: 0 }}>
-                    {result.question.explanation}
+                    {explanation}
                   </Paragraph>
                 </div>
               </Card>
-            ))}
+              );
+            })}
           </div>
         </div>
       </AppLayout>
@@ -371,7 +458,7 @@ const PracticeTestPage: React.FC = () => {
           <Row justify="space-between" align="middle">
             <Col>
               <Title level={2} style={{ margin: 0 }}>
-                Practice Test - {categoryId?.charAt(0).toUpperCase() + categoryId?.slice(1)}
+                Practice Test - {categoryId ? categoryId.charAt(0).toUpperCase() + categoryId.slice(1) : 'Unknown'}
               </Title>
               <Text type="secondary">
                 Question {currentQuestionIndex + 1} of {totalQuestions}
@@ -407,7 +494,7 @@ const PracticeTestPage: React.FC = () => {
         {/* Question Card */}
         <Card style={{ marginBottom: '24px' }}>
           <Title level={3} style={{ marginBottom: '24px' }}>
-            {currentQuestion?.questionText || 'Question not available'}
+            {String(currentQuestion?.questionText || 'Question not available')}
           </Title>
           
           <Radio.Group 
@@ -427,32 +514,32 @@ const PracticeTestPage: React.FC = () => {
                 try {
                   if (typeof option === 'string') {
                     optionText = option;
-                    optionValue = option;
+                    optionValue = String(index + 1); // Use option ID (1, 2, 3, 4)
                 } else if (option && typeof option === 'object') {
                   // Extract text from object, with multiple fallbacks
                   // Handle case where option.text is also an object
-                  let textValue = option.text;
+                  let textValue = (option as any).text;
                   if (textValue && typeof textValue === 'object') {
                     textValue = textValue.text || textValue.label || textValue.value || JSON.stringify(textValue);
                   }
                   
-                  optionText = textValue || option.id || option.label || option.value || JSON.stringify(option);
-                  optionValue = textValue || option.id || option.label || option.value || JSON.stringify(option);
+                  optionText = textValue || (option as any).id || (option as any).label || (option as any).value || JSON.stringify(option);
+                  optionValue = String((option as any).id || (index + 1)); // Use option.id if available, otherwise use index + 1
                 } else {
                     optionText = String(option || '');
-                    optionValue = String(option || '');
+                    optionValue = String(index + 1); // Use option ID (1, 2, 3, 4)
                   }
                   
                   // Final safety check - ensure we have valid strings
                   if (typeof optionText !== 'string' || typeof optionValue !== 'string') {
                     console.warn('Invalid option data:', option);
                     optionText = 'Invalid option';
-                    optionValue = 'invalid';
+                    optionValue = String(index + 1);
                   }
                 } catch (error) {
                   console.error('Error processing option:', option, error);
                   optionText = 'Error loading option';
-                  optionValue = 'error';
+                  optionValue = String(index + 1);
                 }
                 
                 return (

@@ -20,11 +20,11 @@
         "text": "द्विगू समास"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "द्विगू समास",
     "Explanation": "ज्या समासातील पहिले पद संख्याविशेषण असून तो समुदाय दर्शवितो, तो **द्विगू समास** असतो. उदा. पंचपाळे (पाच पाळ्यांचा समूह).",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 4
   },
   {
     "category": "Marathi (शब्दसंग्रह - समानार्थी)",
@@ -47,11 +47,11 @@
         "text": "बंधनकारक"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "वैकल्पिक",
     "Explanation": "**ऐच्छिक** म्हणजे स्वतःच्या इच्छेनुसार निवडलेला किंवा निवडता येणारा. **वैकल्पिक** हा त्याचा समानार्थी शब्द आहे, तर 'अनिवार्य' हा विरुद्धार्थी शब्द आहे.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - काळ)",
@@ -74,11 +74,11 @@
         "text": "भविष्यकाळ"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "भविष्यकाळ",
     "Explanation": "वाक्यातील क्रियापद **'पडतील'** हे क्रिया पुढे घडेल असे दर्शवते, म्हणून तो **भविष्यकाळ** आहे.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 4
   },
   {
     "category": "Marathi (वाक्य रूपांतर)",
@@ -101,11 +101,11 @@
         "text": "श्रीमंत लोक परदेशात जातात."
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "परदेशात गेलेले काही लोक श्रीमंत आहेत.",
     "Explanation": "दिलेल्या माहितीत फक्त 'युसूफ' या एका व्यक्तीबद्दल सांगितले आहे. यावरून सामान्यतः निष्कर्ष काढल्यास, परदेशात गेलेल्यांपैकी (युसूफसह) काही लोक श्रीमंत आहेत, हेच सिद्ध होते.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (शब्दसिद्धी - देशी)",
@@ -128,11 +128,11 @@
         "text": "टेबल"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "दगड",
     "Explanation": "**दगड**, डोके, कंबर, पोट, वेस हे शब्द मराठी भाषेतील मूळ **देशी** शब्द आहेत, तर 'इनाम' (अरबी), 'सरकस' (इंग्रजी) हे परभाषी आहेत.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (व्याकरण - प्रयोग)",
@@ -155,11 +155,11 @@
         "text": "सकर्मक कर्तरी प्रयोग"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "कर्मणी प्रयोग",
     "Explanation": "या वाक्यात क्रियापदाचे रूप कर्माच्या लिंग-वचनानुसार बदलते (**धनुष्य** मोडले). कर्त्याला ('रामरावानी') प्रथमा सोडून अन्य प्रत्यय लागलेला आहे, म्हणून हा **कर्मणी प्रयोग** आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (शब्दसंग्रह - विरुद्धार्थी)",
@@ -182,11 +182,11 @@
         "text": "नेता"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "अनुयायी",
     "Explanation": "**पुढारी** म्हणजे नेतृत्व करणारा. त्याचा विरुद्धार्थी शब्द **अनुयायी** (पाठीमागे चालणारा किंवा अनुकरण करणारा) आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - अलंकार)",
@@ -209,11 +209,11 @@
         "text": "अनुप्रास"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "अनुप्रास",
     "Explanation": "येथे **'ग'** आणि **'ळ'** या अक्षरांची पुनरावृत्ती होऊन नादामुळे सौंदर्य निर्माण झाले आहे, म्हणून हा **अनुप्रास** (वर्णसमानता) अलंकार आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 4
   },
   {
     "category": "Marathi (शब्दसिद्धी - उपसर्गघटित)",
@@ -236,11 +236,11 @@
         "text": "नम्रता"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "आहार",
     "Explanation": "उपसर्ग शब्दाच्या पूर्वी जोडला जातो. येथे **आ** + हार = **आहार** (संस्कृत उपसर्ग) हा उपसर्गघटित शब्द आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - समास)",
@@ -263,11 +263,11 @@
         "text": "पाप हेच पुण्य - बहुव्रीहि समास"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "पाप आणि पुण्य - द्वंद्व समास",
     "Explanation": "ज्या समासातील दोन्ही पदे अर्थदृष्ट्या महत्त्वाची असतात, तो **द्वंद्व समास** असतो. **'पाप आणि पुण्य'** या विग्रहात दोन्ही पदे महत्त्वाची आहेत (इतरेतर द्वंद्व).",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (वाक्प्रचार)",
@@ -290,11 +290,11 @@
         "text": "डोळ्यांनी पाहणे"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "एकमेव आधार",
     "Explanation": "**आंधळ्याची काठी** म्हणजे अडचणीत असलेला किंवा असहाय्य व्यक्तीचा **एकमेव आधार**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - काळ)",
@@ -317,11 +317,11 @@
         "text": "रीती वर्तमान काळ"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "साधा वर्तमान काळ",
     "Explanation": "वाक्यातील क्रियापदावरून क्रिया आता घडते आहे असे दर्शवले जाते आणि क्रियेची वेळ निश्चित नसते, म्हणून हा **साधा वर्तमान काळ** आहे.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (शब्दसंग्रह - विरुद्धार्थी)",
@@ -344,11 +344,11 @@
         "text": "जहाल"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "सौम्य",
     "Explanation": "**तीव्र** म्हणजे खूप जलद किंवा प्रखर. त्याचा विरुद्धार्थी शब्द **सौम्य** (मंद, शांत) आहे.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (व्याकरण - क्रियापद)",
@@ -371,11 +371,11 @@
         "text": "संयुक्त क्रियापद"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "अकर्तुक क्रियापद",
     "Explanation": "या वाक्यात क्रियापदाचा कर्ता स्पष्ट नसतो (उदा. उन, पाऊस, मळमळणे). क्रियापदाचे रूप 'भावे' असल्याने ते **अकर्तुक क्रियापद** (भावकर्तृक) आहे.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (शब्दसिद्धी - तद्भव)",
@@ -398,11 +398,11 @@
         "text": "गुरुजी"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "हात",
     "Explanation": "**हात** हा शब्द मूळ संस्कृत 'हस्त' पासून बदलून मराठीत आला आहे. 'हास्य' तत्सम आहे, आणि 'चहा' परभाषी आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - अलंकार)",
@@ -425,11 +425,11 @@
         "text": "अनन्वय"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "उत्प्रेक्षा",
     "Explanation": "उपमेय (विद्या) हे जणू उपमानच आहे, असा भास होतो. या वाक्यात **'की'** हा साधर्म्यसूचक शब्द वापरल्यामुळे (जणू, जणूकाही, की, गमे, वाटे, भासे) हा **उत्प्रेक्षा अलंकार** आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (शब्दसंग्रह - म्हणी)",
@@ -452,11 +452,11 @@
         "text": "अतिथीला जेवण देणे"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "दोन्हीकडून अडचण निर्माण होणे",
     "Explanation": "जेव्हा एखाद्या व्यक्तीला दोन्ही बाजूंनी त्रास होतो किंवा दोन्हीकडून मदत मिळत नाही, तेव्हा ही म्हण वापरली जाते.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (व्याकरण - विभक्ती)",
@@ -479,11 +479,11 @@
         "text": "विशेषण"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "कर्त्ता",
     "Explanation": "क्रिया करणारा म्हणजेच **कर्त्ता** (Subject) असतो.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (शब्दसंग्रह - वाक्प्रचार)",
@@ -506,11 +506,11 @@
         "text": "पाऊस न पडणे"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "अतिशय मुसळधार पाऊस पडणे",
     "Explanation": "हा इंग्रजी वाक्प्रचार आहे, ज्याचा अर्थ **अतिशय मुसळधार पाऊस** (पाऊस खूप कठीण आहे) पडणे असा आहे.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - अव्यय)",
@@ -533,11 +533,11 @@
         "text": "केवलप्रयोगी अव्यय"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "क्रियाविशेषण अव्यय",
     "Explanation": "**क्रियाविशेषण अव्यय** हे क्रियापदाबद्दल अधिक माहिती देऊन क्रिया कधी, कोठे, कशी, किती झाली हे दर्शविते.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (शब्दसिद्धी - फारसी)",
@@ -560,11 +560,11 @@
         "text": "अत्तर"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "अत्तर",
     "Explanation": "**अत्तर** (सुगंध), **शिपाई** (तुर्की), **सामान** (फारसी), **पेशवा** (फारसी) यांपैकी **अत्तर** हा शब्द फारसी भाषेतून आला आहे.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 4
   },
   {
     "category": "Marathi (व्याकरण - काळ)",
@@ -587,11 +587,11 @@
         "text": "चालू भूतकाळ"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "रीती भूतकाळ",
     "Explanation": "क्रियापदाचे रूप **'जाई'** (किंवा 'जात असे') हे भूतकाळात वारंवार घडणारी क्रिया दर्शवते, म्हणून तो **रीती भूतकाळ** (भूतकाळातील सवय) आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (शब्दसंग्रह - विरुद्धार्थी)",
@@ -614,11 +614,11 @@
         "text": "शौर्यवान"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "दुर्बळ",
     "Explanation": "**बलवान** (शारीरिकदृष्ट्या मजबूत) चा विरुद्धार्थी शब्द **दुर्बळ** (कमजोर, शक्तिहीन) आहे.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - संधी)",
@@ -641,11 +641,11 @@
         "text": "शब्दांचा अर्थ स्पष्ट करणे"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "दोन वर्ण एकत्र होणे",
     "Explanation": "व्याकरणात, **संधी** म्हणजे शब्दांतील जवळ-जवळ येणाऱ्या **दोन वर्णांचे** एकत्रीकरण होणे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (शब्दसिद्धी - पोर्तुगीज)",
@@ -668,11 +668,11 @@
         "text": "अनामत"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "पगार",
     "Explanation": "**पगार**, बटाटा, कोबी, बिजागरी, तंम्बाकू हे शब्द पोर्तुगीज भाषेतून मराठीत आले आहेत.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (व्याकरण - समास)",
@@ -695,11 +695,11 @@
         "text": "बहुव्रीहि समास"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "अव्ययीभाव समास",
     "Explanation": "ज्या समासातील पहिले पद **अव्यय** असून ते महत्त्वाचे असते, तो **अव्ययीभाव समास** असतो (उदा. यथा-शक्ती, आजन्म, दररोज).",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (शब्दसंग्रह - समानार्थी)",
@@ -722,11 +722,11 @@
         "text": "उग्र"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "दयाळू",
     "Explanation": "**कृपाळू** म्हणजे दया, कृपा करणारा. **दयाळू** हा त्याचा समानार्थी शब्द आहे.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - प्रयोग)",
@@ -749,11 +749,11 @@
         "text": "अकर्मक कर्तरी प्रयोग"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "सकर्मक कर्तरी प्रयोग",
     "Explanation": "या वाक्यात कर्ता (**मामांनी**) प्रथमा विभक्तीत आहे. क्रियापदाचे रूप कर्त्यानुसार बदलते (मामांनी पकडला). वाक्यात कर्म (**कोंबडा**) असल्याने, तो **सकर्मक कर्तरी प्रयोग** आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (वाक्प्रचार)",
@@ -776,11 +776,11 @@
         "text": "शांत स्वभावाचा माणूस"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "मूर्खपणाचा सल्ला देणारा",
     "Explanation": "**उंटावरचा शहाणा** म्हणजे मूर्ख, अविचारी सल्ला देणारा माणूस.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - अलंकार)",
@@ -803,11 +803,11 @@
         "text": "अनन्वय"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "रूपक",
     "Explanation": "जेव्हा उपमेय आणि उपमान यांत भेद नसून ते एकच आहेत असे मानले जाते, तेव्हा **रूपक अलंकार** होतो.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (शब्दसिद्धी - अरबी)",
@@ -830,11 +830,11 @@
         "text": "चमचा"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "कायदा",
     "Explanation": "**कायदा**, हुकूम, अर्ज, इनाम, जाहीर हे शब्द अरबी भाषेतून मराठीत आले आहेत. ('दिवाण' फारसी, 'सामान' फारसी, 'चमचा' तुर्की).",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - संधी)",
@@ -857,11 +857,11 @@
         "text": "पु + ढील"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "पुढ + इल",
     "Explanation": "**पुढील** हा **नामावशेष साधित शब्द** आहे. हा शब्द 'पुढ' या मूळ शब्दापासून बनलेला असून, 'ईल' हा प्रत्यय लागून 'पुढील' असा तयार होतो.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (शब्दसंग्रह - विरुद्धार्थी)",
@@ -884,11 +884,11 @@
         "text": "गती"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "उन्नती",
     "Explanation": "**अवनती** म्हणजे ऱ्हास, घसरण किंवा अधोगती. त्याचा विरुद्धार्थी शब्द **उन्नती** (भरभराट, वाढ) आहे.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - काळ)",
@@ -911,11 +911,11 @@
         "text": "मी रोज शाळेत जाईन."
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "मी रोज शाळेत जात होतो.",
     "Explanation": "**अपूर्ण भूतकाळ** दर्शवण्यासाठी 'क्रियापदाचे अपूर्ण रूप' (**जात**) + 'असु क्रियापदाचे भूतकाळातील रूप' (**होतो**) वापरले जाते.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (व्याकरण - समास)",
@@ -938,11 +938,11 @@
         "text": "दोन्ही पदे महत्त्वाची असलेले"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "पहिले पद नकारार्थी असलेले",
     "Explanation": "**नञ तत्पुरुष समास** (Nanj Tatpurush Samas) म्हणजे ज्या समासाचे पहिले पद **नकारार्थी** (अ, अन्, ना, गैर) असते. उदा. अज्ञान, नापसंत.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (शब्दसंग्रह - समानार्थी)",
@@ -965,11 +965,11 @@
         "text": "सुकाळ"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "संकट",
     "Explanation": "**विघ्न** म्हणजे अडथळा, बाधा किंवा **संकट**.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (वाक्प्रचार)",
@@ -992,11 +992,11 @@
         "text": "चांगले काम करणे"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "आपले दोष स्वतःहून उघड करणे",
     "Explanation": "**हात दाखवून अवलक्षण** म्हणजे स्वतःच्या चुकीचे प्रदर्शन करून त्रास ओढवून घेणे.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (व्याकरण - विशेषण)",
@@ -1019,11 +1019,11 @@
         "text": "साधे विशेषण"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "नामसाधित विशेषण",
     "Explanation": "जेव्हा नामापासून विशेषण तयार होते (उदा. नागपूर हे नाम $\to$ नागपूरची विशेषण), तेव्हा ते **नामसाधित विशेषण** असते.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (शब्दसिद्धी - कानडी)",
@@ -1046,11 +1046,11 @@
         "text": "पेशवा"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "अन्ना",
     "Explanation": "**अन्ना**, ताई, चिंधी, खुळा, विळी हे शब्द कानडी भाषेतून मराठीत आले आहेत.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (व्याकरण - प्रयोग)",
@@ -1073,11 +1073,11 @@
         "text": "लिंग-वचनानुसार बदलत नाही"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "कर्मानुसार",
     "Explanation": "ज्या प्रयोगात क्रियापदाचे रूप **कर्माच्या लिंग, वचनानुसार** बदलते, त्याला **कर्मणी प्रयोग** म्हणतात.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (शब्दसंग्रह - विरुद्धार्थी)",
@@ -1100,11 +1100,11 @@
         "text": "अग्रणी"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "पुरोगामी",
     "Explanation": "**सनातनी** म्हणजे जुन्या रूढी-परंपरा मानणारा. त्याचा विरुद्धार्थी शब्द **पुरोगामी** (प्रगतीशील, बदल स्वीकारणारा) आहे.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - समास)",
@@ -1127,11 +1127,11 @@
         "text": "बहुव्रीहि समास"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "द्विगू समास",
     "Explanation": "पहिले पद संख्याविशेषण असल्याने (**त्रि** = तीन) हा **द्विगू समास** आहे (तीन भुवनांचा समूह).",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 1
   },
   {
     "category": "Marathi (व्याकरण - अलंकार)",
@@ -1154,11 +1154,11 @@
         "text": "अनन्वय"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "श्लेष",
     "Explanation": "येथे **'नवरी/न-वरी'** हा शब्दसमुच्चय दोन वेगवेगळ्या अर्थांनी वापरल्यामुळे **श्लेष अलंकार** होतो (नवरी = वधू, न-वरी = वरणार नाही).",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (शब्दसंग्रह - समानार्थी)",
@@ -1181,11 +1181,11 @@
         "text": "आरण्य"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "बाग",
     "Explanation": "**उद्यान** म्हणजे बगीचा किंवा **बाग**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (व्याकरण - क्रियापद)",
@@ -1208,11 +1208,11 @@
         "text": "अकर्तुक क्रियापद"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "अकर्तुक क्रियापद",
     "Explanation": "**अकर्तुक क्रियापद** (भावकर्तृक क्रियापद) म्हणजे ज्या वाक्यात क्रियापदाचा कर्ता निश्चित नसतो. (उदा. 'मळमळते', 'गडगडते').",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 4
   },
   {
     "category": "Marathi (शब्दसिद्धी - तत्सम)",
@@ -1235,11 +1235,11 @@
         "text": "दगड"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "अग्नी",
     "Explanation": "**अग्नी**, गृह, दुग्ध, कन्या हे शब्द संस्कृतमधून जसेच्या तसे मराठीत आले आहेत, म्हणून ते **तत्सम** आहेत. 'भाऊ' तद्भव आहे, 'विमान' इंग्रजी आहे, 'दगड' देशी आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (व्याकरण - काळ)",
@@ -1262,11 +1262,11 @@
         "text": "रीती वर्तमानकाळ, विद्यार्थ"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "भविष्यकाळ, संकेतार्थ",
     "Explanation": "वाक्यात **'तर'** या शब्दाने अट किंवा संकेत दर्शविला आहे (संकेतार्थ). क्रियापद भविष्यकाळात आहे, म्हणून तो **संकेतार्थ भविष्यकाळ** आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (शब्दसंग्रह - म्हणी)",
@@ -1289,11 +1289,11 @@
         "text": "काकडी खाणे"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "गुन्ह्यापेक्षा मोठी शिक्षा मिळणे",
     "Explanation": "जेव्हा एखाद्या छोट्या चुकीसाठी (काकडीची चोरी) मोठी शिक्षा (फाशी) दिली जाते, तेव्हा ही म्हण वापरली जाते. म्हणजेच, **अपराधापेक्षा जास्त शिक्षा**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (व्याकरण - समास)",
@@ -1316,11 +1316,11 @@
         "text": "राजा आहे ज्यात"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "राजाचा वाडा",
     "Explanation": "या विग्रहात **'चा'** (षष्ठी विभक्तीचा प्रत्यय) गाळला गेला आहे. दुसरे पद ('वाडा') महत्त्वाचे असल्याने हा **षष्ठी तत्पुरुष समास** आहे.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (शब्दसंग्रह - विरुद्धार्थी)",
@@ -1343,11 +1343,11 @@
         "text": "अपमान"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "अपमान",
     "Explanation": "**अभिमान** म्हणजे स्वतःबद्दल आदर वाटणे. त्याचा विरुद्धार्थी शब्द **अपमान** (तिरस्कार, अनादर) आहे.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 4
   },
   {
     "category": "Marathi (व्याकरण - प्रयोग)",
@@ -1370,11 +1370,11 @@
         "text": "विद्यार्थ"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "विद्यार्थ",
     "Explanation": "वाक्यात **'वावे'** हा प्रत्यय लागला आहे, जो **कर्तव्य, योग्यता, इच्छा किंवा शक्यता** दर्शवतो. हा **विद्यार्थ** आहे.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 4
   },
   {
     "category": "Marathi (व्याकरण - अलंकार)",
@@ -1397,11 +1397,11 @@
         "text": "उपमा"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "यमक",
     "Explanation": "एखादा शब्द किंवा अक्षर पुनःपुन्हा पद्यात चरणांती आल्यास (उदा. शेवट जुळल्यास) तेथे **यमक अलंकार** होतो. अक्षरांची पुनरावृत्ती असल्यास अनुप्रास असतो.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 2
   },
   {
     "category": "Marathi (शब्दसंग्रह - समानार्थी)",
@@ -1424,11 +1424,11 @@
         "text": "बहुव्रीहि समास"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "अव्ययीभाव समास",
     "Explanation": "एकाच शब्दाची पुनरावृत्ती झाली असल्यास (अभ्यस्त शब्द), ते **अव्ययीभाव समास** (उदा. दारोदार, वारंवार) मानले जाते.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   },
   {
     "category": "Marathi (व्याकरण - प्रयोग)",
@@ -1451,10 +1451,10 @@
         "text": "नवीन कर्मणी"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "भावे",
     "Explanation": "या वाक्यात क्रियापदाचे रूप कर्त्याच्या किंवा कर्माच्या लिंग-वचनानुसार बदलत नाही. हे **शक्यतादर्शक** क्रियापद असून ते **भावे प्रयोग** दर्शवते.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C"
+    "Job": "MPSC, Grade-B, Grade-C",
+    "correctOption": 3
   }
 ]

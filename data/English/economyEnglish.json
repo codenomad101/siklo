@@ -20,11 +20,11 @@
         "text": "15.0%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "13.5%",
     "Explanation": "Maharashtra continues to be the largest subnational economy, contributing an estimated **13.5%** of India's GDP in the latest available estimates (FY24 data).",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Fiscal)",
@@ -47,11 +47,11 @@
         "text": "3.5%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "2.7%",
     "Explanation": "The Maharashtra Budget 2025-26 aimed to reduce the fiscal deficit to **2.7%** of GSDP, down from 2.9% in the 2024-25 Revised Estimates.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Per Capita Income)",
@@ -74,11 +74,11 @@
         "text": "60%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "47%",
     "Explanation": "The Economic Survey 2024-25 highlighted that Maharashtra's per capita income (₹2.79 lakh) is nearly **47%** above the national average (₹1.89 lakh).",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Sectoral Contribution)",
@@ -101,11 +101,11 @@
         "text": "Mining and Quarrying"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Services",
     "Explanation": "Similar to the national trend, the **Services sector** (including finance, IT, and real estate) is the dominant and largest contributor to Maharashtra's GSDP.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Infrastructure)",
@@ -128,11 +128,11 @@
         "text": "Marmagao Port"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Jawaharlal Nehru Port Trust (JNPT)",
     "Explanation": "**JNPT** (Navi Mumbai) is the country's premier container port and a major backbone of Maharashtra's and India's maritime trade.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Startup)",
@@ -155,11 +155,11 @@
         "text": "35"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "27",
     "Explanation": "Maharashtra is a leading hub for startups, hosting the highest number of **27** DPIIT-recognized Unicorns.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra FDI)",
@@ -182,11 +182,11 @@
         "text": "55%"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "31%",
     "Explanation": "The state's robust industrial and financial ecosystem attracts a large share, accounting for about **31%** of India's total FDI inflows in recent years.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Agriculture)",
@@ -209,11 +209,11 @@
         "text": "Seed procurement"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Accidents/death",
     "Explanation": "This scheme provides safety and financial aid to farmers and farm laborers who suffer accidents or death while working.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Industrial Policy)",
@@ -236,11 +236,11 @@
         "text": "₹50 lakh crore"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "₹40 lakh crore",
     "Explanation": "The state aims for a significant industrial push, targeting **₹40 lakh crore** in investments and the creation of 50 lakh jobs through the new policy.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Energy)",
@@ -263,11 +263,11 @@
         "text": "Pune"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Navi Mumbai (and JNPT)",
     "Explanation": "The MTHL significantly cuts travel time between South Mumbai and Navi Mumbai (Uran/Nhava Sheva), boosting economic activity and cargo flow to the **JNPT port**.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Tax Revenue)",
@@ -290,11 +290,11 @@
         "text": "Non-Tax Revenue (e.g., Forest, Minerals)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Goods and Services Tax (GST)",
     "Explanation": "Maharashtra's OTR is primarily driven by **GST**, followed by state excise duties and stamp duty/registration charges.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Agriculture)",
@@ -317,11 +317,11 @@
         "text": "Sugarcane"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "Millet",
     "Explanation": "**Millet, pulses, and jowar** (grain sorghum) are typically grown in rain-fed, damp, or dry fields. Rice requires high rainfall (over $1,050 \text{ mm}$) and is grown in the high-rainfall regions.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 1
   },
   {
     "category": "Economy (Maharashtra Fiscal)",
@@ -344,11 +344,11 @@
         "text": "30%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "25%",
     "Explanation": "Maharashtra's debt-to-GSDP ratio of about 17.3% is well within the recommended limit of **25%** set by the Fiscal Responsibility and Budget Management (FRBM) Act.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Budget)",
@@ -371,11 +371,11 @@
         "text": "₹8 lakh crore"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "₹7 lakh crore",
     "Explanation": "The Maharashtra Budget 2025-26 presented a total outlay of **₹7 lakh crore**.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Budget)",
@@ -398,11 +398,11 @@
         "text": "GSDP Growth Rate"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Capital Expenditure",
     "Explanation": "Capital expenditure was projected to fall by **14.5%** in the 2025-26 Budget, reducing its share in the total budget outlay to 13.3%.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Agriculture)",
@@ -425,11 +425,11 @@
         "text": "Organic farming"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Micro irrigation",
     "Explanation": "The PDMC component of PMKSY specifically promotes **micro irrigation** (drip and sprinkler systems) to enhance water use efficiency.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Finance)",
@@ -452,11 +452,11 @@
         "text": "Industries Department"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Planning Department",
     "Explanation": "The Economic Survey of Maharashtra is a concerted endeavor of the Directorate of Economics and Statistics, which functions under the **Planning Department**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Industrial Policy)",
@@ -479,11 +479,11 @@
         "text": "60 lakh"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "50 lakh",
     "Explanation": "The policy has an ambitious goal of attracting ₹40 lakh crore in investments and creating **50 lakh jobs**.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Institutional Finance)",
@@ -506,11 +506,11 @@
         "text": "Kisan Credit Card (KCC)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
     "Explanation": "The Economic Survey frequently includes annexures detailing district-wise progress of key Central schemes like **PMJDY**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Sectoral Growth)",
@@ -533,11 +533,11 @@
         "text": "50%"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "27%",
     "Explanation": "The GSDP distribution is generally: Services (Highest share), **Industry (approx. 27%)**, and Agriculture & Allied (approx. 15%).",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Trade)",
@@ -560,11 +560,11 @@
         "text": "Textiles"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Software and IT Services",
     "Explanation": "Maharashtra is the **2nd highest** exporter of **Software and IT Services** in India, after Karnataka.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Budget)",
@@ -587,11 +587,11 @@
         "text": "Only slightly more than the previous allocation"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "Lower than the previous allocation",
     "Explanation": "The ₹36,000 crore allocation was **21% lower** than the allocation made in the 2024-25 Revised Estimates, reflecting an overall lower budget outlay for 2025-26.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 1
   },
   {
     "category": "Economy (Maharashtra Social Sector)",
@@ -614,11 +614,11 @@
         "text": "Social Welfare"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Financial Inclusion",
     "Explanation": "The five key areas of the budget are: **Agriculture, Industry, Infrastructure, Employment, and Social Welfare**.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra MSME)",
@@ -641,11 +641,11 @@
         "text": "40%"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "24%",
     "Explanation": "Maharashtra accounts for nearly **24%** of the total DPIIT-recognized startups in India, reflecting its status as a startup capital.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Agriculture)",
@@ -668,11 +668,11 @@
         "text": "JICA"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "World Bank",
     "Explanation": "The **State of Maharashtra's Agribusiness and Rural Transformation (SMART)** program is a World Bank-supported initiative.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Fiscal)",
@@ -695,11 +695,11 @@
         "text": "Trade Union"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Stock Exchange",
     "Explanation": "Mumbai is home to the Bombay Stock Exchange (**BSE**), which is Asia's oldest stock exchange, established in 1875.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Agriculture)",
@@ -722,11 +722,11 @@
         "text": "10 lakh MT"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "1.26 lakh MT",
     "Explanation": "The export of organic farm products from the state was a healthy **1.26 lakh MT** in FY 2020-21, indicating potential in the organic sector.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Infrastructure)",
@@ -749,11 +749,11 @@
         "text": "17.5%"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "13.3%",
     "Explanation": "The share of capital expenditure in the total budget outlay was reduced to **13.3%** in the 2025-26 Budget.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Social Sector)",
@@ -776,11 +776,11 @@
         "text": "Ramai Awas Yojana"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Ladki Bahin Yojana",
     "Explanation": "The **Ladki Bahin Yojana** received a significant and highly debated allocation of ₹36,000 crore, showing its emphasis in the budget narrative.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Finance)",
@@ -803,11 +803,11 @@
         "text": "State Level Bankers' Committee (SLBC)"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "State Level Bankers' Committee (SLBC)",
     "Explanation": "The **SLBC** is responsible for coordinating the banking sector's efforts to achieve the Annual Credit Plan targets at the state level, with detailed plans provided district-wise.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 4
   },
   {
     "category": "Economy (Maharashtra Agriculture)",
@@ -830,11 +830,11 @@
         "text": "All of the above"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "Cropwise index numbers",
     "Explanation": "The Economic Survey includes Annexures detailing the **cropwise index numbers** of agricultural production to track performance.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 1
   },
   {
     "category": "Economy (Maharashtra Industrial Policy)",
@@ -857,11 +857,11 @@
         "text": "All of the above"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "All of the above",
     "Explanation": "Maharashtra targets traditional strengths like **Automobiles, Pharmaceuticals, Chemicals, and Textiles**, alongside modern sectors like IT, making all listed options priority sectors for the new policy.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 4
   },
   {
     "category": "Economy (Maharashtra Fiscal)",
@@ -884,11 +884,11 @@
         "text": "2022-23"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "2024-25",
     "Explanation": "The Economic Survey of Maharashtra for **2024-25** is the 64th issue, presented ahead of the 2025-26 budget.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Infrastructure)",
@@ -911,11 +911,11 @@
         "text": "High-speed road networks"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Monorail & Metrorail",
     "Explanation": "The Economic Survey mentions modern transport systems like **Monorail and Metrorail** (Mumbai Metro/Pune Metro) as contributors to the state's urban infrastructure.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Agriculture)",
@@ -938,11 +938,11 @@
         "text": "2025"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "2023",
     "Explanation": "The UN General Assembly declared **2023** as the International Year of Millets, a crucial crop for Maharashtra's agricultural output.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Social Sector)",
@@ -965,11 +965,11 @@
         "text": "18 to 55 years"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "21 to 65 years",
     "Explanation": "The scheme aims to empower women in the age group of **21 to 65 years** by providing financial assistance.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Industrial Policy)",
@@ -992,11 +992,11 @@
         "text": "All of the above"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "All of the above",
     "Explanation": "The new industrial policy focuses on comprehensive growth, including support for **MSMEs**, **FDI attraction**, and boosting sectors like **renewable energy**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 4
   },
   {
     "category": "Economy (Maharashtra Fiscal)",
@@ -1019,11 +1019,11 @@
         "text": "₹15 lakh crore"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "₹7.83 lakh crore",
     "Explanation": "Maharashtra's total Debt Stock was reported to be around **₹7.83 lakh crore** (FY25 BE).",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Agriculture)",
@@ -1046,11 +1046,11 @@
         "text": "25%"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "14%",
     "Explanation": "The production of **pulses** was expected to increase by **14%**, while the production of cereals and oilseeds was expected to decrease by 21% in some older estimates.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Trade)",
@@ -1073,11 +1073,11 @@
         "text": "60%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "50%",
     "Explanation": "JNPT handles roughly **50%** of India's total container cargo, solidifying its position as a trade gateway.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Social Sector)",
@@ -1100,11 +1100,11 @@
         "text": "7 kgs"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "5 kgs",
     "Explanation": "NFSA beneficiaries, including those in Maharashtra under schemes like PMGKAY, receive **5 kgs** of foodgrains per person per month.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Social Sector)",
@@ -1127,11 +1127,11 @@
         "text": "15%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "12.8%",
     "Explanation": "Welfare expenditure in the social sector has shown robust growth, increasing at a CAGR of **12.8%** over the last six years.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra MSME)",
@@ -1154,11 +1154,11 @@
         "text": "36"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "34",
     "Explanation": "The initiative aimed to decentralize investment, with drives held across **34 districts**, resulting in significant proposed investment and job creation estimates.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Infrastructure)",
@@ -1181,11 +1181,11 @@
         "text": "Bhimashankar Wildlife Sanctuary"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Nandur Madhameshwar",
     "Explanation": "Maharashtra has three Ramsar sites (Wetlands of International Importance): **Nandur Madhameshwar** (Nashik), **Lonar Crater** (Buldhana), and **Thane Creek**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Industrial Policy)",
@@ -1208,11 +1208,11 @@
         "text": "International Monetary Fund (IMF) office"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Asia's oldest Stock Exchange",
     "Explanation": "Mumbai hosts the **BSE** (Bombay Stock Exchange), the oldest in Asia, confirming its status as India's financial hub.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Sectoral Contribution)",
@@ -1235,11 +1235,11 @@
         "text": "27%"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "15%",
     "Explanation": "The Agriculture & Allied sector (primary sector) is generally around **15%** of the GSDP, making it the smallest but fundamental sector of the state's economy.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Budget)",
@@ -1262,11 +1262,11 @@
         "text": "15.5%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "14.17%",
     "Explanation": "The total budget outlay of ₹7 lakh crore constitutes **14.17%** of the estimated GSDP of ₹49.4 lakh crore.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (Maharashtra Agriculture)",
@@ -1289,11 +1289,11 @@
         "text": "Soil testing"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Extending irrigation coverage",
     "Explanation": "Sustainable Agriculture Irrigation Schemes primarily focus on increasing the area under irrigation and improving water management practices.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (Maharashtra Social Sector)",
@@ -1316,11 +1316,11 @@
         "text": "₹2,500/-"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "₹1,500/-",
     "Explanation": "The scheme provides **₹1,500/-** per month via Direct Benefit Transfer (DBT) to eligible women.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Macro)",
@@ -1343,11 +1343,11 @@
         "text": "9.5%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "8.2%",
     "Explanation": "India's real GDP growth for FY24 was recorded at **8.2%**, marking the third consecutive year of above-7% growth, driven by investment.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India External Sector)",
@@ -1370,11 +1370,11 @@
         "text": "2.5%"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "0.7%",
     "Explanation": "The CAD improved significantly in FY24, reducing to **0.7% of GDP** from 2.0% in FY23, driven by services exports and reduced external vulnerability.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 1
   },
   {
     "category": "Economy (India Banking)",
@@ -1397,11 +1397,11 @@
         "text": "1.9%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "2.8%",
     "Explanation": "Strong asset quality review and resolution mechanisms led the GNPA ratio to fall to a 12-year low of **2.8%** by March 2024.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Inflation)",
@@ -1424,11 +1424,11 @@
         "text": "Global Commodity Price Shock (2010)"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "COVID-19 Pandemic",
     "Explanation": "The average retail inflation of 5.4% in FY24 was the lowest figure recorded since the disruption caused by the **COVID-19 Pandemic**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Fiscal)",
@@ -1451,11 +1451,11 @@
         "text": "Direct Taxes (65%)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Direct Taxes (55%)",
     "Explanation": "The tax revenue distribution was noted as **Direct Taxes (55%)** and Indirect Taxes (45%), reflecting increasing formalization and income growth.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India External Sector)",
@@ -1478,11 +1478,11 @@
         "text": "USD 150 billion"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "USD 120 billion",
     "Explanation": "India maintained its position as the top global remittance recipient, totaling **USD 120 billion** in 2023.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Reforms)",
@@ -1505,11 +1505,11 @@
         "text": "Disguised Unemployment"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Frictional Unemployment",
     "Explanation": "**Frictional Unemployment** occurs when people are voluntarily switching jobs or entering the labor market. It's short-term and considered healthy for a dynamic economy.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Banking)",
@@ -1532,11 +1532,11 @@
         "text": "7.0%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "6.5%",
     "Explanation": "The RBI maintained the policy Repo Rate at **6.5%** in FY24, indicating a pause in the hiking cycle focused on bringing down inflation.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Manufacturing)",
@@ -1559,11 +1559,11 @@
         "text": "₹30 lakh"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "₹20 lakh",
     "Explanation": "The Mudra loan limit was increased to **₹20 lakh** to provide enhanced financial support and working capital access to MSMEs.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India External Sector)",
@@ -1586,11 +1586,11 @@
         "text": "42nd"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "38th",
     "Explanation": "India’s logistics performance witnessed a significant jump, improving to the **38th** position in the World Bank Logistics Index, reflecting infrastructure focus.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 1
   },
   {
     "category": "Economy (India Social Sector)",
@@ -1613,11 +1613,11 @@
         "text": "3.0 crore"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "2.6 crore",
     "Explanation": "More than **2.63 crore** houses were constructed under PMAY-Gramin, showing strong progress in the government's housing for all initiative.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Monetary Policy)",
@@ -1640,11 +1640,11 @@
         "text": "Providing foreign currency loans to exporters"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Providing liquidity to banks facing a temporary crisis",
     "Explanation": "The 'lender of last resort' function of the RBI is to provide emergency funding (liquidity) to commercial banks to prevent systemic failure.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Capital Market)",
@@ -1667,11 +1667,11 @@
         "text": "Futures and Options (F&O)"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "Futures and Options (F&O)",
     "Explanation": "The STT increase was introduced to curb the exponential rise and potential systemic risk posed by high volumes in the **Futures and Options (F&O)** segment.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 4
   },
   {
     "category": "Economy (India Unemployment)",
@@ -1694,11 +1694,11 @@
         "text": "Cyclical unemployment"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Disguised unemployment",
     "Explanation": "**Disguised unemployment** (or underemployment) is endemic in rural India, where the marginal productivity of labor is zero or near zero.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Sectoral Growth)",
@@ -1721,11 +1721,11 @@
         "text": "Manufacturing"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Services (Tertiary)",
     "Explanation": "The **Services sector** has consistently been the largest contributor, accounting for **55%** of India's economy in FY24.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Reforms)",
@@ -1748,11 +1748,11 @@
         "text": "Development Expenditure"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Capital Expenditure",
     "Explanation": "**Capital expenditure** creates assets or reduces liabilities. Acquiring long-term assets like technology or machinery is a classic example.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India External Sector)",
@@ -1775,11 +1775,11 @@
         "text": "Multiple government agencies"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Multiple lenders",
     "Explanation": "Syndicated lending involves a group of banks or institutions providing a loan to a single borrower, thereby distributing the default risk among **multiple lenders**.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Schemes)",
@@ -1802,11 +1802,11 @@
         "text": "DELP and PM-KUSUM"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "UJALA and Street Lighting National Programme (SLNP)",
     "Explanation": "The National LED Programme for energy efficiency has two main parts: **UJALA (Unnat Jyoti by Affordable LEDs for All)** for domestic lighting and **SLNP** for street lighting.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Unemployment)",
@@ -1829,11 +1829,11 @@
         "text": "2.5%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "3.2%",
     "Explanation": "The overall Unemployment Rate (UR) based on the Current Weekly Status (CWS) method declined to **3.2%** in 2022-23, indicating an improvement in the labor market.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Tax)",
@@ -1856,11 +1856,11 @@
         "text": "CGST, SGST, and IGST"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "CGST and SGST",
     "Explanation": "For sales within a state (intra-state), both the central government (**CGST**) and the state government (**SGST**) levy taxes.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Agriculture)",
@@ -1883,11 +1883,11 @@
         "text": "Jowar"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Wheat",
     "Explanation": "While both wheat and rice saw growth, **Wheat** remained the most critical and initial success story of the Green Revolution.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Policy)",
@@ -1910,11 +1910,11 @@
         "text": "Consumer protection"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Non-performing assets (NPAs)",
     "Explanation": "The IBC is designed to resolve the insolvency and bankruptcy of corporate debtors, playing a critical role in managing **NPAs** and improving credit culture.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Financial Market)",
@@ -1937,11 +1937,11 @@
         "text": "SEBI"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Credit Rating Agencies (CRAs)",
     "Explanation": "In India, CRAs are regulated by **SEBI**. Wait, the MPSC often uses a trick question. **Credit Rating Agencies (CRAs)** are regulated by **SEBI**, not RBI. Let's correct the question/answer to fit the known MPSC domain: **Non-Banking Financial Companies (NBFCs)** are regulated by RBI.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Financial Market)",
@@ -1964,11 +1964,11 @@
         "text": "Market Stabilization Scheme (MSS)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Liquidity Adjustment Facility (LAF)",
     "Explanation": "NBFCs, particularly those above a certain size, can access the RBI's short-term liquidity operations like the **LAF** window.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India MSME)",
@@ -1991,11 +1991,11 @@
         "text": "₹100 crore"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "₹250 crore",
     "Explanation": "The threshold was reduced from ₹500 crore to **₹250 crore** to enhance liquidity and working capital access for smaller MSMEs.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Fiscal)",
@@ -2018,11 +2018,11 @@
         "text": "Total revenue expenditure is greater than total revenue receipts"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Public revenue is less than public expenditure (excluding borrowings)",
     "Explanation": "Fiscal Deficit is the excess of total expenditure over total receipts, **excluding borrowings**. It represents the government's total borrowing requirement.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Agriculture)",
@@ -2045,11 +2045,11 @@
         "text": "Castor"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Niger (Guizotia abyssinica) seeds",
     "Explanation": "MSP is provided for **Niger seeds** (Ramtil), which is cultivated as a Kharif crop and used by tribal communities for cooking oil.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India External Sector)",
@@ -2072,11 +2072,11 @@
         "text": "30.5%"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "18.7%",
     "Explanation": "India's external debt remains manageable, standing at **18.7% of GDP** as of March 2024.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Financial Market)",
@@ -2099,11 +2099,11 @@
         "text": "Non-Convertible Debentures"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Convertible Bonds",
     "Explanation": "**Convertible Bonds** offer the investor the upside potential of equity, hence they compensate with a lower fixed interest rate (coupon).",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Policy)",
@@ -2126,11 +2126,11 @@
         "text": "Foreign Portfolio Investors (FPIs)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Domestic Angel Investors (meeting DPIIT registration)",
     "Explanation": "The scrapping of Angel Tax for DPIIT-recognized startups and domestic investors was a major boost to the entrepreneurial ecosystem.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India MSME)",
@@ -2153,11 +2153,11 @@
         "text": "Prime Minister Jan Dhan Yojana"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "New Credit Assessment Model for MSME",
     "Explanation": "The **New Credit Assessment Model** leverages digital transaction data to evaluate MSME creditworthiness, making finance accessible even to firms without formal accounting.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Financial Market)",
@@ -2180,11 +2180,11 @@
         "text": "Stock Market"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Money Market",
     "Explanation": "The **Call Money Market** deals with overnight/very short-term lending and borrowing between banks, placing it squarely in the **Money Market**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Policy)",
@@ -2207,11 +2207,11 @@
         "text": "Revenue Expenditure"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "Revenue Expenditure",
     "Explanation": "**Revenue Expenditure** covers day-to-day government operations (salaries, interest payments, subsidies) and does not create assets.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 4
   },
   {
     "category": "Economy (India Social Sector)",
@@ -2234,11 +2234,11 @@
         "text": "9"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "6",
     "Explanation": "FLFPR has been continuously rising for **six consecutive years**, indicating positive changes in women's economic activity.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Energy)",
@@ -2261,11 +2261,11 @@
         "text": "55%"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "45%",
     "Explanation": "Non-fossil sources accounted for approximately **45.4%** of India's installed capacity by May 2024, reflecting progress in energy transition.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Macro)",
@@ -2288,11 +2288,11 @@
         "text": "Per Capita Income"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "GDP at current market prices",
     "Explanation": "These key investment indicators are conventionally measured and presented as a percentage of **GDP at current market prices**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Reforms)",
@@ -2315,11 +2315,11 @@
         "text": "National Payments Corporation of India (NPCI)"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Stock Exchanges",
     "Explanation": "SEBI is the market regulator for securities and futures market in India, primarily overseeing **Stock Exchanges**.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Agriculture)",
@@ -2342,11 +2342,11 @@
         "text": "Central/State sharing (60:40)"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "100%",
     "Explanation": "DILRMP is implemented as a **Centrally Sponsored Scheme** with **100% funding** from the Central Government.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India External Sector)",
@@ -2369,11 +2369,11 @@
         "text": "25.0%"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "18.7%",
     "Explanation": "India's external debt to GDP ratio remained stable and manageable at **18.7%**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Employment)",
@@ -2396,11 +2396,11 @@
         "text": "5 crore"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "2.35 crore",
     "Explanation": "The gig and platform workforce is expected to expand significantly, reaching **2.35 crore** by 2029-30.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Macro)",
@@ -2423,11 +2423,11 @@
         "text": "NITI Aayog Vice-Chairman"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Chief Economic Advisor (CEA)",
     "Explanation": "The Survey is compiled by the Economics Division of the Department of Economic Affairs under the supervision of the **Chief Economic Advisor**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Reforms)",
@@ -2450,11 +2450,11 @@
         "text": "Tendulkar Committee"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Alagh Committee",
     "Explanation": "The **Alagh Committee (1979)** used calorie intake as the primary basis for defining the poverty line in India.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Monetary Policy)",
@@ -2477,11 +2477,11 @@
         "text": "All of the above"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "All of the above",
     "Explanation": "The money multiplier ($m = 1 + \text{CDR} / (\text{CRR} + \text{SLR} + \text{CDR})$) is inversely related to CRR, SLR, and CDR. A decrease in any of these ratios leads to an **increase** in the money multiplier.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 4
   },
   {
     "category": "Economy (India Fiscal)",
@@ -2504,11 +2504,11 @@
         "text": "Revenue Expenditure"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "Revenue Expenditure",
     "Explanation": "Salaries, pensions, and interest payments are mandatory recurring expenditures and are classified as **Revenue Expenditure**.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 4
   },
   {
     "category": "Economy (India Trade)",
@@ -2531,11 +2531,11 @@
         "text": "USD 400 billion"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "USD 341 billion",
     "Explanation": "India's services exports grew robustly to **USD 341.1 billion** in FY24, primarily driven by IT and software segments.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Reforms)",
@@ -2558,11 +2558,11 @@
         "text": "Unnat Jyoti by Affordable LEDs for All (UJALA)"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Ujjwala Yojana (for LPG)",
     "Explanation": "The National LED Programme focuses on energy efficiency in lighting. **Ujjwala Yojana** is for providing clean cooking fuel (LPG).",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Agriculture)",
@@ -2585,11 +2585,11 @@
         "text": "Rural Electrification Corporation (REC)"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "National Bank for Agriculture and Rural Development (NABARD)",
     "Explanation": "RIDF was established under NABARD in 1995-96 to finance rural infrastructure projects.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "Economy (India Macro)",
@@ -2612,11 +2612,11 @@
         "text": "9.5%"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "7.6%",
     "Explanation": "The services sector grew by **7.6%** in FY24, contributing significantly to the overall GDP growth.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "Economy (India Financial Market)",
@@ -2639,10 +2639,10 @@
         "text": "Debt Market"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Money Market",
     "Explanation": "The **Money Market** is the market for short-term funds (less than one year), used for meeting temporary liquidity needs.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   }
 ]

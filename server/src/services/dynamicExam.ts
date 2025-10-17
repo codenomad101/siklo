@@ -92,49 +92,7 @@ export class DynamicExamService {
         ))
         .returning();
 
-      // Update user statistics
-      const statisticsService = new StatisticsService();
-      console.log('Updating exam statistics for user:', userId, {
-        questionsAttempted: completionData.questionsAttempted,
-        correctAnswers: completionData.correctAnswers,
-        incorrectAnswers: completionData.incorrectAnswers,
-        timeSpentMinutes: Math.floor(completionData.timeSpentSeconds / 60),
-      });
-      
-      // Update overall statistics
-      await statisticsService.updateExamStatistics(userId, {
-        questionsAttempted: completionData.questionsAttempted,
-        correctAnswers: completionData.correctAnswers,
-        incorrectAnswers: completionData.incorrectAnswers,
-        timeSpentMinutes: Math.floor(completionData.timeSpentSeconds / 60),
-      });
-      
-      // Update subject-specific statistics for each category in the exam
-      const categoryStats = new Map<string, { questionsAttempted: number; correctAnswers: number; incorrectAnswers: number; timeSpentMinutes: number }>();
-      
-      // Calculate statistics per category
-      questionsData.forEach(q => {
-        const categoryId = q.categoryId || q.category;
-        if (!categoryStats.has(categoryId)) {
-          categoryStats.set(categoryId, { questionsAttempted: 0, correctAnswers: 0, incorrectAnswers: 0, timeSpentMinutes: 0 });
-        }
-        const stats = categoryStats.get(categoryId)!;
-        stats.questionsAttempted++;
-        if (q.isCorrect) {
-          stats.correctAnswers++;
-        } else {
-          stats.incorrectAnswers++;
-        }
-        stats.timeSpentMinutes += Math.floor(q.timeSpentSeconds / 60);
-      });
-      
-      // Update statistics for each category
-      for (const [categoryId, stats] of categoryStats) {
-        console.log('Updating subject-specific exam statistics for category:', categoryId, stats);
-        await statisticsService.updateSubjectExamStatistics(userId, categoryId, stats);
-      }
-      
-      console.log('Exam statistics updated successfully');
+      // Note: Statistics will be updated when the exam is completed, not when questions are submitted
 
       return session;
     } catch (error) {
@@ -177,6 +135,53 @@ export class DynamicExamService {
       if (!session) {
         throw new Error('Exam session not found');
       }
+
+      // Update user statistics
+      const statisticsService = new StatisticsService();
+      console.log('Updating exam statistics for user:', userId, {
+        questionsAttempted: completionData.questionsAttempted,
+        correctAnswers: completionData.correctAnswers,
+        incorrectAnswers: completionData.incorrectAnswers,
+        timeSpentMinutes: Math.floor(completionData.timeSpentSeconds / 60),
+      });
+      
+      // Update overall statistics
+      await statisticsService.updateExamStatistics(userId, {
+        questionsAttempted: completionData.questionsAttempted,
+        correctAnswers: completionData.correctAnswers,
+        incorrectAnswers: completionData.incorrectAnswers,
+        timeSpentMinutes: Math.floor(completionData.timeSpentSeconds / 60),
+      });
+      
+      // Update subject-specific statistics for each category in the exam
+      const categoryStats = new Map<string, { questionsAttempted: number; correctAnswers: number; incorrectAnswers: number; timeSpentMinutes: number }>();
+      
+      // Get the questions data from the session to calculate category-specific stats
+      const questionsData = session.questionsData || [];
+      
+      // Calculate statistics per category
+      questionsData.forEach((q: any) => {
+        const categoryId = q.categoryId || q.category;
+        if (!categoryStats.has(categoryId)) {
+          categoryStats.set(categoryId, { questionsAttempted: 0, correctAnswers: 0, incorrectAnswers: 0, timeSpentMinutes: 0 });
+        }
+        const stats = categoryStats.get(categoryId)!;
+        stats.questionsAttempted++;
+        if (q.isCorrect) {
+          stats.correctAnswers++;
+        } else {
+          stats.incorrectAnswers++;
+        }
+        stats.timeSpentMinutes += Math.floor(q.timeSpentSeconds / 60);
+      });
+      
+      // Update statistics for each category
+      for (const [categoryId, stats] of categoryStats) {
+        console.log('Updating subject-specific exam statistics for category:', categoryId, stats);
+        await statisticsService.updateSubjectExamStatistics(userId, categoryId, stats);
+      }
+      
+      console.log('Exam statistics updated successfully');
 
       return session;
     } catch (error) {
@@ -406,11 +411,23 @@ export class DynamicExamService {
 
           console.log(`Selected ${selectedQuestions.length} questions for category ${dist.category}`);
 
+          // Validate questions before processing
+          selectedQuestions.forEach((q: any, index: number) => {
+            const correctAnswer = q.CorrectAnswer || q.correctAnswer || '';
+            if (!correctAnswer) {
+              console.error(`Question ${index + 1} missing correct answer:`, {
+                questionText: q.Question,
+                CorrectAnswer: q.CorrectAnswer,
+                correctAnswer: q.correctAnswer,
+                Answer: q.Answer
+              });
+            }
+          });
+
           // Transform to our format
-          const formattedQuestions = selectedQuestions.map((q: any, index: number) => ({
-            questionId: `${categorySlug}_${Date.now()}_${index + 1}`,
-            questionText: q.Question || q.question || '',
-            options: q.Options ? q.Options.map((opt: any, optIndex: number) => {
+          const formattedQuestions = selectedQuestions.map((q: any, index: number) => {
+            // Process options first
+            const processedOptions = q.Options ? q.Options.map((opt: any, optIndex: number) => {
               // Handle different option formats
               if (typeof opt === 'string') {
                 return {
@@ -428,18 +445,59 @@ export class DynamicExamService {
                   text: String(opt || '')
                 };
               }
-            }) : [],
-            correctAnswer: q.CorrectAnswer || q.correctAnswer || q.Answer || '',
-            userAnswer: '',
-            isCorrect: false,
-            timeSpentSeconds: 0,
-            marksObtained: 0,
-            category: categorySlug,
-            categoryName: categoryName,
-            categoryId: dist.category, // Keep original UUID
-            marksPerQuestion: dist.marksPerQuestion,
-            explanation: q.Explanation || q.explanation || ''
-          }));
+            }) : [];
+            
+            // Extract correct option ID and answer text
+            let correctOption: number | null = null;
+            let correctAnswerText: string = '';
+            
+            // Try to get correctOption from the question data first
+            if (q.correctOption) {
+              correctOption = parseInt(q.correctOption);
+            } else if (q.Answer) {
+              // Extract option number from "Option X" format
+              const optionMatch = q.Answer.match(/Option\s*(\d+)/i);
+              if (optionMatch) {
+                correctOption = parseInt(optionMatch[1]);
+              }
+            } else if (q.CorrectAnswer) {
+              // Extract option number from "Option X" format
+              const optionMatch = q.CorrectAnswer.match(/Option\s*(\d+)/i);
+              if (optionMatch) {
+                correctOption = parseInt(optionMatch[1]);
+              }
+            }
+            
+            // Get the actual answer text from the options
+            if (correctOption && processedOptions.length > 0) {
+              const correctOptionObj = processedOptions.find(opt => opt.id === correctOption);
+              if (correctOptionObj) {
+                correctAnswerText = correctOptionObj.text;
+              }
+            }
+            
+            // Fallback to original values if extraction failed
+            if (!correctAnswerText) {
+              correctAnswerText = q.CorrectAnswer || q.correctAnswer || '';
+            }
+            
+            return {
+              questionId: `${categorySlug}_${Date.now()}_${index + 1}`,
+              questionText: q.Question || q.question || '',
+              options: processedOptions,
+              correctAnswer: correctAnswerText,
+              correctOption: correctOption,
+              userAnswer: '',
+              isCorrect: false,
+              timeSpentSeconds: 0,
+              marksObtained: 0,
+              category: categorySlug,
+              categoryName: categoryName,
+              categoryId: dist.category, // Keep original UUID
+              marksPerQuestion: dist.marksPerQuestion,
+              explanation: q.Explanation || q.explanation || ''
+            };
+          });
 
           allQuestions.push(...formattedQuestions);
           console.log(`Added ${formattedQuestions.length} formatted questions for category ${dist.category}`);

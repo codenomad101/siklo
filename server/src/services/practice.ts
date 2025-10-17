@@ -90,6 +90,9 @@ export class PracticeService {
     try {
       // First try to get questions from database
       try {
+        // Temporarily disable database lookup to force JSON file usage
+        throw new Error('Force JSON file usage');
+        
         const [category] = await db
           .select()
           .from(practiceCategories)
@@ -111,11 +114,21 @@ export class PracticeService {
             .limit(Math.min(count, category.totalQuestions));
 
           if (questions.length > 0) {
+            console.log(`Loading ${questions.length} questions from DATABASE for category: ${categorySlug}`);
+            console.log('Sample question from database:', {
+              questionId: questions[0].questionId,
+              questionText: questions[0].questionText,
+              correctAnswer: questions[0].correctAnswer,
+              correctOption: questions[0].correctOption,
+              options: questions[0].options,
+              hasCorrectOption: 'correctOption' in questions[0]
+            });
             return questions.map((q) => ({
               questionId: q.questionId,
               questionText: q.questionText,
               options: q.options,
               correctAnswer: q.correctAnswer,
+              correctOption: q.correctOption, // Add the new field
               explanation: q.explanation || '',
               category: categorySlug,
               marks: q.marks,
@@ -129,6 +142,7 @@ export class PracticeService {
       }
 
       // Fallback to JSON files
+      console.log(`No questions found in database for category: ${categorySlug}, falling back to JSON files`);
       return this.getQuestionsFromJsonFiles(categorySlug, count);
 
     } catch (error) {
@@ -181,36 +195,92 @@ export class PracticeService {
       const selectedQuestions = shuffled.slice(0, count);
 
       // Transform to our format
+      console.log(`Loading ${selectedQuestions.length} questions from JSON FILES for category: ${categorySlug}`);
+      console.log('Sample question from JSON:', {
+        questionText: selectedQuestions[0].Question,
+        correctAnswer: selectedQuestions[0].CorrectAnswer,
+        answer: selectedQuestions[0].Answer,
+        options: selectedQuestions[0].Options
+      });
+      
       return selectedQuestions.map((q: any, index: number) => {
         console.log(`Processing question ${index + 1}:`, {
           questionText: q.Question,
           options: q.Options,
-          correctAnswer: q.CorrectAnswer
+          correctAnswer: q.CorrectAnswer,
+          answer: q.Answer
+        });
+        
+        // Process options first
+        const processedOptions = q.Options ? q.Options.map((opt: any, optIndex: number) => {
+          // Handle different option formats
+          if (typeof opt === 'string') {
+            return {
+              id: optIndex + 1,
+              text: opt
+            };
+          } else if (opt && typeof opt === 'object') {
+            return {
+              id: opt.id || optIndex + 1,
+              text: opt.text || opt.label || opt.value || String(opt)
+            };
+          } else {
+            return {
+              id: optIndex + 1,
+              text: String(opt || '')
+            };
+          }
+        }) : [];
+        
+        // Extract correct option ID and answer text
+        let correctOption: number | null = null;
+        let correctAnswerText: string = '';
+        
+        // Try to get correctOption from the question data first
+        if (q.correctOption) {
+          correctOption = parseInt(q.correctOption);
+        } else if (q.Answer) {
+          // Extract option number from "Option X" format
+          const optionMatch = q.Answer.match(/Option\s*(\d+)/i);
+          if (optionMatch) {
+            correctOption = parseInt(optionMatch[1]);
+          }
+        } else if (q.CorrectAnswer) {
+          // Extract option number from "Option X" format
+          const optionMatch = q.CorrectAnswer.match(/Option\s*(\d+)/i);
+          if (optionMatch) {
+            correctOption = parseInt(optionMatch[1]);
+          }
+        }
+        
+        // Get the actual answer text from the options
+        if (correctOption && processedOptions.length > 0) {
+          const correctOptionObj = processedOptions.find(opt => opt.id === correctOption);
+          if (correctOptionObj) {
+            correctAnswerText = correctOptionObj.text;
+          }
+        }
+        
+        // Fallback to original values if extraction failed
+        if (!correctAnswerText) {
+          correctAnswerText = q.CorrectAnswer || q.correctAnswer || '';
+        }
+        
+        console.log(`Processed question ${index + 1}:`, {
+          questionId: `${categorySlug}_${index + 1}`,
+          correctOption,
+          correctAnswerText,
+          originalCorrectOption: q.correctOption,
+          originalCorrectAnswer: q.CorrectAnswer,
+          processedOptions: processedOptions.map(opt => ({ id: opt.id, text: opt.text }))
         });
         
         return {
           questionId: `${categorySlug}_${index + 1}`,
           questionText: q.Question || q.question || '',
-          options: q.Options ? q.Options.map((opt: any, optIndex: number) => {
-            // Handle different option formats
-            if (typeof opt === 'string') {
-              return {
-                id: optIndex + 1,
-                text: opt
-              };
-            } else if (opt && typeof opt === 'object') {
-              return {
-                id: opt.id || optIndex + 1,
-                text: opt.text || opt.label || opt.value || String(opt)
-              };
-            } else {
-              return {
-                id: optIndex + 1,
-                text: String(opt || '')
-              };
-            }
-          }) : [],
-          correctAnswer: q.CorrectAnswer || q.correctAnswer || '',
+          options: processedOptions,
+          correctAnswer: correctAnswerText,
+          correctOption: correctOption,
           explanation: q.Explanation || q.explanation || '',
           category: categorySlug,
           marks: 1,
@@ -264,9 +334,15 @@ export class PracticeService {
         status: 'in_progress',
         questionsData: questions.map(q => ({
           questionId: q.questionId,
+          questionText: q.questionText,
+          options: q.options,
+          correctAnswer: q.correctAnswer,
+          correctOption: q.correctOption,
           userAnswer: '',
           isCorrect: false,
-          timeSpentSeconds: 0
+          timeSpentSeconds: 0,
+          explanation: q.explanation,
+          category: q.category
         }))
       };
 
@@ -274,6 +350,14 @@ export class PracticeService {
       
       console.log('Created practice session:', session);
       console.log('Session ID:', session.sessionId);
+      console.log('Sample question data in session:', {
+        questionId: questions[0]?.questionId,
+        correctOption: questions[0]?.correctOption,
+        correctAnswer: questions[0]?.correctAnswer,
+        options: questions[0]?.options,
+        totalQuestions: questions.length,
+        firstFewQuestionIds: questions.slice(0, 3).map(q => q.questionId)
+      });
       
       return {
         session,
@@ -331,18 +415,72 @@ export class PracticeService {
         throw new Error('Question not found in session');
       }
 
-      // Get the correct answer from the database
-      const [question] = await db
-        .select()
-        .from(practiceQuestions)
-        .where(eq(practiceQuestions.questionId, questionId))
-        .limit(1);
+      // Get the correct answer and correctOption from session data
+      let correctAnswer: string;
+      let correctOption: number | null = null;
       
-      if (!question) {
-        throw new Error('Question data not found');
+      // First try to get from the session's questionsData (which contains full question data)
+      if (session.questionsData && Array.isArray(session.questionsData)) {
+        const sessionQuestionData = session.questionsData.find((q: any) => q.questionId === questionId);
+        if (sessionQuestionData) {
+          correctAnswer = sessionQuestionData.correctAnswer;
+          correctOption = sessionQuestionData.correctOption;
+          console.log('Found session question data:', {
+            questionId,
+            correctAnswer: sessionQuestionData.correctAnswer,
+            correctOption: sessionQuestionData.correctOption,
+            hasCorrectOption: 'correctOption' in sessionQuestionData,
+            allKeys: Object.keys(sessionQuestionData)
+          });
+        } else {
+          console.log('Session question not found for questionId:', questionId);
+        }
+      }
+      
+      // If not found in session data, try database
+      if (correctOption === null) {
+        try {
+          const [question] = await db
+            .select()
+            .from(practiceQuestions)
+            .where(eq(practiceQuestions.questionId, questionId))
+            .limit(1);
+          
+          if (question) {
+            correctAnswer = question.correctAnswer;
+            correctOption = question.correctOption;
+          }
+        } catch (dbError) {
+          console.log('Database lookup failed:', dbError.message);
+        }
+      }
+      
+      // Final fallback to questionsData array (legacy support)
+      if (correctOption === null && questionsData[questionIndex]) {
+        const sessionQuestion = questionsData[questionIndex];
+        correctAnswer = sessionQuestion.correctAnswer;
+        correctOption = sessionQuestion.correctOption;
       }
 
-      const isCorrect = userAnswer === question.correctAnswer;
+      // Parse user answer - it should be the option ID (1, 2, 3, 4)
+      const selectedOptionId = parseInt(userAnswer);
+      const isCorrect = !isNaN(selectedOptionId) && correctOption !== null && selectedOptionId === correctOption;
+
+      // Debug logging for answer comparison
+      console.log('Answer validation debug:', {
+        questionId,
+        userAnswer: `"${userAnswer}"`,
+        selectedOptionId,
+        correctAnswer: `"${correctAnswer}"`,
+        correctOption,
+        userAnswerType: typeof userAnswer,
+        correctAnswerType: typeof correctAnswer,
+        areEqual: isCorrect,
+        validationMethod: 'optionId',
+        sessionQuestionsDataLength: session.questionsData ? session.questionsData.length : 0,
+        questionsDataLength: questionsData.length,
+        sessionQuestionFound: session.questionsData ? !!session.questionsData.find((q: any) => q.questionId === questionId) : false
+      });
       
       questionsData[questionIndex] = {
         questionId,
@@ -373,7 +511,7 @@ export class PracticeService {
         })
         .where(eq(practiceSessions.sessionId, sessionId));
 
-      return { isCorrect, correctAnswer: question.correctAnswer };
+      return { isCorrect, correctAnswer };
     } catch (error) {
       console.error('Error updating practice session:', error);
       throw new Error('Failed to update practice session');

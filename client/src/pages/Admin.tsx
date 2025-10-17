@@ -921,7 +921,20 @@ const AdminPage: React.FC = () => {
       >
         <Alert
           message="JSON File Format"
-          description="Your JSON file should contain an array of questions with 'Question', 'Options', 'CorrectAnswer', and 'Explanation' fields."
+          description={
+            <div>
+              <p>Your JSON file should contain an array of questions with the following fields:</p>
+              <ul style={{ margin: '8px 0', paddingLeft: '20px' }}>
+                <li><strong>category</strong> (optional): Category name - will create new category if doesn't exist</li>
+                <li><strong>Question</strong>: The question text</li>
+                <li><strong>Options</strong>: Array of options with id and text</li>
+                <li><strong>CorrectAnswer</strong>: The correct answer</li>
+                <li><strong>Explanation</strong> (optional): Explanation for the answer</li>
+                <li><strong>Difficulty</strong> (optional): easy, medium, or hard</li>
+                <li><strong>Job</strong> (optional): Array of job categories like ["UPSC", "SSC", "Banking"]</li>
+              </ul>
+            </div>
+          }
           type="info"
           showIcon
           style={{ marginBottom: '16px' }}
@@ -934,10 +947,10 @@ const AdminPage: React.FC = () => {
         >
           <Form.Item
             name="categoryId"
-            label="Select Category"
-            rules={[{ required: true, message: 'Please select a category' }]}
+            label="Select Category (Optional)"
+            extra="If not selected, categories will be auto-created from the JSON file"
           >
-            <Select placeholder="Choose category">
+            <Select placeholder="Choose category (optional)" allowClear>
               {categories.map(category => (
                 <Option key={category.categoryId} value={category.categoryId}>
                   {category.name}

@@ -344,6 +344,7 @@ export const practiceSessions = pgTable('practice_sessions', {
     questionText: string;
     options: Array<{ id: number; text: string }>;
     correctAnswer: string;
+    correctOption: number | null;
     userAnswer: string;
     isCorrect: boolean;
     timeSpentSeconds: number;
@@ -471,6 +472,7 @@ export const practiceQuestions = pgTable('practice_questions', {
   questionText: text('question_text').notNull(),
   options: json('options').$type<Array<{ id: number; text: string }>>().notNull(),
   correctAnswer: varchar('correct_answer', { length: 500 }).notNull(),
+  correctOption: integer('correct_option'), // Numeric option ID (1, 2, 3, 4)
   explanation: text('explanation'),
   
   // Question metadata

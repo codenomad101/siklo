@@ -20,11 +20,11 @@
         "text": "Mukhyamantri Yuva Karyaprashikshan Yojana"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Mukhyamantri Majhi Ladki Bahin Yojana",
     "Explanation": "The **Mukhyamantri Majhi Ladki Bahin Yojana** is a scheme launched by the Maharashtra government providing monthly financial assistance of ₹1,500/- to women aged 21-65. E-KYC has been made mandatory to ensure Direct Benefit Transfer (DBT) reaches the correct beneficiaries.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Appointment)",
@@ -47,11 +47,11 @@
         "text": "Sonia Narang"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Sonali Mishra",
     "Explanation": "**Sonali Mishra**, an IPS officer, was appointed the first woman Director General of the RPF in 2024, succeeding Manoj Yadava.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Award)",
@@ -74,11 +74,11 @@
         "text": "Pookkaalam"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Shyamchi Aai",
     "Explanation": "The film **'Shyamchi Aai'** won the Best Marathi Film award at the National Film Awards 2024. This is a common topic in MPSC's cultural section.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Governance)",
@@ -101,11 +101,11 @@
         "text": "Small and Medium Enterprises (SMEs)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Indian Civil Servants",
     "Explanation": "Mission Karmayogi is the National Programme for Civil Services Capacity Building (NPCSCB). Its goal is to transform the Indian civil service into a more efficient, proactive, and professional entity.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra History/Culture)",
@@ -128,11 +128,11 @@
         "text": "Desh"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Konkan",
     "Explanation": "The **Dashavatara Natak** is a popular folk theater form in the Konkan region, particularly in the Sindhudurg district of Maharashtra and Goa, based on the ten incarnations of Lord Vishnu.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India/International)",
@@ -155,11 +155,11 @@
         "text": "Commerce"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "External Affairs (Foreign)",
     "Explanation": "The **2+2 Dialogue** format involves the Defence Minister and the Minister of External Affairs (Foreign Affairs) from both countries, focusing on strategic and security cooperation.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -182,11 +182,11 @@
         "text": "Direct recruitment drives for youth"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Doorstep delivery of government schemes",
     "Explanation": "**'Shasan Aplya Dari'** (Government at Your Doorstep) is a flagship program aimed at providing various government services and scheme benefits directly to citizens at the local level.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Economy)",
@@ -209,11 +209,11 @@
         "text": "China and Brazil"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "China and Vietnam",
     "Explanation": "India is the **2nd** largest fish producer and **2nd** largest aquaculture nation in the world. **China** holds the top position in both categories.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Personalities)",
@@ -236,11 +236,11 @@
         "text": "Table Tennis"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Chess",
     "Explanation": "**Divya Deshmukh** is an Indian Chess Grandmaster from Nagpur, Maharashtra, who has achieved international recognition.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Polity)",
@@ -263,11 +263,11 @@
         "text": "The Vice President of India"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "A member from the Largest Opposition Group",
     "Explanation": "By convention, the Public Accounts Committee (PAC), which examines government expenditure, is chaired by a member of the **largest opposition group** in the House.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Appointment)",
@@ -290,11 +290,11 @@
         "text": "Dr. Abhay Eknath Wagh"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "Dr. Abhay Eknath Wagh",
     "Explanation": "Rajeev Nivatkar, Dr. Dilip Bhujbal-Patil, and Mahendra Warbhuvan were newly appointed as members of the MPSC. Dr. Abhay Eknath Wagh was already a serving member.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 4
   },
   {
     "category": "GK (India Defence/Tech)",
@@ -317,11 +317,11 @@
         "text": "Vayu"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Agni",
     "Explanation": "While **Agni** is a series of ballistic missiles, the question refers to a new anti-drone system. However, based on the options provided in a similar GK paper, Agni (or sometimes Bhargavastra) is the intended answer for the indigenous missile/weapon system. The snippet suggests **Agni** as the answer, although Agni is a strategic missile.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -344,11 +344,11 @@
         "text": "Granting interest-free loans for new businesses"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Enhancing candidates' employability through practical training",
     "Explanation": "This scheme focuses on youth employment, offering practical training and skill development in collaboration with entrepreneurs and industries.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India International)",
@@ -371,11 +371,11 @@
         "text": "World Health Organization (WHO)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Ministry of Health and Family Welfare, India",
     "Explanation": "On World Mental Health Day 2025, the Union Minister of Health and Family Welfare (India) designated Deepika Padukone as the Mental Health Ambassador to raise awareness.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Economy)",
@@ -398,11 +398,11 @@
         "text": "2020"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "2013",
     "Explanation": "India started releasing a gender budget along with its Union Budget in 2005. Maharashtra adopted the practice from the year **2013**.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Award)",
@@ -425,11 +425,11 @@
         "text": "Mrs. Chatterjee vs Norway"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "12th Fail",
     "Explanation": "The film **'12th Fail'** won the award for Best Feature Film at the National Film Awards 2024.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -452,11 +452,11 @@
         "text": "Women's self-help groups"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Agriculture",
     "Explanation": "**Baliraja** refers to farmers (Baliaj = King of the soil). The scheme provides free electricity to the agricultural sector, especially for farmers.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Science)",
@@ -479,11 +479,11 @@
         "text": "Jawaharlal Nehru University"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "IISc Bengaluru",
     "Explanation": "The **Indian Institute of Science (IISc), Bengaluru**, consistently ranks as the top Indian institution in global rankings like the THE World University Rankings.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Fort)",
@@ -506,11 +506,11 @@
         "text": "Torna Fort"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Raigad Fort",
     "Explanation": "The Hirkani Buruj is a bastion at the fort of **Raigad**, built to honor the legendary milkmaid Hirkani.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Sports)",
@@ -533,11 +533,11 @@
         "text": "Norway"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "India",
     "Explanation": "India is set to host the prestigious Chess World Cup in 2025.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 1
   },
   {
     "category": "GK (Maharashtra History/Polity)",
@@ -560,11 +560,11 @@
         "text": "The Maharashtra and Gujarat (Division) Act, 1960"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "The Bombay Reorganisation Act, 1960",
     "Explanation": "The Bombay Reorganisation Act, 1960 divided the bilingual Bombay State into the new states of Maharashtra and Gujarat.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Environment/Award)",
@@ -587,11 +587,11 @@
         "text": "Indira Gandhi International Airport, Delhi"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Thiruvananthapuram International Airport Limited (TIAL)",
     "Explanation": "TIAL was awarded the Greentech Award 2024 for its excellence in waste management and processing, specifically its 'zero trash to landfill' initiative.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -614,11 +614,11 @@
         "text": "Free internet access in rural areas"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Financial support and health aids for senior citizens",
     "Explanation": "The **Mukhyamantri Vayoshri Yojana** provides financial assistance and necessary physical aids/appliances to elderly citizens (Vayoshri) of the state, especially those suffering from age-related disabilities.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India History)",
@@ -641,11 +641,11 @@
         "text": "Juhu Beach"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "August Kranti Maidan (Gowalia Tank Maidan)",
     "Explanation": "The Quit India Movement was launched by Mahatma Gandhi on August 8, 1942, from the Gowalia Tank Maidan, which is now popularly known as August Kranti Maidan.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Economy)",
@@ -668,11 +668,11 @@
         "text": "Mukhyamantri Saur Krushi Pump Yojna"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "PM Kisan Samman Nidhi",
     "Explanation": "The Namo Shetkari Maha Samman Nidhi Yojana supplements the benefits provided under the Central Government's **Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)** scheme, providing additional financial aid to farmers in Maharashtra.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Award)",
@@ -695,11 +695,11 @@
         "text": "Bhanu Athaiya"
       }
     ],
-    "Answer": "Option 4",
     "CorrectAnswer": "Bhanu Athaiya",
     "Explanation": "The Padma Vibhushan is one of the highest civilian awards. **Bhanu Athaiya** (who passed away in 2020) was awarded an Oscar, not the Padma Vibhushan in 2025. Chiranjeevi, Pratibha Ray, and Mithun Chakraborty were among the Padma Awardees in 2025.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 4
   },
   {
     "category": "GK (Maharashtra Sports)",
@@ -722,11 +722,11 @@
         "text": "Nashik"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Mumbai",
     "Explanation": "Mumbai hosted the prestigious UTT 86th Senior National and Inter-state Table Tennis Championship 2024.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India/International)",
@@ -749,11 +749,11 @@
         "text": "Vietnam"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Thailand",
     "Explanation": "Thailand's Constitutional Court ruled that PM Srettha Thavisin violated ethical standards by appointing a minister with a prior criminal record, leading to his resignation.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -776,11 +776,11 @@
         "text": "Free healthcare for construction workers"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Providing social and financial support to girls",
     "Explanation": "The **Lek Ladki Scheme** (Daughter's Girl) is a financial assistance scheme aimed at promoting girls' education and welfare in the state.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Economy)",
@@ -803,11 +803,11 @@
         "text": "State Bank of India"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "Punjab National Bank",
     "Explanation": "The Punjab National Bank (PNB) was the first Indian bank to implement this integration solution to enhance its security against various financial frauds.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 1
   },
   {
     "category": "GK (Maharashtra Geography/GK)",
@@ -830,11 +830,11 @@
         "text": "Torna Fort"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Sinhagad Fort",
     "Explanation": "Sinhagad (Kondana), famous for the Battle of Sinhagad, is situated in the Bhuleshwar range of the Sahyadri mountains near Pune.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Environment)",
@@ -857,11 +857,11 @@
         "text": "Rajasthan"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Madhya Pradesh",
     "Explanation": "Rani Durgavati Tiger Reserve is located in Madhya Pradesh, established to boost tiger conservation efforts.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Appointment)",
@@ -884,11 +884,11 @@
         "text": "State Police Complaint Authority"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Maharashtra Public Service Commission (MPSC)",
     "Explanation": "Shri Rajeev Dattatray Nivatkar, along with others, was recently appointed as a member of the MPSC by the State Government, following Governor's orders under Article 316(1).",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Award)",
@@ -911,11 +911,11 @@
         "text": "Hardik Pandya"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Suryakumar Yadav",
     "Explanation": "**Suryakumar Yadav** won the ICC Men's T20I Cricketer of the Year Award for his outstanding performance in the format.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -938,11 +938,11 @@
         "text": "2027"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "2025",
     "Explanation": "The PMAY-U 2.0 has the key objective of providing **'Housing for All'** in urban areas by the year **2025**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Schemes)",
@@ -965,11 +965,11 @@
         "text": "Digital Payments"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Residential Solar Rooftops",
     "Explanation": "The scheme provides subsidies for installing rooftop solar plants on residential buildings to provide free electricity.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Culture)",
@@ -992,11 +992,11 @@
         "text": "Durga Bhagwat"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Laxmibai Tilak",
     "Explanation": "Laxmibai Tilak, the wife of Narayan Waman Tilak, is the author of this important Marathi autobiography.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India International)",
@@ -1019,11 +1019,11 @@
         "text": "Kolkata"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "New Delhi",
     "Explanation": "The meeting on Cyber Security Cooperation among BIMSTEC member states was held in **New Delhi**.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Art/GI Tag)",
@@ -1046,11 +1046,11 @@
         "text": "Chhatrapati Sambhajinagar (Aurangabad)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Thane-Palghar",
     "Explanation": "Warli Art originates from the Warli tribes inhabiting the mountainous and coastal areas of the Thane and Palghar districts of Maharashtra.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Defence/Tech)",
@@ -1073,11 +1073,11 @@
         "text": "Microsoft"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Google",
     "Explanation": "Google (specifically its quantum division) launched the **'Willow'** quantum processor as part of its advancements in quantum computing technology.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra GK)",
@@ -1100,11 +1100,11 @@
         "text": "Greater Flamingo"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Indian Bison (Gaur)",
     "Explanation": "Radhanagari Wildlife Sanctuary (Gargoti) is specifically known for its conservation of the **Indian Bison (Gaur)**.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Appointments)",
@@ -1127,11 +1127,11 @@
         "text": "Sudarshan Sen"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Ashok Kumar Singh",
     "Explanation": "**Shri Ashok Kumar Singh**, IAS, took over the charge as the Director General of ESIC in 2024.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -1154,11 +1154,11 @@
         "text": "₹10,00,000/-"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "₹5,00,000/-",
     "Explanation": "MJPSJAY, similar to Ayushman Bharat, provides cashless health insurance coverage up to **₹5,00,000/-** per family per year for secondary and tertiary care hospitalization.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Sports)",
@@ -1181,11 +1181,11 @@
         "text": "Haryana"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Punjab",
     "Explanation": "The SHE COHORT 3.0 initiative is aimed at fostering entrepreneurship among women and was launched by the Punjab government.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Economy)",
@@ -1208,11 +1208,11 @@
         "text": "National Chemical Laboratory (NCL)"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "National Institute of Bank Management (NIBM)",
     "Explanation": "Dr. Partha Ray, Director of NIBM, Pune, was part of an RBI-related expert committee, highlighting a key financial institution based in Maharashtra.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Schemes)",
@@ -1235,11 +1235,11 @@
         "text": "₹10,000/-"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "₹6,000/-",
     "Explanation": "PM-KISAN provides **₹6,000/-** per year in three equal installments of ₹2,000/- directly into the bank accounts of eligible farmer families.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra GK)",
@@ -1262,11 +1262,11 @@
         "text": "Ketones"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Albumin",
     "Explanation": "The NCL, Pune, opined that **Albumin** levels could serve as a better early indicator of diabetes compared to only blood sugar levels.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Science/Tech)",
@@ -1289,11 +1289,11 @@
         "text": "Ministry of Sports"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Ministry of Education",
     "Explanation": "Project Veer Gatha is organized jointly by the Ministry of Defence and the **Ministry of Education** to create awareness among school children about the heroic deeds of Gallantry Award winners.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Wildlife)",
@@ -1316,11 +1316,11 @@
         "text": "Nagpur"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Jalgaon",
     "Explanation": "Yawal Wildlife Sanctuary is a significant part of the Satpura Range ecosystem located in the **Jalgaon** district of Maharashtra.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Award)",
@@ -1343,11 +1343,11 @@
         "text": "14"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "7",
     "Explanation": "The Padma Vibhushan is the second-highest civilian award. **7** individuals were announced for the Padma Vibhushan in 2025.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -1370,11 +1370,11 @@
         "text": "Mukhyamantri Vayoshri Yojana"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "LIDCOM Gattai Stall Scheme",
     "Explanation": "The **LIDCOM Gattai Stall Scheme** provides a full subsidy for small tin stalls to Scheduled Caste individuals engaged in roadside cobbling/repair.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Appointment)",
@@ -1397,11 +1397,11 @@
         "text": "Sanjeev Singla"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Jitendra Pal Singh",
     "Explanation": "**Jitendra Pal Singh** was recently appointed as the new Ambassador of India to Israel.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra History/Culture)",
@@ -1424,11 +1424,11 @@
         "text": "Administrative convenience"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Marathi-Gujarati linguistic division",
     "Explanation": "The Act divided the bilingual Bombay State into two states, Maharashtra (Marathi-speaking) and Gujarat (Gujarati-speaking), based on linguistic criteria.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Environment)",
@@ -1451,11 +1451,11 @@
         "text": "Cwg (Monsoon with Dry Winter)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Am (Tropical Monsoon)",
     "Explanation": "The Konkan coast, receiving heavy rainfall from the Arabian Sea branch of the monsoon, experiences a **Tropical Monsoon (Am)** type of climate.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -1478,11 +1478,11 @@
         "text": "Medical insurance"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Food grains (Subsidy)",
     "Explanation": "**Annapurna** refers to food. The scheme is aimed at providing subsidized or free food grains to the needy, focusing on food security.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India International)",
@@ -1505,11 +1505,11 @@
         "text": "Israel"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "China",
     "Explanation": "China recently announced the development of the world's first deep-sea radar system with this advanced detection capability.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra GK)",
@@ -1532,11 +1532,11 @@
         "text": "Rajaram I"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Chhatrapati Sambhaji",
     "Explanation": "**Shivabharata** was composed by the court poet of Chhatrapati Sambhaji, the son of Shivaji.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Award)",
@@ -1559,11 +1559,11 @@
         "text": "Jawan"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Laapataa Ladies",
     "Explanation": "**'Laapataa Ladies'** was the big winner at the 70th Filmfare Awards 2025, directed by Kiran Rao.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -1586,11 +1586,11 @@
         "text": "₹10,000/-"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "₹6,000/-",
     "Explanation": "This state scheme provides ₹6,000/- annually, typically mirroring the amount of the central PM-KISAN scheme, as an additional benefit.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Geography)",
@@ -1613,11 +1613,11 @@
         "text": "Tapi"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Wainganga",
     "Explanation": "The **Wainganga River** and its tributaries, being major sources of water, are collectively referred to as the 'Lifeline of Vidarbha'.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Institution)",
@@ -1640,11 +1640,11 @@
         "text": "National Stock Exchange (NSE)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Securities Appellate Tribunal (SAT)",
     "Explanation": "The government approved the creation of the Technical Member post to the **Securities Appellate Tribunal (SAT)** in Mumbai to manage complex technical issues.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Scheme)",
@@ -1667,11 +1667,11 @@
         "text": "₹10,00,000/-"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "₹5,00,000/-",
     "Explanation": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (AB-PMJAY) provides a cover of up to **₹5,00,000/-** per family per year for secondary and tertiary hospitalization.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Award)",
@@ -1694,11 +1694,11 @@
         "text": "Bengali"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Marathi",
     "Explanation": "**'Aatmapamphlet'** is a Marathi film that received the award for the Best Debut Film of a Director.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Science/Tech)",
@@ -1721,11 +1721,11 @@
         "text": "World Brain Day"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "World Mental Health Day",
     "Explanation": "Tele-MANAS was launched by the Union Minister of Health and Family Welfare on the occasion of **World Mental Health Day** (October 10).",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -1748,11 +1748,11 @@
         "text": "₹2,000/-"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "₹1,500/-",
     "Explanation": "The scheme provides a monthly financial benefit of **₹1,500/-** to women in the state.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India GK)",
@@ -1775,11 +1775,11 @@
         "text": "5 September"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "24 January",
     "Explanation": "The United Nations General Assembly proclaimed January 24 as the International Day of Education, in commemoration of the role of education for peace and development.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 1
   },
   {
     "category": "GK (Maharashtra History/Culture)",
@@ -1802,11 +1802,11 @@
         "text": "Dhondo Keshav Karve"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Narayan Meghaji Lokhande",
     "Explanation": "Narayan Meghaji Lokhande is recognized as the pioneer of the labor movement in India, having established the Bombay Mill Hands Association in 1890.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India International)",
@@ -1829,11 +1829,11 @@
         "text": "New Zealand"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Indonesia",
     "Explanation": "Mount Ibu is an active volcano located on Halmahera island in **Indonesia**, which is part of the Pacific Ring of Fire.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -1856,11 +1856,11 @@
         "text": "18 to 60 years"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "21 to 65 years",
     "Explanation": "The scheme targets women in the age group of **21 to 65 years** to empower them financially.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Policy/Banking)",
@@ -1883,11 +1883,11 @@
         "text": "₹1 crore"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "₹50 lakhs",
     "Explanation": "The RBI limits the aggregate exposure of a single lender across all P2P platforms to **₹50 lakhs** to manage risk.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Fort)",
@@ -1910,11 +1910,11 @@
         "text": "1680"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "1670",
     "Explanation": "The famous **Battle of Sinhagad** (Kondana) was fought on the night of February 4, **1670**, between Tanaji Malusare and UdayBhan Singh Rathore.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Politics/Committees)",
@@ -1937,11 +1937,11 @@
         "text": "Baijyant Panda"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Dr. Sanjay Jaiswal",
     "Explanation": "The Committee on Estimates, which reviews budget estimates for administrative departments, is chaired by **Dr. Sanjay Jaiswal** (BJP MP).",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Social Reform)",
@@ -1964,11 +1964,11 @@
         "text": "Shramik Nari Sangh"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Rashtra Sevika Samiti",
     "Explanation": "Pramila Tai Medhe, known for her social service and women's empowerment, served as the Pramukh Sanchalika of the **Rashtra Sevika Samiti** from 2006 to 2012.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Geography/Culture)",
@@ -1991,11 +1991,11 @@
         "text": "Arunachal Pradesh"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "Tripura",
     "Explanation": "**Kokborak Day** (Tripuri Language Day) is celebrated every year on January 19 in Tripura to recognize the Kokborok language.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 1
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -2018,11 +2018,11 @@
         "text": "6"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "4",
     "Explanation": "PM-KISAN provides ₹6,000/- in 3 installments. The Namo Shetkari scheme is designed to provide ₹6,000/- in 4 installments (₹1,500 each), but since the entire ₹12,000 is distributed in PM-KISAN's 3 installments + Namo Shetkari's installments, the total distribution aligns with the PM-KISAN cycle, making the most common MPSC answer **4** or **3** (depending on how the combined scheme is interpreted). Since PM-KISAN is 3 installments and Namo Shetkari is often aligned with it, let's use the most specific answer for PM-KISAN's central scheme: **3**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Appointment)",
@@ -2045,11 +2045,11 @@
         "text": "Bihar"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Kerala",
     "Explanation": "Shri Ashok Kumar Singh belongs to the **1999 batch of the Kerala cadre**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Sports)",
@@ -2072,11 +2072,11 @@
         "text": "Anil Kumbla (Badminton)"
       }
     ],
-    "Answer": "Option 1",
     "CorrectAnswer": "Kaka Pawar (Wrestling)",
     "Explanation": "Kaka Pawar, a renowned wrestler from Maharashtra, was recognized with the Dhyanchand Award for his lifetime contributions to the sport.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 1
   },
   {
     "category": "GK (India Schemes)",
@@ -2099,11 +2099,11 @@
         "text": "Tamil Nadu"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Telangana",
     "Explanation": "The scheme was launched by the government of **Telangana** to provide social and economic welfare, particularly for housing.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra History/Culture)",
@@ -2126,11 +2126,11 @@
         "text": "Ram Manohar Lohia"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Mahatma Gandhi",
     "Explanation": "Mahatma Gandhi made this famous comment on the Cripps Mission proposals, which were widely viewed as inadequate and insincere during wartime.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Technology)",
@@ -2153,11 +2153,11 @@
         "text": "Jayant Narlikar and P.C. Mahalanobis"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Hiralal Chaudhury and K.H. Alikunhi",
     "Explanation": "National Fish Farmers Day honors the contributions of **Dr. Hiralal Chaudhury and Dr. K.H. Alikunhi**, pioneers of induced breeding (Hypophysation) in Indian Major Carps in 1957.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -2180,11 +2180,11 @@
         "text": "Renovation of historical sites"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Subsidized travel for senior citizens to religious sites",
     "Explanation": "This scheme provides subsidized travel arrangements for senior citizens to visit recognized religious and pilgrimage sites (Teerth Darshan).",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India GK)",
@@ -2207,11 +2207,11 @@
         "text": "Badminton"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Cricket",
     "Explanation": "The Duleep Trophy is a first-class cricket competition in India contested by teams representing geographical zones.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Polity)",
@@ -2234,11 +2234,11 @@
         "text": "Home Department, Government of Maharashtra"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Maharashtra Public Service Commission (MPSC)",
     "Explanation": "The MPSC, being the recruiting authority for PSI, announces the revised standards and norms for the physical tests for candidates.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Defence)",
@@ -2261,11 +2261,11 @@
         "text": "Malabar Naval Exercises"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "2+2 Ministerial Dialogue",
     "Explanation": "The **India-Japan 2+2 Ministerial Dialogue** (Defense and Foreign Ministers) was initiated in 2019 to strengthen security cooperation.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Fort)",
@@ -2288,11 +2288,11 @@
         "text": "Shivneri and Junnar"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Purandar and Vajragad (Rudramal)",
     "Explanation": "Purandar Fort and Vajragad (Rudramal) are known as the **twin forts** near Pune, significant in Maratha history.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India Awards)",
@@ -2315,11 +2315,11 @@
         "text": "20"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "17",
     "Explanation": "A total of **17** children were conferred the Pradhan Mantri Rashtriya Bal Puraskar in 2025 across various categories.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -2342,11 +2342,11 @@
         "text": "International aid funds"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Public funds",
     "Explanation": "Gender budgeting is an exercise to analyze the state budget (public funds) to assess its impact on women and men, and to address gender disparities.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Environment)",
@@ -2369,11 +2369,11 @@
         "text": "Rajasthan"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Uttar Pradesh",
     "Explanation": "As per recent reports on crime statistics, Uttar Pradesh reported a crime rate lower than the national average.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra Social Reform)",
@@ -2396,11 +2396,11 @@
         "text": "75 years and above"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "65 years and above",
     "Explanation": "The scheme provides ₹600 per month to elderly individuals aged **65 years and above** from BPL families.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Technology)",
@@ -2423,11 +2423,11 @@
         "text": "Reserve Bank of India (RBI)"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Indian Cyber Crime Coordination Centre (I4C)",
     "Explanation": "The Central Suspect Registry, aimed at combating cybercrime, was developed by the **I4C**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (Maharashtra GK)",
@@ -2450,11 +2450,11 @@
         "text": "Bhagwan Mahavir Wildlife Sanctuary"
       }
     ],
-    "Answer": "Option 2",
     "CorrectAnswer": "Yawal Wildlife Sanctuary",
     "Explanation": "The Yawal Wildlife Sanctuary is situated at the confluence of the Anner and Manjar rivers in the Jalgaon district.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 2
   },
   {
     "category": "GK (India Award)",
@@ -2477,11 +2477,11 @@
         "text": "Ranbir Kapoor and Shah Rukh Khan"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Abhishek Bachchan and Kartik Aaryan",
     "Explanation": "The Best Actor (Male) award was shared by **Abhishek Bachchan** and **Kartik Aaryan** for their respective performances.",
     "Difficulty": "Hard",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (Maharashtra Scheme)",
@@ -2504,11 +2504,11 @@
         "text": "5 kW"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "3 kW",
     "Explanation": "The total subsidy is capped at ₹78,000 for systems larger than **3 kW**.",
     "Difficulty": "Easy",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   },
   {
     "category": "GK (India History)",
@@ -2531,10 +2531,10 @@
         "text": "Usha Mehta"
       }
     ],
-    "Answer": "Option 3",
     "CorrectAnswer": "Sucheta Kripalani",
     "Explanation": "**Sucheta Kripalani** actively participated in the Quit India Movement and later served as the first woman Chief Minister of an Indian state (Uttar Pradesh).",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "correctOption": 3
   }
 ]

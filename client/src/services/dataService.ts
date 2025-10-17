@@ -6,6 +6,7 @@ export interface Question {
   questionText: string;
   options: Array<{ id: number; text: string }>;
   correctAnswer: string;
+  correctOption: number | null;
   explanation: string;
   category: string;
   marks: number;
