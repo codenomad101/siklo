@@ -63,7 +63,7 @@ const ExamPage: React.FC = () => {
   
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(-1); // -1 means not initialized yet
   const [examCompleted, setExamCompleted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [localSession, setLocalSession] = useState<ExamSession | null>(null);
@@ -79,52 +79,40 @@ const ExamPage: React.FC = () => {
   
   const session = localSession || (sessionData as ExamSession | null);
 
-  const currentQuestion = session?.questions[currentQuestionIndex];
-  const totalQuestions = session?.questions.length || 0;
+  const currentQuestion = session?.questions?.[currentQuestionIndex];
+  const totalQuestions = session?.questions?.length || 0;
 
   // Initialize local session when data loads
   useEffect(() => {
     console.log('Session data changed:', { sessionData, localSession });
     if (sessionData && !localSession) {
       console.log('Setting local session:', sessionData);
-      setLocalSession(sessionData as ExamSession);
+      // Handle the nested data structure from the backend
+      const examData = (sessionData as any).data || sessionData;
+      setLocalSession(examData as ExamSession);
     }
   }, [sessionData]);
 
   useEffect(() => {
     if (session && !sessionInitialized) {
       console.log('Initializing session:', session);
+      const safeDurationMinutes = session?.durationMinutes && session.durationMinutes > 0 
+        ? session.durationMinutes 
+        : 15; // fallback to 15 minutes if missing/zero
+      const totalTime = safeDurationMinutes * 60;
+
+      if (session?.status === 'in_progress' && session?.questions) {
+        const attemptedQuestions = 0;
+        const timeSpent = 0;
+        setCurrentQuestionIndex(attemptedQuestions);
+        setTimeLeft(Math.max(0, totalTime - timeSpent));
+      } else {
+        setCurrentQuestionIndex(0);
+        setTimeLeft(totalTime);
+      }
+
+      // Mark initialized only after timeLeft has been set
       setSessionInitialized(true);
-      
-        // Check if this is a resumed exam
-        if (session.status === 'in_progress' && session.questions) {
-          // Load existing progress
-          const attemptedQuestions = 0; // We'll calculate this from questions
-          setCurrentQuestionIndex(attemptedQuestions);
-          
-          // Calculate remaining time
-          const timeSpent = 0; // We'll calculate this
-          const totalTime = session.durationMinutes * 60;
-          setTimeLeft(Math.max(0, totalTime - timeSpent));
-          
-          // Load existing answers into the questions array
-          const updatedQuestions = session.questions.map((q, index) => {
-            // Check if question has userAnswer property
-            const existingAnswer = (q as any).userAnswer;
-            return existingAnswer ? { ...q, userAnswer: existingAnswer } : q;
-          });
-          
-          setLocalSession(prev => prev ? { ...prev, questions: updatedQuestions } : null);
-          
-          // Load current question's answer
-          if (updatedQuestions[attemptedQuestions]?.userAnswer) {
-            setSelectedAnswer(updatedQuestions[attemptedQuestions].userAnswer);
-          }
-        } else {
-          // New exam
-          setTimeLeft(session.durationMinutes * 60);
-          setCurrentQuestionIndex(0);
-        }
     }
   }, [session, sessionInitialized]);
 
@@ -133,19 +121,24 @@ const ExamPage: React.FC = () => {
     console.log('currentQuestionIndex changed to:', currentQuestionIndex);
   }, [currentQuestionIndex]);
 
-  useEffect(() => {
-    if (timeLeft <= 0 && !examCompleted) {
-      handleExamComplete();
-    }
-  }, [timeLeft, examCompleted]);
+  // Removed separate effect that completed on timeLeft === 0 to avoid race conditions
 
   useEffect(() => {
+    // Start ticking only when initialized and timeLeft valid
+    if (!sessionInitialized || !session || examCompleted || timeLeft < 0) return;
     const timer = setInterval(() => {
-      setTimeLeft(prev => prev - 1);
+      setTimeLeft(prev => {
+        if (prev <= 0) return 0;
+        const next = prev - 1;
+        if (next === 0) {
+          console.log('Timer expired, calling handleExamComplete from tick');
+          handleExamComplete();
+        }
+        return next;
+      });
     }, 1000);
-
     return () => clearInterval(timer);
-  }, []);
+  }, [sessionInitialized, session, examCompleted, timeLeft]);
 
   const handleAnswerSelect = (answer: string) => {
     setSelectedAnswer(answer);
@@ -168,7 +161,7 @@ const ExamPage: React.FC = () => {
     if (!currentQuestion || !selectedAnswer || !session || examCompleted || !sessionInitialized) return;
 
     // Update the question with the selected answer
-    const updatedQuestions = session.questions.map((q, index) => 
+    const updatedQuestions = session.questions?.map((q, index) => 
       index === currentQuestionIndex 
         ? { ...q, userAnswer: selectedAnswer }
         : q
@@ -192,12 +185,16 @@ const ExamPage: React.FC = () => {
   };
 
   const handleExamComplete = async () => {
-    if (!session || !sessionId) return;
+    if (!session || !sessionId || !sessionInitialized) {
+      console.log('Exam completion prevented - session:', !!session, 'sessionId:', !!sessionId, 'sessionInitialized:', sessionInitialized);
+      return;
+    }
 
+    console.log('Starting exam completion process');
     setSubmitting(true);
     try {
       // Calculate results
-      const updatedQuestions = session.questions.map(q => {
+      const updatedQuestions = session.questions?.map(q => {
         // Parse user answer to get option ID and compare with correctOption
         const selectedOptionId = parseInt(q.userAnswer);
         const isCorrect = !isNaN(selectedOptionId) && q.correctOption !== null && selectedOptionId === q.correctOption;
@@ -276,8 +273,8 @@ const ExamPage: React.FC = () => {
 
   const getScore = () => {
     if (!session) return 0;
-    const correct = session.questions.filter(q => q.isCorrect).length;
-    return Math.round((correct / session.questions.length) * 100);
+    const correct = session.questions?.filter(q => q.isCorrect).length || 0;
+    return Math.round((correct / (session.questions?.length || 1)) * 100);
   };
 
   if (loading) {
