@@ -221,6 +221,14 @@ export const statisticsAPI = {
 	},
 };
 
+// Study API
+export const studyAPI = {
+  getMaterials: async (category: string, topic?: string, page: number = 1, pageSize: number = 10) => {
+    const response = await apiClient.get('/study/materials', { params: { category, topic, page, pageSize } });
+    return response.data.data as { items: any[]; total: number };
+  },
+};
+
 // User API functions
 export const userAPI = {
 	getProfile: async () => {

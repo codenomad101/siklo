@@ -127,8 +127,8 @@ export const Header: React.FC<HeaderProps> = ({ showAuth = true }) => {
       className: 'nav-menu-item'
     },
     {
-      key: '/study-materials',
-      label: <Link to="/study-materials">Study Materials</Link>,
+      key: '/study',
+      label: <Link to="/study">Study</Link>,
       className: 'nav-menu-item'
     },
    

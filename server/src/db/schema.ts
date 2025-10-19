@@ -516,6 +516,19 @@ export const practiceTopics = pgTable('practice_topics', {
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 
+// Study Materials (concise notes) per category/topic
+export const practiceStudyMaterials = pgTable('practice_study_materials', {
+  materialId: uuid('material_id').primaryKey().defaultRandom(),
+  categoryId: uuid('category_id').references(() => practiceCategories.categoryId, { onDelete: 'cascade' }).notNull(),
+  topicSlug: varchar('topic_slug', { length: 100 }),
+  title: varchar('title', { length: 200 }).notNull(),
+  content: text('content').notNull(),
+  tags: json('tags').$type<Array<string>>().default([]),
+  isActive: boolean('is_active').default(true),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
 // Jobs table (for different exam types like MPSC, Grade-B, etc.)
 export const jobs = pgTable('jobs', {
   jobId: uuid('job_id').primaryKey().defaultRandom(),

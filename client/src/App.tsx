@@ -16,6 +16,8 @@ import Profile from './pages/Profile';
 import Admin from './pages/Admin';
 import Leaderboard from './pages/Leaderboard';
 import CategoryPage from './pages/Category';
+import StudyPage from './pages/Study';
+import HelpPage from './pages/Help';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -75,6 +77,22 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <PracticeTest />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/study" 
+                  element={
+                    <ProtectedRoute>
+                      <StudyPage />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/help" 
+                  element={
+                    <ProtectedRoute>
+                      <HelpPage />
                     </ProtectedRoute>
                   } 
                 />
