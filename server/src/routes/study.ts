@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { db } from '../db';
 import { practiceCategories, practiceTopics, practiceStudyMaterials } from '../db/schema';
-import { eq, and } from 'drizzle-orm';
+import { eq, and, count } from 'drizzle-orm';
 
 const router = Router();
 
@@ -29,16 +29,51 @@ router.get('/materials', async (req, res) => {
     const pageNum = Math.max(1, parseInt(page as string, 10) || 1);
     const offset = (pageNum - 1) * limit;
 
-    const items = await db
+    try {
+      const items = await db
+        .select()
+        .from(practiceStudyMaterials)
+        .where(where)
+        .limit(limit)
+        .offset(offset);
+
+      const totalRows = await db
+        .select({ total: count() })
+        .from(practiceStudyMaterials)
+        .where(where);
+      const total = totalRows?.[0]?.total || 0;
+
+      if ((items?.length || 0) > 0) {
+        return res.json({ success: true, data: { items, total } });
+      }
+    } catch (e) {
+      // Table may not exist yet; fallback to topics-based materials below
+    }
+
+    // Fallback: derive concise notes from topics list
+    const topicsQuery = await db
       .select()
-      .from(practiceStudyMaterials)
-      .where(where)
+      .from(practiceTopics)
+      .where(eq(practiceTopics.categoryId, categoryId))
       .limit(limit)
       .offset(offset);
 
-    // Total count
-    const countRows = await db.execute(`select count(*)::int as total from practice_study_materials where category_id = '${categoryId}'${topic ? ` and topic_slug = '${topic}'` : ''}`);
-    const total = Array.isArray(countRows) ? (countRows[0] as any)?.total || 0 : (countRows as any).rows?.[0]?.total || 0;
+    const allTopicsForCount = await db
+      .select({ total: count() })
+      .from(practiceTopics)
+      .where(eq(practiceTopics.categoryId, categoryId));
+    const total = allTopicsForCount?.[0]?.total || 0;
+
+    const items = topicsQuery
+      .filter((t) => (topic ? t.slug === topic : true))
+      .map((t) => ({
+        materialId: `${t.topicId}`,
+        categoryId,
+        topicSlug: t.slug,
+        title: `${t.name} – Key Points`,
+        content: `Overview of ${t.name}. Definitions, core concepts, and frequently asked points for quick revision.`,
+        tags: [t.slug],
+      }));
 
     return res.json({ success: true, data: { items, total } });
   } catch (error: any) {

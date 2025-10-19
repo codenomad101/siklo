@@ -21,6 +21,11 @@ export default function CategoryPage() {
     navigate(`/practice-test/${category.id}`);
   };
 
+  const handleViewNotes = (topicSlug: string) => {
+    if (!slug) return;
+    navigate(`/study?category=${slug}&topic=${topicSlug}`);
+  };
+
   return (
     <AppLayout>
       <div style={{ padding: '32px 24px', maxWidth: 1200, margin: '0 auto' }}>
@@ -53,9 +58,12 @@ export default function CategoryPage() {
                             <Card hoverable>
                               <Space direction="vertical" style={{ width: '100%' }}>
                                 <Text strong>{t.name}</Text>
-                                <Button type="primary" onClick={() => handleStartPractice(t.slug)}>
-                                  Practice {t.name}
-                                </Button>
+                                <Space>
+                                  <Button onClick={() => handleViewNotes(t.slug)}>View Notes</Button>
+                                  <Button type="primary" onClick={() => handleStartPractice(t.slug)}>
+                                    Practice
+                                  </Button>
+                                </Space>
                               </Space>
                             </Card>
                           </Col>
