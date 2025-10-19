@@ -15,6 +15,7 @@ import Exam from './pages/Exam';
 import Profile from './pages/Profile';
 import Admin from './pages/Admin';
 import Leaderboard from './pages/Leaderboard';
+import CategoryPage from './pages/Category';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -58,6 +59,14 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <Practice />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/category/:slug" 
+                  element={
+                    <ProtectedRoute>
+                      <CategoryPage />
                     </ProtectedRoute>
                   } 
                 />

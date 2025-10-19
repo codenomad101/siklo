@@ -24,7 +24,8 @@
     "Explanation": "Feeble means lacking physical strength or vitality, thus **Weak** is the most appropriate synonym.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -51,7 +52,8 @@
     "Explanation": "Latent means existing but not yet developed or manifest; hidden or concealed. The opposite is **Obvious** (easily seen or understood).",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -78,7 +80,8 @@
     "Explanation": "The verb **'entered'** (a transitive verb) does not take the preposition **'into'** when referring to location. The correct phrase is: 'Scarcely had he entered the room.'",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Grammar (Active/Passive Voice)",
@@ -105,7 +108,8 @@
     "Explanation": "The active sentence is in Simple Past Tense ('destroyed'). The passive structure for Simple Past is **Subject + was/were + V3 + by + Object**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -132,7 +136,8 @@
     "Explanation": "A **Hedonist** is a person who believes that the pursuit of pleasure is the most important aim in life.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Tense)",
@@ -159,7 +164,8 @@
     "Explanation": "This is a future perfect construction indicating an action completed before another point in the future. The structure is: **Future Perfect (will have V3) + before + Simple Present**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Idiom/Phrase",
@@ -186,7 +192,8 @@
     "Explanation": "**Red Tape** refers to excessive bureaucracy or adherence to rules and formalities, especially in public business.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Direct/Indirect Speech)",
@@ -213,7 +220,8 @@
     "Explanation": "In Direct Speech, 'the next day' becomes 'tomorrow', and 'were landing' (Past Continuous) converts back to 'are landing' (Present Continuous, used for future plans).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Grammar (Adverb/Adjective)",
@@ -240,7 +248,8 @@
     "Explanation": "The word **'sweet'** is an adjective, but we need an adverb to modify the verb **'sings'**. It should be **'sweetly'**.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -267,7 +276,8 @@
     "Explanation": "Repel means to drive or send something away. **Attract** means to draw or cause to come closer.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Conditional Sentence)",
@@ -294,7 +304,8 @@
     "Explanation": "This is a Type 1 conditional sentence (likely/real condition). The structure is: **If + Simple Present (arrives), Simple Future (will suspend)**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -321,7 +332,8 @@
     "Explanation": "Disparage means to regard or represent as being of little worth. **Belittle** is a direct synonym.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -348,7 +360,8 @@
     "Explanation": "**Agoraphobia** is an anxiety disorder characterized by fear of places or situations from which escape might be difficult, such as crowded or open public places.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Grammar (Verb Agreement)",
@@ -375,7 +388,8 @@
     "Explanation": "Indefinite pronouns like **'Each'** require a singular verb. **'have finished'** must be replaced with **'has finished'**.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Idiom/Phrase",
@@ -402,7 +416,8 @@
     "Explanation": "**Turn a deaf ear** means to deliberately ignore or disregard someone or something.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Preposition)",
@@ -429,7 +444,8 @@
     "Explanation": "The verb **'approve'** in the context of accepting or agreeing to a proposal typically takes the fixed preposition **'of'**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -456,7 +472,8 @@
     "Explanation": "Taciturn means reserved or uncommunicative in speech, saying little. **Talkative** is the direct opposite.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Word Choice/Homonyms)",
@@ -483,7 +500,8 @@
     "Explanation": "**Divulge** (to make known a secret) is the only correctly spelled word among the choices. *Convulse* is also a correct word, but not listed here.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Grammar (Pronoun)",
@@ -510,7 +528,8 @@
     "Explanation": "The indefinite pronoun **'One'** must be followed by the reflexive pronoun **'oneself'**. The correct phrase is: 'One must keep oneself'.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Grammar (Sentence Transformation)",
@@ -537,7 +556,8 @@
     "Explanation": "The original sentence is grammatically correct. **'were doing'** is Past Continuous, appropriately used here to describe an ongoing action at the time of the warden's entry (Simple Past).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -564,7 +584,8 @@
     "Explanation": "Transient means lasting only for a short time; impermanent. **Ephemeral** is a synonym.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Conjunction)",
@@ -591,7 +612,8 @@
     "Explanation": "The conjunction **'Though'** must be followed by **'yet'** or just a comma, not **'but'**. Correct: 'Though he is rich, yet he is kind' or 'Though he is rich, he is kind'.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -618,7 +640,8 @@
     "Explanation": "Stiff means not easily bent or changed in shape. **Flexible** means able to bend or move easily.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Punctuation)",
@@ -645,7 +668,8 @@
     "Explanation": "**It's** is a contraction of 'It is'. **Its** is the possessive form (e.g., The dog chased its tail).",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Phrasal Verb)",
@@ -672,7 +696,8 @@
     "Explanation": "**Deal with** means to take action to solve a problem.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -699,7 +724,8 @@
     "Explanation": "Astute means having or showing an ability to accurately assess situations or people and turn this to one's advantage. **Shrewd** is the synonym.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Noun)",
@@ -726,7 +752,8 @@
     "Explanation": "Nouns that are always plural (e.g., spectacles, trousers, scissors) must take a plural verb. **'is missing'** must be replaced with **'are missing'**.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Grammar (Transformation of Sentence)",
@@ -753,7 +780,8 @@
     "Explanation": "The active sentence is in Future Perfect Tense. The passive structure is **Object + will/shall have been + V3 + by + Subject**.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -780,7 +808,8 @@
     "Explanation": "Myopic means lacking foresight or intellectual insight (or literally nearsighted). **Visionary** means thinking about or planning the future with wisdom and imagination.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Adverb)",
@@ -807,7 +836,8 @@
     "Explanation": "The rule is **'too much' + noun** (e.g., too much noise) and **'much too' + adjective/adverb** (e.g., much too slow, much too fast). 'Fast' is an adverb here.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Idiom/Phrase)",
@@ -834,7 +864,8 @@
     "Explanation": "This idiom means to experience the same unpleasant treatment that one has given to others.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Word Choice)",
@@ -861,7 +892,8 @@
     "Explanation": "**Effect** (noun) means the result or consequence of an action. **Affect** (verb) means to influence.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -888,7 +920,8 @@
     "Explanation": "Emancipation means the process of being set free from legal, social, or political restrictions; **liberation**.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Reported Speech)",
@@ -915,7 +948,8 @@
     "Explanation": "Present Perfect Tense ('have passed') changes to Past Perfect Tense ('had passed') in Indirect Speech.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -942,7 +976,8 @@
     "Explanation": "A **Polymath** is a person whose expertise spans a significant number of different subject areas.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Grammar (Preposition)",
@@ -969,7 +1004,8 @@
     "Explanation": "The verb **'abstain'** (restrain oneself from doing or enjoying something) is always followed by the preposition **'from'**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -996,7 +1032,8 @@
     "Explanation": "Conceal means to keep secret; prevent from being seen. **Divulge** means to make private or sensitive information known.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Tense)",
@@ -1023,7 +1060,8 @@
     "Explanation": "The first clause is Simple Past ('reached'). The second clause uses a participial phrase to describe the action in progress: 'found the family **waiting**' (waiting is the action they were engaged in).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "grammar"
   },
   {
     "category": "Idiom/Phrase",
@@ -1050,7 +1088,8 @@
     "Explanation": "A **white elephant** refers to a possession that is troublesome or expensive to maintain but yields no profit or value.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -1077,7 +1116,8 @@
     "Explanation": "The subject is **'The crowd'** (a collective noun, treated as singular here), so the verb must be singular. **'are making'** should be **'is making'**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -1104,7 +1144,8 @@
     "Explanation": "Accentuate means to make more noticeable or prominent. **Emphasize** is the synonym.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Transformation of Sentence)",
@@ -1131,7 +1172,8 @@
     "Explanation": "The structure for **'No sooner'** requires inversion (auxiliary verb before subject) and is paired with **'than'**: **No sooner + Had + Subject + V3 + than + Simple Past**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -1158,7 +1200,8 @@
     "Explanation": "A **Stoic** is a person who can endure pain or hardship without showing their feelings or complaining.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Grammar (Conjunction)",
@@ -1185,7 +1228,8 @@
     "Explanation": "**As soon as** is the correct conjunction to connect two consecutive actions in the past without requiring inversion.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -1212,7 +1256,8 @@
     "Explanation": "Spurious means not being what it purports to be; false or fake. The opposite is **Genuine**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -1239,7 +1284,8 @@
     "Explanation": "The correct idiom is **'to your heart's content'** (singular noun). 'Contents' is incorrect here.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -1266,7 +1312,8 @@
     "Explanation": "Redemption means the action of saving or being saved from error or evil; **Atonement** is making amends or reparation for a wrong.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Transformation of Sentence)",
@@ -1293,7 +1340,8 @@
     "Explanation": "Simple Past Tense uses the **V2** form of the verb, which is **'wrote'**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Idiom/Phrase)",
@@ -1320,7 +1368,8 @@
     "Explanation": "**To bark up the wrong tree** means to direct one's attention or efforts toward the wrong person or objective.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Degree of Comparison)",
@@ -1347,7 +1396,8 @@
     "Explanation": "When comparing one item with all others in its group (superlative degree), the structure is **'the' + superlative adjective**.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -1374,7 +1424,8 @@
     "Explanation": "Placate means to make (someone) less angry or hostile. **Pacify** is the synonym.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Modal Auxiliary)",
@@ -1401,7 +1452,8 @@
     "Explanation": "**Must** is used to express strong obligation or necessity, especially in formal rules or laws.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -1428,7 +1480,8 @@
     "Explanation": "Vibrant means full of energy and life, or bright and striking (colour). **Drab** means lacking color or excitement; dull.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Relative Pronoun)",
@@ -1455,7 +1508,8 @@
     "Explanation": "The relative pronoun **'that'** is required after superlatives (e.g., 'the best').",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -1482,7 +1536,8 @@
     "Explanation": "**Alchemy** is the ancient and medieval practice concerned with the transformation of matter, particularly turning base metals into gold.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -1509,7 +1564,8 @@
     "Explanation": "**'Less'** is used for quantity (uncountable nouns), while **'Fewer'** is used for number (countable nouns). Since 'thirty dogs' is countable, **'No less than'** should be **'No fewer than'**.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -1536,7 +1592,8 @@
     "Explanation": "**Muster** means to assemble (troops), especially for inspection or in preparation for battle; to **gather**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Transformation of Sentence)",
@@ -1563,7 +1620,8 @@
     "Explanation": "The passive sentence uses Future Simple Tense (**will be V3**). The active form is **Subject + will + V1 + Object**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Grammar (Tense)",
@@ -1590,7 +1648,8 @@
     "Explanation": "The structure denotes a short action (cut) interrupting a longer, ongoing action in the past (was chopping): **Simple Past + while + Past Continuous**.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Homonym)",
@@ -1617,7 +1676,8 @@
     "Explanation": "A homonym is a word pronounced and spelled the same way as another but with a different meaning. In this case, 'watch' (timepiece) vs. 'watch' (to keep an eye on/a period of guarding).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -1644,7 +1704,8 @@
     "Explanation": "The conjunction **'Unless'** already implies a negative condition, so **'not'** should not be used in the 'unless' clause. The future tense ('will') is also unnecessary. Correct: 'Unless you **take care** of your health'.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -1671,7 +1732,8 @@
     "Explanation": "Coalesce means to come together and form one mass or whole. **Separate** is the opposite.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Voice)",
@@ -1698,7 +1760,8 @@
     "Explanation": "The tone of the sentence is a direct **command** or **order** from the judge, classifying it as the **Imperative Mood**.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -1725,7 +1788,8 @@
     "Explanation": "Decay means the state or process of rotting or decomposition. **Rot** is the synonym.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Preposition)",
@@ -1752,7 +1816,8 @@
     "Explanation": "The phrasal verb **'lead to'** means to result in.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -1779,7 +1844,8 @@
     "Explanation": "Conception means the act of forming an idea or plan. **Fact** is the opposite, referring to something that is known or proven to be true.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Tag Question)",
@@ -1806,7 +1872,8 @@
     "Explanation": "The statement is positive ('It's' = It is), so the tag must be negative. Use the same auxiliary verb: **isn't it**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -1833,7 +1900,8 @@
     "Explanation": "Flimsy means easily damaged or lacking physical strength. **Fragile** is the synonym.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -1860,7 +1928,8 @@
     "Explanation": "The idiomatic phrase meaning 'to make great effort' is **'to take great pains'** (plural form).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -1887,7 +1956,8 @@
     "Explanation": "A **Geologist** is an expert in the field of geology, the study of the Earth's physical structure and substance.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Grammar (Tense)",
@@ -1914,7 +1984,8 @@
     "Explanation": "This describes an action that will be continuing up to a point in the future. The correct tense is **Future Perfect Continuous**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Idiom/Phrase",
@@ -1941,7 +2012,8 @@
     "Explanation": "**To get off on something** is an informal way of saying to enjoy or be excited by something.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -1968,7 +2040,8 @@
     "Explanation": "Provoke means to deliberately make someone angry or hostile. **Soothe** means to gently calm (a person or their feelings).",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Preposition)",
@@ -1995,7 +2068,8 @@
     "Explanation": "**Among** is typically used when referring to groups of three or more, especially when the elements are viewed collectively rather than individually. **Between** is used for two or for distinct, separate items, regardless of count.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -2022,7 +2096,8 @@
     "Explanation": "Clumsy means awkward in movement or handling things. **Awkward** is the synonym.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Tense)",
@@ -2049,7 +2124,8 @@
     "Explanation": "The presence of **'yesterday'** indicates a completed action in the past, requiring the **Simple Past Tense** (Did + Subject + V1).",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -2076,7 +2152,8 @@
     "Explanation": "An **Oasis** is a fertile spot in a desert, where water is found.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Grammar (Idiom/Phrase)",
@@ -2103,7 +2180,8 @@
     "Explanation": "**In cold blood** means ruthlessly and without emotion, often used for violent acts or firm decisions.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -2130,7 +2208,8 @@
     "Explanation": "Wary means feeling or showing caution about possible dangers or problems. **Inattentive** means not paying attention.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -2157,7 +2236,8 @@
     "Explanation": "The noun **'police'** is a collective noun always treated as plural in English, so the verb must be plural. **'is investigating'** should be **'are investigating'**.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Grammar (Preposition)",
@@ -2184,7 +2264,8 @@
     "Explanation": "The noun **'predilection'** (a preference or special liking for something) takes the fixed preposition **'for'**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -2211,7 +2292,8 @@
     "Explanation": "Improvident means not planning for the future; spending money carelessly. **Extravagant** is the synonym.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Error Correction)",
@@ -2238,7 +2320,8 @@
     "Explanation": "The correct verb form for the future condition is the simpler **'will depend'**. 'Dependent' is an adjective, and 'will be dependent on' is a more verbose and less direct construction.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -2265,7 +2348,8 @@
     "Explanation": "A **Peninsula** is a piece of land surrounded by water on three sides.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Grammar (Auxiliary Verb)",
@@ -2292,7 +2376,8 @@
     "Explanation": "This is a Type 3 (Past Unreal) Conditional, requiring the structure: **Had + Subject + V3, Subject + would have + V3**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -2319,7 +2404,8 @@
     "Explanation": "Placate means to make (someone) less angry. **Provoke** means to stimulate or incite to anger.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Sentence Correction)",
@@ -2346,7 +2432,8 @@
     "Explanation": "**Whose** is the possessive form and is used for both people and things, especially when asking about possession, while 'which' is typically for selection from a group.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Idiom/Phrase)",
@@ -2373,7 +2460,8 @@
     "Explanation": "To be **in the driver's seat** means to be the one controlling a situation.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Participle)",
@@ -2400,7 +2488,8 @@
     "Explanation": "The structure **'designed' + infinitive ('to' + V1)** is the correct usage to express purpose.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -2427,7 +2516,8 @@
     "Explanation": "Deviance means the fact or state of departing from usual or accepted standards. **Aberrance** is the synonym.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Phrase)",
@@ -2454,7 +2544,8 @@
     "Explanation": "**While** is preferred to introduce a period of time during which an activity or process is taking place (learning).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -2481,7 +2572,8 @@
     "Explanation": "Ephemeral means lasting for a very short time. **Perpetual** means never ending or changing.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Error Correction)",
@@ -2508,7 +2600,8 @@
     "Explanation": "The subject **'The prices'** is plural, requiring the plural verb **'have'**. The V3 of rise is **'risen'**. Correct: **have risen**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -2535,7 +2628,8 @@
     "Explanation": "A **Mercenary** person is primarily driven by desire for money or material gain, often lacking moral principles.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "general"
   },
   {
     "category": "Grammar (Transformation of Sentence)",
@@ -2562,7 +2656,8 @@
     "Explanation": "The Simple Present Tense (**V1 with 's' for singular subject**) can be used to describe future events, especially those that are scheduled or very certain.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Idiom/Phrase",
@@ -2589,7 +2684,8 @@
     "Explanation": "To **smell a rat** means to suspect something dishonest or fraudulent.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Inversion)",
@@ -2616,7 +2712,8 @@
     "Explanation": "When a sentence begins with a negative adverb like **'Hardly'** or **'Scarcely'**, inversion is used (**Auxiliary Verb + Subject + Main Verb**).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -2643,7 +2740,8 @@
     "Explanation": "Defuse means to make a difficult or dangerous situation calmer or easier to handle. **Alleviate** means to make suffering, deficiency, or a problem less severe.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Noun)",
@@ -2670,7 +2768,8 @@
     "Explanation": "The noun **'offspring'** is the same in singular and plural form; it never takes an 's'. **'offsprings'** is incorrect.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -2697,7 +2796,8 @@
     "Explanation": "**Anarchy** is a state of disorder due to absence or non-recognition of authority or other controlling systems.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Grammar (Preposition)",
@@ -2724,7 +2824,8 @@
     "Explanation": "The adjective **'vexed'** (annoyed, frustrated) is usually followed by **'at'** when referring to a thing or abstract concept.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -2751,7 +2852,8 @@
     "Explanation": "Steadfast means resolutely or dutifully firm and unwavering. **Plaint** (meaning pliant or easily influenced) is the closest opposite, indicating a lack of firmness.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Sentence Correction)",
@@ -2778,7 +2880,8 @@
     "Explanation": "When using **'Though'**, it should be followed by a comma or **'yet'**, but not **'but'**. Option 2 uses the correct 'Though... yet' construction.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -2805,7 +2908,8 @@
     "Explanation": "Perusal means the action of reading or examining something carefully. **Inspection** is the synonym.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Punctuation)",
@@ -2832,7 +2936,8 @@
     "Explanation": "The sentence is a direct question and therefore requires a **question mark**.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Grammar (Degree of Comparison)",
@@ -2859,7 +2964,8 @@
     "Explanation": "The phrase **'as... as, if not'** is the correct comparative structure used when comparing two items for equality, while suggesting one might be superior.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -2886,7 +2992,8 @@
     "Explanation": "**Abeyance** means a state of temporary disuse or suspension.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -2913,7 +3020,8 @@
     "Explanation": "The verb **'prefers'** must be followed by the preposition **'to'**, not 'than', for comparison. Correct: 'She prefers coffee **to** any cold drink'.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -2940,7 +3048,8 @@
     "Explanation": "Astonish means to surprise or impress someone greatly. **Calm** is the opposite, suggesting a state of tranquility.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Phrasal Verb)",
@@ -2967,7 +3076,8 @@
     "Explanation": "**Deal with** means to take action to solve a problem or handle a task.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -2994,7 +3104,8 @@
     "Explanation": "Deprive means to prevent a person or place from having or using something. **Deny** is the synonym.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -3021,7 +3132,8 @@
     "Explanation": "When two or more singular subjects are preceded by **'Each'** or **'Every'**, the verb must be singular. **'have'** should be **'has'**.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Idiom/Phrase)",
@@ -3048,7 +3160,8 @@
     "Explanation": "**To hit the nail on the head** means to describe exactly a situation or problem.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Punctuation)",
@@ -3075,7 +3188,8 @@
     "Explanation": "The word 'hour' starts with a vowel sound, so the article **'an'** must be used.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -3102,7 +3216,8 @@
     "Explanation": "Reluctant means unwilling and hesitant. **Eager** means wanting very much to do or have something.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Tense)",
@@ -3129,7 +3244,8 @@
     "Explanation": "The first action is Simple Past ('left'). The second part expresses a likely completion in the present, using **'must have reached'** (a modal perfect).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -3156,7 +3272,8 @@
     "Explanation": "**Duplicitous** means deceitful; acting in two different ways at different times or towards different people.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Grammar (Reported Speech)",
@@ -3183,7 +3300,8 @@
     "Explanation": "Present Continuous Tense ('am learning') changes to Past Continuous Tense ('was learning'), and the reporting verb 'said to' changes to 'told'.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -3210,7 +3328,8 @@
     "Explanation": "Discerning means having or showing good judgment. **Astute** is a synonym.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -3237,7 +3356,8 @@
     "Explanation": "The phrase **'are in strain'** is incorrect and should be replaced with the appropriate structure, such as **'have been strained'** (Present Perfect Tense to show a state over time).",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Idiom/Phrase)",
@@ -3264,7 +3384,8 @@
     "Explanation": "To **call a spade a spade** means to speak the truth plainly or bluntly, even if it is unpleasant.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Tense)",
@@ -3291,7 +3412,8 @@
     "Explanation": "For two completed actions in the past, the earlier action takes **Past Perfect Tense** ('had taken' dinner), and the later action takes **Simple Past Tense** ('went' out).",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -3318,7 +3440,8 @@
     "Explanation": "Pursue means to follow or chase. **Avoid** means to keep away from or refrain from.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Noun)",
@@ -3345,7 +3468,8 @@
     "Explanation": "The subject is plural (**'works'**), so the verb must be plural. **'was stolen'** should be **'were stolen'**.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -3372,7 +3496,8 @@
     "Explanation": "An **Apiary** is a place where beehives are kept; a collection of beehives.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Grammar (Transformation of Sentence)",
@@ -3399,7 +3524,8 @@
     "Explanation": "When the subject of the active voice is vague or unimportant ('somebody'), it is often omitted in the passive voice. The tense changes to Simple Past Passive (**was stolen**).",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -3426,7 +3552,8 @@
     "Explanation": "Mystify means to utterly bewilder or perplex (someone). **Perplex** is the synonym.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Verb Form)",
@@ -3453,7 +3580,8 @@
     "Explanation": "The infinitive is used passively here (the device will be launched by someone else): **to be launched**.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "grammar"
   },
   {
     "category": "Idiom/Phrase",
@@ -3480,7 +3608,8 @@
     "Explanation": "To be **in the same boat** means to be in the same unpleasant or difficult situation as others.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -3507,7 +3636,8 @@
     "Explanation": "Immaculate means perfectly clean, neat, or tidy. **Tarnished** (or soiled/dirty) is the opposite.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Word Choice)",
@@ -3534,7 +3664,8 @@
     "Explanation": "We need an **adjective** to modify the noun **'punishment'**. **Harsh** means severe or strict.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -3561,7 +3692,8 @@
     "Explanation": "An **Axiom** is a statement or proposition that is regarded as being established or self-evidently true.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Grammar (Error Detection)",
@@ -3592,7 +3724,8 @@
     "CorrectAnswer": "(E)",
     "Explanation": "This is a correct Type 2 (Unreal Present) Conditional sentence, using the structure: **If + Subject + were/V2, Subject + would + V1**.",
     "Difficulty": "Medium",
-    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL"
+    "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -3619,7 +3752,8 @@
     "Explanation": "Imbue means to inspire or permeate with a feeling or quality, or literally **to soak** or saturate.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Preposition)",
@@ -3646,7 +3780,8 @@
     "Explanation": "The adjective **'adept'** (skilled) is followed by the preposition **'in'** when referring to an action or activity.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Idiom/Phrase)",
@@ -3673,7 +3808,8 @@
     "Explanation": "**To carry the day** means to win or be successful in a contest or effort.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Transformation of Sentence)",
@@ -3700,7 +3836,8 @@
     "Explanation": "The Simple Present Tense for plural subject ('students') uses the base form of the verb: **felicitate**.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -3727,7 +3864,8 @@
     "Explanation": "Void means completely empty or having no legal force. **Adequate** means satisfactory or acceptable quality and quantity.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Noun/Number)",
@@ -3754,7 +3892,8 @@
     "Explanation": "When a number and a unit of measure (like meter) act as a compound adjective before a noun, the unit must be singular. **'five-meters'** should be **'five-meter'**.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (One Word Substitution)",
@@ -3781,7 +3920,8 @@
     "Explanation": "**Exonerate** means to officially absolve someone from blame for a fault or wrongdoing.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Grammar (Word Choice)",
@@ -3808,7 +3948,8 @@
     "Explanation": "We need a **verb** here. **Affect** (verb) means to have an influence on.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Synonym)",
@@ -3835,7 +3976,8 @@
     "Explanation": "Candid means truthful and straightforward. **Frank** is the synonym.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Preposition)",
@@ -3862,7 +4004,8 @@
     "Explanation": "The adjective **'averse'** (having a strong dislike of or opposition to something) is followed by the preposition **'to'**.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Antonym)",
@@ -3889,7 +4032,8 @@
     "Explanation": "Flamboyant means tending to attract attention because of one's confidence and stylishness. **Modest** is the opposite.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   },
   {
     "category": "Grammar (Pronoun)",
@@ -3916,7 +4060,8 @@
     "Explanation": "When the subject is **'One'**, the corresponding possessive pronoun should be **'one's'**, not 'his'. Correct: 'One must help **one's** siblings'.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "grammar"
   },
   {
     "category": "Vocabulary (Idiom/Phrase)",
@@ -3943,6 +4088,7 @@
     "Explanation": "To **take the bull by the horns** means to deal with a difficult or dangerous situation directly and courageously.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, Bank-PO, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "vocabulary"
   }
 ]

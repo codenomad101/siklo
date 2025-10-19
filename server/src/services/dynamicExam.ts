@@ -334,6 +334,7 @@ export class DynamicExamService {
     category: string;
     count: number;
     marksPerQuestion: number;
+    topic?: string;
   }>) {
     try {
       console.log('Generating questions for distribution:', questionDistribution);
@@ -405,9 +406,18 @@ export class DynamicExamService {
             continue;
           }
 
+          // Optional topic filter (if present on JSON, otherwise best-effort match by name)
+          let filtered = questionsData;
+          if (dist.topic) {
+            const topicLower = dist.topic.toLowerCase();
+            filtered = questionsData.filter((q: any) => {
+              const qt = (q.topic || '').toString().toLowerCase();
+              return qt ? qt === topicLower : (q.Explanation || q.Question || '').toString().toLowerCase().includes(topicLower);
+            });
+          }
           // Shuffle and select required number of questions
-          const shuffled = questionsData.sort(() => Math.random() - 0.5);
-          const selectedQuestions = shuffled.slice(0, Math.min(dist.count, questionsData.length));
+          const shuffled = filtered.sort(() => Math.random() - 0.5);
+          const selectedQuestions = shuffled.slice(0, Math.min(dist.count, shuffled.length));
 
           console.log(`Selected ${selectedQuestions.length} questions for category ${dist.category}`);
 
@@ -494,6 +504,7 @@ export class DynamicExamService {
               category: categorySlug,
               categoryName: categoryName,
               categoryId: dist.category, // Keep original UUID
+            topic: q.topic || 'general',
               marksPerQuestion: dist.marksPerQuestion,
               explanation: q.Explanation || q.explanation || ''
             };

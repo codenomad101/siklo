@@ -31,6 +31,21 @@ export const useCategory = (categoryId: string) => {
   });
 };
 
+// Get Topics for Category Hook
+export const useTopics = (category: string | undefined) => {
+  return useQuery({
+    queryKey: ['topics', category],
+    queryFn: () => practiceAPI.getTopics(category!),
+    enabled: !!category,
+    retry: 2,
+    staleTime: 10 * 60 * 1000,
+    onError: (error: any) => {
+      console.error('Error fetching topics:', error);
+      message.error('Failed to load topics');
+    },
+  });
+};
+
 // Categories Management Hook
 export const useCategoriesManager = () => {
   const queryClient = useQueryClient();

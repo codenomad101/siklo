@@ -350,6 +350,7 @@ export const practiceSessions = pgTable('practice_sessions', {
     timeSpentSeconds: number;
     explanation: string;
     category: string;
+    topic?: string;
   }>>(),
   
   createdAt: timestamp('created_at').defaultNow().notNull(),
@@ -399,6 +400,7 @@ export const dynamicExamSessions = pgTable('dynamic_exam_sessions', {
     category: string;
     count: number;
     marksPerQuestion: number;
+    topic?: string;
   }>>().notNull(),
   
   // Session Status
@@ -474,6 +476,7 @@ export const practiceQuestions = pgTable('practice_questions', {
   correctAnswer: varchar('correct_answer', { length: 500 }).notNull(),
   correctOption: integer('correct_option'), // Numeric option ID (1, 2, 3, 4)
   explanation: text('explanation'),
+  topic: varchar('topic', { length: 100 }),
   
   // Question metadata
   difficulty: difficultyLevelEnum('difficulty').default('medium'),
@@ -496,6 +499,19 @@ export const practiceQuestions = pgTable('practice_questions', {
   createdBy: uuid('created_by').references(() => users.userId),
   updatedBy: uuid('updated_by').references(() => users.userId),
   
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+// Practice Topics table
+export const practiceTopics = pgTable('practice_topics', {
+  topicId: uuid('topic_id').primaryKey().defaultRandom(),
+  categoryId: uuid('category_id').references(() => practiceCategories.categoryId, { onDelete: 'cascade' }).notNull(),
+  name: varchar('name', { length: 150 }).notNull(),
+  description: text('description'),
+  slug: varchar('slug', { length: 100 }).notNull(),
+  sortOrder: integer('sort_order').default(0),
+  isActive: boolean('is_active').default(true),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });

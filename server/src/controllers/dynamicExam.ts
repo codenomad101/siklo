@@ -12,7 +12,8 @@ const CreateExamSessionSchema = z.object({
   questionDistribution: z.array(z.object({
     category: z.string().min(1, 'Category is required'),
     count: z.number().positive('Count must be positive'),
-    marksPerQuestion: z.number().positive('Marks per question must be positive')
+    marksPerQuestion: z.number().positive('Marks per question must be positive'),
+    topic: z.string().optional()
   })).min(1, 'At least one category is required'),
   negativeMarking: z.boolean().optional(),
   negativeMarksRatio: z.number().min(0).max(1).optional()

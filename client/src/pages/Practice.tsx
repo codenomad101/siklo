@@ -13,9 +13,9 @@ import {
   Space,
   Spin
 } from 'antd';
-import { ReadOutlined, FormOutlined, QuestionCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import { ReadOutlined, FormOutlined, QuestionCircleOutlined, ClockCircleOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import { AppLayout } from '../components/AppLayout';
-import { useCategories } from '../hooks/useCategories';
+import { useCategories, useTopics } from '../hooks/useCategories';
 import { useCreateDynamicExam } from '../hooks/useExams';
 import { useUserStatistics } from '../hooks/useStatistics';
 
@@ -30,7 +30,7 @@ const PracticePage: React.FC = () => {
     duration: 20,
     totalMarks: 40,
     negativeMarking: 'yes',
-    questionDistribution: [] as Array<{ category: string; count: number; marksPerQuestion: number }>
+    questionDistribution: [] as Array<{ category: string; count: number; marksPerQuestion: number; topic?: string }>
   });
   const navigate = useNavigate();
 
@@ -55,8 +55,8 @@ const PracticePage: React.FC = () => {
     }
   }, [searchParams, categories]);
 
-  const handleStartPractice = (categoryId: string) => {
-    navigate(`/practice-test/${categoryId}`);
+  const handleViewCategory = (slug: string) => {
+    navigate(`/category/${slug}`);
   };
 
   const handleCreateExam = async () => {
@@ -103,12 +103,30 @@ const PracticePage: React.FC = () => {
     }
   };
 
-  const updateQuestionDistribution = (categoryId: string, field: 'count' | 'marksPerQuestion', value: number) => {
+  const updateQuestionDistribution = (categoryId: string, field: 'count' | 'marksPerQuestion' | 'topic' | 'category', value: any) => {
     setExamConfig(prev => ({
       ...prev,
       questionDistribution: prev.questionDistribution.map(dist => 
         dist.category === categoryId ? { ...dist, [field]: value } : dist
       )
+    }));
+  };
+
+  const addDistribution = (newCategoryId: string) => {
+    if (!newCategoryId) return;
+    setExamConfig(prev => ({
+      ...prev,
+      questionDistribution: [
+        ...prev.questionDistribution.filter(d => d.category !== newCategoryId),
+        { category: newCategoryId, count: 5, marksPerQuestion: 2 }
+      ]
+    }));
+  };
+
+  const removeDistribution = (categoryId: string) => {
+    setExamConfig(prev => ({
+      ...prev,
+      questionDistribution: prev.questionDistribution.filter(d => d.category !== categoryId)
     }));
   };
 
@@ -204,65 +222,13 @@ const PracticePage: React.FC = () => {
               <Row gutter={[16, 16]} justify="center">
                 {(categories || []).map((category) => (
                   <Col key={category.id} xs={24} sm={12} md={8} lg={6}>
-                    <Card
-                      hoverable
-                      style={{
-                        borderRadius: '12px',
-                        border: '2px solid #f3f4f6',
-                        transition: 'all 0.2s ease',
-                        height: '100%'
-                      }}
-                      bodyStyle={{ padding: '24px' }}
-                    >
-                      <div style={{ 
-                        width: '48px',
-                        height: '48px',
-                        borderRadius: '10px',
-                        background: category.color,
-                        marginBottom: '16px'
-                      }} />
-                      
-                      <Title level={4} style={{ 
-                        margin: '0 0 8px 0',
-                        fontSize: '18px',
-                        fontWeight: '700',
-                        color: '#1f2937'
-                      }}>
-                        {category.name}
-                      </Title>
-                      
-                      <Text style={{ 
-                        fontSize: '14px',
-                        color: '#6b7280',
-                        fontWeight: '500',
-                        display: 'block',
-                        marginBottom: '8px'
-                      }}>
-                        {category.description}
-                      </Text>
-                      
-                      <Space style={{ marginBottom: '16px' }}>
-                        <ClockCircleOutlined style={{ color: '#6b7280' }} />
-                        <Text style={{ fontSize: '13px', color: '#6b7280' }}>15 min</Text>
-                        <QuestionCircleOutlined style={{ color: '#6b7280' }} />
-                        <Text style={{ fontSize: '13px', color: '#6b7280' }}>20 questions</Text>
-                      </Space>
-                      
-                      <Button 
-                        type="primary" 
-                        icon={<ReadOutlined />}
-                        onClick={() => handleStartPractice(category.id)}
-                        style={{
-                          width: '100%',
-                          height: '40px',
-                          fontSize: '14px',
-                          fontWeight: '600',
-                          borderRadius: '8px'
-                        }}
-                      >
-                        Start Practice
-                      </Button>
-                    </Card>
+                    <CategoryCard
+                      name={category.name}
+                      description={category.description}
+                      color={category.color}
+                      slug={category.slug}
+                      onView={() => handleViewCategory(category.slug)}
+                    />
                   </Col>
                 ))}
               </Row>
@@ -307,6 +273,22 @@ const PracticePage: React.FC = () => {
                 </Select>
 
                 <Title level={4} style={{ marginTop: '24px', marginBottom: '16px' }}>Question Distribution</Title>
+                <Space style={{ marginBottom: 12 }} wrap>
+                  <Select
+                    placeholder="Add category"
+                    style={{ minWidth: 260 }}
+                    onChange={(value) => addDistribution(value)}
+                    value={undefined}
+                  >
+                    {(categories || []).map((c: any) => (
+                      <Option key={c.id} value={c.id}>{c.name}</Option>
+                    ))}
+                  </Select>
+                  <Button icon={<PlusOutlined />} onClick={() => {
+                    const first = (categories || [])[0];
+                    if (first) addDistribution(first.id);
+                  }}>Quick add first</Button>
+                </Space>
                 {loading ? (
                   <div style={{ textAlign: 'center', padding: '24px' }}>
                     <Spin />
@@ -315,38 +297,15 @@ const PracticePage: React.FC = () => {
                     </div>
                   </div>
                 ) : (
-                  (examConfig.questionDistribution || []).map((dist, index) => {
-                    const category = (categories || []).find(cat => cat.id === dist.category);
-                    if (!category) return null;
-                    
-                    return (
-                      <Row key={dist.category} align="middle" gutter={16}>
-                        <Col span={8}>
-                          <Text strong>{category.name}</Text>
-                          <Text type="secondary" style={{ marginLeft: '8px' }}>({category.questionCount} available)</Text>
-                        </Col>
-                        <Col span={8}>
-                          <InputNumber
-                            min={0}
-                            max={Math.min(10, category.questionCount)}
-                            value={dist.count}
-                            onChange={(value) => updateQuestionDistribution(dist.category, 'count', value || 0)}
-                            addonAfter="questions"
-                            style={{ width: '100%' }}
-                          />
-                        </Col>
-                        <Col span={8}>
-                          <InputNumber
-                            min={1}
-                            value={dist.marksPerQuestion}
-                            onChange={(value) => updateQuestionDistribution(dist.category, 'marksPerQuestion', value || 1)}
-                            addonAfter="marks each"
-                            style={{ width: '100%' }}
-                          />
-                        </Col>
-                      </Row>
-                    );
-                  })
+                  (examConfig.questionDistribution || []).map((dist) => (
+                    <DistributionRow
+                      key={dist.category}
+                      dist={dist}
+                      categories={categories}
+                      onChange={(field, value) => updateQuestionDistribution(dist.category, field as any, value)}
+                      onRemove={() => removeDistribution(dist.category)}
+                    />
+                  ))
                 )}
                 <Button 
                   type="primary" 
@@ -368,3 +327,104 @@ const PracticePage: React.FC = () => {
 };
 
 export default PracticePage;
+
+// Local presentational component to avoid hooks-in-loop issues
+function CategoryCard({ name, description, color, slug, onView }: { name: string; description?: string; color?: string; slug: string; onView: () => void; }) {
+  const { data: topics = [] } = useTopics(slug);
+  return (
+    <Card
+      hoverable
+      style={{
+        borderRadius: '12px',
+        border: '2px solid #f3f4f6',
+        transition: 'all 0.2s ease',
+        height: '100%'
+      }}
+      bodyStyle={{ padding: '24px' }}
+    >
+      <div style={{ 
+        width: '48px',
+        height: '48px',
+        borderRadius: '10px',
+        background: color,
+        marginBottom: '16px'
+      }} />
+      <Title level={4} style={{ margin: '0 0 8px 0', fontSize: '18px', fontWeight: '700', color: '#1f2937' }}>{name}</Title>
+      <Text style={{ fontSize: '14px', color: '#6b7280', fontWeight: '500', display: 'block', marginBottom: '8px' }}>{description}</Text>
+      {Array.isArray(topics) && topics.length > 0 && (
+        <div style={{ marginBottom: '12px' }}>
+          <Text type="secondary" style={{ fontSize: '12px' }}>Popular topics:</Text>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 6 }}>
+            {topics.slice(0, 4).map((t: any) => (
+              <span key={t.slug} style={{ background: '#f3f4f6', color: '#374151', borderRadius: 12, padding: '2px 8px', fontSize: 12 }}>{t.name}</span>
+            ))}
+          </div>
+        </div>
+      )}
+      <Space style={{ marginBottom: '16px' }}>
+        <ClockCircleOutlined style={{ color: '#6b7280' }} />
+        <Text style={{ fontSize: '13px', color: '#6b7280' }}>15 min</Text>
+        <QuestionCircleOutlined style={{ color: '#6b7280' }} />
+        <Text style={{ fontSize: '13px', color: '#6b7280' }}>20 questions</Text>
+      </Space>
+      <Button type="primary" icon={<ReadOutlined />} onClick={onView} style={{ width: '100%', height: '40px', fontSize: '14px', fontWeight: '600', borderRadius: '8px' }}>View Topics</Button>
+    </Card>
+  );
+}
+
+function DistributionRow({ dist, categories, onChange, onRemove }: { dist: any; categories: any[]; onChange: (field: 'count' | 'marksPerQuestion' | 'topic' | 'category', value: any) => void; onRemove: () => void; }) {
+  const category = categories.find((c: any) => c.id === dist.category);
+  const { data: topics = [] } = useTopics(category?.slug);
+  return (
+    <Card size="small" style={{ marginBottom: 8 }}>
+      <Row align="middle" gutter={12}>
+        <Col xs={24} md={7}>
+          <Select
+            value={dist.category}
+            onChange={(val) => onChange('category', val)}
+            style={{ width: '100%' }}
+          >
+            {categories.map((c: any) => (
+              <Option key={c.id} value={c.id}>{c.name}</Option>
+            ))}
+          </Select>
+        </Col>
+        <Col xs={12} md={5}>
+          <InputNumber
+            min={0}
+            max={Math.min(50, category?.questionCount || 10)}
+            value={dist.count}
+            onChange={(value) => onChange('count', value || 0)}
+            addonAfter="qs"
+            style={{ width: '100%' }}
+          />
+        </Col>
+        <Col xs={12} md={5}>
+          <InputNumber
+            min={1}
+            value={dist.marksPerQuestion}
+            onChange={(value) => onChange('marksPerQuestion', value || 1)}
+            addonAfter="marks"
+            style={{ width: '100%' }}
+          />
+        </Col>
+        <Col xs={18} md={5}>
+          <Select
+            placeholder="Topic (optional)"
+            allowClear
+            value={dist.topic}
+            onChange={(value) => onChange('topic', value)}
+            style={{ width: '100%' }}
+          >
+            {Array.isArray(topics) && topics.map((t: any) => (
+              <Option key={t.slug} value={t.slug}>{t.name}</Option>
+            ))}
+          </Select>
+        </Col>
+        <Col xs={6} md={2} style={{ textAlign: 'right' }}>
+          <Button danger icon={<DeleteOutlined />} onClick={onRemove} />
+        </Col>
+      </Row>
+    </Card>
+  );
+}

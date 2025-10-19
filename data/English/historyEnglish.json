@@ -24,7 +24,8 @@
     "Explanation": "The magnificent monolithic Kailasa temple (Cave 16) at Ellora was carved out of a single rock under the patronage of the Rashtrakuta king Krishna I in the 8th century. It is considered one of the most remarkable architectural feats of ancient India.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Ancient History",
@@ -51,7 +52,8 @@
     "Explanation": "Banabhatta was the 'Asthana Kavi' (court poet) of King Harshavardhana. He authored the 'Harshacharita', a biography of Harsha, and 'Kadambari', one of the earliest novels in the world.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Medieval History",
@@ -78,7 +80,8 @@
     "Explanation": "Shams-ud-din Iltutmish introduced the Iqta system as an administrative and land revenue assignment system. Under this system, the empire was divided into several large and small tracts of land, called Iqtas, which were assigned to soldiers, officers, and nobles.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Medieval History",
@@ -105,7 +108,8 @@
     "Explanation": "In 1564, Mughal Emperor Akbar abolished the Jizya tax, which was a per capita yearly tax historically levied on non-Muslim subjects. This was a significant step in his policy of religious tolerance. It was later re-introduced by Aurangzeb in 1679.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "medieval"
   },
   {
     "category": "Medieval History",
@@ -132,7 +136,8 @@
     "Explanation": "The Ashtapradhan Mandal was a council of eight ministers that administered the Maratha empire. This system was instituted by Chhatrapati Shivaji Maharaj and was crucial for the efficient administration of his kingdom.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Modern History",
@@ -159,7 +164,8 @@
     "Explanation": "The Doctrine of Lapse was an expansionist policy of the British East India Company applied by Lord Dalhousie, Governor-General of India from 1848 to 1856. It stated that any princely state under the direct influence of the company would be annexed if the ruler was 'manifestly incompetent or died without a direct heir'.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "modern"
   },
   {
     "category": "Social Reforms",
@@ -186,7 +192,8 @@
     "Explanation": "Jyotiba Phule, a prominent social reformer from Maharashtra, founded the Satyashodhak Samaj (Society of Truth Seekers) on 24 September 1873. Its main objective was to liberate the Shudras and Ati Shudras (lower castes) and to prevent their exploitation by the Brahmins.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "general"
   },
   {
     "category": "Freedom Struggle",
@@ -213,7 +220,8 @@
     "Explanation": "Lord Curzon, the Viceroy of India from 1899 to 1905, was responsible for the Partition of Bengal. The stated reason was administrative efficiency, but it was widely seen as a 'divide and rule' tactic to weaken the growing nationalist movement.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Freedom Struggle",
@@ -240,7 +248,8 @@
     "Explanation": "At the Lahore Session of the Indian National Congress in December 1929, presided over by Jawaharlal Nehru, the historic 'Poorna Swaraj' resolution was passed. It declared complete independence as the goal of the Congress, and 26th January 1930 was fixed as the first Independence Day.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "modern"
   },
   {
     "category": "Gandhian Era",
@@ -267,7 +276,8 @@
     "Explanation": "Mahatma Gandhi started the Dandi March on March 12, 1930, from Sabarmati Ashram to the coastal village of Dandi. This act of nonviolent civil disobedience against the British salt tax marked the beginning of the Civil Disobedience Movement.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "modern"
   },
   {
     "category": "Ancient History",
@@ -294,7 +304,8 @@
     "Explanation": "The Arthashastra is traditionally credited to Kautilya, also known as Chanakya or Vishnugupta, who was the chief advisor to the Mauryan emperor Chandragupta Maurya. It is a comprehensive manual on how to run a state.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "ancient"
   },
   {
     "category": "Medieval History",
@@ -321,7 +332,8 @@
     "Explanation": "Sikandar Lodi, the second ruler of the Lodi dynasty of the Delhi Sultanate, founded the city of Agra in 1504. He shifted his capital from Delhi to Agra to have better control over the trade routes and the rebellious chiefs of the region.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Freedom Struggle",
@@ -348,7 +360,8 @@
     "Explanation": "The Ghadar Party was founded by Punjabi Indians in the United States and Canada with the aim of liberating India from British rule. Its headquarters were in San Francisco, and Lala Har Dayal was a key founding member.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "modern"
   },
   {
     "category": "Modern History",
@@ -375,7 +388,8 @@
     "Explanation": "The Ryotwari System was introduced by Thomas Munro and Alexander Read in the late 18th century and was primarily implemented in parts of the Madras and Bombay Presidencies. Under this system, the revenue was collected directly from the cultivators (ryots).",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "modern"
   },
   {
     "category": "Freedom Struggle",
@@ -402,7 +416,8 @@
     "Explanation": "Mahatma Gandhi gave the famous slogan 'Do or Die' (Karo ya Maro) in his speech at the Gowalia Tank Maidan in Bombay on August 8, 1942, marking the beginning of the Quit India Movement, the final push for independence.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "modern"
   },
   {
     "category": "Social Reforms",
@@ -429,7 +444,8 @@
     "Explanation": "Ishwar Chandra Vidyasagar, a key figure of the Bengal Renaissance, championed the cause of widow remarriage. His tireless campaign and petitions led to the enactment of the Hindu Widows' Remarriage Act, 1856, by the British government.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "modern"
   },
   {
     "category": "Freedom Struggle",
@@ -456,7 +472,8 @@
     "Explanation": "The Jallianwala Bagh gathering in Amritsar was a peaceful protest against the repressive Rowlatt Act of 1919, which allowed the British government to imprison any person suspected of terrorism without a trial. The massacre occurred when British troops under General Dyer opened fire on the unarmed crowd.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "modern"
   },
   {
     "category": "Ancient History",
@@ -483,7 +500,8 @@
     "Explanation": "The Third Buddhist Council was convened around 250 BCE at Pataliputra, the capital of the Mauryan Empire, under the patronage of Emperor Ashoka. It was presided over by Moggaliputta Tissa and aimed to purify the Buddhist movement of opportunistic factions.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "ancient"
   },
   {
     "category": "Medieval History",
@@ -510,7 +528,8 @@
     "Explanation": "Amir Khusrau was a prolific poet, musician, and scholar who lived through the reigns of several sultans of Delhi. He was a prominent court poet for Alauddin Khilji and is often called the 'Parrot of India' (Tuti-e-Hind).",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Modern History",
@@ -537,7 +556,8 @@
     "Explanation": "Warren Hastings became the first Governor of the Presidency of Fort William (Bengal) in 1772 and the first Governor-General of Bengal in 1773 under the Regulating Act of 1773. Robert Clive was a Governor of Bengal before the post of Governor-General was created.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Freedom Struggle",
@@ -564,7 +584,8 @@
     "Explanation": "The Bardoli Satyagraha was a major peasant movement in Gujarat against an unjust tax hike. Vallabhbhai Patel successfully led the movement, and it was the women of Bardoli who bestowed upon him the title 'Sardar' for his leadership.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "modern"
   },
   {
     "category": "Freedom Struggle",
@@ -591,7 +612,8 @@
     "Explanation": "The Indian Home Rule movement was started in 1916 on the lines of the Irish Home Rule movement. Bal Gangadhar Tilak launched his league in April 1916 in Pune, while Annie Besant started her league in September 1916 in Madras, with both working in different areas to avoid friction.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "modern"
   },
   {
     "category": "Medieval History",
@@ -618,7 +640,8 @@
     "Explanation": "Krishnadevaraya, the greatest ruler of the Vijayanagara Empire, was a great patron of literature and was himself a scholar. He authored the Telugu epic poem 'Amuktamalyada', which describes the story of the wedding of the god Vishnu to Andal.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Modern History",
@@ -645,7 +668,8 @@
     "Explanation": "The Permanent Settlement was an agreement between the East India Company and Bengali landlords to fix land revenue. It was introduced by Governor-General Lord Cornwallis in 1793, making the Zamindars the owners of the land in their districts.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "modern"
   },
   {
     "category": "Social Reforms",
@@ -672,7 +696,8 @@
     "Explanation": "The Prarthana Samaj was founded by Atmaram Pandurang in 1867 with the aim of promoting social and religious reforms in Western India. It was inspired by the Brahmo Samaj and focused on monotheism, social equality, and the abolition of caste restrictions and child marriage.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -699,7 +724,8 @@
     "Explanation": "Shivaji Maharaj was formally crowned as the 'Chhatrapati' (sovereign monarch) of the Maratha Kingdom on June 6, 1674, at Raigad Fort.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -726,7 +752,8 @@
     "Explanation": "Saint Dnyaneshwar (or Dnyandev), who wrote the Dnyaneshwari (a commentary on the Bhagavad Gita), is widely considered the founder and first great saint of the Varkari tradition.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -753,7 +780,8 @@
     "Explanation": "The Treaty of Purandar was signed in 1665 between the Maratha ruler Shivaji Maharaj and Raja Jai Singh I, the commander of the Mughal army sent by Emperor Aurangzeb.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -780,7 +808,8 @@
     "Explanation": "Allauddin Hasan Bahman Shah, originally known as Zafar Khan, founded the Bahamani Sultanate in 1347 A.D. with its capital at Gulbarga.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -807,7 +836,8 @@
     "Explanation": "Chhatrapati Shivaji Maharaj was born at Shivneri Fort, located in the Junnar region of Pune district, on February 19, 1630.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -834,7 +864,8 @@
     "Explanation": "The First Anglo-Maratha War (1775-1782) was concluded with the Treaty of Salbai in 1782, mediated by Mahadaji Shinde.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -861,7 +892,8 @@
     "Explanation": "Baji Rao II was the last Peshwa of the Maratha Empire, who was defeated by the British in the Third Anglo-Maratha War in 1818.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -888,7 +920,8 @@
     "Explanation": "The city of Aurangabad was originally founded by Malik Ambar in 1610 and named **Khidki**. It was renamed to Aurangabad by the Mughal Emperor Aurangzeb.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -915,7 +948,8 @@
     "Explanation": "Dr. B. R. Ambedkar founded the **Bahishkrit Hitakarini Sabha** (Outcastes Welfare Association) in Bombay on July 20, 1924, to promote education and socio-economic status among the depressed classes.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -942,7 +976,8 @@
     "Explanation": "Bal Gangadhar Tilak started the Marathi newspaper **Kesari** on January 4, 1881. He also started an English newspaper called 'Maratha' simultaneously.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -969,7 +1004,8 @@
     "Explanation": "The Wadala salt pan, located in Bombay, was a major center for the Salt Satyagraha in 1930, demonstrating civil disobedience against the British salt tax.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "modern"
   },
   {
     "category": "Maharashtra History",
@@ -996,7 +1032,8 @@
     "Explanation": "Samarth Ramdas was a prominent saint and spiritual advisor to Chhatrapati Shivaji Maharaj. He is also known for composing the 'Dasbodh'.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1023,7 +1060,8 @@
     "Explanation": "The main cave temple at Elephanta Caves is a dedicated place of worship to the Hindu god Shiva, famous for the Trimurti sculpture.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1050,7 +1088,8 @@
     "Explanation": "The Chalukya Dynasty was a prominent imperial power in the Deccan, ruling from the 6th to the 12th century, with their capital at Badami (Vatapi).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "ancient"
   },
   {
     "category": "Maharashtra History",
@@ -1077,7 +1116,8 @@
     "Explanation": "The city's name was officially changed from Bombay to Mumbai in 1995, reflecting the demands of the Shiv Sena party to use the local Marathi name.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1104,7 +1144,8 @@
     "Explanation": "Yashwantrao Chavan was the first Chief Minister of Maharashtra State, which was formed on May 1, 1960, after the separation of the Marathi and Gujarati linguistic regions of the Bombay State.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1131,7 +1172,8 @@
     "Explanation": "Gopal Hari Deshmukh was a social reformer and thinker from Maharashtra who wrote essays in the Marathi weekly 'Prabhakar' under the pseudonym **'Lokhitwadi'** (Well-wisher of the People).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1158,7 +1200,8 @@
     "Explanation": "Pandita Ramabai founded the Arya Mahila Samaj (Aryan Women's Society) in Pune in 1882 to promote women's education and abolish child marriage.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1185,7 +1228,8 @@
     "Explanation": "The University of Bombay (now Mumbai University) was established in 1857, following the model of the University of London.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1212,7 +1256,8 @@
     "Explanation": "Malik Ahmad Nizam Shah I declared independence in 1490 and established the Nizam Shahi dynasty, with his capital initially at Junnar and later at Ahmednagar.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1239,7 +1284,8 @@
     "Explanation": "Ahmednagar fort was captured by Major General Arthur Wellesley (later Duke of Wellington) in August 1803 during the Second Anglo-Maratha War.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1266,7 +1312,8 @@
     "Explanation": "Appa Saheb (Mudhoji II Bhonsle) signed the Treaty of Nagpur with the British in 1817, which brought the Nagpur kingdom under British subsidiary alliance.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "modern"
   },
   {
     "category": "Maharashtra History",
@@ -1293,7 +1340,8 @@
     "Explanation": "The Prarthana Samaj was founded by **Atmaram Pandurang** in Bombay in 1867 with the help of Keshab Chandra Sen and others, emphasizing monotheism and social reform.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1320,7 +1368,8 @@
     "Explanation": "Bal Gangadhar Tilak revived and popularized the public celebration of Ganeshotsav in 1893 to promote nationalist ideas and unite people.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1347,7 +1396,8 @@
     "Explanation": "The Godavari River originates near Nashik in the Western Ghats of Maharashtra, at Trimbakeshwar.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1374,7 +1424,8 @@
     "Explanation": "Pandita Ramabai opened Sharada Sadan, a residential school for Hindu widows, in 1889.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1401,7 +1452,8 @@
     "Explanation": "The first session of the Indian National Congress was held in Bombay at the Gokuldas Tejpal Sanskrit Pathshala.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "modern"
   },
   {
     "category": "Maharashtra History",
@@ -1428,7 +1480,8 @@
     "Explanation": "Dhondo Keshav Karve established the Hingane Female Educational Institute in 1896, which later became the first women's university in India (SNDT Women's University).",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1455,7 +1508,8 @@
     "Explanation": "The Ellora Caves complex features temples and monasteries of three different religions: Buddhism, Hinduism, and Jainism, constructed between the 6th and 10th centuries.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "ancient"
   },
   {
     "category": "Maharashtra History",
@@ -1482,7 +1536,8 @@
     "Explanation": "Balgandharva Annasaheb Kirloskar (Kirloskar Natak Mandali) is credited with establishing the first successful Marathi Sangeet Natak (musical play) tradition.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1509,7 +1564,8 @@
     "Explanation": "Gopal Ganesh Agarkar was a key social reformer who separated from Tilak over the primacy of social reform over political reform and started the newspaper 'Sudharak' in 1888.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1536,7 +1592,8 @@
     "Explanation": "The Rashtrakuta Dynasty's capital was Manyakheta (present-day Malkhed in Karnataka), and their kingdom included a significant portion of modern-day Maharashtra.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1563,7 +1620,8 @@
     "Explanation": "Sant Tukaram lived during the early to mid-17th century and was a contemporary of Chhatrapati Shivaji Maharaj.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1590,7 +1648,8 @@
     "Explanation": "Maharashtra was established on May 1, 1960, after the Bombay Reorganisation Act split the bilingual Bombay State into two separate states: Maharashtra and Gujarat.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1617,7 +1676,8 @@
     "Explanation": "Maharshi Vitthal Ramji Shinde founded the **Depressed Classes Mission Society of India** in 1906 with the aim of educating and uplifting the untouchable classes.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1644,7 +1704,8 @@
     "Explanation": "Shaniwar Wada was the fortress-palace of the Maratha Peshwas until 1818 and is located in Pune.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1671,7 +1732,8 @@
     "Explanation": "Mahatma Jyotirao Phule wrote the book 'Gulamgiri' in 1873, dedicating it to the American people who fought to end slavery.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1698,7 +1760,8 @@
     "Explanation": "The Battle of Kharda in 1795 was fought between the Maratha Confederacy and the Nizam of Hyderabad, resulting in a decisive Maratha victory.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1725,7 +1788,8 @@
     "Explanation": "Gopal Krishna Gokhale, a moderate leader of the Indian National Congress and a prominent figure from Maharashtra, was considered the political guru of Mahatma Gandhi.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "modern"
   },
   {
     "category": "Maharashtra History",
@@ -1752,7 +1816,8 @@
     "Explanation": "The Gateway of India was built to commemorate the landing of King George V and Queen Mary at Apollo Bunder during their visit to India in 1911.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "modern"
   },
   {
     "category": "Maharashtra History",
@@ -1779,7 +1844,8 @@
     "Explanation": "The Farooqi Dynasty ruled the Khandesh Sultanate, with its capital at Burhanpur, until it was annexed by the Mughal Emperor Akbar in 1601.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 4
+    "correctOption": 4,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1806,7 +1872,8 @@
     "Explanation": "The Third Battle of Panipat was fought on January 14, 1761, between the Maratha forces under Sadashivrao Bhau and the Afghan forces led by Ahmad Shah Durrani.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1833,7 +1900,8 @@
     "Explanation": "The Deccan Education Society was founded by Vishnu Krishna Chiplunkar, Bal Gangadhar Tilak, Gopal Ganesh Agarkar, and others to promote quality education.",
     "Difficulty": "Hard",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1860,7 +1928,8 @@
     "Explanation": "The Ashtapradhan Mandal was the administrative and advisory council of eight ministers created by Chhatrapati Shivaji Maharaj.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1887,7 +1956,8 @@
     "Explanation": "Mahatma Jyotirao Phule, along with his wife Savitribai Phule, pioneered women's education in India by establishing one of the first girls' schools in Pune in 1848.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1914,7 +1984,8 @@
     "Explanation": "Takht Sachkhand Sri Hazur Sahib is located in Nanded, where Guru Gobind Singhji breathed his last.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1941,7 +2012,8 @@
     "Explanation": "Ranojirao Scindia was the founder of the Scindia dynasty that ruled the Gwalior State, initially a powerful Maratha chief under Peshwa Bajirao I.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -1968,7 +2040,8 @@
     "Explanation": "Dhondo Keshav Karve was awarded the Bharat Ratna in 1958 for his immense contributions to women's education and welfare.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -1995,7 +2068,8 @@
     "Explanation": "After the death of Rajaram, Queen Tarabai, his wife, established the Kolhapur branch of the Maratha Empire in opposition to the Satara branch under Shahu Maharaj.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -2022,7 +2096,8 @@
     "Explanation": "The Poona Pact was an agreement between Mahatma Gandhi and Dr. B. R. Ambedkar on the reservation of electoral seats for the depressed classes in the British India legislature.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "modern"
   },
   {
     "category": "Maharashtra History",
@@ -2049,7 +2124,8 @@
     "Explanation": "The Kailasa Temple (Cave 16) at Ellora was built by the Rashtrakuta King Krishna I (756–773 CE).",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -2076,7 +2152,8 @@
     "Explanation": "Muhammad bin Tughlaq famously shifted his capital from Delhi to Devagiri (renamed Daulatabad) in 1327-28, though the move was short-lived.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -2103,7 +2180,8 @@
     "Explanation": "The Vakataka Dynasty was a powerful kingdom in the Deccan from the 3rd to 5th centuries, primarily ruling over the Vidarbha region.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -2130,7 +2208,8 @@
     "Explanation": "Mahatma Jyotirao Phule established the Satya Shodhak Samaj in Pune on September 24, 1873, focusing on the rights of the depressed classes and women.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -2157,7 +2236,8 @@
     "Explanation": "Baji Prabhu Deshpande and his contingent fought a heroic rearguard action at the Ghodkhind pass (later renamed Pavan Khind) to cover Shivaji's escape from Panhala fort.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -2184,7 +2264,8 @@
     "Explanation": "Ahilyabai Holkar was the daughter-in-law of Malhar Rao Holkar, the founder of the Holkar Dynasty, and took charge of the administration after the death of her husband and father-in-law.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -2211,7 +2292,8 @@
     "Explanation": "The first co-operative sugar factory, Pravara Sahakari Sakhar Karkhana, was established in 1950 in Pravaranagar, Ahmednagar district, by Vitthalrao Vikhe Patil.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -2238,7 +2320,8 @@
     "Explanation": "Chhatrapati Shahu Maharaj (Rajashri Shahu of Kolhapur) was born Yeshwantrao Ghatge and adopted by Anandibai, the widow of Shivaji IV of Kolhapur.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -2265,7 +2348,8 @@
     "Explanation": "The famous **Mahad Satyagraha** was launched by Dr. B. R. Ambedkar in 1927 at Mahad, Raigad district, to establish the right of untouchables to use public water sources.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 2
+    "correctOption": 2,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -2292,7 +2376,8 @@
     "Explanation": "Shahir Anant Phandi (Anant Gholap) was an old 'Shahir' (ballad singer) who lived at Sangamner in the Ahmednagar district.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "general"
   },
   {
     "category": "Maharashtra History",
@@ -2319,7 +2404,8 @@
     "Explanation": "The first session was planned for Pune but was moved to Bombay due to an outbreak of cholera in Pune. The second session was held in Calcutta.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "modern"
   },
   {
     "category": "Maharashtra History",
@@ -2346,7 +2432,8 @@
     "Explanation": "Balaji Vishwanath (1713–1720) was the first of a series of hereditary Peshwas who effectively controlled the Maratha Empire.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 1
+    "correctOption": 1,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -2373,7 +2460,8 @@
     "Explanation": "Tanaji Malusare led the Maratha forces to capture Sinhagad (Kondhana) but lost his life in the battle.",
     "Difficulty": "Medium",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -2400,7 +2488,8 @@
     "Explanation": "The Bhuleshwar Temple is believed to have been constructed during the time of the Yadavas of Devagiri (13th century).",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   },
   {
     "category": "Maharashtra History",
@@ -2427,6 +2516,7 @@
     "Explanation": "Comrade Govind Pansare wrote the popular and influential book 'Shivaji Kon Hota' to counter communal interpretations of Maratha history.",
     "Difficulty": "Easy",
     "Job": "MPSC, Grade-B, Grade-C, SSC-CGL",
-    "correctOption": 3
+    "correctOption": 3,
+    "topic": "medieval"
   }
 ]

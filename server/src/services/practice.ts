@@ -283,6 +283,7 @@ export class PracticeService {
           correctOption: correctOption,
           explanation: q.Explanation || q.explanation || '',
           category: categorySlug,
+          topic: q.topic || 'general',
           marks: 1,
           questionType: 'mcq',
           difficulty: 'medium'
@@ -342,7 +343,8 @@ export class PracticeService {
           isCorrect: false,
           timeSpentSeconds: 0,
           explanation: q.explanation,
-          category: q.category
+          category: q.category,
+          topic: q.topic
         }))
       };
 
