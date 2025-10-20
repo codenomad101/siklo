@@ -90,9 +90,6 @@ export class PracticeService {
     try {
       // First try to get questions from database
       try {
-        // Temporarily disable database lookup to force JSON file usage
-        throw new Error('Force JSON file usage');
-        
         const [category] = await db
           .select()
           .from(practiceCategories)
@@ -167,6 +164,10 @@ export class PracticeService {
         case 'history':
           questionsData = require('../../../data/English/historyEnglish.json');
           break;
+        case 'polity':
+          // Prefer DB; fallback to extra JSON if present
+          questionsData = require('../../../data/English/polityExtra.json');
+          break;
         case 'geography':
           questionsData = require('../../../data/English/geographyEnglish.json');
           break;
@@ -178,6 +179,9 @@ export class PracticeService {
           break;
         case 'agriculture':
           questionsData = require('../../../data/English/agricultureEnglish.json');
+          break;
+        case 'current-affairs':
+          questionsData = require('../../../data/English/currentAffairsEnglish.json');
           break;
         case 'marathi':
           questionsData = require('../../../data/Marathi/grammerMarathi.json');

@@ -19,7 +19,18 @@ export const achievementTypeEnum = pgEnum('achievement_type', ['streak', 'questi
 export const notificationTypeEnum = pgEnum('notification_type', ['practice_reminder', 'test_available', 'achievement', 'streak_alert', 'community', 'general']);
 export const transactionStatusEnum = pgEnum('transaction_status', ['pending', 'success', 'failed', 'refunded']);
 export const transactionTypeEnum = pgEnum('transaction_type', ['subscription', 'test_purchase', 'material_purchase', 'coins']);
-export const practiceCategoryEnum = pgEnum('practice_category', ['economy', 'gk', 'history', 'geography', 'english', 'aptitude', 'agriculture', 'marathi']);
+export const practiceCategoryEnum = pgEnum('practice_category', [
+  'economy',
+  'gk',
+  'history',
+  'geography',
+  'english',
+  'aptitude',
+  'agriculture',
+  'marathi',
+  'polity',
+  'current-affairs'
+]);
 export const practiceStatusEnum = pgEnum('practice_status', ['in_progress', 'completed', 'abandoned']);
 export const examStatusEnum = pgEnum('exam_status', ['not_started', 'in_progress', 'completed', 'abandoned']);
 export const userRoleEnum = pgEnum('user_role', ['admin', 'student', 'moderator']);
