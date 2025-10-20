@@ -5,6 +5,28 @@ type TopicsBySlug = Record<string, string[]>;
 
 // Topics per existing category slug
 const topicsByCategory: TopicsBySlug = {
+  polity: [
+    'Making of the Constitution',
+    'Preamble',
+    'Fundamental Rights and Duties',
+    'Directive Principles of State Policy',
+    'Union Executive',
+    'Union Legislature (Parliament)',
+    'State Executive',
+    'State Legislature',
+    'Judiciary',
+    'Federal System',
+    'Local Government (73rd/74th Amendments)',
+    'Constitutional and Non-Constitutional Bodies',
+    'Emergency Provisions',
+    'Amendment of the Constitution',
+    'Political Parties and Pressure Groups',
+    'Electoral Process and Reforms',
+    'Public Policy and Governance',
+    'Important Articles and Schedules',
+    'Landmark Judgements of the Supreme Court',
+    "Maharashtra's Political System"
+  ],
   history: [
     'Ancient India',
     'Medieval India',
