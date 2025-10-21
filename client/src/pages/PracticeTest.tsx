@@ -56,6 +56,7 @@ const PracticeTestPage: React.FC = () => {
   const [testCompleted, setTestCompleted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>('');
+  const [language, setLanguage] = useState<'en' | 'mr'>('en');
 
   const currentQuestion = session?.questions[currentQuestionIndex];
   const totalQuestions = session?.totalQuestions || 20;
@@ -124,7 +125,7 @@ const PracticeTestPage: React.FC = () => {
 
       try {
         // Create a new practice session via backend
-        const sessionData = await practiceAPI.createSession(categoryId, 15);
+        const sessionData = await practiceAPI.createSession(categoryId, 15, language);
         console.log('Session data received:', sessionData);
         console.log('Session data structure:', JSON.stringify(sessionData, null, 2));
         console.log('Setting session with data:', sessionData.data);
@@ -148,7 +149,7 @@ const PracticeTestPage: React.FC = () => {
     };
 
     initializeSession();
-  }, [categoryId]);
+  }, [categoryId, language]);
 
   useEffect(() => {
     if (timeLeft <= 0 && !testCompleted) {
@@ -477,6 +478,17 @@ const PracticeTestPage: React.FC = () => {
                 </div>
                 <Text type="secondary">Time Remaining</Text>
               </div>
+            </Col>
+          </Row>
+          <Row justify="end" style={{ marginTop: 12 }}>
+            <Col>
+              <Space>
+                <Text type="secondary">Language:</Text>
+                <Radio.Group value={language} onChange={(e) => setLanguage(e.target.value)}>
+                  <Radio.Button value="en">English</Radio.Button>
+                  <Radio.Button value="mr">Marathi</Radio.Button>
+                </Radio.Group>
+              </Space>
             </Col>
           </Row>
         </div>

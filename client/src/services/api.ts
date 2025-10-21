@@ -88,11 +88,12 @@ export const practiceAPI = {
 	},
 
 	// Create a new practice session
-	createSession: async (category: string, timeLimitMinutes: number = 15) => {
-		const response = await apiClient.post('/practice/sessions', { 
-			category, 
-			timeLimitMinutes 
-		});
+    createSession: async (category: string, timeLimitMinutes: number = 15, language: 'en' | 'mr' = 'en') => {
+        const response = await apiClient.post('/practice/sessions', { 
+            category, 
+            timeLimitMinutes,
+            language
+        });
 		return response.data;
 	},
 

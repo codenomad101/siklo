@@ -10,6 +10,7 @@ const backendPracticeService = new BackendPracticeService();
 const CreatePracticeSessionSchema = z.object({
   category: z.string(),
   timeLimitMinutes: z.number().min(5).max(60).optional().default(15),
+  language: z.enum(['en', 'mr']).optional().default('en'),
 });
 
 const UpdateAnswerSchema = z.object({
@@ -32,7 +33,8 @@ export const createPracticeSession = async (req: Request, res: Response) => {
     const result = await backendPracticeService.createPracticeSession(
       userId,
       validatedData.category,
-      validatedData.timeLimitMinutes
+      validatedData.timeLimitMinutes,
+      validatedData.language
     );
     
     console.log('createPracticeSession result:', result);

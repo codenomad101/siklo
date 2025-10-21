@@ -161,8 +161,12 @@ export class PracticeService {
   }
 
   // Get random questions from database or JSON files
-  async getRandomQuestions(categorySlug: string, count: number = 20) {
+  async getRandomQuestions(categorySlug: string, count: number = 20, language: 'en' | 'mr' = 'en') {
     try {
+      // Quick path: for Marathi, bypass DB and use JSON directly
+      if (language === 'mr') {
+        return this.getQuestionsFromJsonFiles(categorySlug, count, language);
+      }
       // First try to get questions from database
       try {
         const [category] = await db
@@ -215,7 +219,7 @@ export class PracticeService {
 
       // Fallback to JSON files
       console.log(`No questions found in database for category: ${categorySlug}, falling back to JSON files`);
-      return this.getQuestionsFromJsonFiles(categorySlug, count);
+      return this.getQuestionsFromJsonFiles(categorySlug, count, language);
 
     } catch (error) {
       console.error('Error loading questions:', error);
@@ -224,14 +228,16 @@ export class PracticeService {
   }
 
   // Load questions from JSON files as fallback
-  private getQuestionsFromJsonFiles(categorySlug: string, count: number = 20) {
+  private getQuestionsFromJsonFiles(categorySlug: string, count: number = 20, language: 'en' | 'mr' = 'en') {
     try {
       let questionsData: any[] = [];
       
       // Load questions based on category
       switch (categorySlug) {
         case 'economy':
-          questionsData = require('../../../data/English/economyEnglish.json');
+          questionsData = language === 'mr'
+            ? require('../../../data/Marathi/economyMarathi.json')
+            : require('../../../data/English/economyEnglish.json');
           break;
         case 'gk':
           questionsData = require('../../../data/English/GKEnglish.json');
@@ -240,8 +246,10 @@ export class PracticeService {
           questionsData = require('../../../data/English/historyEnglish.json');
           break;
         case 'polity':
-          // Prefer DB; fallback to extra JSON if present
-          questionsData = require('../../../data/English/polityExtra.json');
+          // Marathi quick path uses Marathi JSON; English prefers DB and falls back to extra JSON
+          questionsData = language === 'mr'
+            ? require('../../../data/Marathi/polityMarathi.json')
+            : require('../../../data/English/polityExtra.json');
           break;
         case 'geography':
           questionsData = require('../../../data/English/geographyEnglish.json');
@@ -256,7 +264,9 @@ export class PracticeService {
           questionsData = require('../../../data/English/agricultureEnglish.json');
           break;
         case 'current-affairs':
-          questionsData = require('../../../data/English/currentAffairsEnglish.json');
+          questionsData = language === 'mr'
+            ? require('../../../data/Marathi/currentAffairsMarathi.json')
+            : require('../../../data/English/currentAffairsEnglish.json');
           break;
         case 'marathi':
           questionsData = require('../../../data/Marathi/grammerMarathi.json');
@@ -376,7 +386,7 @@ export class PracticeService {
   }
 
   // Create a new practice session
-  async createPracticeSession(userId: string, categoryIdentifier: string, timeLimitMinutes: number = 15) {
+  async createPracticeSession(userId: string, categoryIdentifier: string, timeLimitMinutes: number = 15, language: 'en' | 'mr' = 'en') {
     try {
       // Get category details - try by ID first, then by slug
       let [category] = await db
@@ -404,7 +414,7 @@ export class PracticeService {
         throw new Error('Category not found');
       }
 
-      const questions = await this.getRandomQuestions(category.slug, category.questionsPerSession);
+      const questions = await this.getRandomQuestions(category.slug, category.questionsPerSession, language);
       
       const newSession: NewPracticeSession = {
         userId,
