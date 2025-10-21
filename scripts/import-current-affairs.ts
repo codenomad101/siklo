@@ -78,6 +78,7 @@ async function main() {
       if (exists.length > 0) { skipped++; continue; }
 
       try {
+        const topicRaw = (q.topic || '').toString().trim();
         await sql/*sql*/`
           insert into practice_questions (
             category_id, question_text, options, correct_answer, correct_option, explanation,
@@ -85,7 +86,7 @@ async function main() {
           ) values (
             ${categoryId}, ${questionText}, ${JSON.stringify(options)}, ${correctAnswerText}, ${correctOption}, ${explanation},
             ${String(q.Difficulty || q.difficulty || 'medium').toLowerCase()}, ${q.marks || 1}, 'mcq', ${JSON.stringify(q.Job ? (Array.isArray(q.Job) ? q.Job : String(q.Job).split(',').map((s: string) => s.trim())) : [])},
-            ${q.category || 'Current Affairs'}, ${path.basename(filePath)}, 'active', ${null}
+            ${q.category || 'Current Affairs'}, ${path.basename(filePath)}, 'active', ${topicRaw || null}
           )
         `;
         inserted++;

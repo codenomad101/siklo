@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { authenticateToken } from '../middleware/auth';
 import {
   getPracticeCategories,
+  getPracticeTopics,
   createPracticeSession,
   getPracticeSession,
   updatePracticeSessionAnswer,
@@ -14,6 +15,7 @@ const router = Router();
 
 // Public routes
 router.get('/categories', getPracticeCategories);
+router.get('/topics', getPracticeTopics);
 
 // Protected routes - specific routes first
 router.get('/history', authenticateToken, getUserPracticeHistory);

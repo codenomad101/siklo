@@ -3,6 +3,21 @@ import { PracticeService } from '../services/practice';
 import { z } from 'zod';
 
 const practiceService = new PracticeService();
+// Get topics for a category (by slug or id)
+export const getPracticeTopics = async (req: Request, res: Response) => {
+  try {
+    const { category } = req.query as { category?: string };
+    if (!category) {
+      return res.status(400).json({ success: false, message: 'category is required' });
+    }
+
+    const topics = await practiceService.getPracticeTopics(category);
+    return res.json({ success: true, data: topics });
+  } catch (error: any) {
+    return res.status(500).json({ success: false, message: error.message || 'Failed to fetch topics' });
+  }
+};
+
 
 // Validation schemas
 const CreatePracticeSessionSchema = z.object({

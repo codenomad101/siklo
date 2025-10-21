@@ -1,9 +1,84 @@
 import { db } from '../db';
-import { practiceSessions, practiceCategories, practiceQuestions, NewPracticeSession, PracticeSession } from '../db/schema';
+import { practiceSessions, practiceCategories, practiceQuestions, practiceTopics, NewPracticeSession, PracticeSession } from '../db/schema';
 import { eq, and, desc, count, sql } from 'drizzle-orm';
 import { StatisticsService } from './statistics';
 
 export class PracticeService {
+  // Get topics for a category (unique list from DB questions or practice_topics; JSON fallback)
+  async getPracticeTopics(categoryIdentifier: string) {
+    try {
+      // Resolve category by id (uuid) or slug
+      const looksLikeUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(categoryIdentifier);
+      let category: any | undefined;
+      if (looksLikeUuid) {
+        [category] = await db
+          .select()
+          .from(practiceCategories)
+          .where(eq(practiceCategories.categoryId, categoryIdentifier))
+          .limit(1);
+      } else {
+        [category] = await db
+          .select()
+          .from(practiceCategories)
+          .where(eq(practiceCategories.slug, categoryIdentifier))
+          .limit(1);
+      }
+
+      const slug = category?.slug || categoryIdentifier;
+
+      // Prefer curated topics table if present
+      if (category) {
+        const curated = await db
+          .select({ name: practiceTopics.name, slug: practiceTopics.slug })
+          .from(practiceTopics)
+          .where(eq(practiceTopics.categoryId, category.categoryId));
+        if (Array.isArray(curated) && curated.length) {
+          return curated.sort((a, b) => a.name.localeCompare(b.name));
+        }
+      }
+
+      // Fallback: collect distinct topic strings from practice_questions
+      if (category) {
+        const rows = await db
+          .select({ topic: practiceQuestions.topic })
+          .from(practiceQuestions)
+          .where(eq(practiceQuestions.categoryId, category.categoryId));
+        const set = new Set<string>();
+        for (const r of rows) {
+          const t = (r.topic || '').toString().trim();
+          if (t) set.add(t);
+        }
+        if (set.size) {
+          return Array.from(set)
+            .sort((a, b) => a.localeCompare(b))
+            .map((name) => ({ name, slug: this.slugify(name) }));
+        }
+      }
+
+      // Final fallback: build from JSON questions for this category
+      const questions = this.getQuestionsFromJsonFiles(slug, 1000);
+      const set = new Set<string>();
+      for (const q of questions) {
+        const t = (q.topic || '').toString().trim();
+        if (t) set.add(t);
+      }
+      return Array.from(set)
+        .sort((a, b) => a.localeCompare(b))
+        .map((name) => ({ name, slug: this.slugify(name) }));
+    } catch (err) {
+      console.error('Error fetching practice topics:', err);
+      return [];
+    }
+  }
+
+  private slugify(input: string) {
+    return input
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+  }
   // Get available practice categories from database or JSON files
   async getPracticeCategories() {
     try {

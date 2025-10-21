@@ -409,10 +409,13 @@ export class DynamicExamService {
           // Optional topic filter (if present on JSON, otherwise best-effort match by name)
           let filtered = questionsData;
           if (dist.topic) {
-            const topicLower = dist.topic.toLowerCase();
+            const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+            const topicSlug = normalize(dist.topic);
             filtered = questionsData.filter((q: any) => {
-              const qt = (q.topic || '').toString().toLowerCase();
-              return qt ? qt === topicLower : (q.Explanation || q.Question || '').toString().toLowerCase().includes(topicLower);
+              const qt = normalize((q.topic || '').toString());
+              if (qt) return qt === topicSlug;
+              const hay = (q.Explanation || q.Question || '').toString().toLowerCase();
+              return hay.includes(dist.topic.toLowerCase());
             });
           }
           // Shuffle and select required number of questions

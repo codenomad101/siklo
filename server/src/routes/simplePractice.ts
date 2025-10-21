@@ -10,8 +10,8 @@ import {
 } from '../controllers/simplePractice';
 import { PracticeService } from '../services/practice';
 import { db } from '../db';
-import { practiceCategories, practiceTopics } from '../db/schema';
-import { eq, or } from 'drizzle-orm';
+import { practiceCategories } from '../db/schema';
+import { eq } from 'drizzle-orm';
 
 const router = Router();
 const practiceService = new PracticeService();
@@ -32,7 +32,7 @@ router.get('/categories', async (req, res) => {
   }
 });
 
-// Public: Get topics for a category (by slug or categoryId)
+// Public: Get topics for a category (by slug or categoryId) with DB-first + JSON fallback
 router.get('/topics', async (req, res) => {
   try {
     const { category } = req.query as { category?: string };
@@ -40,8 +40,7 @@ router.get('/topics', async (req, res) => {
       return res.status(400).json({ success: false, message: 'category (slug or id) is required' });
     }
 
-    // Resolve categoryId from slug or direct id
-    let categoryId = category;
+    // If slug provided, ensure slug exists, but forward original identifier to service
     if (category.length !== 36) {
       const [cat] = await db
         .select()
@@ -50,15 +49,9 @@ router.get('/topics', async (req, res) => {
       if (!cat) {
         return res.status(404).json({ success: false, message: 'Category not found' });
       }
-      categoryId = cat.categoryId;
     }
 
-    const topics = await db
-      .select()
-      .from(practiceTopics)
-      .where(eq(practiceTopics.categoryId, categoryId))
-      .orderBy(practiceTopics.sortOrder, practiceTopics.name);
-
+    const topics = await practiceService.getPracticeTopics(category);
     return res.json({ success: true, data: topics });
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message || 'Failed to fetch topics' });
