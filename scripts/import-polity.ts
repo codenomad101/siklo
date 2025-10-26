@@ -85,15 +85,24 @@ async function main() {
   if (!cats || (cats as any[]).length === 0) throw new Error('Polity category not found.');
   const categoryId = (cats as any[])[0].category_id as string;
 
-  const candidates = [
-    path.resolve(process.cwd(), 'data/English/polityEnglish.tsx'),
-    path.resolve(process.cwd(), 'data/polityEnglish.tsx'),
+  const candidateFiles = [
+    'data/English/polityEnglish.tsx',
+    'data/English/polityEnglish1.tsx',
+    'data/English/polityEnglish2.tsx',
   ];
-  const filePath = candidates.find((p) => fs.existsSync(p));
-  if (!filePath) throw new Error('polityEnglish.tsx not found.');
+  const existing = candidateFiles.map((rel) => path.resolve(process.cwd(), rel)).filter((p) => fs.existsSync(p));
+  if (existing.length === 0) throw new Error('No polityEnglish*.tsx files found.');
 
-  const arr = parseArrayFromTsx(filePath);
-  if (!Array.isArray(arr)) throw new Error('Invalid TSX content: expected array');
+  let totalParsed = 0;
+  let arr: any[] = [];
+  for (const filePath of existing) {
+    const parsed = parseArrayFromTsx(filePath);
+    if (!Array.isArray(parsed)) throw new Error(`Invalid TSX content in ${path.basename(filePath)}: expected array`);
+    const src = path.basename(filePath);
+    arr.push(...parsed.map((q: any) => ({ ...q, __source: src })));
+    totalParsed += parsed.length;
+  }
+  console.log(`Parsed ${totalParsed} questions from ${existing.length} files.`);
 
   let inserted = 0, skipped = 0;
   for (const q of arr) {
@@ -115,7 +124,7 @@ async function main() {
       ) values (
         ${categoryId}, ${questionText}, ${JSON.stringify(options)}, ${correctAnswerText}, ${correctOption}, ${explanation},
         ${String(q.Difficulty || 'medium').toLowerCase()}, ${q.marks || 1}, 'mcq', ${JSON.stringify(q.Job ? (Array.isArray(q.Job) ? q.Job : String(q.Job).split(',').map((s: string) => s.trim())) : [])},
-        ${q.category || 'Polity'}, ${path.basename(filePath)}, 'active', ${topicSlug || null}
+        ${q.category || 'Polity'}, ${q.__source || 'polity-import'}, 'active', ${topicSlug || null}
       )
     `;
     inserted++;

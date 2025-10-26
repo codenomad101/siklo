@@ -57,6 +57,10 @@ async function main() {
     const categoryId = cats[0].category_id as string;
 
     const candidates = [
+      path.resolve(process.cwd(), 'data/English/historyEnglish3.json'),
+      path.resolve(process.cwd(), 'data/English/historyEnglish2.json'),
+      path.resolve(process.cwd(), 'data/English/historyEnglish1.json'),
+      path.resolve(process.cwd(), 'data/English/historyEnglish.json'),
       path.resolve(process.cwd(), 'data/English/historyExtra.json'),
       path.resolve(process.cwd(), 'data/historyExtra.json'),
     ];
@@ -85,7 +89,7 @@ async function main() {
           ) values (
             ${categoryId}, ${questionText}, ${JSON.stringify(options)}, ${correctAnswerText}, ${correctOption}, ${explanation},
             ${String(q.Difficulty || q.difficulty || 'medium').toLowerCase()}, ${q.marks || 1}, 'mcq', ${JSON.stringify(q.Job ? (Array.isArray(q.Job) ? q.Job : String(q.Job).split(',').map((s: string) => s.trim())) : [])},
-            ${q.category || 'History'}, ${path.basename(filePath)}, 'active', ${null}
+            ${q.category || 'History'}, ${path.basename(filePath)}, 'active', ${(q as any).topic ? String((q as any).topic) : null}
           )
         `;
         inserted++;
@@ -99,7 +103,7 @@ async function main() {
     const [{ count }] = await sql/*sql*/`select count(*)::int as count from practice_questions where category_id = ${categoryId}` as any;
     await sql/*sql*/`update practice_categories set total_questions = ${count}, updated_at = now() where category_id = ${categoryId}`;
 
-    console.log(`Imported history extra. inserted=${inserted}, skipped=${skipped}, failed=${failed}. category total now=${count}`);
+    console.log(`Imported history from ${path.basename(filePath)}. inserted=${inserted}, skipped=${skipped}, failed=${failed}. category total now=${count}`);
   } finally {
     // @ts-ignore
     await (sql as any).end({ timeout: 1 });
