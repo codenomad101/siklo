@@ -532,6 +532,7 @@ export const practiceStudyMaterials = pgTable('practice_study_materials', {
   materialId: uuid('material_id').primaryKey().defaultRandom(),
   categoryId: uuid('category_id').references(() => practiceCategories.categoryId, { onDelete: 'cascade' }).notNull(),
   topicSlug: varchar('topic_slug', { length: 100 }),
+  language: varchar('language', { length: 10 }).default('en'),
   title: varchar('title', { length: 200 }).notNull(),
   content: text('content').notNull(),
   tags: json('tags').$type<Array<string>>().default([]),
@@ -721,6 +722,31 @@ export const subjectRankings = pgTable('subject_rankings', {
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });
 
+// User Personal Notes table (like Google Keep)
+export const userPersonalNotes = pgTable('user_personal_notes', {
+  noteId: uuid('note_id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => users.userId, { onDelete: 'cascade' }).notNull(),
+  
+  title: varchar('title', { length: 200 }).notNull(),
+  content: text('content').notNull(),
+  
+  // Category/subject association
+  categoryId: uuid('category_id').references(() => practiceCategories.categoryId, { onDelete: 'set null' }),
+  categorySlug: varchar('category_slug', { length: 50 }),
+  topicSlug: varchar('topic_slug', { length: 100 }),
+  
+  // Organization
+  color: varchar('color', { length: 7 }).default('#fffacd'),
+  tags: json('tags').$type<Array<string>>().default([]),
+  isPinned: boolean('is_pinned').default(false),
+  isArchived: boolean('is_archived').default(false),
+  
+  // Metadata
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+  deletedAt: timestamp('deleted_at'),
+});
+
 // Type exports for new tables
 export type PracticeCategory = typeof practiceCategories.$inferSelect;
 export type NewPracticeCategory = typeof practiceCategories.$inferInsert;
@@ -738,3 +764,5 @@ export type SubjectStatistics = typeof subjectStatistics.$inferSelect;
 export type NewSubjectStatistics = typeof subjectStatistics.$inferInsert;
 export type SubjectRanking = typeof subjectRankings.$inferSelect;
 export type NewSubjectRanking = typeof subjectRankings.$inferInsert;
+export type UserPersonalNote = typeof userPersonalNotes.$inferSelect;
+export type NewUserPersonalNote = typeof userPersonalNotes.$inferInsert;

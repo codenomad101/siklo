@@ -18,7 +18,8 @@ import {
   MenuOutlined,
   BellOutlined,
   SettingOutlined,
-  CrownOutlined
+  CrownOutlined,
+  FileTextOutlined
 } from '@ant-design/icons';
 import { useAuth } from '../contexts/AuthContext';
 import { useState } from 'react';
@@ -69,6 +70,18 @@ export const Header: React.FC<HeaderProps> = ({ showAuth = true }) => {
         className="dropdown-menu-item"
       >
         <Link to="/profile">Profile</Link>
+      </Menu.Item>
+      <Menu.Item 
+        key="leaderboard" 
+        className="dropdown-menu-item"
+      >
+        <Link to="/leaderboard">Leaderboard</Link>
+      </Menu.Item>
+      <Menu.Item 
+        key="notes" 
+        className="dropdown-menu-item"
+      >
+        <Link to="/notes">Notes</Link>
       </Menu.Item>
       <Menu.Item 
         key="settings" 
@@ -122,16 +135,10 @@ export const Header: React.FC<HeaderProps> = ({ showAuth = true }) => {
       className: 'nav-menu-item'
     },
     {
-      key: '/leaderboard',
-      label: <Link to="/leaderboard">Leaderboard</Link>,
-      className: 'nav-menu-item'
-    },
-    {
       key: '/study',
       label: <Link to="/study">Study</Link>,
       className: 'nav-menu-item'
     },
-   
     {
       key: '/help',
       label: <Link to="/help">Help</Link>,
@@ -335,6 +342,12 @@ export const Header: React.FC<HeaderProps> = ({ showAuth = true }) => {
                 <Menu.Item key="profile-mobile">
                   <Link to="/profile">Profile</Link>
                 </Menu.Item>
+                <Menu.Item key="leaderboard-mobile">
+                  <Link to="/leaderboard">Leaderboard</Link>
+                </Menu.Item>
+                <Menu.Item key="notes-mobile">
+                  <Link to="/notes">Notes</Link>
+                </Menu.Item>
                 <Menu.Item key="settings-mobile">
                   <Link to="/settings">Settings</Link>
                 </Menu.Item>
@@ -349,6 +362,7 @@ export const Header: React.FC<HeaderProps> = ({ showAuth = true }) => {
             </>
           )}
         </Drawer>
+
       </AntHeader>
     </ConfigProvider>
   );

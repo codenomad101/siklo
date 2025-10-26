@@ -224,9 +224,37 @@ export const statisticsAPI = {
 
 // Study API
 export const studyAPI = {
-  getMaterials: async (category: string, topic?: string, page: number = 1, pageSize: number = 10) => {
-    const response = await apiClient.get('/study/materials', { params: { category, topic, page, pageSize } });
+  getMaterials: async (category: string, topic?: string, language: string = 'en', page: number = 1, pageSize: number = 10) => {
+    const response = await apiClient.get('/study/materials', { params: { category, topic, language, page, pageSize } });
     return response.data.data as { items: any[]; total: number };
+  },
+};
+
+// Notes API (Personal Notes like Google Keep)
+export const notesAPI = {
+  getNotes: async (params?: { archived?: string; pinned?: string; category?: string; search?: string }) => {
+    const response = await apiClient.get('/notes', { params });
+    return response.data.data;
+  },
+  
+  getNoteById: async (noteId: string) => {
+    const response = await apiClient.get(`/notes/${noteId}`);
+    return response.data.data;
+  },
+  
+  createNote: async (note: { title: string; content: string; color?: string; categoryId?: string; categorySlug?: string; topicSlug?: string; tags?: string[]; isPinned?: boolean; isArchived?: boolean }) => {
+    const response = await apiClient.post('/notes', note);
+    return response.data.data;
+  },
+  
+  updateNote: async (noteId: string, note: Partial<{ title: string; content: string; color: string; categoryId: string; categorySlug: string; topicSlug: string; tags: string[]; isPinned: boolean; isArchived: boolean }>) => {
+    const response = await apiClient.put(`/notes/${noteId}`, note);
+    return response.data.data;
+  },
+  
+  deleteNote: async (noteId: string) => {
+    const response = await apiClient.delete(`/notes/${noteId}`);
+    return response.data;
   },
 };
 

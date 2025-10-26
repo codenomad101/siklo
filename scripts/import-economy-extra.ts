@@ -70,11 +70,13 @@ async function main() {
 
 	// Find file
 	const candidates = [
-		path.resolve(process.cwd(), 'data/economyExtra.json'),
+		path.resolve(process.cwd(), 'data/English/economy/economyEnglish2.json'),
+		path.resolve(process.cwd(), 'data/English/economy/economyEnglish1.json'),
 		path.resolve(process.cwd(), 'data/English/economyExtra.json'),
+		path.resolve(process.cwd(), 'data/economyExtra.json'),
 	];
 	const filePath = candidates.find((p) => fs.existsSync(p));
-	if (!filePath) throw new Error('economyExtra.json not found in data/ or data/English/.');
+	if (!filePath) throw new Error('economyEnglish2.json or economyExtra.json not found.');
 
 	const raw = fs.readFileSync(filePath, 'utf-8');
 	let arr: any[] = JSON.parse(raw);
@@ -93,16 +95,16 @@ async function main() {
 		const exists = await sql/*sql*/`select question_id from practice_questions where category_id = ${categoryId} and question_text = ${questionText} limit 1`;
 		if ((exists as any[]).length > 0) { skipped++; continue; }
 
-		await sql/*sql*/`
-			insert into practice_questions (
-				category_id, question_text, options, correct_answer, correct_option, explanation,
-				difficulty, marks, question_type, job, original_category, source, status, topic
-			) values (
-				${categoryId}, ${questionText}, ${JSON.stringify(options)}, ${correctAnswerText}, ${correctOption}, ${explanation},
-				${(q.Difficulty || 'medium').toString().toLowerCase()}, ${q.marks || 1}, 'mcq', ${JSON.stringify(q.Job ? (Array.isArray(q.Job) ? q.Job : String(q.Job).split(',').map((s: string) => s.trim())) : [])},
-				${q.category || 'Economy'}, ${'economyExtra.json'}, 'active', ${topicSlug || null}
-			)
-		`;
+			await sql/*sql*/`
+				insert into practice_questions (
+					category_id, question_text, options, correct_answer, correct_option, explanation,
+					difficulty, marks, question_type, job, original_category, source, status, topic
+				) values (
+					${categoryId}, ${questionText}, ${JSON.stringify(options)}, ${correctAnswerText}, ${correctOption}, ${explanation},
+					${(q.Difficulty || 'medium').toString().toLowerCase()}, ${q.marks || 1}, 'mcq', ${JSON.stringify(q.Job ? (Array.isArray(q.Job) ? q.Job : String(q.Job).split(',').map((s: string) => s.trim())) : [])},
+					${q.category || 'Economy'}, ${path.basename(filePath)}, 'active', ${topicSlug || null}
+				)
+			`;
 		inserted++;
 	}
 

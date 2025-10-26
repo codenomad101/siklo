@@ -5,10 +5,10 @@ import { eq, and, count } from 'drizzle-orm';
 
 const router = Router();
 
-// GET study materials by category (slug or id) and optional topicSlug
+// GET study materials by category (slug or id), optional topicSlug, and optional language
 router.get('/materials', async (req, res) => {
   try {
-    const { category, topic, page = '1', pageSize = '10' } = req.query as { category?: string; topic?: string; page?: string; pageSize?: string };
+    const { category, topic, language, page = '1', pageSize = '10' } = req.query as { category?: string; topic?: string; language?: string; page?: string; pageSize?: string };
     if (!category) {
       return res.status(400).json({ success: false, message: 'category (slug or id) is required' });
     }
@@ -21,9 +21,11 @@ router.get('/materials', async (req, res) => {
       categoryId = cat.categoryId;
     }
 
+    // Build where clause with language support
+    const langCode = (language || 'en').toLowerCase();
     const where = topic
-      ? and(eq(practiceStudyMaterials.categoryId, categoryId), eq(practiceStudyMaterials.topicSlug, topic))
-      : eq(practiceStudyMaterials.categoryId, categoryId);
+      ? and(eq(practiceStudyMaterials.categoryId, categoryId), eq(practiceStudyMaterials.topicSlug, topic), eq(practiceStudyMaterials.language, langCode))
+      : and(eq(practiceStudyMaterials.categoryId, categoryId), eq(practiceStudyMaterials.language, langCode));
 
     const limit = Math.max(1, Math.min(50, parseInt(pageSize as string, 10) || 10));
     const pageNum = Math.max(1, parseInt(page as string, 10) || 1);

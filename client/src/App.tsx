@@ -18,6 +18,7 @@ import Leaderboard from './pages/Leaderboard';
 import CategoryPage from './pages/Category';
 import StudyPage from './pages/Study';
 import HelpPage from './pages/Help';
+import NotesPage from './pages/Notes';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -133,6 +134,14 @@ function App() {
                       element={
                         <ProtectedRoute>
                           <Leaderboard />
+                        </ProtectedRoute>
+                      } 
+                    />
+                    <Route 
+                      path="/notes" 
+                      element={
+                        <ProtectedRoute>
+                          <NotesPage />
                         </ProtectedRoute>
                       } 
                     />

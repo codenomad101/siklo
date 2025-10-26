@@ -22,6 +22,7 @@ import jobsRoutes from './routes/jobs';
 import adminRoutes from './routes/admin';
 import statisticsRoutes from './routes/statistics';
 import studyRoutes from './routes/study';
+import notesRoutes from './routes/notes';
 
 // Load environment variables
 config();
@@ -49,6 +50,7 @@ app.use('/api/jobs', jobsRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/statistics', statisticsRoutes);
 app.use('/api/study', studyRoutes);
+app.use('/api/notes', notesRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
