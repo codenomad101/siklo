@@ -96,11 +96,19 @@ export default function Home() {
             color: '#1f2937'
           }}>
             Welcome back, {user?.fullName?.split(' ')[0]}! 👋
-            {userRank && (
-              <Tag color="gold" style={{ marginLeft: '12px', fontSize: '12px' }}>
-                Rank #{userRank.overallRank || 'N/A'}
+            {userRank && typeof userRank === 'object' && userRank.rank ? (
+              <Tag color="gold" style={{ marginLeft: '12px', fontSize: '12px', fontWeight: 'bold' }}>
+                Rank #{userRank.rank}
               </Tag>
-            )}
+            ) : userRank && typeof userRank === 'number' ? (
+              <Tag color="gold" style={{ marginLeft: '12px', fontSize: '12px', fontWeight: 'bold' }}>
+                Rank #{userRank}
+              </Tag>
+            ) : userStats && userStats.rankingPoints > 0 ? (
+              <Tag color="blue" style={{ marginLeft: '12px', fontSize: '12px', fontWeight: 'bold' }}>
+                {userStats.rankingPoints} pts
+              </Tag>
+            ) : null}
           </Title>
           <Text style={{ 
             fontSize: '16px', 

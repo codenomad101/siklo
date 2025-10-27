@@ -77,9 +77,33 @@ const PracticeTestPage: React.FC = () => {
     if (testCompleted) return; // Prevent multiple calls
     
     if (currentQuestion && selectedAnswer && session) {
-      // Parse selected answer to get option ID and compare with correctOption
+      // Parse selected answer to get option ID
       const selectedOptionId = parseInt(selectedAnswer);
-      const isCorrect = !isNaN(selectedOptionId) && currentQuestion.correctOption !== null && selectedOptionId === currentQuestion.correctOption;
+      
+      // Get the selected option text
+      const selectedOption = currentQuestion.options?.find(opt => opt.id === selectedOptionId);
+      const selectedOptionText = selectedOption?.text || '';
+      
+      // Compare using option ID first, then fallback to text comparison
+      let isCorrect = false;
+      if (!isNaN(selectedOptionId) && currentQuestion.correctOption !== null) {
+        // Primary validation: compare option IDs
+        if (selectedOptionId === currentQuestion.correctOption) {
+          isCorrect = true;
+        } else {
+          // Fallback: compare option texts (for cases where option IDs don't match but answers are correct)
+          const correctOptionObj = currentQuestion.options?.find(opt => opt.id === currentQuestion.correctOption);
+          const correctOptionText = correctOptionObj?.text || '';
+          if (correctOptionText && selectedOptionText) {
+            isCorrect = correctOptionText.toLowerCase().trim() === selectedOptionText.toLowerCase().trim();
+          }
+          // Also check if user's answer matches the stored correct answer text
+          if (!isCorrect && currentQuestion.correctAnswer && selectedOptionText) {
+            isCorrect = currentQuestion.correctAnswer.toLowerCase().trim() === selectedOptionText.toLowerCase().trim();
+          }
+        }
+      }
+      
       const timeSpent = timePerQuestion - (timeLeft % timePerQuestion);
       
       const result: TestResult = {

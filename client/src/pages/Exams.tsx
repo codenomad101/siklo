@@ -40,7 +40,8 @@ import {
 } from '@ant-design/icons';
 import { AppLayout } from '../components/AppLayout';
 import { useCategories } from '../hooks/useCategories';
-import { useExamHistory, useResumeExam } from '../hooks/useExams';
+import { useExamHistory, useResumeExam, useCreateDynamicExam } from '../hooks/useExams';
+import { message } from 'antd';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -51,10 +52,53 @@ export default function Exams() {
   const { data: categories = [] } = useCategories();
   const { data: examHistoryData = [], isLoading: historyLoading } = useExamHistory();
   const resumeExamMutation = useResumeExam();
+  const createExamMutation = useCreateDynamicExam();
   
   const examHistory = examHistoryData || [];
   const [showResultsModal, setShowResultsModal] = useState(false);
   const [selectedExamResults, setSelectedExamResults] = useState<any>(null);
+
+  const handleQuickExam = async (totalQuestions: number = 20, negativeMarking: boolean = false) => {
+    if (!categories || categories.length === 0) {
+      message.error('No categories available for quick exam');
+      return;
+    }
+
+    // Create equal distribution across available categories
+    const questionsPerCategory = Math.ceil(totalQuestions / categories.length);
+    const distribution = categories.map((cat) => ({
+      category: cat.id,
+      count: questionsPerCategory,
+      marksPerQuestion: 2
+    }));
+
+    const totalQ = distribution.reduce((sum, d) => sum + d.count, 0);
+    const totalMarks = totalQ * 2;
+    const duration = Math.ceil(totalQ * 0.75); // ~45 seconds per question
+
+    const examData = {
+      examName: `Quick Test - ${totalQ} Questions`,
+      totalMarks,
+      durationMinutes: duration,
+      questionDistribution: distribution,
+      negativeMarking,
+      negativeMarksRatio: negativeMarking ? 0.25 : 0
+    };
+
+    try {
+      const response = await createExamMutation.mutateAsync(examData);
+      
+      if (response.success) {
+        navigate(`/exam/${response.data.sessionId}`);
+      } else {
+        console.error('Failed to create quick exam:', response.message);
+        message.error('Failed to create exam. Please try again.');
+      }
+    } catch (error: any) {
+      console.error('Error creating quick exam:', error);
+      message.error(error?.response?.data?.message || 'Failed to create quick exam');
+    }
+  };
 
   const handleCreateExam = async () => {
     // Navigate to practice page with exam mode
@@ -107,11 +151,11 @@ export default function Exams() {
           >
             <FileTextOutlined />
           </div>
-          <div>
-            <Text strong>{text}</Text>
+            <div>
+            <Text strong>{text || record.examName || 'Untitled Exam'}</Text>
             <br />
             <Text type="secondary" style={{ fontSize: '12px' }}>
-              {record.category}
+              {record.totalQuestions || 0} questions
             </Text>
           </div>
         </Space>
@@ -119,39 +163,78 @@ export default function Exams() {
     },
     {
       title: 'Score',
-      dataIndex: 'marks',
+      dataIndex: 'marksObtained',
       key: 'score',
-      render: (marks, record) => (
-        <div>
-          <Text strong>{marks}/{record.totalMarks}</Text>
-          <br />
-          <Tag color={record.percentage >= 80 ? 'green' : record.percentage >= 60 ? 'orange' : 'red'}>
-            {record.percentage}%
-          </Tag>
-        </div>
-      ),
+      render: (marksObtained, record) => {
+        // Parse marksObtained if it's a string decimal
+        const marks = typeof marksObtained === 'string' ? parseFloat(marksObtained) : (marksObtained ?? 0);
+        const total = record.totalMarks ?? 0;
+        // Parse percentage if it's a string decimal
+        const percentage = typeof record.percentage === 'string' ? parseFloat(record.percentage) : (record.percentage ?? 0);
+        
+        const percentageDisplay = total > 0 && marks > 0 ? ((marks / total) * 100).toFixed(1) : percentage.toFixed(1);
+        
+        return (
+          <div>
+            <Text strong>{marks.toFixed(0)}/{total}</Text>
+            <br />
+            <Tag color={percentage >= 80 ? 'green' : percentage >= 60 ? 'orange' : 'red'}>
+              {percentageDisplay}%
+            </Tag>
+          </div>
+        );
+      },
     },
     {
-      title: 'Duration',
-      dataIndex: 'duration',
+      title: 'Time Used',
+      dataIndex: 'timeSpentSeconds',
       key: 'duration',
-      render: (duration) => (
-        <Space>
-          <ClockCircleOutlined />
-          <Text>{duration} min</Text>
-        </Space>
-      ),
+      render: (timeSpentSeconds, record) => {
+        // Calculate actual time spent in minutes
+        let timeUsed = 0;
+        if (timeSpentSeconds && timeSpentSeconds > 0) {
+          timeUsed = Math.floor(timeSpentSeconds / 60);
+        } else if (record.completedAt && record.startedAt) {
+          // Fallback: calculate from start/end timestamps
+          const startTime = new Date(record.startedAt).getTime();
+          const endTime = new Date(record.completedAt).getTime();
+          if (!isNaN(startTime) && !isNaN(endTime)) {
+            timeUsed = Math.floor((endTime - startTime) / 60000); // milliseconds to minutes
+          }
+        }
+        
+        // If no time found, show "Not started" or "N/A"
+        const displayText = timeUsed > 0 ? `${timeUsed} min` : (record.status === 'not_started' ? 'Not started' : 'N/A');
+        
+        return (
+          <Space>
+            <ClockCircleOutlined />
+            <Text>{displayText}</Text>
+          </Space>
+        );
+      },
     },
     {
       title: 'Date',
-      dataIndex: 'date',
+      dataIndex: 'createdAt',
       key: 'date',
-      render: (date) => (
-        <Space>
-          <CalendarOutlined />
-          <Text>{date}</Text>
-        </Space>
-      ),
+      render: (createdAt) => {
+        let dateStr = 'N/A';
+        if (createdAt) {
+          try {
+            const date = new Date(createdAt);
+            dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          } catch (e) {
+            dateStr = 'N/A';
+          }
+        }
+        return (
+          <Space>
+            <CalendarOutlined />
+            <Text>{dateStr}</Text>
+          </Space>
+        );
+      },
     },
     {
       title: 'Status',
@@ -226,70 +309,116 @@ export default function Exams() {
       <div style={{ padding: '32px 24px', maxWidth: '1600px', margin: '0 auto', width: '100%' }}>
         {/* Quick Actions */}
         <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
-          <Col xs={24} sm={8}>
+          <Col xs={24} sm={6}>
             <Card 
               hoverable
               style={{ borderRadius: '12px', textAlign: 'center' }}
-              bodyStyle={{ padding: '24px' }}
+              bodyStyle={{ padding: '20px' }}
             >
-              <div style={{ fontSize: '48px', color: '#FF7846', marginBottom: '16px' }}>
-                <PlusOutlined />
+              <div style={{ fontSize: '40px', color: '#FF7846', marginBottom: '12px' }}>
+                <PlayCircleOutlined />
               </div>
-              <Title level={4} style={{ margin: '0 0 8px 0' }}>
-                Create New Exam
+              <Title level={5} style={{ margin: '0 0 8px 0' }}>
+                Quick Test (20Q)
               </Title>
-              <Paragraph style={{ color: '#666', margin: '0 0 16px 0' }}>
-                Start a custom dynamic exam
+              <Paragraph style={{ color: '#666', margin: '0 0 12px 0', fontSize: '12px' }}>
+                No negative marking
               </Paragraph>
               <Button 
                 type="primary" 
-                size="large" 
+                size="middle" 
                 block
-                onClick={handleCreateExam}
+                onClick={() => handleQuickExam(20, false)}
+                loading={createExamMutation.isPending}
               >
-                Create Exam
+                Start Now
               </Button>
             </Card>
           </Col>
 
-          <Col xs={24} sm={8}>
+          <Col xs={24} sm={6}>
             <Card 
               hoverable
               style={{ borderRadius: '12px', textAlign: 'center' }}
-              bodyStyle={{ padding: '24px' }}
+              bodyStyle={{ padding: '20px' }}
             >
-              <div style={{ fontSize: '48px', color: '#52c41a', marginBottom: '16px' }}>
-                <TrophyOutlined />
+              <div style={{ fontSize: '40px', color: '#FF7846', marginBottom: '12px' }}>
+                <PlayCircleOutlined />
               </div>
-              <Title level={4} style={{ margin: '0 0 8px 0' }}>
-                Statistics
+              <Title level={5} style={{ margin: '0 0 8px 0' }}>
+                Quick Test (50Q)
               </Title>
-              <Paragraph style={{ color: '#666', margin: '0 0 16px 0' }}>
-                View your exam performance
+              <Paragraph style={{ color: '#666', margin: '0 0 12px 0', fontSize: '12px' }}>
+                No negative marking
               </Paragraph>
-              <Button size="large" block>View Stats</Button>
+              <Button 
+                type="primary" 
+                size="middle" 
+                block
+                onClick={() => handleQuickExam(50, false)}
+                loading={createExamMutation.isPending}
+              >
+                Start Now
+              </Button>
             </Card>
           </Col>
 
-          <Col xs={24} sm={8}>
+          <Col xs={24} sm={6}>
             <Card 
               hoverable
               style={{ borderRadius: '12px', textAlign: 'center' }}
-              bodyStyle={{ padding: '24px' }}
+              bodyStyle={{ padding: '20px' }}
             >
-              <div style={{ fontSize: '48px', color: '#722ed1', marginBottom: '16px' }}>
-                <BarChartOutlined />
+              <div style={{ fontSize: '40px', color: '#ff4d4f', marginBottom: '12px' }}>
+                <PlayCircleOutlined />
               </div>
-              <Title level={4} style={{ margin: '0 0 8px 0' }}>
-                Analytics
+              <Title level={5} style={{ margin: '0 0 8px 0' }}>
+                Challenge Test (20Q)
               </Title>
-              <Paragraph style={{ color: '#666', margin: '0 0 16px 0' }}>
-                Detailed performance insights
+              <Paragraph style={{ color: '#666', margin: '0 0 12px 0', fontSize: '12px' }}>
+                With -25% negative marking
               </Paragraph>
-              <Button size="large" block>View Analytics</Button>
+              <Button 
+                danger
+                type="primary" 
+                size="middle" 
+                block
+                onClick={() => handleQuickExam(20, true)}
+                loading={createExamMutation.isPending}
+              >
+                Start Challenge
+              </Button>
+            </Card>
+          </Col>
+
+          <Col xs={24} sm={6}>
+            <Card 
+              hoverable
+              style={{ borderRadius: '12px', textAlign: 'center' }}
+              bodyStyle={{ padding: '20px' }}
+            >
+              <div style={{ fontSize: '40px', color: '#722ed1', marginBottom: '12px' }}>
+                <PlusOutlined />
+              </div>
+              <Title level={5} style={{ margin: '0 0 8px 0' }}>
+                Custom Exam
+              </Title>
+              <Paragraph style={{ color: '#666', margin: '0 0 12px 0', fontSize: '12px' }}>
+                Configure your own
+              </Paragraph>
+              <Button 
+                size="middle" 
+                block
+                onClick={handleCreateExam}
+              >
+                Create
+              </Button>
             </Card>
           </Col>
         </Row>
+
+        {/* Divider */}
+        <div style={{ margin: '32px 0', borderTop: '1px solid #e5e7eb' }} />
 
         {/* Performance Summary */}
         <Row gutter={[16, 16]} style={{ marginBottom: '24px' }}>
@@ -307,7 +436,15 @@ export default function Exams() {
             <Card>
               <Statistic
                 title="Average Score"
-                value={79.2}
+                value={(() => {
+                  const completed = examHistory.filter(e => e.status === 'completed');
+                  if (completed.length === 0) return 0;
+                  const sum = completed.reduce((acc, e) => {
+                    const pct = typeof e.percentage === 'string' ? parseFloat(e.percentage) : (e.percentage ?? 0);
+                    return acc + pct;
+                  }, 0);
+                  return (sum / completed.length).toFixed(1);
+                })()}
                 suffix="%"
                 prefix={<TrophyOutlined />}
                 valueStyle={{ color: '#52c41a' }}
@@ -318,7 +455,10 @@ export default function Exams() {
             <Card>
               <Statistic
                 title="Total Time"
-                value={60}
+                value={(() => {
+                  const totalSeconds = examHistory.reduce((sum, e) => sum + (e.timeSpentSeconds || 0), 0);
+                  return Math.floor(totalSeconds / 60);
+                })()}
                 suffix="min"
                 prefix={<ClockCircleOutlined />}
                 valueStyle={{ color: '#fa8c16' }}
@@ -329,7 +469,15 @@ export default function Exams() {
             <Card>
               <Statistic
                 title="Best Score"
-                value={87.5}
+                value={(() => {
+                  const completed = examHistory.filter(e => e.status === 'completed');
+                  if (completed.length === 0) return 0;
+                  const max = Math.max(...completed.map(e => {
+                    const pct = typeof e.percentage === 'string' ? parseFloat(e.percentage) : (e.percentage ?? 0);
+                    return pct;
+                  }));
+                  return max.toFixed(1);
+                })()}
                 suffix="%"
                 prefix={<TrophyOutlined />}
                 valueStyle={{ color: '#722ed1' }}
@@ -351,53 +499,75 @@ export default function Exams() {
         {/* Performance Timeline */}
         <Row gutter={[16, 16]} style={{ marginTop: '24px' }}>
           <Col xs={24} lg={12}>
-            <Card title="Performance Trend" style={{ borderRadius: '12px' }}>
+            <Card title="Recent Performance" style={{ borderRadius: '12px' }}>
               <Timeline>
-                <Timeline.Item color="green">
-                  <Text strong>Quick Test - 87.5%</Text>
-                  <br />
-                  <Text type="secondary">Oct 14, 2024</Text>
-                </Timeline.Item>
-                <Timeline.Item color="orange">
-                  <Text strong>Practice Exam - 70%</Text>
-                  <br />
-                  <Text type="secondary">Oct 13, 2024</Text>
-                </Timeline.Item>
-                <Timeline.Item color="green">
-                  <Text strong>History Test - 80%</Text>
-                  <br />
-                  <Text type="secondary">Oct 12, 2024</Text>
-                </Timeline.Item>
+                {examHistory.slice(0, 5).map((exam) => {
+                  const percentage = typeof exam.percentage === 'string' ? parseFloat(exam.percentage) : (exam.percentage ?? 0);
+                  const dateStr = exam.completedAt || exam.createdAt 
+                    ? new Date(exam.completedAt || exam.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+                    : 'N/A';
+                  const color = percentage >= 80 ? 'green' : percentage >= 60 ? 'orange' : 'red';
+                  
+                  return (
+                    <Timeline.Item key={exam.sessionId} color={color}>
+                      <Text strong>{exam.examName || 'Untitled Exam'} - {percentage.toFixed(1)}%</Text>
+                      <br />
+                      <Text type="secondary">{dateStr}</Text>
+                    </Timeline.Item>
+                  );
+                })}
+                {examHistory.length === 0 && (
+                  <Timeline.Item color="gray">
+                    <Text type="secondary">No exams yet</Text>
+                  </Timeline.Item>
+                )}
               </Timeline>
             </Card>
           </Col>
           
           <Col xs={24} lg={12}>
-            <Card title="Subject Performance" style={{ borderRadius: '12px' }}>
+            <Card title="Exam Statistics" style={{ borderRadius: '12px' }}>
               <List
                 dataSource={[
-                  { subject: 'Economy', score: 85, color: '#FF7846' },
-                  { subject: 'History', score: 80, color: '#fa8c16' },
-                  { subject: 'Geography', score: 75, color: '#722ed1' },
-                  { subject: 'General Knowledge', score: 70, color: '#52c41a' },
+                  { 
+                    label: 'Total Exams', 
+                    value: examHistory.length, 
+                    color: '#FF7846',
+                    icon: <FileTextOutlined />
+                  },
+                  { 
+                    label: 'Completed Exams', 
+                    value: examHistory.filter(e => e.status === 'completed').length,
+                    color: '#52c41a',
+                    icon: <CheckCircleOutlined />
+                  },
+                  { 
+                    label: 'In Progress', 
+                    value: examHistory.filter(e => e.status === 'in_progress').length,
+                    color: '#fa8c16',
+                    icon: <ClockCircleOutlined />
+                  },
+                  { 
+                    label: 'Not Started', 
+                    value: examHistory.filter(e => e.status === 'not_started').length,
+                    color: '#1890ff',
+                    icon: <PlayCircleOutlined />
+                  },
                 ]}
                 renderItem={(item) => (
                   <List.Item>
                     <div style={{ width: '100%' }}>
                       <Row justify="space-between" style={{ marginBottom: '8px' }}>
                         <Col>
-                          <Text>{item.subject}</Text>
+                          <Space>
+                            {item.icon}
+                            <Text>{item.label}</Text>
+                          </Space>
                         </Col>
                         <Col>
-                          <Text type="secondary">{item.score}%</Text>
+                          <Text strong style={{ color: item.color }}>{item.value}</Text>
                         </Col>
                       </Row>
-                      <Progress 
-                        percent={item.score} 
-                        strokeColor={item.color}
-                        showInfo={false}
-                        size="small"
-                      />
                     </div>
                   </List.Item>
                 )}

@@ -428,6 +428,22 @@ export class StatisticsService {
   // Get user's rank
   async getUserRank(userId: string, period: 'daily' | 'weekly' | 'monthly' | 'alltime' = 'alltime') {
     try {
+      // For alltime period, get comprehensive leaderboard
+      if (period === 'alltime') {
+        const leaderboard = await db
+          .select({
+            userId: users.userId,
+            rankingPoints: userStatistics.rankingPoints,
+          })
+          .from(userStatistics)
+          .innerJoin(users, eq(userStatistics.userId, users.userId))
+          .orderBy(desc(userStatistics.rankingPoints));
+        
+        const userRank = leaderboard.findIndex(user => user.userId === userId);
+        return userRank >= 0 ? userRank + 1 : leaderboard.length; // Show as last if not found
+      }
+      
+      // For other periods, use existing logic
       const leaderboard = await this.getLeaderboard(period, 1000); // Get more users to find rank
       const userRank = leaderboard.findIndex(user => user.userId === userId);
       

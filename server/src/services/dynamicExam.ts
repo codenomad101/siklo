@@ -369,42 +369,16 @@ export class DynamicExamService {
           
           // Load questions based on category slug
           console.log(`Loading questions for category: "${categorySlug}"`);
-          switch (categorySlug) {
-            case 'economy':
-              questionsData = require('../../../data/English/economyEnglish.json');
-              break;
-            case 'gk':
-              questionsData = require('../../../data/English/GKEnglish.json');
-              break;
-            case 'history':
-              questionsData = require('../../../data/English/historyEnglish.json');
-              break;
-            case 'geography':
-              questionsData = require('../../../data/English/geographyEnglish.json');
-              break;
-            case 'english':
-              questionsData = require('../../../data/English/englishGrammer.json');
-              break;
-            case 'aptitude':
-              questionsData = require('../../../data/English/AptitudeEnglish.json');
-              break;
-            case 'agriculture':
-              questionsData = require('../../../data/English/agricultureEnglish.json');
-              break;
-            case 'marathi':
-              questionsData = require('../../../data/Marathi/grammerMarathi.json');
-              break;
-            default:
-              console.log(`Unknown category: "${categorySlug}" (UUID: ${dist.category}), skipping`);
-              continue;
+          
+          // Try multiple path variations for each category
+          questionsData = this.loadQuestionsForCategory(categorySlug);
+          
+          if (!Array.isArray(questionsData) || questionsData.length === 0) {
+            console.log(`No questions found for category: "${categorySlug}"`);
+            continue;
           }
 
           console.log(`Loaded ${questionsData?.length || 0} questions for category ${dist.category}`);
-
-          if (!Array.isArray(questionsData) || questionsData.length === 0) {
-            console.log(`No questions found for category ${dist.category}`);
-            continue;
-          }
 
           // Optional topic filter (if present on JSON, otherwise best-effort match by name)
           let filtered = questionsData;
@@ -533,5 +507,117 @@ export class DynamicExamService {
       console.error('Error generating questions:', error);
       throw new Error(`Failed to generate questions: ${error.message}`);
     }
+  }
+
+  // Load questions for a category, trying multiple path variations
+  private loadQuestionsForCategory(categorySlug: string): any[] {
+    const pathVariations = this.getPathVariationsForCategory(categorySlug);
+    
+    for (const path of pathVariations) {
+      try {
+        console.log(`Trying to load from: ${path}`);
+        const fs = require('fs');
+        const questionFile = fs.readFileSync(path, 'utf8');
+        const parsed = JSON.parse(questionFile);
+        
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          console.log(`Successfully loaded ${parsed.length} questions from: ${path}`);
+          return parsed;
+        }
+      } catch (err) {
+        // Continue to next path
+        console.log(`Failed to load from ${path}:`, err.message);
+      }
+    }
+    
+    return [];
+  }
+
+  // Get possible file paths for a category
+  private getPathVariationsForCategory(categorySlug: string): string[] {
+    const paths: string[] = [];
+    const path = require('path');
+    
+    // Base path is 2 levels up from server/src/services to reach project root
+    const basePath = path.join(__dirname, '../../..');
+    
+    switch (categorySlug.toLowerCase()) {
+      case 'economy':
+        paths.push(
+          path.join(basePath, 'data/English/economy/economyEnglish2.json'),
+          path.join(basePath, 'data/English/economy/economyEnglish1.json'),
+          path.join(basePath, 'data/English/economy/economyExtra.json'),
+          path.join(basePath, 'data/English/economyEnglish.json')
+        );
+        break;
+      case 'gk':
+        paths.push(
+          path.join(basePath, 'data/English/gk/gkEnglish.json'),
+          path.join(basePath, 'data/English/gk/GKEnglish.json')
+        );
+        break;
+      case 'history':
+        paths.push(
+          path.join(basePath, 'data/English/history/historyEnglish3.json'),
+          path.join(basePath, 'data/English/history/historyEnglish2.json'),
+          path.join(basePath, 'data/English/history/historyEnglish1.json'),
+          path.join(basePath, 'data/English/history/historyExtra.json'),
+          path.join(basePath, 'data/English/historyEnglish.json')
+        );
+        break;
+      case 'geography':
+        paths.push(
+          path.join(basePath, 'data/English/geography/geographyEnglish.json'),
+          path.join(basePath, 'data/English/geography/georaphyExtra.json')
+        );
+        break;
+      case 'english':
+        paths.push(
+          path.join(basePath, 'data/English/english/englishGrammer.json'),
+          path.join(basePath, 'data/English/englishGrammer.json')
+        );
+        break;
+      case 'aptitude':
+        paths.push(
+          path.join(basePath, 'data/English/aptitude/AptitudeEnglish.json'),
+          path.join(basePath, 'data/English/AptitudeEnglish.json')
+        );
+        break;
+      case 'agriculture':
+        paths.push(
+          path.join(basePath, 'data/English/agri/agricultureEnglish.json'),
+          path.join(basePath, 'data/English/agricultureEnglish.json')
+        );
+        break;
+      case 'polity':
+        paths.push(
+          path.join(basePath, 'data/English/polity/polityEnglish2.json'),
+          path.join(basePath, 'data/English/polity/polityEnglish1.json'),
+          path.join(basePath, 'data/English/polity/polityExtra.json'),
+          path.join(basePath, 'data/English/polityEnglish.json')
+        );
+        break;
+      case 'current-affairs':
+      case 'currentaffairs':
+        paths.push(
+          path.join(basePath, 'data/English/currentAffairs/currentAffairsEnglish.json'),
+          path.join(basePath, 'data/English/currentAffairs/GKEnglish.json')
+        );
+        break;
+      case 'science':
+        paths.push(
+          path.join(basePath, 'data/English/science/scienceEnglish.json')
+        );
+        break;
+      case 'marathi':
+        paths.push(
+          path.join(basePath, 'data/Marathi/grammerMarathi.json')
+        );
+        break;
+      default:
+        console.log(`No path variations defined for category: "${categorySlug}"`);
+    }
+    
+    return paths;
   }
 }

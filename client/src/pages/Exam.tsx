@@ -195,31 +195,71 @@ const ExamPage: React.FC = () => {
     try {
       // Calculate results
       const updatedQuestions = session.questions?.map(q => {
-        // Parse user answer to get option ID and compare with correctOption
+        // Parse user answer to get option ID
         const selectedOptionId = parseInt(q.userAnswer);
-        const isCorrect = !isNaN(selectedOptionId) && q.correctOption !== null && selectedOptionId === q.correctOption;
+        const hasUserAnswer = q.userAnswer && q.userAnswer.trim() !== '';
+        
+        // Get the selected option text
+        const selectedOption = q.options?.find(opt => opt.id === selectedOptionId);
+        const selectedOptionText = selectedOption?.text || '';
+        
+        // Compare using option ID first, then fallback to text comparison
+        let isCorrect = false;
+        if (hasUserAnswer && !isNaN(selectedOptionId) && q.correctOption !== null) {
+          // Primary validation: compare option IDs
+          if (selectedOptionId === q.correctOption) {
+            isCorrect = true;
+          } else {
+            // Fallback: compare option texts (for cases where option IDs don't match but answers are correct)
+            const correctOptionObj = q.options?.find(opt => opt.id === q.correctOption);
+            const correctOptionText = correctOptionObj?.text || '';
+            if (correctOptionText && selectedOptionText) {
+              isCorrect = correctOptionText.toLowerCase().trim() === selectedOptionText.toLowerCase().trim();
+            }
+            // Also check if user's answer matches the stored correct answer text
+            if (!isCorrect && q.correctAnswer && selectedOptionText) {
+              isCorrect = q.correctAnswer.toLowerCase().trim() === selectedOptionText.toLowerCase().trim();
+            }
+          }
+        }
+        
+        // Calculate marks: positive for correct, negative for incorrect (if negative marking enabled)
+        let marksObtained = 0;
+        if (hasUserAnswer) {
+          if (isCorrect) {
+            marksObtained = q.marksPerQuestion;
+          } else if (session.negativeMarking) {
+            // Apply negative marking ratio (default 0.25)
+            const negativeRatio = session.negativeMarksRatio || 0.25;
+            marksObtained = -(q.marksPerQuestion * negativeRatio);
+          }
+        }
         
         // Debug logging for exam answer comparison
         console.log('Exam answer validation debug:', {
           questionId: q.questionId,
           userAnswer: `"${q.userAnswer}"`,
           selectedOptionId,
+          selectedOptionText,
           correctAnswer: `"${q.correctAnswer}"`,
           correctOption: q.correctOption,
+          correctOptionText: q.options?.find(opt => opt.id === q.correctOption)?.text,
           userAnswerType: typeof q.userAnswer,
           correctAnswerType: typeof q.correctAnswer,
           areEqual: isCorrect,
-          validationMethod: 'optionId'
+          validationMethod: 'optionIdWithTextFallback',
+          marksObtained,
+          negativeMarking: session.negativeMarking
         });
         
         return {
           ...q,
           isCorrect,
-          marksObtained: isCorrect ? q.marksPerQuestion : 0
+          marksObtained
         };
       });
 
-      const totalMarksObtained = updatedQuestions.reduce((sum, q) => sum + q.marksObtained, 0);
+      const totalMarksObtained = updatedQuestions.reduce((sum, q) => sum + (q.marksObtained || 0), 0);
       const percentage = Math.round((totalMarksObtained / session.totalMarks) * 100);
       
       // Calculate statistics
@@ -306,9 +346,58 @@ const ExamPage: React.FC = () => {
   }
 
   if (examCompleted) {
-    const score = getScore();
-    const correctAnswers = session?.questions.filter(q => q.isCorrect).length || 0;
-    const totalAnswered = session?.questions.length || 0;
+    // Recalculate isCorrect for each question to ensure proper scoring
+    const recalculatedQuestions = session?.questions.map(q => {
+      const selectedOptionId = parseInt(q.userAnswer);
+      const hasUserAnswer = q.userAnswer && q.userAnswer.trim() !== '';
+      
+      // Get the selected option text
+      const selectedOption = q.options?.find(opt => opt.id === selectedOptionId);
+      const selectedOptionText = selectedOption?.text || '';
+      
+      // Compare using option ID first, then fallback to text comparison
+      let isCorrect = false;
+      if (hasUserAnswer && !isNaN(selectedOptionId) && q.correctOption !== null) {
+        // Primary validation: compare option IDs
+        if (selectedOptionId === q.correctOption) {
+          isCorrect = true;
+        } else {
+          // Fallback: compare option texts (for cases where option IDs don't match but answers are correct)
+          const correctOptionObj = q.options?.find(opt => opt.id === q.correctOption);
+          const correctOptionText = correctOptionObj?.text || '';
+          if (correctOptionText && selectedOptionText) {
+            isCorrect = correctOptionText.toLowerCase().trim() === selectedOptionText.toLowerCase().trim();
+          }
+          // Also check if user's answer matches the stored correct answer text
+          if (!isCorrect && q.correctAnswer && selectedOptionText) {
+            isCorrect = q.correctAnswer.toLowerCase().trim() === selectedOptionText.toLowerCase().trim();
+          }
+        }
+      }
+      
+      // Recalculate marks
+      let marksObtained = 0;
+      if (hasUserAnswer) {
+        if (isCorrect) {
+          marksObtained = q.marksPerQuestion;
+        } else if (session?.negativeMarking) {
+          const negativeRatio = session?.negativeMarksRatio || 0.25;
+          marksObtained = -(q.marksPerQuestion * negativeRatio);
+        }
+      }
+      
+      return {
+        ...q,
+        isCorrect,
+        marksObtained
+      };
+    }) || [];
+    
+    const score = recalculatedQuestions.length > 0 
+      ? Math.round((recalculatedQuestions.filter(q => q.isCorrect).length / recalculatedQuestions.length) * 100)
+      : 0;
+    const correctAnswers = recalculatedQuestions.filter(q => q.isCorrect).length;
+    const totalAnswered = recalculatedQuestions.length;
 
     return (
       <AppLayout>
@@ -362,7 +451,7 @@ const ExamPage: React.FC = () => {
           {/* Question Results */}
           <div>
             <Title level={2} style={{ marginBottom: '24px' }}>Question Review</Title>
-            {session?.questions.map((question, index) => (
+            {recalculatedQuestions.map((question, index) => (
               <Card key={index} style={{ marginBottom: '16px' }}>
                 <div style={{ marginBottom: '16px' }}>
                   <Text strong style={{ fontSize: '16px' }}>
